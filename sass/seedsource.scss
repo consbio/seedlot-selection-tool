@@ -1,0 +1,36 @@
+@import '../seedsource-core/sass/seedsource';
+
+.about-hands {
+  float: right;
+  margin-left: 5px;
+  margin-right: -15px;
+}
+
+.about-text {
+  font-size: .9rem;
+}
+
+.about-step {
+  border-bottom: 1px solid #CCC;
+  font-size: .9rem;
+}
+
+.about-step .title.is-4 {
+  margin: 10px 0px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.about-step:last-child {
+  border-bottom: 0px;
+}
+
+.about-step img {
+  float: left;
+  margin-right: 15px;
+}
+
+.about-step p {
+  margin-left: 64px;
+  margin-bottom: 10px;
+}
