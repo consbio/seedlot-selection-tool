@@ -18,16 +18,11 @@ gulp.task('js', () => {
         paths: ['./js', './seedsource-core/js'],
         extensions: ['.jsx'],
         transform: [
-            ['envify', {NODE_ENV: 'production', global: true}]
+            // ['envify', {NODE_ENV: 'production', global: true}]
         ]
     })
-        .transform(envify({
-            global: true,
-            _: 'purge',
-            NODE_ENV: 'production'
-        }))
         .transform('babelify', {presets: ['es2015', 'react']})
-        .transform('uglifyify', {global: true})
+        // .transform('uglifyify', {global: true})
         .bundle()
         .on('error', gulpUtil.log)
         .pipe(source('seedsource.js'))
