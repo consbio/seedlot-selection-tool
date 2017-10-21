@@ -147,7 +147,7 @@ var About = function About() {
 
 exports.default = About;
 
-},{"react":14,"utils":91}],2:[function(require,module,exports){
+},{"react":14,"utils":111}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1012,7 +1012,7 @@ var Menu = function (_React$Component) {
 
 exports.default = Menu;
 
-},{"react":14,"seedsource/components/ModalCard":59,"utils":91}],3:[function(require,module,exports){
+},{"react":14,"seedsource/components/ModalCard":67,"utils":111}],3:[function(require,module,exports){
 
 },{}],4:[function(require,module,exports){
 "use strict";
@@ -4768,7 +4768,7 @@ var reports = exports.reports = [{
     url: '/sst/create-ppt/'
 }];
 
-},{"./utils":91}],34:[function(require,module,exports){
+},{"./utils":111}],34:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -4835,7 +4835,7 @@ var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddlewa
 // point(store)
 // popup(store)
 
-},{"./reducers":40,"react":171,"react-dom":140,"react-redux":150,"redux":178,"redux-thunk":172,"seedsource/components/App":52}],35:[function(require,module,exports){
+},{"./reducers":41,"react":191,"react-dom":160,"react-redux":170,"redux":198,"redux-thunk":192,"seedsource/components/App":53}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4948,7 +4948,160 @@ var executeGPTask = exports.executeGPTask = function executeGPTask(job, inputs) 
     });
 };
 
-},{"./utils":91,"isomorphic-fetch":116}],36:[function(require,module,exports){
+},{"./utils":111,"isomorphic-fetch":136}],36:[function(require,module,exports){
+'use strict';
+
+var _leaflet = require('leaflet');
+
+var _leaflet2 = _interopRequireDefault(_leaflet);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_leaflet2.default.Control.Opacity = _leaflet2.default.Control.extend({
+    options: {
+        position: 'topright',
+        value: 100
+    },
+
+    onAdd: function onAdd(map) {
+        var container = _leaflet2.default.DomUtil.create('div', 'leaflet-opacity-control leaflet-bar');
+        _leaflet2.default.DomUtil.create('span', 'icon-contrast-16', container);
+
+        var slider = _leaflet2.default.DomUtil.create('input', '', container);
+        slider.type = 'range';
+        slider.setAttribute('orient', 'vertical');
+        slider.min = 20;
+        slider.max = 100;
+        slider.step = 1;
+        slider.value = this.options.value;
+
+        _leaflet2.default.DomEvent.on(slider, 'mousedown mouseup click', _leaflet2.default.DomEvent.stopPropagation);
+
+        /* IE11 seems to process events in the wrong order, so the only way to prevent map movement while dragging the
+         * slider is to disable map dragging when the cursor enters the slider (by the time the mousedown event fires
+         * it's too late becuase the event seems to go to the map first, which results in any subsequent motion
+         * resulting in map movement even after map.dragging.disable() is called.
+         */
+        _leaflet2.default.DomEvent.on(slider, 'mouseenter', function (e) {
+            map.dragging.disable();
+        });
+        _leaflet2.default.DomEvent.on(slider, 'mouseleave', function (e) {
+            map.dragging.enable();
+        });
+
+        _leaflet2.default.DomEvent.on(slider, 'input change', function (e) {
+            this.fire('change', { value: e.target.value });
+        }.bind(this));
+
+        this._slider = slider;
+        this._container = container;
+
+        return this._container;
+    },
+
+    setValue: function setValue(value) {
+        this.options.value = value;
+        this._slider.value = value;
+    },
+
+    includes: _leaflet2.default.Evented.prototype
+});
+
+_leaflet2.default.control.opacity = function (options) {
+    return new _leaflet2.default.Control.Opacity(options);
+};
+
+_leaflet2.default.Control.Button = _leaflet2.default.Control.extend({
+    options: {
+        position: 'topright',
+        icon: ''
+    },
+
+    onAdd: function onAdd(map) {
+        var container = _leaflet2.default.DomUtil.create('div', 'leaflet-button leaflet-bar');
+        var button = _leaflet2.default.DomUtil.create('span', 'icon-' + this.options.icon + '-16', container);
+
+        _leaflet2.default.DomEvent.on(button, 'click', function (e) {
+            this.fire('click', { target: this });
+        }.bind(this)).on(button, 'mousedown mouseup click', _leaflet2.default.DomEvent.stopPropagation);
+
+        this._button = button;
+        this._container = container;
+        return this._container;
+    },
+
+    setIcon: function setIcon(icon) {
+        this.options.icon = icon;
+        this._button.setAttribute('class', 'icon-' + icon + '-16');
+    },
+
+    includes: _leaflet2.default.Evented.prototype
+});
+
+_leaflet2.default.control.button = function (options) {
+    return new _leaflet2.default.Control.Button(options);
+};
+
+_leaflet2.default.Control.Legend = _leaflet2.default.Control.extend({
+    options: {
+        position: 'bottomright',
+        legends: []
+    },
+
+    onAdd: function onAdd(map) {
+        this._container = _leaflet2.default.DomUtil.create('div', 'leaflet-bar leaflet-legend');
+
+        _leaflet2.default.DomEvent.on(this._container, 'click', function (e) {
+            e.stopPropagation();
+        });
+
+        this._rebuildLegends();
+
+        return this._container;
+    },
+
+    _rebuildLegends: function _rebuildLegends() {
+        _leaflet2.default.DomUtil.empty(this._container);
+
+        this.options.legends.forEach(function (legend) {
+            var className = 'legend-item';
+
+            if (legend.className) {
+                className += ' ' + legend.className;
+            }
+
+            var container = _leaflet2.default.DomUtil.create('div', className, this._container);
+            var label = _leaflet2.default.DomUtil.create('h4', null, container);
+            label.innerHTML = legend.label;
+
+            var table = _leaflet2.default.DomUtil.create('table', null, container);
+            var tbody = _leaflet2.default.DomUtil.create('tbody', null, table);
+
+            legend.elements.forEach(function (item) {
+                var tr = _leaflet2.default.DomUtil.create('tr', null, tbody);
+                var imageCell = _leaflet2.default.DomUtil.create('td', null, tr);
+
+                var image = _leaflet2.default.DomUtil.create('img', null, imageCell);
+                image.src = 'data:image/png;base64,' + item.imageData;
+
+                var labelCell = _leaflet2.default.DomUtil.create('td', null, tr);
+                labelCell.innerHTML = item.label;
+            }.bind(this));
+        }.bind(this));
+    },
+
+    setLegends: function setLegends(legends) {
+        this.options.legends = legends;
+
+        this._rebuildLegends();
+    }
+});
+
+_leaflet2.default.control.legend = function (options) {
+    return new _leaflet2.default.Control.Legend(options);
+};
+
+},{"leaflet":140}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4973,7 +5126,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/auth":15}],37:[function(require,module,exports){
+},{"../actions/auth":15}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5017,7 +5170,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/climate":16,"../utils":91}],38:[function(require,module,exports){
+},{"../actions/climate":16,"../utils":111}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5055,7 +5208,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/constraints":17,"../config":33,"../utils":91}],39:[function(require,module,exports){
+},{"../actions/constraints":17,"../config":33,"../utils":111}],40:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5085,7 +5238,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/error":18}],40:[function(require,module,exports){
+},{"../actions/error":18}],41:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5155,7 +5308,7 @@ exports.default = (0, _redux.combineReducers)({
     popup: _popup2.default
 });
 
-},{"./auth":36,"./error":39,"./job":41,"./legends":42,"./map":43,"./popup":45,"./report":46,"./runConfiguration":47,"./saves":48,"./tabs":49,"./variables":50,"redux":178}],41:[function(require,module,exports){
+},{"./auth":37,"./error":40,"./job":42,"./legends":43,"./map":44,"./popup":46,"./report":47,"./runConfiguration":48,"./saves":49,"./tabs":50,"./variables":51,"redux":198}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5211,7 +5364,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/job":19,"../actions/saves":27,"../utils":91}],42:[function(require,module,exports){
+},{"../actions/job":19,"../actions/saves":27,"../utils":111}],43:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5255,7 +5408,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/legends":20,"../utils":91}],43:[function(require,module,exports){
+},{"../actions/legends":20,"../utils":111}],44:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5310,7 +5463,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/job":19,"../actions/map":21,"../actions/saves":27,"../utils":91}],44:[function(require,module,exports){
+},{"../actions/job":19,"../actions/map":21,"../actions/saves":27,"../utils":111}],45:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5350,7 +5503,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/point":23,"../utils":91}],45:[function(require,module,exports){
+},{"../actions/point":23,"../utils":111}],46:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5442,7 +5595,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/popup":24,"../actions/saves":27,"../actions/variables":31,"../utils":91}],46:[function(require,module,exports){
+},{"../actions/popup":24,"../actions/saves":27,"../actions/variables":31,"../utils":111}],47:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5473,7 +5626,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/report":26,"../utils":91}],47:[function(require,module,exports){
+},{"../actions/report":26,"../utils":111}],48:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5652,7 +5805,7 @@ var reportIsFetching = exports.reportIsFetching = function reportIsFetching() {
     }
 };
 
-},{"../actions/job":19,"../actions/objectives":22,"../actions/point":23,"../actions/region":25,"../actions/report":26,"../actions/saves":27,"../actions/species":28,"../actions/step":29,"../actions/variables":31,"../config":33,"../utils":91,"./climate":37,"./constraints":38,"./point":44,"./variables":50,"./zones":51}],48:[function(require,module,exports){
+},{"../actions/job":19,"../actions/objectives":22,"../actions/point":23,"../actions/region":25,"../actions/report":26,"../actions/saves":27,"../actions/species":28,"../actions/step":29,"../actions/variables":31,"../config":33,"../utils":111,"./climate":38,"./constraints":39,"./point":45,"./variables":51,"./zones":52}],49:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5730,7 +5883,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/saves":27,"../utils":91}],49:[function(require,module,exports){
+},{"../actions/saves":27,"../utils":111}],50:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5757,7 +5910,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/saves":27,"../actions/tabs":30}],50:[function(require,module,exports){
+},{"../actions/saves":27,"../actions/tabs":30}],51:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5923,7 +6076,7 @@ var activeVariable = exports.activeVariable = function activeVariable() {
     }
 };
 
-},{"../actions/climate":16,"../actions/job":19,"../actions/objectives":22,"../actions/point":23,"../actions/variables":31,"../actions/zones":32,"../config":33,"../utils":91}],51:[function(require,module,exports){
+},{"../actions/climate":16,"../actions/job":19,"../actions/objectives":22,"../actions/point":23,"../actions/variables":31,"../actions/zones":32,"../config":33,"../utils":111}],52:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5993,7 +6146,7 @@ exports.default = function () {
     }
 };
 
-},{"../actions/zones":32,"../utils":91}],52:[function(require,module,exports){
+},{"../actions/zones":32,"../utils":111}],53:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6042,7 +6195,7 @@ var App = function App() {
 
 exports.default = App;
 
-},{"react":171,"seedsource/components/Navbar":60,"seedsource/components/Sidebar":66,"seedsource/containers/Map":76}],53:[function(require,module,exports){
+},{"react":191,"seedsource/components/Navbar":68,"seedsource/components/Sidebar":77,"seedsource/containers/Map":93}],54:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6238,7 +6391,7 @@ ClimateStep.propTypes = {
 
 exports.default = ClimateStep;
 
-},{"../../config":33,"prop-types":136,"react":171,"seedsource/containers/ConfigurationStep":74}],54:[function(require,module,exports){
+},{"../../config":33,"prop-types":156,"react":191,"seedsource/containers/ConfigurationStep":85}],55:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6321,7 +6474,432 @@ ConfigurationStep.propTypes = {
 
 exports.default = ConfigurationStep;
 
-},{"../../config":33,"prop-types":136,"react":171}],55:[function(require,module,exports){
+},{"../../config":33,"prop-types":156,"react":191}],56:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Constraint = function Constraint(_ref) {
+    var children = _ref.children,
+        className = _ref.className,
+        index = _ref.index,
+        title = _ref.title,
+        value = _ref.value,
+        unit = _ref.unit,
+        onRemove = _ref.onRemove;
+
+    return _react2.default.createElement(
+        'tr',
+        { className: 'constraint ' + className },
+        _react2.default.createElement(
+            'td',
+            null,
+            _react2.default.createElement('a', {
+                className: 'delete',
+                onClick: function onClick(e) {
+                    e.stopPropagation();
+                    onRemove(index);
+                }
+            })
+        ),
+        _react2.default.createElement(
+            'td',
+            null,
+            _react2.default.createElement(
+                'strong',
+                null,
+                title
+            )
+        ),
+        _react2.default.createElement(
+            'td',
+            null,
+            value,
+            ' ',
+            isNaN(value) ? '' : unit
+        ),
+        _react2.default.createElement(
+            'td',
+            null,
+            children
+        )
+    );
+};
+
+Constraint.propTypes = {
+    index: _propTypes2.default.number.isRequired,
+    title: _propTypes2.default.string.isRequired,
+    value: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+    unit: _propTypes2.default.string,
+    onRemove: _propTypes2.default.func.isRequired
+};
+
+exports.default = Constraint;
+
+},{"prop-types":156,"react":191}],57:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _ConfigurationStep = require('seedsource/containers/ConfigurationStep');
+
+var _ConfigurationStep2 = _interopRequireDefault(_ConfigurationStep);
+
+var _ElevationConstraint = require('seedsource/containers/ElevationConstraint');
+
+var _ElevationConstraint2 = _interopRequireDefault(_ElevationConstraint);
+
+var _PhotoperiodConstraint = require('seedsource/containers/PhotoperiodConstraint');
+
+var _PhotoperiodConstraint2 = _interopRequireDefault(_PhotoperiodConstraint);
+
+var _LatitudeConstraint = require('seedsource/containers/LatitudeConstraint');
+
+var _LatitudeConstraint2 = _interopRequireDefault(_LatitudeConstraint);
+
+var _LongitudeConstraint = require('seedsource/containers/LongitudeConstraint');
+
+var _LongitudeConstraint2 = _interopRequireDefault(_LongitudeConstraint);
+
+var _DistanceConstraint = require('seedsource/containers/DistanceConstraint');
+
+var _DistanceConstraint2 = _interopRequireDefault(_DistanceConstraint);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var constraintOptions = [{
+    type: 'elevation',
+    label: 'Elevation'
+}, {
+    type: 'photoperiod',
+    label: 'Photoperiod'
+}, {
+    type: 'latitude',
+    label: 'Latitude'
+}, {
+    type: 'longitude',
+    label: 'Longitude'
+}, {
+    type: 'distance',
+    label: 'Distance'
+}];
+
+var constraintMap = {
+    elevation: _ElevationConstraint2.default,
+    photoperiod: _PhotoperiodConstraint2.default,
+    latitude: _LatitudeConstraint2.default,
+    longitude: _LongitudeConstraint2.default,
+    distance: _DistanceConstraint2.default
+};
+
+var ConstraintStep = function ConstraintStep(_ref) {
+    var number = _ref.number,
+        constraints = _ref.constraints,
+        _onChange = _ref.onChange;
+
+    var table = null;
+
+    if (constraints.length) {
+        table = _react2.default.createElement(
+            'table',
+            { className: 'table is-fullwidth' },
+            _react2.default.createElement(
+                'thead',
+                { className: 'is-size-7' },
+                _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement('th', null),
+                    _react2.default.createElement(
+                        'th',
+                        null,
+                        'Name'
+                    ),
+                    _react2.default.createElement(
+                        'th',
+                        null,
+                        'Value'
+                    ),
+                    _react2.default.createElement(
+                        'th',
+                        null,
+                        'Range (+/-)'
+                    )
+                )
+            ),
+            _react2.default.createElement(
+                'tbody',
+                null,
+                constraints.map(function (_ref2, i) {
+                    var type = _ref2.type,
+                        values = _ref2.values;
+
+                    var tag = { type: constraintMap[type] };
+                    return _react2.default.createElement(tag.type, { index: i, values: values, key: type + '_' + i });
+                })
+            )
+        );
+    }
+
+    return _react2.default.createElement(
+        _ConfigurationStep2.default,
+        { title: 'Apply constraints', number: number, name: 'constraints', active: true },
+        table,
+        _react2.default.createElement(
+            'div',
+            { className: 'select is-fullwidth' },
+            _react2.default.createElement(
+                'select',
+                {
+                    value: '',
+                    onChange: function onChange(e) {
+                        e.preventDefault();
+                        _onChange(e.target.value);
+                    }
+                },
+                _react2.default.createElement(
+                    'option',
+                    { value: 'none' },
+                    'Add a constraint...'
+                ),
+                constraintOptions.filter(function (constraint) {
+                    return !constraints.some(function (c) {
+                        return c.type === constraint.type;
+                    });
+                }).map(function (constraint) {
+                    return _react2.default.createElement(
+                        'option',
+                        { value: constraint.type, key: constraint.type },
+                        constraint.label
+                    );
+                })
+            )
+        )
+    );
+};
+
+ConstraintStep.shouldRender = function () {
+    return true;
+};
+
+ConstraintStep.propTypes = {
+    number: _propTypes2.default.number.isRequired,
+    active: _propTypes2.default.bool,
+    constraints: _propTypes2.default.array,
+    onChange: _propTypes2.default.func.isRequired
+};
+
+exports.default = ConstraintStep;
+
+},{"prop-types":156,"react":191,"seedsource/containers/ConfigurationStep":85,"seedsource/containers/DistanceConstraint":88,"seedsource/containers/ElevationConstraint":89,"seedsource/containers/LatitudeConstraint":90,"seedsource/containers/LongitudeConstraint":92,"seedsource/containers/PhotoperiodConstraint":97}],58:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Constraint = require('seedsource/containers/Constraint');
+
+var _Constraint2 = _interopRequireDefault(_Constraint);
+
+var _EditableLabel = require('seedsource/components/EditableLabel');
+
+var _EditableLabel2 = _interopRequireDefault(_EditableLabel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DistanceConstraint = function DistanceConstraint(_ref) {
+    var index = _ref.index,
+        value = _ref.value,
+        range = _ref.range,
+        unit = _ref.unit,
+        onRangeChange = _ref.onRangeChange;
+
+    var unitLabel = unit === 'metric' ? 'km' : 'mi';
+
+    return _react2.default.createElement(
+        _Constraint2.default,
+        { index: index, value: value, title: 'Distance' },
+        _react2.default.createElement(
+            _EditableLabel2.default,
+            { value: range, onChange: function onChange(range) {
+                    return onRangeChange(index, range, unit);
+                } },
+            '\xA0',
+            unitLabel
+        )
+    );
+};
+
+DistanceConstraint.propTypes = {
+    index: _propTypes2.default.number.isRequired,
+    x: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+    y: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+    range: _propTypes2.default.number,
+    unit: _propTypes2.default.string.isRequired,
+    onRangeChange: _propTypes2.default.func.isRequired
+};
+
+exports.default = DistanceConstraint;
+
+},{"prop-types":156,"react":191,"seedsource/components/EditableLabel":60,"seedsource/containers/Constraint":86}],59:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Dropdown = function (_React$Component) {
+    _inherits(Dropdown, _React$Component);
+
+    function Dropdown(props) {
+        _classCallCheck(this, Dropdown);
+
+        var _this = _possibleConstructorReturn(this, (Dropdown.__proto__ || Object.getPrototypeOf(Dropdown)).call(this, props));
+
+        _this.state = { active: false };
+
+        _this.handleBodyClick = _this.handleBodyClick.bind(_this);
+        return _this;
+    }
+
+    _createClass(Dropdown, [{
+        key: 'handleBodyClick',
+        value: function handleBodyClick(e) {
+            if (e.target !== this.button && !this.button.contains(e.target)) {
+                this.setState({ active: false });
+            }
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            window.document.body.addEventListener('click', this.handleBodyClick);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            window.document.body.removeEventListener('click', this.handleBodyClick);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var active = this.state.active;
+
+            var isActive = this.state.active ? 'is-active' : '';
+            var _props = this.props,
+                title = _props.title,
+                _props$up = _props.up,
+                up = _props$up === undefined ? false : _props$up,
+                _props$disabled = _props.disabled,
+                disabled = _props$disabled === undefined ? false : _props$disabled,
+                _props$className = _props.className,
+                className = _props$className === undefined ? '' : _props$className,
+                children = _props.children;
+
+
+            return _react2.default.createElement(
+                'div',
+                { className: (up ? 'is-up ' : '') + isActive + ' dropdown ' + className },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'dropdown-trigger' },
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'button', disabled: disabled, ref: function ref(input) {
+                                _this2.button = input;
+                            },
+                            onClick: function onClick(e) {
+                                _this2.setState({ active: !active });
+                            }
+                        },
+                        _react2.default.createElement(
+                            'span',
+                            null,
+                            title
+                        ),
+                        _react2.default.createElement(
+                            'span',
+                            { className: 'icon is-small' },
+                            _react2.default.createElement('i', { className: up ? 'icon-chevron-top-12' : 'icon-chevron-bottom-12' })
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'dropdown-menu' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'dropdown-content' },
+                        children
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Dropdown;
+}(_react2.default.Component);
+
+Dropdown.propTypes = {
+    title: _propTypes2.default.string.isRequired,
+    up: _propTypes2.default.bool,
+    disabled: _propTypes2.default.bool,
+    className: _propTypes2.default.string
+};
+
+exports.default = Dropdown;
+
+},{"prop-types":156,"react":191}],60:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6441,7 +7019,65 @@ EditableLabel.PropTypes = {
 
 exports.default = EditableLabel;
 
-},{"prop-types":136,"react":171,"react-dom":140}],56:[function(require,module,exports){
+},{"prop-types":156,"react":191,"react-dom":160}],61:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Constraint = require('seedsource/containers/Constraint');
+
+var _Constraint2 = _interopRequireDefault(_Constraint);
+
+var _EditableLabel = require('seedsource/components/EditableLabel');
+
+var _EditableLabel2 = _interopRequireDefault(_EditableLabel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ElevationConstraint = function ElevationConstraint(_ref) {
+    var index = _ref.index,
+        value = _ref.value,
+        range = _ref.range,
+        unit = _ref.unit,
+        onRangeChange = _ref.onRangeChange;
+
+    var unitLabel = unit === 'metric' ? 'm' : 'ft';
+
+    return _react2.default.createElement(
+        _Constraint2.default,
+        { index: index, value: value, unit: unitLabel, title: 'Elevation' },
+        _react2.default.createElement(
+            _EditableLabel2.default,
+            { value: range, onChange: function onChange(range) {
+                    return onRangeChange(index, range, unit);
+                } },
+            '\xA0',
+            unitLabel
+        )
+    );
+};
+
+ElevationConstraint.propTypes = {
+    index: _propTypes2.default.number.isRequired,
+    range: _propTypes2.default.number,
+    value: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+    unit: _propTypes2.default.string.isRequired,
+    onRangeChange: _propTypes2.default.func.isRequired
+};
+
+exports.default = ElevationConstraint;
+
+},{"prop-types":156,"react":191,"seedsource/components/EditableLabel":60,"seedsource/containers/Constraint":86}],62:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6487,7 +7123,63 @@ GroupedButton.propTypes = {
 
 exports.default = GroupedButton;
 
-},{"prop-types":136,"react":171}],57:[function(require,module,exports){
+},{"prop-types":156,"react":191}],63:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Constraint = require('seedsource/containers/Constraint');
+
+var _Constraint2 = _interopRequireDefault(_Constraint);
+
+var _EditableLabel = require('seedsource/components/EditableLabel');
+
+var _EditableLabel2 = _interopRequireDefault(_EditableLabel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var LatitudeConstraint = function LatitudeConstraint(_ref) {
+    var index = _ref.index,
+        value = _ref.value,
+        range = _ref.range,
+        onRangeChange = _ref.onRangeChange;
+    return _react2.default.createElement(
+        _Constraint2.default,
+        { index: index, value: value, unit: '\xB0N', title: 'Latitude' },
+        _react2.default.createElement(
+            _EditableLabel2.default,
+            { value: range, onChange: function onChange(range) {
+                    return onRangeChange(index, range);
+                } },
+            _react2.default.createElement(
+                'span',
+                null,
+                '\xA0\xB0N'
+            )
+        )
+    );
+};
+
+LatitudeConstraint.propTypes = {
+    index: _propTypes2.default.number.isRequired,
+    range: _propTypes2.default.string,
+    value: _propTypes2.default.string,
+    onRangeChange: _propTypes2.default.func.isRequired
+};
+
+exports.default = LatitudeConstraint;
+
+},{"prop-types":156,"react":191,"seedsource/components/EditableLabel":60,"seedsource/containers/Constraint":86}],64:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6675,7 +7367,63 @@ LocationStep.propTypes = {
 
 exports.default = LocationStep;
 
-},{"prop-types":136,"react":171,"seedsource/containers/ConfigurationStep":74,"seedsource/containers/PointChooser":80}],58:[function(require,module,exports){
+},{"prop-types":156,"react":191,"seedsource/containers/ConfigurationStep":85,"seedsource/containers/PointChooser":98}],65:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Constraint = require('seedsource/containers/Constraint');
+
+var _Constraint2 = _interopRequireDefault(_Constraint);
+
+var _EditableLabel = require('seedsource/components/EditableLabel');
+
+var _EditableLabel2 = _interopRequireDefault(_EditableLabel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var LongitudeConstraint = function LongitudeConstraint(_ref) {
+    var index = _ref.index,
+        value = _ref.value,
+        range = _ref.range,
+        onRangeChange = _ref.onRangeChange;
+    return _react2.default.createElement(
+        _Constraint2.default,
+        { index: index, value: value, unit: '\xB0E', title: 'Longitude' },
+        _react2.default.createElement(
+            _EditableLabel2.default,
+            { value: range, onChange: function onChange(range) {
+                    return onRangeChange(index, range);
+                } },
+            _react2.default.createElement(
+                'span',
+                null,
+                '\xA0\xB0E'
+            )
+        )
+    );
+};
+
+LongitudeConstraint.propTypes = {
+    index: _propTypes2.default.number.isRequired,
+    value: _propTypes2.default.string,
+    range: _propTypes2.default.string,
+    onRangeChange: _propTypes2.default.func.isRequired
+};
+
+exports.default = LongitudeConstraint;
+
+},{"prop-types":156,"react":191,"seedsource/components/EditableLabel":60,"seedsource/containers/Constraint":86}],66:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6747,7 +7495,7 @@ var Modal = function (_React$Component) {
 
 exports.default = Modal;
 
-},{"react":171}],59:[function(require,module,exports){
+},{"react":191}],67:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6855,7 +7603,7 @@ ModalCard.propTypes = {
 
 exports.default = ModalCard;
 
-},{"prop-types":136,"react":171,"seedsource/components/Modal":58}],60:[function(require,module,exports){
+},{"prop-types":156,"react":191,"seedsource/components/Modal":66}],68:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6957,7 +7705,7 @@ var Navbar = function (_React$Component) {
 
 exports.default = Navbar;
 
-},{"../../utils":91,"react":171,"seedsource/components/Menu":2,"seedsource/config":72}],61:[function(require,module,exports){
+},{"../../utils":111,"react":191,"seedsource/components/Menu":2,"seedsource/config":83}],69:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7060,7 +7808,134 @@ ObjectiveStep.propTypes = {
 
 exports.default = ObjectiveStep;
 
-},{"prop-types":136,"react":171,"seedsource/containers/ConfigurationStep":74,"seedsource/containers/ObjectiveButton":78}],62:[function(require,module,exports){
+},{"prop-types":156,"react":191,"seedsource/containers/ConfigurationStep":85,"seedsource/containers/ObjectiveButton":95}],70:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Constraint = require('seedsource/containers/Constraint');
+
+var _Constraint2 = _interopRequireDefault(_Constraint);
+
+var _EditableLabel = require('seedsource/components/EditableLabel');
+
+var _EditableLabel2 = _interopRequireDefault(_EditableLabel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+var PhotoperiodConstraint = function PhotoperiodConstraint(_ref) {
+    var index = _ref.index,
+        value = _ref.value,
+        hours = _ref.hours,
+        month = _ref.month,
+        day = _ref.day,
+        onHoursChange = _ref.onHoursChange,
+        onMonthChange = _ref.onMonthChange,
+        onDayChange = _ref.onDayChange;
+
+    var daysInMonth = 32 - new Date(1961, month - 1, 32).getDate();
+    var dayOptions = Array.from(Array(daysInMonth).keys());
+
+    return _react2.default.createElement(
+        _Constraint2.default,
+        { index: index, value: value, title: 'Photoperiod', className: 'photoperiod-constraint' },
+        _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    _EditableLabel2.default,
+                    { value: hours, onChange: function onChange(value) {
+                            return onHoursChange(index, value);
+                        } },
+                    '\xA0hours'
+                )
+            ),
+            _react2.default.createElement(
+                'div',
+                { className: 'photoperiod-date' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'select is-inline-block is-small' },
+                    _react2.default.createElement(
+                        'select',
+                        {
+                            className: 'photoperiod-month',
+                            value: month - 1,
+                            onChange: function onChange(e) {
+                                e.preventDefault();
+                                onMonthChange(index, e.target.value);
+                            }
+                        },
+                        monthNames.map(function (name, index) {
+                            return _react2.default.createElement(
+                                'option',
+                                { key: index, value: index },
+                                name
+                            );
+                        })
+                    )
+                ),
+                _react2.default.createElement(
+                    'span',
+                    null,
+                    '\xA0'
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'select is-inline-block is-small' },
+                    _react2.default.createElement(
+                        'select',
+                        {
+                            className: 'form form-control form-inline photoperiod-day',
+                            value: day,
+                            onChange: function onChange(e) {
+                                e.preventDefault();
+                                onDayChange(index, e.target.value);
+                            }
+                        },
+                        dayOptions.map(function (dayNumber) {
+                            return _react2.default.createElement(
+                                'option',
+                                { key: dayNumber, value: dayNumber + 1 },
+                                dayNumber + 1
+                            );
+                        })
+                    )
+                )
+            )
+        )
+    );
+};
+
+PhotoperiodConstraint.propTypes = {
+    index: _propTypes2.default.number.isRequired,
+    value: _propTypes2.default.string,
+    hours: _propTypes2.default.string,
+    month: _propTypes2.default.number.isRequired,
+    day: _propTypes2.default.number.isRequired,
+    onHoursChange: _propTypes2.default.func.isRequired,
+    onMonthChange: _propTypes2.default.func.isRequired,
+    onDayChange: _propTypes2.default.func.isRequired
+};
+
+exports.default = PhotoperiodConstraint;
+
+},{"prop-types":156,"react":191,"seedsource/components/EditableLabel":60,"seedsource/containers/Constraint":86}],71:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7176,7 +8051,7 @@ PointChooser.propTypes = {
 
 exports.default = PointChooser;
 
-},{"prop-types":136,"react":171}],63:[function(require,module,exports){
+},{"prop-types":156,"react":191}],72:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7295,7 +8170,7 @@ RegionStep.propTypes = {
 
 exports.default = RegionStep;
 
-},{"../../config":33,"prop-types":136,"react":171,"seedsource/containers/ConfigurationStep":74,"seedsource/containers/RegionButton":81}],64:[function(require,module,exports){
+},{"../../config":33,"prop-types":156,"react":191,"seedsource/containers/ConfigurationStep":85,"seedsource/containers/RegionButton":99}],73:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7333,6 +8208,14 @@ var _TransferStep2 = _interopRequireDefault(_TransferStep);
 var _VariableStep = require('seedsource/containers/VariableStep');
 
 var _VariableStep2 = _interopRequireDefault(_VariableStep);
+
+var _ConstraintStep = require('seedsource/containers/ConstraintStep');
+
+var _ConstraintStep2 = _interopRequireDefault(_ConstraintStep);
+
+var _RunStep = require('seedsource/containers/RunStep');
+
+var _RunStep2 = _interopRequireDefault(_RunStep);
 
 var _config = require('../../config');
 
@@ -7383,7 +8266,7 @@ var RunConfiguration = function RunConfiguration(_ref) {
         );
     }
 
-    var steps = [{ type: _ObjectiveStep2.default, key: 'objective' }, { type: _LocationStep2.default, key: 'location' }, { type: _RegionStep2.default, key: 'region' }, { type: _ClimateStep2.default, key: 'climate' }, { type: _TransferStep2.default, key: 'transfer' }, { type: _VariableStep2.default, key: 'variables' }];
+    var steps = [{ type: _ObjectiveStep2.default, key: 'objective' }, { type: _LocationStep2.default, key: 'location' }, { type: _RegionStep2.default, key: 'region' }, { type: _ClimateStep2.default, key: 'climate' }, { type: _TransferStep2.default, key: 'transfer' }, { type: _VariableStep2.default, key: 'variables' }, { type: _ConstraintStep2.default, key: 'constraints' }, { type: _RunStep2.default, key: 'run' }];
 
     return _react2.default.createElement(
         'div',
@@ -7401,9 +8284,6 @@ var RunConfiguration = function RunConfiguration(_ref) {
         })
     );
 };
-// import ConstraintStep from 'seedsource/containers/ConstraintStep'
-// import RunStep from 'seedsource/containers/RunStep'
-
 
 RunConfiguration.propTypes = {
     activeStep: _propTypes2.default.string.isRequired,
@@ -7415,7 +8295,313 @@ RunConfiguration.propTypes = {
 
 exports.default = RunConfiguration;
 
-},{"../../config":33,"prop-types":136,"react":171,"seedsource/containers/ClimateStep":73,"seedsource/containers/LocationStep":75,"seedsource/containers/ObjectiveStep":79,"seedsource/containers/RegionStep":82,"seedsource/containers/TransferStep":86,"seedsource/containers/VariableStep":89}],65:[function(require,module,exports){
+},{"../../config":33,"prop-types":156,"react":191,"seedsource/containers/ClimateStep":84,"seedsource/containers/ConstraintStep":87,"seedsource/containers/LocationStep":91,"seedsource/containers/ObjectiveStep":96,"seedsource/containers/RegionStep":100,"seedsource/containers/RunStep":102,"seedsource/containers/TransferStep":106,"seedsource/containers/VariableStep":109}],74:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _ConfigurationStep = require('seedsource/containers/ConfigurationStep');
+
+var _ConfigurationStep2 = _interopRequireDefault(_ConfigurationStep);
+
+var _SaveModal = require('seedsource/containers/SaveModal');
+
+var _SaveModal2 = _interopRequireDefault(_SaveModal);
+
+var _Dropdown = require('seedsource/components/Dropdown');
+
+var _Dropdown2 = _interopRequireDefault(_Dropdown);
+
+var _config = require('../../config');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var RunStep = function RunStep(props) {
+    var number = props.number,
+        configuration = props.configuration,
+        canRun = props.canRun,
+        canSave = props.canSave,
+        isLoggedIn = props.isLoggedIn,
+        reportIsFetching = props.reportIsFetching,
+        onRun = props.onRun,
+        onSave = props.onSave,
+        onExport = props.onExport,
+        onExportTIF = props.onExportTIF;
+
+
+    return _react2.default.createElement(
+        _ConfigurationStep2.default,
+        { title: 'Map your Results', number: number, name: 'run', active: false },
+        _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement('h4', null),
+            _react2.default.createElement(
+                'a',
+                {
+                    className: 'button is-primary is-large is-fullwidth',
+                    disabled: !canRun,
+                    onClick: function onClick(e) {
+                        onRun(configuration);
+                    }
+                },
+                'Run Tool'
+            )
+        ),
+        _react2.default.createElement(
+            'div',
+            { className: 'margin-top-10' },
+            _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'a',
+                    {
+                        className: 'button is-pulled-left',
+                        disabled: !canSave,
+                        onClick: function onClick() {
+                            onSave(isLoggedIn);
+                        }
+                    },
+                    _react2.default.createElement('span', { className: 'icon12 icon-save', 'aria-hidden': 'true' }),
+                    ' Save Last Run'
+                ),
+                _react2.default.createElement(
+                    _Dropdown2.default,
+                    {
+                        className: 'is-pulled-right is-right',
+                        up: true,
+                        title: 'Export As...',
+                        disabled: !canSave || reportIsFetching
+                    },
+                    _config.reports.map(function (r) {
+                        return _react2.default.createElement(
+                            'a',
+                            { key: r.name, className: 'dropdown-item', onClick: function onClick(e) {
+                                    e.preventDefault();
+                                    onExport(r.name);
+                                } },
+                            r.label
+                        );
+                    }),
+                    _react2.default.createElement(
+                        'a',
+                        { className: 'dropdown-item', onClick: function onClick(e) {
+                                e.preventDefault();
+                                onExportTIF();
+                            } },
+                        'GeoTIFF'
+                    )
+                )
+            ),
+            _react2.default.createElement('div', { className: 'is-clearfix' })
+        ),
+        _react2.default.createElement(_SaveModal2.default, null)
+    );
+};
+
+RunStep.propTypes = {
+    number: _propTypes2.default.number.isRequired,
+    configuration: _propTypes2.default.object.isRequired,
+    canRun: _propTypes2.default.bool.isRequired,
+    canSave: _propTypes2.default.bool.isRequired,
+    isLoggedIn: _propTypes2.default.bool.isRequired,
+    reportIsFetching: _propTypes2.default.bool.isRequired,
+    onRun: _propTypes2.default.func.isRequired,
+    onSave: _propTypes2.default.func.isRequired,
+    onExport: _propTypes2.default.func.isRequired,
+    onExportTIF: _propTypes2.default.func.isRequired
+};
+
+exports.default = RunStep;
+
+},{"../../config":33,"prop-types":156,"react":191,"seedsource/components/Dropdown":59,"seedsource/containers/ConfigurationStep":85,"seedsource/containers/SaveModal":103}],75:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _ModalCard = require('seedsource/components/ModalCard');
+
+var _ModalCard2 = _interopRequireDefault(_ModalCard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+var SaveModal = function (_React$Component) {
+    _inherits(SaveModal, _React$Component);
+
+    function SaveModal(props) {
+        _classCallCheck(this, SaveModal);
+
+        var _this = _possibleConstructorReturn(this, (SaveModal.__proto__ || Object.getPrototypeOf(SaveModal)).call(this, props));
+
+        _this.state = { overwrite: false, title: '' };
+        return _this;
+    }
+
+    _createClass(SaveModal, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            if (nextProps.showModal && !this.props.showModal) {
+                var today = new Date();
+                var title = 'Saved run - ' + months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+
+                this.setState({ overwrite: false, title: title });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var _props = this.props,
+                showModal = _props.showModal,
+                lastSave = _props.lastSave,
+                runConfiguration = _props.runConfiguration,
+                onHide = _props.onHide,
+                onSave = _props.onSave,
+                onUpdate = _props.onUpdate;
+
+            var body = void 0;
+
+            if (lastSave === null || this.state.overwrite) {
+                body = _react2.default.createElement(
+                    'form',
+                    {
+                        onSubmit: function onSubmit(e) {
+                            e.preventDefault();
+
+                            if (_this2.state.title) {
+                                onSave(runConfiguration, _this2.state.title);
+                            }
+                        }
+                    },
+                    _react2.default.createElement(
+                        'label',
+                        { className: 'control-label' },
+                        'Title'
+                    ),
+                    _react2.default.createElement('input', {
+                        type: 'text',
+                        'data-lpignore': 'true',
+                        className: 'input',
+                        value: this.state.title,
+                        required: true,
+                        onChange: function onChange(e) {
+                            _this2.setState({ title: e.target.value });
+                        }
+                    }),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        '\xA0'
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'button is-primary', type: 'submit' },
+                        'Save'
+                    )
+                );
+            } else {
+                body = _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        'Do you want to update the current configuration,',
+                        _react2.default.createElement(
+                            'strong',
+                            null,
+                            lastSave.title
+                        ),
+                        ', or save as a new configuration?'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        '\xA0'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'button',
+                            {
+                                className: 'button is-pulled-left',
+                                onClick: function onClick() {
+                                    _this2.setState({ overwrite: true });
+                                }
+                            },
+                            'Save as new'
+                        ),
+                        _react2.default.createElement(
+                            'button',
+                            {
+                                className: 'button is-primary is-pulled-right',
+                                onClick: function onClick() {
+                                    onUpdate(runConfiguration, lastSave);
+                                }
+                            },
+                            'Update current'
+                        )
+                    ),
+                    _react2.default.createElement('div', { style: { clear: 'both' } })
+                );
+            }
+
+            return _react2.default.createElement(
+                _ModalCard2.default,
+                { title: 'Save Run Configuration' },
+                body
+            );
+        }
+    }]);
+
+    return SaveModal;
+}(_react2.default.Component);
+
+SaveModal.propTypes = {
+    showModal: _propTypes2.default.bool.isRequired,
+    lastSave: _propTypes2.default.object,
+    runConfiguration: _propTypes2.default.object.isRequired,
+    onHide: _propTypes2.default.func.isRequired,
+    onSave: _propTypes2.default.func.isRequired,
+    onUpdate: _propTypes2.default.func.isRequired
+};
+
+exports.default = SaveModal;
+
+},{"prop-types":156,"react":191,"seedsource/components/ModalCard":67}],76:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7523,7 +8709,7 @@ SeedZoneChooser.propTypes = {
 
 exports.default = SeedZoneChooser;
 
-},{"prop-types":136,"react":171}],66:[function(require,module,exports){
+},{"prop-types":156,"react":191}],77:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7641,7 +8827,7 @@ var Sidebar = function (_React$Component) {
 
 exports.default = Sidebar;
 
-},{"react":171,"seedsource/components/About":1,"seedsource/containers/RunConfiguration":83}],67:[function(require,module,exports){
+},{"react":191,"seedsource/components/About":1,"seedsource/containers/RunConfiguration":101}],78:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7714,7 +8900,7 @@ SpeciesChooser.propTypes = {
 
 exports.default = SpeciesChooser;
 
-},{"../../config":33,"prop-types":136,"react":171}],68:[function(require,module,exports){
+},{"../../config":33,"prop-types":156,"react":191}],79:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7880,7 +9066,7 @@ TransferStep.propTypes = {
 
 exports.default = TransferStep;
 
-},{"prop-types":136,"react":171,"seedsource/containers/ConfigurationStep":74,"seedsource/containers/MethodButton":77,"seedsource/containers/SeedZoneChooser":84,"seedsource/containers/SpeciesChooser":85}],69:[function(require,module,exports){
+},{"prop-types":156,"react":191,"seedsource/containers/ConfigurationStep":85,"seedsource/containers/MethodButton":94,"seedsource/containers/SeedZoneChooser":104,"seedsource/containers/SpeciesChooser":105}],80:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7967,22 +9153,14 @@ var Variable = function Variable(props) {
         _react2.default.createElement(
             'td',
             null,
-            _react2.default.createElement(
-                'button',
-                {
-                    type: 'button',
-                    className: 'close',
-                    onClick: function onClick(e) {
-                        e.stopPropagation();
-                        onRemove();
-                    }
-                },
-                _react2.default.createElement(
-                    'span',
-                    { 'aria-hidden': 'true' },
-                    '\xD7'
-                )
-            )
+            _react2.default.createElement('a', {
+                type: 'button',
+                className: 'delete',
+                onClick: function onClick(e) {
+                    e.stopPropagation();
+                    onRemove();
+                }
+            })
         ),
         _react2.default.createElement(
             'td',
@@ -8036,8 +9214,8 @@ var Variable = function Variable(props) {
                 _reactTooltip2.default,
                 { id: name + "_Tooltip", className: 'variable-tooltip', place: 'right', effect: 'solid' },
                 _react2.default.createElement(
-                    'h4',
-                    null,
+                    'h5',
+                    { className: 'title is-5 margin-bottom-5' },
                     name,
                     ': ',
                     label
@@ -8118,7 +9296,7 @@ Variable.propTypes = {
 
 exports.default = Variable;
 
-},{"prop-types":136,"react":171,"react-tooltip":163,"seedsource/components/EditableLabel":55}],70:[function(require,module,exports){
+},{"prop-types":156,"react":191,"react-tooltip":183,"seedsource/components/EditableLabel":60}],81:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8179,7 +9357,7 @@ var VariableStep = function VariableStep(_ref) {
         { title: 'Select climate variables', number: number, name: 'variables', active: true },
         _react2.default.createElement(
             'div',
-            null,
+            { className: 'margin-bottom-10' },
             _react2.default.createElement(
                 'strong',
                 null,
@@ -8187,7 +9365,7 @@ var VariableStep = function VariableStep(_ref) {
             ),
             _react2.default.createElement(
                 'div',
-                { className: 'tabs is-toggle is-inline-block' },
+                { className: 'tabs is-toggle is-inline-block is-small align-middle' },
                 _react2.default.createElement(
                     'ul',
                     null,
@@ -8220,7 +9398,7 @@ VariableStep.propTypes = {
 
 exports.default = VariableStep;
 
-},{"prop-types":136,"react":171,"seedsource/containers/ConfigurationStep":74,"seedsource/containers/UnitButton":87,"seedsource/containers/Variables":90}],71:[function(require,module,exports){
+},{"prop-types":156,"react":191,"seedsource/containers/ConfigurationStep":85,"seedsource/containers/UnitButton":107,"seedsource/containers/Variables":110}],82:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8252,10 +9430,10 @@ var Variables = function Variables(_ref) {
     if (variables.length > 0) {
         table = _react2.default.createElement(
             'table',
-            { className: 'table' },
+            { className: 'table is-fullwidth' },
             _react2.default.createElement(
                 'thead',
-                null,
+                { className: 'align-bottom is-size-7 has-text-weight-bold' },
                 _react2.default.createElement(
                     'tr',
                     null,
@@ -8336,7 +9514,7 @@ Variables.propTypes = {
 
 exports.default = Variables;
 
-},{"prop-types":136,"react":171,"seedsource/containers/Variable":88}],72:[function(require,module,exports){
+},{"prop-types":156,"react":191,"seedsource/containers/Variable":108}],83:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8344,7 +9522,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = window.SS_CONFIG;
 
-},{}],73:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8392,7 +9570,7 @@ container.shouldRender = function () {
 
 exports.default = container;
 
-},{"../../actions/climate":16,"react-redux":150,"seedsource/components/ClimateStep":53}],74:[function(require,module,exports){
+},{"../../actions/climate":16,"react-redux":170,"seedsource/components/ClimateStep":54}],85:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8421,7 +9599,231 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref) {
 
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(_ConfigurationStep2.default);
 
-},{"../../actions/step":29,"react-redux":150,"seedsource/components/ConfigurationStep":54}],75:[function(require,module,exports){
+},{"../../actions/step":29,"react-redux":170,"seedsource/components/ConfigurationStep":55}],86:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _Constraint = require('seedsource/components/Constraint');
+
+var _Constraint2 = _interopRequireDefault(_Constraint);
+
+var _constraints = require('../../actions/constraints');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps() {
+    return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onRemove: function onRemove(index) {
+            dispatch((0, _constraints.removeConstraint)(index));
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Constraint2.default);
+
+},{"../../actions/constraints":17,"react-redux":170,"seedsource/components/Constraint":56}],87:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _ConstraintStep = require('../components/ConstraintStep');
+
+var _ConstraintStep2 = _interopRequireDefault(_ConstraintStep);
+
+var _constraints = require('../../actions/constraints');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref) {
+    var runConfiguration = _ref.runConfiguration;
+    var constraints = runConfiguration.constraints;
+
+
+    return { constraints: constraints };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onChange: function onChange(constraint) {
+            dispatch((0, _constraints.addConstraint)(constraint));
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_ConstraintStep2.default);
+
+},{"../../actions/constraints":17,"../components/ConstraintStep":57,"react-redux":170}],88:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _DistanceConstraint = require('seedsource/components/DistanceConstraint');
+
+var _DistanceConstraint2 = _interopRequireDefault(_DistanceConstraint);
+
+var _constraints = require('../../actions/constraints');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref, _ref2) {
+    var runConfiguration = _ref.runConfiguration;
+    var values = _ref2.values;
+    var unit = runConfiguration.unit,
+        point = runConfiguration.point;
+    var x = point.x,
+        y = point.y;
+    var range = values.range;
+
+
+    if (unit === 'imperial') {
+        range /= 1.60934;
+    }
+
+    var value = x === '' || y === '' ? '--' : y.toFixed(1) + ', ' + x.toFixed(1);
+    range = Math.round(range);
+
+    return { unit: unit, value: value, range: range };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onRangeChange: function onRangeChange(index, range, unit) {
+            var rangeFloat = parseFloat(range);
+
+            if (!isNaN(rangeFloat)) {
+                if (unit === 'imperial') {
+                    rangeFloat *= 1.60934;
+                }
+
+                dispatch((0, _constraints.updateConstraintValues)(index, { range: rangeFloat }));
+            }
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_DistanceConstraint2.default);
+
+},{"../../actions/constraints":17,"react-redux":170,"seedsource/components/DistanceConstraint":58}],89:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _ElevationConstraint = require('seedsource/components/ElevationConstraint');
+
+var _ElevationConstraint2 = _interopRequireDefault(_ElevationConstraint);
+
+var _constraints = require('../../actions/constraints');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref, _ref2) {
+    var runConfiguration = _ref.runConfiguration;
+    var values = _ref2.values;
+    var unit = runConfiguration.unit,
+        point = runConfiguration.point;
+    var range = values.range;
+
+    var value = point.elevation;
+
+    if (value === null) {
+        value = '--';
+    } else {
+        if (unit === 'imperial') {
+            value /= 0.3048;
+            range /= 0.3048;
+        }
+
+        value = Math.round(value);
+        range = Math.round(range);
+    }
+
+    return { unit: unit, value: value, range: range };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onRangeChange: function onRangeChange(index, range, unit) {
+            var rangeFloat = parseFloat(range);
+
+            if (!isNaN(rangeFloat)) {
+                if (unit === 'imperial') {
+                    rangeFloat *= 0.3048;
+                }
+
+                dispatch((0, _constraints.updateConstraintValues)(index, { range: rangeFloat }));
+            }
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_ElevationConstraint2.default);
+
+},{"../../actions/constraints":17,"react-redux":170,"seedsource/components/ElevationConstraint":61}],90:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _LatitudeConstraint = require('seedsource/components/LatitudeConstraint');
+
+var _LatitudeConstraint2 = _interopRequireDefault(_LatitudeConstraint);
+
+var _constraints = require('../../actions/constraints');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref, _ref2) {
+    var runConfiguration = _ref.runConfiguration;
+    var values = _ref2.values;
+    var y = runConfiguration.point.y;
+    var range = values.range;
+
+
+    var value = y !== '' ? y.toFixed(2) : '--';
+    range = range.toFixed(2);
+
+    return { value: value, range: range };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onRangeChange: function onRangeChange(index, range) {
+            var rangeFloat = parseFloat(range);
+
+            if (!isNaN(rangeFloat)) {
+                dispatch((0, _constraints.updateConstraintValues)(index, { range: rangeFloat }));
+            }
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_LatitudeConstraint2.default);
+
+},{"../../actions/constraints":17,"react-redux":170,"seedsource/components/LatitudeConstraint":63}],91:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8458,7 +9860,51 @@ container.shouldRender = function () {
 
 exports.default = container;
 
-},{"react-redux":150,"seedsource/components/LocationStep":57}],76:[function(require,module,exports){
+},{"react-redux":170,"seedsource/components/LocationStep":64}],92:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _constraints = require('../../actions/constraints');
+
+var _LongitudeConstraint = require('seedsource/components/LongitudeConstraint');
+
+var _LongitudeConstraint2 = _interopRequireDefault(_LongitudeConstraint);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref, _ref2) {
+    var runConfiguration = _ref.runConfiguration;
+    var values = _ref2.values;
+    var x = runConfiguration.point.x;
+    var range = values.range;
+
+
+    var value = x !== '' ? x.toFixed(2) : '--';
+    range = range.toFixed(2);
+
+    return { value: value, range: range };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onRangeChange: function onRangeChange(index, range) {
+            var rangeFloat = parseFloat(range);
+
+            if (!isNaN(rangeFloat)) {
+                dispatch((0, _constraints.updateConstraintValues)(index, { range: rangeFloat }));
+            }
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_LongitudeConstraint2.default);
+
+},{"../../actions/constraints":17,"react-redux":170,"seedsource/components/LongitudeConstraint":65}],93:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8483,6 +9929,10 @@ require('leaflet-basemaps');
 
 require('leaflet-geonames/L.Control.Geonames');
 
+var _io = require('../../io');
+
+var io = _interopRequireWildcard(_io);
+
 var _config = require('../../config');
 
 var _map = require('../../actions/map');
@@ -8490,6 +9940,12 @@ var _map = require('../../actions/map');
 var _popup2 = require('../../actions/popup');
 
 var _point = require('../../actions/point');
+
+var _utils = require('../../utils');
+
+require('../../leaflet-controls');
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8674,7 +10130,7 @@ var Map = function (_React$Component) {
         key: 'updateVariableLayer',
         value: function updateVariableLayer(variable, objective, climate, region) {
             if (variable !== null) {
-                var layerUrl = '/tiles/' + getServiceName(variable, objective, climate, region) + '/{z}/{x}/{y}.png';
+                var layerUrl = '/tiles/' + (0, _utils.getServiceName)(variable, objective, climate, region) + '/{z}/{x}/{y}.png';
 
                 if (this.variableLayer === null) {
                     this.variableLayer = _leaflet2.default.tileLayer(layerUrl, { zIndex: 1, opacity: 1 }).addTo(this.map);
@@ -8851,38 +10307,6 @@ var Map = function (_React$Component) {
             }
         }
     }, {
-        key: 'updateTimeOverlay',
-        value: function updateTimeOverlay(variable, objective, climate) {
-            var overlayNode = document.getElementById('TimeOverlay');
-
-            if (variable === null) {
-                if (!overlayNode.classList.contains('hidden')) {
-                    overlayNode.classList.add('hidden');
-                }
-            } else {
-                if (overlayNode.classList.contains('hidden')) {
-                    overlayNode.classList.remove('hidden');
-                }
-
-                var selectedClimate = objective === 'seedlots' ? climate.site : climate.seedlot;
-                var time = selectedClimate.time,
-                    model = selectedClimate.model;
-
-                var labelKey = time;
-
-                if (time !== '1961_1990' && time !== '1981_2010') {
-                    labelKey += model;
-                }
-
-                var label = _config.timeLabels[labelKey];
-                var labelNode = document.getElementById('TimeLabel');
-
-                if (labelNode.innerHTML !== label) {
-                    labelNode.innerHTML = label;
-                }
-            }
-        }
-    }, {
         key: 'updateLegends',
         value: function updateLegends(legends, activeVariable, serviceId, unit) {
             var mapLegends = [];
@@ -8984,7 +10408,7 @@ var Map = function (_React$Component) {
 
                     _leaflet2.default.DomUtil.create('div', '', container).innerHTML = '&nbsp;';
 
-                    var button = _leaflet2.default.DomUtil.create('button', 'btn btn-sm btn-primary', container);
+                    var button = _leaflet2.default.DomUtil.create('button', 'button is-primary is-fullwidth', container);
                     button.innerHTML = 'Set Point';
 
                     var _popup = _leaflet2.default.popup({
@@ -9083,6 +10507,8 @@ var Map = function (_React$Component) {
         value: function render() {
             var _this7 = this;
 
+            var timeOverlay = null;
+
             if (this.map !== null) {
                 var _props = this.props,
                     activeVariable = _props.activeVariable,
@@ -9102,23 +10528,55 @@ var Map = function (_React$Component) {
                     region = _props.region;
                 var serviceId = job.serviceId;
 
-                // Todo
-                // this.updatePointMarker(point)
-                // this.updateVariableLayer(activeVariable, objective, climate, region)
-                // this.updateResultsLayer(serviceId, showResults)
-                // this.updateBoundaryLayer(region)
-                // this.updateOpacity(opacity, serviceId, activeVariable)
-                // this.updateVisibilityButton(serviceId, showResults)
-                // this.updateTimeOverlay(activeVariable, objective, climate)
-                // this.updateLegends(legends, activeVariable, serviceId, unit)
-                // this.updateZoneLayer(method, zone, geometry)
-                // this.updatePopup(popup, unit)
-                // this.updateMapCenter(center)
+
+                this.updatePointMarker(point);
+                this.updateVariableLayer(activeVariable, objective, climate, region);
+                this.updateResultsLayer(serviceId, showResults);
+                this.updateBoundaryLayer(region);
+                this.updateOpacity(opacity, serviceId, activeVariable);
+                this.updateVisibilityButton(serviceId, showResults);
+                this.updateLegends(legends, activeVariable, serviceId, unit);
+                this.updateZoneLayer(method, zone, geometry);
+                this.updatePopup(popup, unit);
+                this.updateMapCenter(center);
+
+                // Time overlay
+                if (activeVariable !== null) {
+                    var selectedClimate = objective === 'seedlots' ? climate.site : climate.seedlot;
+                    var time = selectedClimate.time,
+                        model = selectedClimate.model;
+
+                    var labelKey = time;
+
+                    if (time !== '1961_1990' && time !== '1981_2010') {
+                        labelKey += model;
+                    }
+
+                    var label = _config.timeLabels[labelKey];
+
+                    timeOverlay = _react2.default.createElement(
+                        'div',
+                        { className: 'time-overlay' },
+                        _react2.default.createElement('span', { className: 'icon-clock-16' }),
+                        _react2.default.createElement(
+                            'span',
+                            null,
+                            '\xA0'
+                        ),
+                        'Showing: ',
+                        label
+                    );
+                }
             }
 
-            return _react2.default.createElement('div', { ref: function ref(input) {
-                    _this7.mapNode = input;
-                }, className: 'map-container' });
+            return _react2.default.createElement(
+                'div',
+                { className: 'map-container' },
+                _react2.default.createElement('div', { ref: function ref(input) {
+                        _this7.mapNode = input;
+                    }, className: 'map-container' }),
+                timeOverlay
+            );
         }
     }]);
 
@@ -9196,7 +10654,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Map);
 
-},{"../../actions/map":21,"../../actions/point":23,"../../actions/popup":24,"../../config":33,"leaflet":120,"leaflet-basemaps":117,"leaflet-geonames/L.Control.Geonames":118,"leaflet-omnivore":119,"react":171,"react-redux":150}],77:[function(require,module,exports){
+},{"../../actions/map":21,"../../actions/point":23,"../../actions/popup":24,"../../config":33,"../../io":35,"../../leaflet-controls":36,"../../utils":111,"leaflet":140,"leaflet-basemaps":137,"leaflet-geonames/L.Control.Geonames":138,"leaflet-omnivore":139,"react":191,"react-redux":170}],94:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9233,7 +10691,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref2) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_GroupedButton2.default);
 
-},{"../../actions/variables":31,"react-redux":150,"seedsource/components/GroupedButton":56}],78:[function(require,module,exports){
+},{"../../actions/variables":31,"react-redux":170,"seedsource/components/GroupedButton":62}],95:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9270,7 +10728,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref2) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_GroupedButton2.default);
 
-},{"../../actions/objectives":22,"react-redux":150,"seedsource/components/GroupedButton":56}],79:[function(require,module,exports){
+},{"../../actions/objectives":22,"react-redux":170,"seedsource/components/GroupedButton":62}],96:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9295,7 +10753,101 @@ var mapStateToProps = function mapStateToProps(_ref) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(_ObjectiveStep2.default);
 
-},{"react-redux":150,"seedsource/components/ObjectiveStep":61}],80:[function(require,module,exports){
+},{"react-redux":170,"seedsource/components/ObjectiveStep":69}],97:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _PhotoperiodConstraint = require('seedsource/components/PhotoperiodConstraint');
+
+var _PhotoperiodConstraint2 = _interopRequireDefault(_PhotoperiodConstraint);
+
+var _constraints = require('../../actions/constraints');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var getJulianDay = function getJulianDay(year, month, day) {
+    var a = Math.floor((14 - month) / 12);
+    var y = year + 4800 - a;
+    var m = month + 12 * a - 3;
+    var julianDate = day + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+
+    return julianDate - 2451545 + .0008;
+};
+
+var daylight = function daylight(year, month, day, lat, lon) {
+    var radians = function radians(degrees) {
+        return degrees * Math.PI / 180;
+    };
+    var degrees = function degrees(radians) {
+        return radians * 180 / Math.PI;
+    };
+
+    var julianDay = getJulianDay(year, month, day);
+    var solarNoon = julianDay - lon / 360;
+    var solarAnomaly = (357.5291 + 0.98560028 * solarNoon) % 360;
+    var equationOfCenter = 1.9148 * Math.sin(radians(solarAnomaly)) + 0.0200 * Math.sin(radians(2 * solarAnomaly)) + 0.0003 * Math.sin(radians(3 * solarAnomaly));
+    var eclipticLongitude = (solarAnomaly + equationOfCenter + 180 + 102.9372) % 360;
+    var solarTransit = 2451545.5 + solarNoon + 0.0053 * Math.sin(radians(solarAnomaly)) - 0.0069 * Math.sin(radians(2 * eclipticLongitude));
+    var declination = Math.asin(Math.sin(radians(eclipticLongitude)) * Math.sin(radians(23.44)));
+    var hourAngle = Math.acos((Math.sin(radians(-.83)) - Math.sin(radians(lat)) * Math.sin(declination)) / (Math.cos(radians(lat)) * Math.cos(declination)));
+    var sunrise = solarTransit - degrees(hourAngle) / 360;
+    var sunset = solarTransit + degrees(hourAngle) / 360;
+
+    return (sunset - sunrise) * 24;
+};
+
+var mapStateToProps = function mapStateToProps(_ref, _ref2) {
+    var runConfiguration = _ref.runConfiguration;
+    var values = _ref2.values;
+    var hours = values.hours,
+        year = values.year,
+        month = values.month,
+        day = values.day;
+    var _runConfiguration$poi = runConfiguration.point,
+        x = _runConfiguration$poi.x,
+        y = _runConfiguration$poi.y;
+
+
+    if (hours !== null) {
+        hours = hours.toFixed(1);
+    }
+
+    var value = '--';
+    if (x !== '' && y !== '') {
+        value = daylight(year, month, day, y, x).toFixed(1) + ' hours';
+    }
+
+    return { value: value, hours: hours, month: month, day: day };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onHoursChange: function onHoursChange(index, hours) {
+            var value = parseFloat(hours);
+
+            if (!isNaN(value)) {
+                dispatch((0, _constraints.updateConstraintValues)(index, { hours: value }));
+            }
+        },
+
+        onMonthChange: function onMonthChange(index, month) {
+            dispatch((0, _constraints.updateConstraintValues)(index, { month: parseInt(month) + 1 }));
+        },
+
+        onDayChange: function onDayChange(index, day) {
+            dispatch((0, _constraints.updateConstraintValues)(index, { day: parseInt(day) }));
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PhotoperiodConstraint2.default);
+
+},{"../../actions/constraints":17,"react-redux":170,"seedsource/components/PhotoperiodConstraint":70}],98:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9348,7 +10900,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PointChooser2.default);
 
-},{"../../actions/point":23,"react-redux":150,"seedsource/components/PointChooser":62}],81:[function(require,module,exports){
+},{"../../actions/point":23,"react-redux":170,"seedsource/components/PointChooser":71}],99:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9385,7 +10937,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref2) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_GroupedButton2.default);
 
-},{"../../actions/region":25,"react-redux":150,"seedsource/components/GroupedButton":56}],82:[function(require,module,exports){
+},{"../../actions/region":25,"react-redux":170,"seedsource/components/GroupedButton":62}],100:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9427,7 +10979,7 @@ container.shouldRender = function () {
 
 exports.default = container;
 
-},{"../../actions/region":25,"react-redux":150,"seedsource/components/RegionStep":63}],83:[function(require,module,exports){
+},{"../../actions/region":25,"react-redux":170,"seedsource/components/RegionStep":72}],101:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9463,7 +11015,160 @@ var mapStateToProps = function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(_RunConfiguration2.default);
 
-},{"react-redux":150,"seedsource/components/RunConfiguration":64}],84:[function(require,module,exports){
+},{"react-redux":170,"seedsource/components/RunConfiguration":73}],102:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _RunStep = require('seedsource/components/RunStep');
+
+var _RunStep2 = _interopRequireDefault(_RunStep);
+
+var _error = require('../../actions/error');
+
+var _job = require('../../actions/job');
+
+var _saves = require('../../actions/saves');
+
+var _report = require('../../actions/report');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var configurationCanRun = function configurationCanRun(_ref) {
+    var point = _ref.point,
+        variables = _ref.variables,
+        constraints = _ref.constraints;
+
+    if (point === null || point.x === null || point.y === null) {
+        return false;
+    }
+
+    return variables.length > 0 && variables.every(function (item) {
+        return item.value !== null && item.isFetching === false;
+    });
+};
+
+var mapStateToProps = function mapStateToProps(_ref2) {
+    var runConfiguration = _ref2.runConfiguration,
+        lastRun = _ref2.lastRun,
+        job = _ref2.job,
+        isLoggedIn = _ref2.isLoggedIn,
+        reportIsFetching = _ref2.reportIsFetching;
+
+    return {
+        canRun: configurationCanRun(runConfiguration) && !job.isRunning,
+        canSave: lastRun !== null,
+        configuration: runConfiguration,
+        job: job,
+        isLoggedIn: isLoggedIn,
+        reportIsFetching: reportIsFetching
+    };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onRun: function onRun(configuration) {
+            var variables = configuration.variables,
+                constraints = configuration.constraints;
+
+
+            if (variables.some(function (item) {
+                return item.transfer === null;
+            })) {
+                dispatch((0, _error.setError)('Configuration error', 'Cannot calculate scores: one or more of your variables has no transfer limit, or a limit of 0.'));
+                return;
+            }
+
+            if (constraints.some(function (item) {
+                return Object.keys(item.values).some(function (key) {
+                    return item.values[key] === null;
+                });
+            })) {
+                dispatch((0, _error.setError)('Configuration error', 'Cannot calculate scores: one or more of your constraints is missing a value.'));
+                return;
+            }
+
+            dispatch((0, _job.runJob)(configuration));
+        },
+
+        onSave: function onSave(isLoggedIn) {
+            if (!isLoggedIn) {
+                dispatch((0, _error.setError)('Login required', 'Please login to save your run.'));
+                return;
+            }
+
+            dispatch((0, _saves.showSaveModal)());
+        },
+
+        onExport: function onExport(name) {
+            dispatch((0, _report.createReport)(name));
+        },
+
+        onExportTIF: function onExportTIF() {
+            dispatch((0, _report.runTIFJob)());
+        }
+    };
+};
+
+var container = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_RunStep2.default);
+
+container.shouldRender = function () {
+    return true;
+};
+
+exports.default = container;
+
+},{"../../actions/error":18,"../../actions/job":19,"../../actions/report":26,"../../actions/saves":27,"react-redux":170,"seedsource/components/RunStep":74}],103:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _SaveModal = require('seedsource/components/SaveModal');
+
+var _SaveModal2 = _interopRequireDefault(_SaveModal);
+
+var _saves = require('../../actions/saves');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref) {
+    var saves = _ref.saves,
+        runConfiguration = _ref.runConfiguration;
+    var showModal = saves.showModal,
+        lastSave = saves.lastSave,
+        isSaving = saves.isSaving;
+
+
+    return { showModal: showModal, lastSave: lastSave, isSaving: isSaving, runConfiguration: runConfiguration };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onHide: function onHide() {
+            dispatch((0, _saves.hideSaveModal)());
+        },
+
+        onSave: function onSave(configuration, title) {
+            dispatch((0, _saves.createSave)(configuration, title));
+        },
+
+        onUpdate: function onUpdate(configuration, lastSave) {
+            dispatch((0, _saves.updateSave)(configuration, lastSave));
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SaveModal2.default);
+
+},{"../../actions/saves":27,"react-redux":170,"seedsource/components/SaveModal":75}],104:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9513,7 +11218,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SeedZoneChooser2.default);
 
-},{"../../actions/zones":32,"react-redux":150,"seedsource/components/SeedZoneChooser":65}],85:[function(require,module,exports){
+},{"../../actions/zones":32,"react-redux":170,"seedsource/components/SeedZoneChooser":76}],105:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9549,7 +11254,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SpeciesChooser2.default);
 
-},{"../../actions/species":28,"react-redux":150,"seedsource/components/SpeciesChooser":67}],86:[function(require,module,exports){
+},{"../../actions/species":28,"react-redux":170,"seedsource/components/SpeciesChooser":78}],106:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9586,7 +11291,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_TransferStep2.default);
 
-},{"../../actions/variables":31,"react-redux":150,"seedsource/components/TransferStep":68}],87:[function(require,module,exports){
+},{"../../actions/variables":31,"react-redux":170,"seedsource/components/TransferStep":79}],107:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9623,7 +11328,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref2) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_GroupedButton2.default);
 
-},{"../../actions/variables":31,"react-redux":150,"seedsource/components/GroupedButton":56}],88:[function(require,module,exports){
+},{"../../actions/variables":31,"react-redux":170,"seedsource/components/GroupedButton":62}],108:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9778,7 +11483,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref2) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Variable2.default);
 
-},{"../../actions/variables":31,"../../config":33,"react-redux":150,"seedsource/components/Variable":69}],89:[function(require,module,exports){
+},{"../../actions/variables":31,"../../config":33,"react-redux":170,"seedsource/components/Variable":80}],109:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9803,7 +11508,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(_VariableStep2.default);
 
-},{"react-redux":150,"seedsource/components/VariableStep":70}],90:[function(require,module,exports){
+},{"react-redux":170,"seedsource/components/VariableStep":81}],110:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9854,7 +11559,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Variables2.default);
 
-},{"../../actions/error":18,"../../actions/variables":31,"../../config":33,"react-redux":150,"seedsource/components/Variables":71}],91:[function(require,module,exports){
+},{"../../actions/error":18,"../../actions/variables":31,"../../config":33,"react-redux":170,"seedsource/components/Variables":82}],111:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9913,7 +11618,7 @@ var staticResource = exports.staticResource = function staticResource(name) {
     return _config2.default.staticRoot + name;
 };
 
-},{"seedsource/config":72}],92:[function(require,module,exports){
+},{"seedsource/config":83}],112:[function(require,module,exports){
 /*!
   Copyright (c) 2016 Jed Watson.
   Licensed under the MIT License (MIT), see
@@ -9963,7 +11668,7 @@ var staticResource = exports.staticResource = function staticResource(name) {
 	}
 }());
 
-},{}],93:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 function corslite(url, callback, cors) {
     var sent = false;
 
@@ -10058,7 +11763,7 @@ function corslite(url, callback, cors) {
 
 if (typeof module !== 'undefined') module.exports = corslite;
 
-},{}],94:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 'use strict';
 
 var dsv = require('d3-dsv'),
@@ -10308,7 +12013,7 @@ module.exports = {
     toPolygon: toPolygon
 };
 
-},{"d3-dsv":95,"sexagesimal":180}],95:[function(require,module,exports){
+},{"d3-dsv":115,"sexagesimal":200}],115:[function(require,module,exports){
 // https://d3js.org/d3-dsv/ Version 1.0.1. Copyright 2016 Mike Bostock.
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -10478,7 +12183,7 @@ module.exports = {
   Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
-},{}],96:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -10555,7 +12260,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":101,"_process":9}],97:[function(require,module,exports){
+},{"./emptyFunction":121,"_process":9}],117:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -10589,7 +12294,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],98:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 "use strict";
 
 /**
@@ -10619,7 +12324,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],99:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -10657,7 +12362,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":98}],100:[function(require,module,exports){
+},{"./camelize":118}],120:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10695,11 +12400,11 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":109}],101:[function(require,module,exports){
+},{"./isTextNode":129}],121:[function(require,module,exports){
 arguments[4][4][0].apply(exports,arguments)
-},{"dup":4}],102:[function(require,module,exports){
+},{"dup":4}],122:[function(require,module,exports){
 arguments[4][5][0].apply(exports,arguments)
-},{"_process":9,"dup":5}],103:[function(require,module,exports){
+},{"_process":9,"dup":5}],123:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -10724,7 +12429,7 @@ function focusNode(node) {
 }
 
 module.exports = focusNode;
-},{}],104:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10761,7 +12466,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],105:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10792,7 +12497,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],106:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -10829,9 +12534,9 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":105}],107:[function(require,module,exports){
+},{"./hyphenate":125}],127:[function(require,module,exports){
 arguments[4][6][0].apply(exports,arguments)
-},{"_process":9,"dup":6}],108:[function(require,module,exports){
+},{"_process":9,"dup":6}],128:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10854,7 +12559,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],109:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10877,7 +12582,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":108}],110:[function(require,module,exports){
+},{"./isNode":128}],130:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -10898,7 +12603,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = performance || {};
-},{"./ExecutionEnvironment":97}],111:[function(require,module,exports){
+},{"./ExecutionEnvironment":117}],131:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10930,7 +12635,7 @@ if (performance.now) {
 }
 
 module.exports = performanceNow;
-},{"./performance":110}],112:[function(require,module,exports){
+},{"./performance":130}],132:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -10996,9 +12701,9 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],113:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 arguments[4][7][0].apply(exports,arguments)
-},{"./emptyFunction":101,"_process":9,"dup":7}],114:[function(require,module,exports){
+},{"./emptyFunction":121,"_process":9,"dup":7}],134:[function(require,module,exports){
 /**
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
@@ -11065,7 +12770,7 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
     return targetComponent;
 };
 
-},{}],115:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -11120,7 +12825,7 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 }).call(this,require('_process'))
-},{"_process":9}],116:[function(require,module,exports){
+},{"_process":9}],136:[function(require,module,exports){
 // the whatwg-fetch polyfill installs the fetch() function
 // on the global object (window or self)
 //
@@ -11128,9 +12833,9 @@ module.exports = invariant;
 require('whatwg-fetch');
 module.exports = self.fetch.bind(self);
 
-},{"whatwg-fetch":187}],117:[function(require,module,exports){
+},{"whatwg-fetch":207}],137:[function(require,module,exports){
 L.Control.Basemaps=L.Control.extend({_map:null,includes:L.Evented?L.Evented.prototype:L.Mixin.Event,options:{position:"bottomright",tileX:0,tileY:0,tileZ:0,layers:[]},basemap:null,onAdd:function(t){this._map=t;var e=L.DomUtil.create("div","basemaps leaflet-control closed");return L.DomEvent.disableClickPropagation(e),L.Browser.touch||L.DomEvent.disableScrollPropagation(e),this.options.basemaps.forEach(function(o,s){var a="basemap";0===s?(this.basemap=o,this._map.addLayer(o),a+=" active"):1===s&&(a+=" alt");var i={x:this.options.tileX,y:this.options.tileY},n=L.Util.template(o._url,L.extend({s:o._getSubdomain(i),x:i.x,y:o.options.tms?o._globalTileRange.max.y-i.y:i.y,z:this.options.tileZ},o.options));if(o instanceof L.TileLayer.WMS){o._map=t;var l=o.options.crs||t.options.crs,r=L.extend({},o.wmsParams),m=parseFloat(r.version),p=m>=1.3?"crs":"srs";r[p]=l.code;var c=L.point(i);c.z=this.options.tileZ;var d=o._tileCoordsToBounds(c),v=l.project(d.getNorthWest()),h=l.project(d.getSouthEast()),b=(m>=1.3&&l===EPSG4326?[h.y,v.x,v.y,h.x]:[v.x,h.y,h.x,v.y]).join(",");n+=L.Util.getParamString(r,n,o.options.uppercase)+(o.options.uppercase?"&BBOX=":"&bbox=")+b}var u=L.DomUtil.create("div",a,e),y=L.DomUtil.create("img",null,u);y.src=n,o.options&&o.options.label&&(y.title=o.options.label),L.DomEvent.on(u,"click",function(){if(o!=this.basemap){t.removeLayer(this.basemap),t.addLayer(o),o.bringToBack(),t.fire("baselayerchange",o),this.basemap=o,L.DomUtil.removeClass(document.getElementsByClassName("basemap active")[0],"active"),L.DomUtil.addClass(u,"active");var e=(s+1)%this.options.basemaps.length;L.DomUtil.removeClass(document.getElementsByClassName("basemap alt")[0],"alt"),L.DomUtil.addClass(document.getElementsByClassName("basemap")[e],"alt")}},this)},this),this.options.basemaps.length>2&&(L.DomEvent.on(e,"mouseenter",function(){L.DomUtil.removeClass(e,"closed")},this),L.DomEvent.on(e,"mouseleave",function(){L.DomUtil.addClass(e,"closed")},this)),this._container=e,this._container}}),L.control.basemaps=function(t){return new L.Control.Basemaps(t)};
-},{}],118:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 //See this url for more info about valid adminCodes: http://www.geonames.org/export/geonames-search.html
 var ADMIN_CODES = ['country', 'adminCode1', 'adminCode2', 'adminCode3', 'continentCode'];
 var BBOX = ['east', 'west', 'north', 'south'];
@@ -11445,7 +13150,7 @@ L.control.geonames = function (options) {
   return new L.Control.Geonames(options);
 };
 
-},{}],119:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 var xhr = require('corslite'),
     csv2geojson = require('csv2geojson'),
     wellknown = require('wellknown'),
@@ -11705,7 +13410,7 @@ function parseXML(str) {
     }
 }
 
-},{"corslite":93,"csv2geojson":94,"polyline":132,"togeojson":184,"topojson":185,"wellknown":186}],120:[function(require,module,exports){
+},{"corslite":113,"csv2geojson":114,"polyline":152,"togeojson":204,"topojson":205,"wellknown":206}],140:[function(require,module,exports){
 /* @preserve
  * Leaflet 1.2.0, a JS library for interactive maps. http://leafletjs.com
  * (c) 2010-2017 Vladimir Agafonkin, (c) 2010-2011 CloudMade
@@ -25316,7 +27021,7 @@ exports.map = createMap;
 })));
 
 
-},{}],121:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 var root = require('./_root');
 
 /** Built-in value references. */
@@ -25324,7 +27029,7 @@ var Symbol = root.Symbol;
 
 module.exports = Symbol;
 
-},{"./_root":128}],122:[function(require,module,exports){
+},{"./_root":148}],142:[function(require,module,exports){
 var Symbol = require('./_Symbol'),
     getRawTag = require('./_getRawTag'),
     objectToString = require('./_objectToString');
@@ -25354,7 +27059,7 @@ function baseGetTag(value) {
 
 module.exports = baseGetTag;
 
-},{"./_Symbol":121,"./_getRawTag":125,"./_objectToString":126}],123:[function(require,module,exports){
+},{"./_Symbol":141,"./_getRawTag":145,"./_objectToString":146}],143:[function(require,module,exports){
 (function (global){
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -25362,7 +27067,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 module.exports = freeGlobal;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],124:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 var overArg = require('./_overArg');
 
 /** Built-in value references. */
@@ -25370,7 +27075,7 @@ var getPrototype = overArg(Object.getPrototypeOf, Object);
 
 module.exports = getPrototype;
 
-},{"./_overArg":127}],125:[function(require,module,exports){
+},{"./_overArg":147}],145:[function(require,module,exports){
 var Symbol = require('./_Symbol');
 
 /** Used for built-in method references. */
@@ -25418,7 +27123,7 @@ function getRawTag(value) {
 
 module.exports = getRawTag;
 
-},{"./_Symbol":121}],126:[function(require,module,exports){
+},{"./_Symbol":141}],146:[function(require,module,exports){
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -25442,7 +27147,7 @@ function objectToString(value) {
 
 module.exports = objectToString;
 
-},{}],127:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 /**
  * Creates a unary function that invokes `func` with its argument transformed.
  *
@@ -25459,7 +27164,7 @@ function overArg(func, transform) {
 
 module.exports = overArg;
 
-},{}],128:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 var freeGlobal = require('./_freeGlobal');
 
 /** Detect free variable `self`. */
@@ -25470,7 +27175,7 @@ var root = freeGlobal || freeSelf || Function('return this')();
 
 module.exports = root;
 
-},{"./_freeGlobal":123}],129:[function(require,module,exports){
+},{"./_freeGlobal":143}],149:[function(require,module,exports){
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
@@ -25501,7 +27206,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],130:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 var baseGetTag = require('./_baseGetTag'),
     getPrototype = require('./_getPrototype'),
     isObjectLike = require('./isObjectLike');
@@ -25565,9 +27270,9 @@ function isPlainObject(value) {
 
 module.exports = isPlainObject;
 
-},{"./_baseGetTag":122,"./_getPrototype":124,"./isObjectLike":129}],131:[function(require,module,exports){
+},{"./_baseGetTag":142,"./_getPrototype":144,"./isObjectLike":149}],151:[function(require,module,exports){
 arguments[4][8][0].apply(exports,arguments)
-},{"dup":8}],132:[function(require,module,exports){
+},{"dup":8}],152:[function(require,module,exports){
 'use strict';
 
 /**
@@ -25722,9 +27427,9 @@ if (typeof module === 'object' && module.exports) {
     module.exports = polyline;
 }
 
-},{}],133:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 arguments[4][10][0].apply(exports,arguments)
-},{"./lib/ReactPropTypesSecret":137,"_process":9,"dup":10,"fbjs/lib/invariant":107,"fbjs/lib/warning":113}],134:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":157,"_process":9,"dup":10,"fbjs/lib/invariant":127,"fbjs/lib/warning":133}],154:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -25784,7 +27489,7 @@ module.exports = function() {
   return ReactPropTypes;
 };
 
-},{"./lib/ReactPropTypesSecret":137,"fbjs/lib/emptyFunction":101,"fbjs/lib/invariant":107}],135:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":157,"fbjs/lib/emptyFunction":121,"fbjs/lib/invariant":127}],155:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -26330,7 +28035,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 };
 
 }).call(this,require('_process'))
-},{"./checkPropTypes":133,"./lib/ReactPropTypesSecret":137,"_process":9,"fbjs/lib/emptyFunction":101,"fbjs/lib/invariant":107,"fbjs/lib/warning":113,"object-assign":131}],136:[function(require,module,exports){
+},{"./checkPropTypes":153,"./lib/ReactPropTypesSecret":157,"_process":9,"fbjs/lib/emptyFunction":121,"fbjs/lib/invariant":127,"fbjs/lib/warning":133,"object-assign":151}],156:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -26362,9 +28067,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./factoryWithThrowingShims":134,"./factoryWithTypeCheckers":135,"_process":9}],137:[function(require,module,exports){
+},{"./factoryWithThrowingShims":154,"./factoryWithTypeCheckers":155,"_process":9}],157:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11}],138:[function(require,module,exports){
+},{"dup":11}],158:[function(require,module,exports){
 (function (process){
 /** @license React v16.0.0
  * react-dom.development.js
@@ -43589,7 +45294,7 @@ module.exports = ReactDOMFiberEntry;
 }
 
 }).call(this,require('_process'))
-},{"_process":9,"fbjs/lib/EventListener":96,"fbjs/lib/ExecutionEnvironment":97,"fbjs/lib/camelizeStyleName":99,"fbjs/lib/containsNode":100,"fbjs/lib/emptyFunction":101,"fbjs/lib/emptyObject":102,"fbjs/lib/focusNode":103,"fbjs/lib/getActiveElement":104,"fbjs/lib/hyphenateStyleName":106,"fbjs/lib/invariant":107,"fbjs/lib/performanceNow":111,"fbjs/lib/shallowEqual":112,"fbjs/lib/warning":113,"object-assign":131,"prop-types":136,"prop-types/checkPropTypes":133,"react":171}],139:[function(require,module,exports){
+},{"_process":9,"fbjs/lib/EventListener":116,"fbjs/lib/ExecutionEnvironment":117,"fbjs/lib/camelizeStyleName":119,"fbjs/lib/containsNode":120,"fbjs/lib/emptyFunction":121,"fbjs/lib/emptyObject":122,"fbjs/lib/focusNode":123,"fbjs/lib/getActiveElement":124,"fbjs/lib/hyphenateStyleName":126,"fbjs/lib/invariant":127,"fbjs/lib/performanceNow":131,"fbjs/lib/shallowEqual":132,"fbjs/lib/warning":133,"object-assign":151,"prop-types":156,"prop-types/checkPropTypes":153,"react":191}],159:[function(require,module,exports){
 /*
  React v16.0.0
  react-dom.production.min.js
@@ -43847,7 +45552,7 @@ function ck(a,b,c,d,e){ak(c)?void 0:w("200");var f=c._reactRootContainer;if(f)Xj
 var ek={createPortal:dk,hydrate:function(a,b,c){return ck(null,a,b,!0,c)},render:function(a,b,c){return ck(null,a,b,!1,c)},unstable_renderSubtreeIntoContainer:function(a,b,c,d){null!=a&&Pa.has(a)?void 0:w("38");return ck(a,b,c,!1,d)},unmountComponentAtNode:function(a){ak(a)?void 0:w("40");return a._reactRootContainer?(Xj.unbatchedUpdates(function(){ck(null,null,a,!1,function(){a._reactRootContainer=null})}),!0):!1},findDOMNode:Dh,unstable_createPortal:dk,unstable_batchedUpdates:sb.batchedUpdates,
 unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{EventPluginHub:Jb,EventPluginRegistry:sa,EventPropagators:Th,ReactControlledComponent:nb,ReactDOMComponentTree:G,ReactDOMEventListener:L}};Cj({findFiberByHostInstance:G.getClosestInstanceFromNode,findHostInstanceByFiber:Xj.findHostInstance,bundleType:0,version:"16.0.0",rendererPackageName:"react-dom"});module.exports=ek;
 
-},{"fbjs/lib/EventListener":96,"fbjs/lib/ExecutionEnvironment":97,"fbjs/lib/containsNode":100,"fbjs/lib/emptyFunction":101,"fbjs/lib/emptyObject":102,"fbjs/lib/focusNode":103,"fbjs/lib/getActiveElement":104,"fbjs/lib/invariant":107,"fbjs/lib/shallowEqual":112,"object-assign":131,"react":171}],140:[function(require,module,exports){
+},{"fbjs/lib/EventListener":116,"fbjs/lib/ExecutionEnvironment":117,"fbjs/lib/containsNode":120,"fbjs/lib/emptyFunction":121,"fbjs/lib/emptyObject":122,"fbjs/lib/focusNode":123,"fbjs/lib/getActiveElement":124,"fbjs/lib/invariant":127,"fbjs/lib/shallowEqual":132,"object-assign":151,"react":191}],160:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -43889,7 +45594,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":138,"./cjs/react-dom.production.min.js":139,"_process":9}],141:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":158,"./cjs/react-dom.production.min.js":159,"_process":9}],161:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -43978,7 +45683,7 @@ function createProvider() {
 
 exports.default = createProvider();
 }).call(this,require('_process'))
-},{"../utils/PropTypes":151,"../utils/warning":155,"_process":9,"prop-types":136,"react":171}],142:[function(require,module,exports){
+},{"../utils/PropTypes":171,"../utils/warning":175,"_process":9,"prop-types":156,"react":191}],162:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -44287,7 +45992,7 @@ selectorFactory) {
   };
 }
 }).call(this,require('_process'))
-},{"../utils/PropTypes":151,"../utils/Subscription":152,"_process":9,"hoist-non-react-statics":114,"invariant":115,"react":171}],143:[function(require,module,exports){
+},{"../utils/PropTypes":171,"../utils/Subscription":172,"_process":9,"hoist-non-react-statics":134,"invariant":135,"react":191}],163:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -44416,7 +46121,7 @@ function createConnect() {
 }
 
 exports.default = createConnect();
-},{"../components/connectAdvanced":142,"../utils/shallowEqual":153,"./mapDispatchToProps":144,"./mapStateToProps":145,"./mergeProps":146,"./selectorFactory":147}],144:[function(require,module,exports){
+},{"../components/connectAdvanced":162,"../utils/shallowEqual":173,"./mapDispatchToProps":164,"./mapStateToProps":165,"./mergeProps":166,"./selectorFactory":167}],164:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -44445,7 +46150,7 @@ function whenMapDispatchToPropsIsObject(mapDispatchToProps) {
 }
 
 exports.default = [whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject];
-},{"./wrapMapToProps":149,"redux":178}],145:[function(require,module,exports){
+},{"./wrapMapToProps":169,"redux":198}],165:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -44465,7 +46170,7 @@ function whenMapStateToPropsIsMissing(mapStateToProps) {
 }
 
 exports.default = [whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing];
-},{"./wrapMapToProps":149}],146:[function(require,module,exports){
+},{"./wrapMapToProps":169}],166:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -44526,7 +46231,7 @@ function whenMergePropsIsOmitted(mergeProps) {
 
 exports.default = [whenMergePropsIsFunction, whenMergePropsIsOmitted];
 }).call(this,require('_process'))
-},{"../utils/verifyPlainObject":154,"_process":9}],147:[function(require,module,exports){
+},{"../utils/verifyPlainObject":174,"_process":9}],167:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -44642,7 +46347,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
   return selectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch, options);
 }
 }).call(this,require('_process'))
-},{"./verifySubselectors":148,"_process":9}],148:[function(require,module,exports){
+},{"./verifySubselectors":168,"_process":9}],168:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -44669,7 +46374,7 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
   verify(mapDispatchToProps, 'mapDispatchToProps', displayName);
   verify(mergeProps, 'mergeProps', displayName);
 }
-},{"../utils/warning":155}],149:[function(require,module,exports){
+},{"../utils/warning":175}],169:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -44750,7 +46455,7 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
   };
 }
 }).call(this,require('_process'))
-},{"../utils/verifyPlainObject":154,"_process":9}],150:[function(require,module,exports){
+},{"../utils/verifyPlainObject":174,"_process":9}],170:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -44774,7 +46479,7 @@ exports.Provider = _Provider2.default;
 exports.createProvider = _Provider.createProvider;
 exports.connectAdvanced = _connectAdvanced2.default;
 exports.connect = _connect2.default;
-},{"./components/Provider":141,"./components/connectAdvanced":142,"./connect/connect":143}],151:[function(require,module,exports){
+},{"./components/Provider":161,"./components/connectAdvanced":162,"./connect/connect":163}],171:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -44798,7 +46503,7 @@ var storeShape = exports.storeShape = _propTypes2.default.shape({
   dispatch: _propTypes2.default.func.isRequired,
   getState: _propTypes2.default.func.isRequired
 });
-},{"prop-types":136}],152:[function(require,module,exports){
+},{"prop-types":156}],172:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -44895,7 +46600,7 @@ var Subscription = function () {
 }();
 
 exports.default = Subscription;
-},{}],153:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -44930,7 +46635,7 @@ function shallowEqual(objA, objB) {
 
   return true;
 }
-},{}],154:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -44951,7 +46656,7 @@ function verifyPlainObject(value, displayName, methodName) {
     (0, _warning2.default)(methodName + '() in ' + displayName + ' must return a plain object. Instead received ' + value + '.');
   }
 }
-},{"./warning":155,"lodash/isPlainObject":130}],155:[function(require,module,exports){
+},{"./warning":175,"lodash/isPlainObject":150}],175:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -44977,7 +46682,7 @@ function warning(message) {
   } catch (e) {}
   /* eslint-enable no-empty */
 }
-},{}],156:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44991,7 +46696,7 @@ exports.default = {
     SHOW: '__react_tooltip_show_event'
   }
 };
-},{}],157:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45080,7 +46785,7 @@ var setUntargetItems = function setUntargetItems(currentTarget, targetArray) {
 };
 
 var customListener = void 0;
-},{}],158:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45093,7 +46798,7 @@ exports.default = function (target) {
     return dataEffect || this.props.effect || 'float';
   };
 };
-},{}],159:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45106,7 +46811,7 @@ exports.default = function (target) {
     return dataIsCapture && dataIsCapture === 'true' || this.props.isCapture || false;
   };
 };
-},{}],160:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45185,7 +46890,7 @@ var dispatchGlobalEvent = function dispatchGlobalEvent(eventName, opts) {
 }; /**
     * Static methods for react-tooltip
     */
-},{"../constant":156}],161:[function(require,module,exports){
+},{"../constant":176}],181:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45277,7 +46982,7 @@ exports.default = function (target) {
 var getMutationObserverClass = function getMutationObserverClass() {
   return window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 };
-},{}],162:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45326,7 +47031,7 @@ var _constant = require('../constant');
 var _constant2 = _interopRequireDefault(_constant);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"../constant":156}],163:[function(require,module,exports){
+},{"../constant":176}],183:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -45921,14 +47626,14 @@ var ReactTooltip = (0, _staticMethods2.default)(_class = (0, _windowListener2.de
 
 
 module.exports = ReactTooltip;
-},{"./decorators/customEvent":157,"./decorators/getEffect":158,"./decorators/isCapture":159,"./decorators/staticMethods":160,"./decorators/trackRemoval":161,"./decorators/windowListener":162,"./style":164,"./utils/aria":165,"./utils/getPosition":166,"./utils/getTipContent":167,"./utils/nodeListToArray":168,"classnames":92,"prop-types":136,"react":171,"react-dom":140}],164:[function(require,module,exports){
+},{"./decorators/customEvent":177,"./decorators/getEffect":178,"./decorators/isCapture":179,"./decorators/staticMethods":180,"./decorators/trackRemoval":181,"./decorators/windowListener":182,"./style":184,"./utils/aria":185,"./utils/getPosition":186,"./utils/getTipContent":187,"./utils/nodeListToArray":188,"classnames":112,"prop-types":156,"react":191,"react-dom":160}],184:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = '.__react_component_tooltip{border-radius:3px;display:inline-block;font-size:13px;left:-999em;opacity:0;padding:8px 21px;position:fixed;pointer-events:none;transition:opacity 0.3s ease-out;top:-999em;visibility:hidden;z-index:999}.__react_component_tooltip:before,.__react_component_tooltip:after{content:"";width:0;height:0;position:absolute}.__react_component_tooltip.show{opacity:0.9;margin-top:0px;margin-left:0px;visibility:visible}.__react_component_tooltip.type-dark{color:#fff;background-color:#222}.__react_component_tooltip.type-dark.place-top:after{border-top-color:#222;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-dark.place-bottom:after{border-bottom-color:#222;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-dark.place-left:after{border-left-color:#222;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-dark.place-right:after{border-right-color:#222;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-dark.border{border:1px solid #fff}.__react_component_tooltip.type-dark.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-dark.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-dark.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-dark.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-success{color:#fff;background-color:#8DC572}.__react_component_tooltip.type-success.place-top:after{border-top-color:#8DC572;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-success.place-bottom:after{border-bottom-color:#8DC572;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-success.place-left:after{border-left-color:#8DC572;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-success.place-right:after{border-right-color:#8DC572;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-success.border{border:1px solid #fff}.__react_component_tooltip.type-success.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-success.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-success.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-success.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-warning{color:#fff;background-color:#F0AD4E}.__react_component_tooltip.type-warning.place-top:after{border-top-color:#F0AD4E;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-warning.place-bottom:after{border-bottom-color:#F0AD4E;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-warning.place-left:after{border-left-color:#F0AD4E;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-warning.place-right:after{border-right-color:#F0AD4E;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-warning.border{border:1px solid #fff}.__react_component_tooltip.type-warning.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-warning.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-warning.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-warning.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-error{color:#fff;background-color:#BE6464}.__react_component_tooltip.type-error.place-top:after{border-top-color:#BE6464;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-error.place-bottom:after{border-bottom-color:#BE6464;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-error.place-left:after{border-left-color:#BE6464;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-error.place-right:after{border-right-color:#BE6464;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-error.border{border:1px solid #fff}.__react_component_tooltip.type-error.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-error.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-error.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-error.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-info{color:#fff;background-color:#337AB7}.__react_component_tooltip.type-info.place-top:after{border-top-color:#337AB7;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-info.place-bottom:after{border-bottom-color:#337AB7;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-info.place-left:after{border-left-color:#337AB7;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-info.place-right:after{border-right-color:#337AB7;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-info.border{border:1px solid #fff}.__react_component_tooltip.type-info.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-info.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-info.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-info.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-light{color:#222;background-color:#fff}.__react_component_tooltip.type-light.place-top:after{border-top-color:#fff;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-light.place-bottom:after{border-bottom-color:#fff;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-light.place-left:after{border-left-color:#fff;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-light.place-right:after{border-right-color:#fff;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-light.border{border:1px solid #222}.__react_component_tooltip.type-light.border.place-top:before{border-top:8px solid #222}.__react_component_tooltip.type-light.border.place-bottom:before{border-bottom:8px solid #222}.__react_component_tooltip.type-light.border.place-left:before{border-left:8px solid #222}.__react_component_tooltip.type-light.border.place-right:before{border-right:8px solid #222}.__react_component_tooltip.place-top{margin-top:-10px}.__react_component_tooltip.place-top:before{border-left:10px solid transparent;border-right:10px solid transparent;bottom:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-top:after{border-left:8px solid transparent;border-right:8px solid transparent;bottom:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-bottom{margin-top:10px}.__react_component_tooltip.place-bottom:before{border-left:10px solid transparent;border-right:10px solid transparent;top:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-bottom:after{border-left:8px solid transparent;border-right:8px solid transparent;top:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-left{margin-left:-10px}.__react_component_tooltip.place-left:before{border-top:6px solid transparent;border-bottom:6px solid transparent;right:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-left:after{border-top:5px solid transparent;border-bottom:5px solid transparent;right:-6px;top:50%;margin-top:-4px}.__react_component_tooltip.place-right{margin-left:10px}.__react_component_tooltip.place-right:before{border-top:6px solid transparent;border-bottom:6px solid transparent;left:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-right:after{border-top:5px solid transparent;border-bottom:5px solid transparent;left:-6px;top:50%;margin-top:-4px}.__react_component_tooltip .multi-line{display:block;padding:2px 0px;text-align:center}';
-},{}],165:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45953,7 +47658,7 @@ function parseAria(props) {
 
   return ariaObj;
 }
-},{}],166:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -46263,7 +47968,7 @@ var getParent = function getParent(currentTarget) {
 
   return { parentTop: parentTop, parentLeft: parentLeft };
 };
-},{}],167:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -46296,7 +48001,7 @@ var _react = require('react');
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"react":171}],168:[function(require,module,exports){
+},{"react":191}],188:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46312,13 +48017,13 @@ exports.default = function (nodeList) {
     return nodeList[index];
   });
 };
-},{}],169:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 arguments[4][12][0].apply(exports,arguments)
-},{"_process":9,"dup":12,"fbjs/lib/emptyFunction":101,"fbjs/lib/emptyObject":102,"fbjs/lib/invariant":107,"fbjs/lib/warning":113,"object-assign":131,"prop-types/checkPropTypes":133}],170:[function(require,module,exports){
+},{"_process":9,"dup":12,"fbjs/lib/emptyFunction":121,"fbjs/lib/emptyObject":122,"fbjs/lib/invariant":127,"fbjs/lib/warning":133,"object-assign":151,"prop-types/checkPropTypes":153}],190:[function(require,module,exports){
 arguments[4][13][0].apply(exports,arguments)
-},{"dup":13,"fbjs/lib/emptyFunction":101,"fbjs/lib/emptyObject":102,"fbjs/lib/invariant":107,"object-assign":131}],171:[function(require,module,exports){
+},{"dup":13,"fbjs/lib/emptyFunction":121,"fbjs/lib/emptyObject":122,"fbjs/lib/invariant":127,"object-assign":151}],191:[function(require,module,exports){
 arguments[4][14][0].apply(exports,arguments)
-},{"./cjs/react.development.js":169,"./cjs/react.production.min.js":170,"_process":9,"dup":14}],172:[function(require,module,exports){
+},{"./cjs/react.development.js":189,"./cjs/react.production.min.js":190,"_process":9,"dup":14}],192:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -46342,7 +48047,7 @@ var thunk = createThunkMiddleware();
 thunk.withExtraArgument = createThunkMiddleware;
 
 exports['default'] = thunk;
-},{}],173:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -46401,7 +48106,7 @@ function applyMiddleware() {
     };
   };
 }
-},{"./compose":176}],174:[function(require,module,exports){
+},{"./compose":196}],194:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -46453,7 +48158,7 @@ function bindActionCreators(actionCreators, dispatch) {
   }
   return boundActionCreators;
 }
-},{}],175:[function(require,module,exports){
+},{}],195:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -46599,7 +48304,7 @@ function combineReducers(reducers) {
   };
 }
 }).call(this,require('_process'))
-},{"./createStore":177,"./utils/warning":179,"_process":9,"lodash/isPlainObject":130}],176:[function(require,module,exports){
+},{"./createStore":197,"./utils/warning":199,"_process":9,"lodash/isPlainObject":150}],196:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -46636,7 +48341,7 @@ function compose() {
     };
   });
 }
-},{}],177:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -46898,7 +48603,7 @@ var ActionTypes = exports.ActionTypes = {
     replaceReducer: replaceReducer
   }, _ref2[_symbolObservable2['default']] = observable, _ref2;
 }
-},{"lodash/isPlainObject":130,"symbol-observable":181}],178:[function(require,module,exports){
+},{"lodash/isPlainObject":150,"symbol-observable":201}],198:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -46947,7 +48652,7 @@ exports.bindActionCreators = _bindActionCreators2['default'];
 exports.applyMiddleware = _applyMiddleware2['default'];
 exports.compose = _compose2['default'];
 }).call(this,require('_process'))
-},{"./applyMiddleware":173,"./bindActionCreators":174,"./combineReducers":175,"./compose":176,"./createStore":177,"./utils/warning":179,"_process":9}],179:[function(require,module,exports){
+},{"./applyMiddleware":193,"./bindActionCreators":194,"./combineReducers":195,"./compose":196,"./createStore":197,"./utils/warning":199,"_process":9}],199:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -46973,7 +48678,7 @@ function warning(message) {
   } catch (e) {}
   /* eslint-enable no-empty */
 }
-},{}],180:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 module.exports = element;
 module.exports.pair = pair;
 module.exports.format = format;
@@ -47055,10 +48760,10 @@ function swapdim(a, b, dim) {
   if (dim === 'W' || dim === 'E') return [b, a];
 }
 
-},{}],181:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 module.exports = require('./lib/index');
 
-},{"./lib/index":182}],182:[function(require,module,exports){
+},{"./lib/index":202}],202:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -47090,7 +48795,7 @@ if (typeof self !== 'undefined') {
 var result = (0, _ponyfill2['default'])(root);
 exports['default'] = result;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./ponyfill":183}],183:[function(require,module,exports){
+},{"./ponyfill":203}],203:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -47114,7 +48819,7 @@ function symbolObservablePonyfill(root) {
 
 	return result;
 };
-},{}],184:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 (function (process){
 var toGeoJSON = (function() {
     'use strict';
@@ -47480,7 +49185,7 @@ var toGeoJSON = (function() {
 if (typeof module !== 'undefined') module.exports = toGeoJSON;
 
 }).call(this,require('_process'))
-},{"_process":9,"xmldom":3}],185:[function(require,module,exports){
+},{"_process":9,"xmldom":3}],205:[function(require,module,exports){
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -48026,7 +49731,7 @@ if (typeof module !== 'undefined') module.exports = toGeoJSON;
   exports.presimplify = presimplify;
 
 }));
-},{}],186:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 /*eslint-disable no-cond-assign */
 module.exports = parse;
 module.exports.parse = parse;
@@ -48298,7 +50003,7 @@ function stringify (gj) {
   }
 }
 
-},{}],187:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 (function(self) {
   'use strict';
 
