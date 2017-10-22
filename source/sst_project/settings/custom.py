@@ -20,7 +20,7 @@ PREVIEW_MODE = False
 PREVIEW_PASSWORD = 'sstearlyaccess'
 PREVIEW_EXPIRES = datetime.datetime(2016, 9, 23, tzinfo=pytz.timezone('US/Pacific'))
 
-PORT = 8001
+PORT = 8000
 
 DATASET_DOWNLOAD_DIR = os.path.join(os.path.dirname(BASE_DIR), 'materials', 'downloads/')
 STATICFILES_DIRS = [DATASET_DOWNLOAD_DIR]

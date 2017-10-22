@@ -6859,6 +6859,9 @@ label.panel-block {
 .table th {
   vertical-align: bottom; }
 
+.table td {
+  padding: .5em .5em; }
+
 .margin-left-5 {
   margin-left: 5px !important; }
 
@@ -7141,7 +7144,7 @@ label.panel-block {
 
 .sidebar {
   box-shadow: 2px 0px 10px;
-  z-index: 401; }
+  z-index: 2; }
 
 .sidebar-inner {
   width: 440px; }
@@ -7154,17 +7157,27 @@ label.panel-block {
   padding: 0px 15px 0px 15px; }
 
 .sidebar .overlay {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 118px;
   left: 0;
   right: 0;
   bottom: 0;
+  width: 440px;
+  height: calc(100vh - 52px - 66px);
   background-color: rgba(255, 255, 255, 0.92);
-  z-index: 402;
+  z-index: 5;
   padding: 0px 20px; }
 
 .sidebar .overlay progress {
   width: 100%; }
+
+.sidebar .overlay .progress-container {
+  margin-right: 30px;
+  margin-top: 50%; }
+
+.error-debug-info {
+  max-height: 200px;
+  overflow: auto; }
 
 .configuration-step {
   margin-bottom: 14px; }
@@ -7186,9 +7199,10 @@ label.panel-block {
   width: 3px;
   background-color: transparent;
   margin-right: 5px;
+  margin-left: -.5em;
   transition: background-color .5s; }
 
-.modify-status .modified {
+.modify-status.modified {
   background-color: #f0ad4e;
   transition: background-color .5s; }
 
@@ -7210,7 +7224,7 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
 .variable-tooltip {
   box-shadow: 5px 5px 10px rgba(153, 153, 153, 0.6);
   font-size: 1.1em !important;
-  max-width: 350px;
+  max-width: 400px;
   white-space: normal; }
 
 .variable-tooltip strong, .variable-tooltip .title {

@@ -195,7 +195,7 @@ CELERYBEAT_SCHEDULE = {
 NC_REGISTERED_JOBS = {
     'generate_scores': {
         'type': 'task',
-        'task': 'seedsource.tasks.generate_scores.GenerateScores',
+        'task': 'seedsource_core.django.seedsource.tasks.generate_scores.GenerateScores',
         'publish_raster_results': True,
         'results_renderer': StretchedRenderer([
             (100, Color(240, 59, 32)),
@@ -205,7 +205,7 @@ NC_REGISTERED_JOBS = {
     },
     'write_tif': {
         'type': 'task',
-        'task': 'seedsource.tasks.write_tif.WriteTIF',
+        'task': 'seedsource_core.django.seedsource.tasks.write_tif.WriteTIF',
     },
 
 }
