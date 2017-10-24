@@ -1,5 +1,6 @@
 import React from 'react'
 import ModalCard from 'seedsource/components/ModalCard'
+import NavItemDropdown from 'seedsource/components/NavItemDropdown'
 import { staticResource } from 'utils'
 
 class Menu extends React.Component {
@@ -428,17 +429,14 @@ class Menu extends React.Component {
             <a className='navbar-item' href={staticResource('documents/SST Instructions.pdf')} target="_blank" key="instructions">
                 Instructions
             </a>,
-            <div className='navbar-item has-dropdown is-hoverable' key="information">
-                <a className='navbar-link'>More Information</a>
-                <div className="navbar-dropdown">
-                    <a className="navbar-item" onClick={() => this.backgroundModal.show()}>Background</a>
+            <NavItemDropdown title="More Information" key="information">
+                <a className="navbar-item" onClick={() => this.backgroundModal.show()}>Background</a>
                     <a className="navbar-item" onClick={() => this.methodsModal.show()}>Approach & Methods</a>
                     <a className="navbar-item" onClick={() => this.climatenaModal.show()}>ClimateNA</a>
                     <a className="navbar-item" href="https://github.com/consbio/seedlot-selection-tool" target="_blank">
                         Source Code
                     </a>
-                </div>
-            </div>,
+            </NavItemDropdown>,
             <a className='navbar-item' key="people" onClick={() => this.peopleModal.show()}>People</a>,
             <a className='navbar-item' key="news" onClick={() => this.newsModal.show()}>News & Updates</a>,
             <a className='navbar-item' key="issues" onClick={() => this.issueModal.show()}>Report an Issue</a>

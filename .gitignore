@@ -4,3 +4,4 @@ db.sqlite3
 package-lock.json
 __pycache__/
 config.json
+source/sst_project/settings/custom.py

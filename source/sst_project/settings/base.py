@@ -104,8 +104,8 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
-    'accounts.backends.EmailAuthenticationBackend',
-    'accounts.backends.IdentityBackend',
+    'seedsource_core.django.accounts.backends.EmailAuthenticationBackend',
+    'seedsource_core.django.accounts.backends.IdentityBackend',
 )
 
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = False
