@@ -6,7 +6,7 @@ import { staticResource } from 'utils'
 class Menu extends React.Component {
     render() {
         return [
-            <div className="navbar is-light is-size-6" key="modals">
+            <div className="has-text-dark is-size-6" key="modals">
                 <ModalCard ref={input => { this.purposeModal = input }} title="Purpose">
                     <img src={staticResource('images/purpose.jpg')} className="is-pulled-left margin-right-5" />
                     <p>
