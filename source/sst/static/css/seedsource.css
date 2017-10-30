@@ -10018,6 +10018,24 @@ label.panel-block:hover {
 }
 
 /* End IE fixes */
+@media screen and (min-width: 769px), print {
+  .tabs.is-boxed li.is-active-tablet a {
+    color: #3273dc;
+    background-color: white;
+    border-color: #dbdbdb;
+    border-bottom-color: transparent !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tabs.is-boxed li.is-active-mobile a {
+    color: #3273dc;
+    background-color: white;
+    border-color: #dbdbdb;
+    border-bottom-color: transparent !important;
+  }
+}
+
 .table th {
   vertical-align: bottom;
 }
@@ -10703,6 +10721,12 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
 
 @media screen and (max-width: 768px) {
   .leaflet-control.basemaps {
+    display: none;
+  }
+  .leaflet-legend {
+    display: none;
+  }
+  .leaflet-opacity-control {
     display: none;
   }
 }

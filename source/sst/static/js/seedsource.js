@@ -3397,6 +3397,8 @@ var _io = require('../io');
 
 var _error = require('./error');
 
+var _tabs = require('./tabs');
+
 var _config = require('../config');
 
 var START_JOB = exports.START_JOB = 'START_JOB';
@@ -3474,6 +3476,7 @@ var runJob = exports.runJob = function runJob(configuration) {
             return dispatch(receiveJobStatus(json));
         }).then(function () {
             dispatch(finishJob(configuration));
+            dispatch((0, _tabs.selectTab)('map'));
         }).catch(function (err) {
             console.log(err);
 
@@ -3488,7 +3491,7 @@ var runJob = exports.runJob = function runJob(configuration) {
     };
 };
 
-},{"../config":38,"../io":40,"./error":18}],20:[function(require,module,exports){
+},{"../config":38,"../io":40,"./error":18,"./tabs":30}],20:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -10841,7 +10844,7 @@ var Sidebar = function Sidebar(_ref) {
                 ),
                 _react2.default.createElement(
                     'li',
-                    { className: activeTab === 'tool' ? 'is-active' : null },
+                    { className: activeTab === 'tool' ? 'is-active' : activeTab === 'map' ? 'is-active-tablet' : null },
                     _react2.default.createElement(
                         'a',
                         { onClick: function onClick() {
@@ -10881,7 +10884,7 @@ var Sidebar = function Sidebar(_ref) {
         ),
         _react2.default.createElement(
             'div',
-            { className: 'tab-content ' + (activeTab !== 'tool' ? 'is-hidden' : '') },
+            { className: 'tab-content ' + (activeTab === 'map' ? 'is-hidden-mobile' : activeTab !== 'tool' ? 'is-hidden' : '') },
             _react2.default.createElement(_RunConfiguration2.default, null)
         ),
         _react2.default.createElement(
