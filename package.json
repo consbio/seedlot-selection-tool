@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "todo",
   "scripts": {
-    "watch": "gulp js watch",
+    "watch": "gulp js sass watch",
+    "build": "gulp js sass --production",
     "merge-regions": "mapshaper -i source/sst/static/geometry/*.json combine-files -o source/sst/static/geometry/regions.topojson"
   },
   "repository": {

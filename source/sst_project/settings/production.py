@@ -71,7 +71,7 @@ NC_TEMPORARY_FILE_LOCATION = 'tmp/'
 DATASET_DOWNLOAD_DIR = '/ncdjango/downloads/'
 
 # Preview mode
-INSTALLED_APPS += ('preview',)
+INSTALLED_APPS += ('seedsource_core.django.preview',)
 
 MIDDLEWARE_CLASSES += ('seedsource_core.django.preview.middleware.PreviewAccessMiddleware',)
 
