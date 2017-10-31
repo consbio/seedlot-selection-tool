@@ -10052,6 +10052,15 @@ label.panel-block:hover {
   margin-right: 10px;
 }
 
+@media screen and (max-width: 768px) {
+  .navbar.is-active {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+  }
+}
+
 .tabs:not(:last-child) {
   margin-bottom: 1em;
 }
@@ -10368,6 +10377,27 @@ label.panel-block:hover {
   background-size: 18px 18px;
 }
 
+@media screen and (max-width: 768px) {
+  .navbar-menu {
+    max-height: calc(100vh - 52px);
+    overflow: auto;
+  }
+  .navbar-item:hover, .navbar-link:hover {
+    color: #4a4a4a !important;
+    background-color: white !important;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .navbar {
+    max-height: calc(100vh - 80px);
+    overflow: hidden;
+  }
+  .navbar-menu {
+    max-height: calc(100vh - 52px - 80px) !important;
+  }
+}
+
 .align-middle {
   vertical-align: middle;
 }
@@ -10394,6 +10424,17 @@ label.panel-block:hover {
   vertical-align: middle;
   display: inline-block;
   margin-left: 10px;
+}
+
+.seedsource-app {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .seedsource-app {
+    max-height: calc(100vh - 80px) !important;
+  }
 }
 
 .sidebar {
@@ -10426,6 +10467,13 @@ label.panel-block:hover {
   min-height: calc(100vh - 52px - 58px);
   overflow: auto;
   padding: 0px 15px 0px 15px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .sidebar .tab-content {
+    max-height: calc(100vh - 52px - 58px - 80px) !important;
+    min-height: calc(100vh - 52px - 58px - 80px) !important;
+  }
 }
 
 .sidebar .overlay {
@@ -10462,7 +10510,14 @@ label.panel-block:hover {
     top: calc(52px + 58px);
     width: 100%;
     height: calc(100vh - 52px - 58px);
+    overflow: hidden;
     z-index: 0;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .map {
+    height: calc(100vh - 52px - 58px - 80px) !important;
   }
 }
 
@@ -10720,13 +10775,11 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
 }
 
 @media screen and (max-width: 768px) {
-  .leaflet-control.basemaps {
-    display: none;
-  }
-  .leaflet-legend {
-    display: none;
-  }
-  .leaflet-opacity-control {
+  .leaflet-legend,
+  .leaflet-control.basemaps,
+  .leaflet-opacity-control,
+  .leaflet-geonames-search,
+  .leaflet-zoom-box-control {
     display: none;
   }
 }

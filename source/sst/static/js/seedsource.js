@@ -7389,7 +7389,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var App = function App() {
     return _react2.default.createElement(
         'div',
-        null,
+        { className: 'seedsource-app' },
         _react2.default.createElement(_ErrorModal2.default, null),
         _react2.default.createElement(_Navbar2.default, null),
         _react2.default.createElement(
@@ -9303,7 +9303,7 @@ var Navbar = function (_React$Component) {
 
             return _react2.default.createElement(
                 'nav',
-                { className: 'navbar is-dark', role: 'navigation', 'aria-label': 'main navigation' },
+                { className: isActive + ' navbar is-dark', role: 'navigation', 'aria-label': 'main navigation' },
                 _react2.default.createElement(
                     'div',
                     { className: 'navbar-brand' },
@@ -10080,8 +10080,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var RunConfiguration = function RunConfiguration(_ref) {
     var state = _ref.state,
-        objective = _ref.objective,
-        method = _ref.method,
         job = _ref.job,
         activeStep = _ref.activeStep;
 
@@ -10100,7 +10098,7 @@ var RunConfiguration = function RunConfiguration(_ref) {
                 null,
                 _react2.default.createElement(
                     'h4',
-                    { className: 'title is-4 is-loading' },
+                    { className: 'title is-4 is-5-mobile is-loading' },
                     'Waiting for other jobs to finish...'
                 ),
                 _react2.default.createElement(
@@ -10145,8 +10143,6 @@ var RunConfiguration = function RunConfiguration(_ref) {
 RunConfiguration.propTypes = {
     activeStep: _propTypes2.default.string.isRequired,
     state: _propTypes2.default.object.isRequired,
-    objective: _propTypes2.default.string.isRequired,
-    method: _propTypes2.default.string.isRequired,
     job: _propTypes2.default.object.isRequired
 };
 
@@ -10204,7 +10200,7 @@ var RunStep = function RunStep(props) {
             null,
             _react2.default.createElement('h4', null),
             _react2.default.createElement(
-                'a',
+                'button',
                 {
                     className: 'button is-primary is-large is-fullwidth',
                     disabled: !canRun,
@@ -10222,11 +10218,12 @@ var RunStep = function RunStep(props) {
                 'div',
                 null,
                 _react2.default.createElement(
-                    'a',
+                    'button',
                     {
                         className: 'button is-pulled-left',
                         disabled: !canSave,
-                        onClick: function onClick() {
+                        onClick: function onClick(e) {
+                            e.preventDefault();
                             onSave(isLoggedIn);
                         }
                     },
@@ -10236,7 +10233,7 @@ var RunStep = function RunStep(props) {
                 _react2.default.createElement(
                     _Dropdown2.default,
                     {
-                        className: 'is-pulled-right is-right',
+                        className: 'is-pulled-right is-right is-hidden-mobile',
                         up: true,
                         title: 'Export As...',
                         disabled: !canSave || reportIsFetching
@@ -13489,14 +13486,10 @@ var mapStateToProps = function mapStateToProps(state) {
         lastRun = state.lastRun,
         job = state.job,
         pdfIsFetching = state.pdfIsFetching;
-    var objective = runConfiguration.objective,
-        method = runConfiguration.method;
 
 
     return {
         state: state,
-        objective: objective,
-        method: method,
         job: job,
         activeStep: activeStep
     };
