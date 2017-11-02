@@ -10006,63 +10006,63 @@ label.panel-block:hover {
   background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjQkJCQkJCIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiAgICA8cGF0aCBkPSJNMyA1djRoMlY1aDRWM0g1Yy0xLjEgMC0yIC45LTIgMnptMiAxMEgzdjRjMCAxLjEuOSAyIDIgMmg0di0ySDV2LTR6bTE0IDRoLTR2Mmg0YzEuMSAwIDItLjkgMi0ydi00aC0ydjR6bTAtMTZoLTR2Mmg0djRoMlY1YzAtMS4xLS45LTItMi0yeiIvPjwvc3ZnPg==);
 }
 
-/* IE fixes */
-@media screen and (min-width: 769px), print {
-  .modal-card {
-    margin: 0;
+.leaflet-range-control {
+  background-color: #fff;
+}
+
+.leaflet-range-control.vertical {
+  width: 26px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.leaflet-range-control.horizontal {
+  height: 26px;
+  padding-right: 5px;
+}
+
+.leaflet-range-control .leaflet-range-icon {
+  display: inline-block;
+  float: left;
+  width: 26px;
+  height: 26px;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgICA8cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+DQogICAgPHBhdGggZD0iTTE1IDE3djJoMnYtMmgydi0yaC0ydi0yaC0ydjJoLTJ2Mmgyem01LTE1SDRjLTEuMSAwLTIgLjktMiAydjE2YzAgMS4xLjkgMiAyIDJoMTZjMS4xIDAgMi0uOSAyLTJWNGMwLTEuMS0uOS0yLTItMnpNNSA1aDZ2Mkg1VjV6bTE1IDE1SDRMMjAgNHYxNnoiLz4NCjwvc3ZnPg==");
+}
+
+.leaflet-range-control input[type=range] {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  margin: 0px;
+}
+
+.leaflet-range-control input[type=range][orient=horizontal] {
+  margin-top: 5px;
+  width: 150px;
+}
+
+.leaflet-range-control input[type=range][orient=vertical] {
+  height: 150px;
+  writing-mode: bt-lr;
+  /*
+     * -webkit-appearance is non-standard and may break in the future:
+     * https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance
+     * However, for now it's the only way to get a vertical range input on Chrome.
+     */
+  -webkit-appearance: slider-vertical;
+}
+
+/* Hack to target IE 10 & 11 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .leaflet-range-control.vertical {
+    padding-bottom: 15px;
   }
-}
-
-.modal-card-body {
-  max-height: calc(100vh - 146px);
-}
-
-/* End IE fixes */
-@media screen and (min-width: 769px), print {
-  .tabs.is-boxed li.is-active-tablet a {
-    color: #3273dc;
-    background-color: white;
-    border-color: #dbdbdb;
-    border-bottom-color: transparent !important;
+  .leaflet-range-control input[type=range][orient=vertical] {
+    writing-mode: bt-lr;
+    width: 45px;
+    margin-left: -11px;
   }
-}
-
-@media screen and (max-width: 768px) {
-  .tabs.is-boxed li.is-active-mobile a {
-    color: #3273dc;
-    background-color: white;
-    border-color: #dbdbdb;
-    border-bottom-color: transparent !important;
-  }
-}
-
-.table th {
-  vertical-align: bottom;
-}
-
-.table td {
-  padding: .5em .5em;
-}
-
-.navbar {
-  z-index: 5;
-}
-
-.navbar-end > .navbar-item:last-child {
-  margin-right: 10px;
-}
-
-@media screen and (max-width: 768px) {
-  .navbar.is-active {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    overflow: auto;
-  }
-}
-
-.tabs:not(:last-child) {
-  margin-bottom: 1em;
 }
 
 .margin-left-5 {
@@ -10377,24 +10377,176 @@ label.panel-block:hover {
   background-size: 18px 18px;
 }
 
-@media screen and (max-width: 768px) {
-  .navbar-menu {
-    max-height: calc(100vh - 52px);
+.button.is-white {
+  background: linear-gradient(white, #f2f2f2);
+}
+
+.button.is-white:hover {
+  background: linear-gradient(#f2f2f2, #ececec);
+}
+
+.button.is-black {
+  background: linear-gradient(#0a0a0a, black);
+}
+
+.button.is-black:hover {
+  background: linear-gradient(black, black);
+}
+
+.button.is-light {
+  background: linear-gradient(whitesmoke, #e8e8e8);
+}
+
+.button.is-light:hover {
+  background: linear-gradient(#e8e8e8, #e2e2e2);
+}
+
+.button.is-dark {
+  background: linear-gradient(#363636, #292929);
+}
+
+.button.is-dark:hover {
+  background: linear-gradient(#292929, #222222);
+}
+
+.button.is-primary {
+  background: linear-gradient(#3273dc, #2366d1);
+}
+
+.button.is-primary:hover {
+  background: linear-gradient(#2366d1, #2261c6);
+}
+
+.button.is-link {
+  background: linear-gradient(#3273dc, #2366d1);
+}
+
+.button.is-link:hover {
+  background: linear-gradient(#2366d1, #2261c6);
+}
+
+.button.is-info {
+  background: linear-gradient(#209cee, #118fe4);
+}
+
+.button.is-info:hover {
+  background: linear-gradient(#118fe4, #1088d8);
+}
+
+.button.is-success {
+  background: linear-gradient(#23d160, #20bc56);
+}
+
+.button.is-success:hover {
+  background: linear-gradient(#20bc56, #1eb151);
+}
+
+.button.is-warning {
+  background: linear-gradient(#ffdd57, #ffd83d);
+}
+
+.button.is-warning:hover {
+  background: linear-gradient(#ffd83d, #ffd630);
+}
+
+.button.is-danger {
+  background: linear-gradient(#ff3860, #ff1f4b);
+}
+
+.button.is-danger:hover {
+  background: linear-gradient(#ff1f4b, #ff1241);
+}
+
+/* IE fixes */
+@media screen and (min-width: 769px), print {
+  .modal-card {
+    margin: 0;
+  }
+}
+
+/* End IE fixes */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .modal-card {
+    position: static;
+    margin-top: 78px;
+  }
+  .modal-card-body {
+    max-height: calc(100vh - 146px - 78px);
+    background: white;
+    z-index: 10;
+  }
+}
+
+.table th {
+  vertical-align: bottom;
+}
+
+.table td {
+  padding: .5em .5em;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+}
+
+.navbar-end > .navbar-item:last-child {
+  margin-right: 10px;
+}
+
+.tabs:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.seedsource-app > .columns {
+  position: absolute;
+  margin-top: 52px;
+  height: calc(100vh - 52px);
+  width: 100%;
+}
+
+@media screen and (max-width: 1023px) {
+  .navbar.is-active {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  .navbar.is-active + .columns {
+    display: none;
+  }
+  .navbar.is-active .navbar-brand {
+    position: fixed;
+    width: 100%;
+  }
+  .navbar.is-active .navbar-menu {
+    position: fixed;
+    width: 100%;
+    top: 52px;
+    bottom: 0;
     overflow: auto;
   }
   .navbar-item:hover, .navbar-link:hover {
     color: #4a4a4a !important;
     background-color: white !important;
   }
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .navbar {
-    max-height: calc(100vh - 80px);
-    overflow: hidden;
+  .tabs.is-boxed {
+    position: fixed;
+    width: 100%;
+    top: 52px;
+    background-color: white;
+    z-index: 6;
   }
-  .navbar-menu {
-    max-height: calc(100vh - 52px - 80px) !important;
+  .tabs.is-boxed li.is-active-mobile a {
+    color: #3273dc;
+    background-color: white;
+    border-color: #dbdbdb;
+    border-bottom-color: transparent !important;
+  }
+  .button.is-fullwidth {
+    display: inline-block;
+    text-align: center;
   }
 }
 
@@ -10426,17 +10578,6 @@ label.panel-block:hover {
   margin-left: 10px;
 }
 
-.seedsource-app {
-  max-height: 100vh;
-  overflow: hidden;
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .seedsource-app {
-    max-height: calc(100vh - 80px) !important;
-  }
-}
-
 .sidebar {
   box-shadow: 2px 0px 10px;
   z-index: 2;
@@ -10463,16 +10604,16 @@ label.panel-block:hover {
 
 .sidebar .tab-content {
   position: relative;
-  max-height: calc(100vh - 52px - 58px);
-  min-height: calc(100vh - 52px - 58px);
+  height: calc(100vh - 52px - 58px);
   overflow: auto;
   padding: 0px 15px 0px 15px;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+@media screen and (max-width: 768px) {
   .sidebar .tab-content {
-    max-height: calc(100vh - 52px - 58px - 80px) !important;
-    min-height: calc(100vh - 52px - 58px - 80px) !important;
+    margin-top: 58px;
+    height: auto !important;
+    min-height: calc(100vh - 52px - 58px);
   }
 }
 
@@ -10501,23 +10642,16 @@ label.panel-block:hover {
 
 .sidebar .overlay .progress-container {
   margin-right: 30px;
-  margin-top: 50%;
+  margin-top: calc(50vh - 110px);
 }
 
 @media screen and (max-width: 768px) {
   .map {
     position: absolute;
-    top: calc(52px + 58px);
+    top: 42px;
+    bottom: 0;
     width: 100%;
-    height: calc(100vh - 52px - 58px);
-    overflow: hidden;
     z-index: 0;
-  }
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .map {
-    height: calc(100vh - 52px - 58px - 80px) !important;
   }
 }
 
@@ -10644,7 +10778,7 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
   width: 80px;
 }
 
-.configuration-item .buttons button {
+.configuration-item .buttons .button {
   display: block;
   border: 0px;
   text-align: left;
@@ -10653,17 +10787,9 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
   font-size: 14px;
   font-weight: bold;
   width: 80px;
-}
-
-.configuration-item .buttons button:first-child {
-  background-color: #3273dc;
-  border-bottom: 1px solid #333;
-  color: #fff;
-}
-
-.configuration-item .buttons button:last-child {
-  background-color: #ff3860;
-  color: #fff;
+  height: 22.5px;
+  padding: 0px 0px 0px 5px;
+  border-radius: 0;
 }
 
 .map-container {
