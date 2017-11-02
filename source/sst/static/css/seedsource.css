@@ -10502,7 +10502,7 @@ label.panel-block:hover {
 .seedsource-app > .columns {
   position: absolute;
   margin-top: 52px;
-  height: calc(100vh - 52px);
+  height: calc(100% - 52px);
   width: 100%;
 }
 
@@ -10816,39 +10816,6 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
   min-width: 150px;
 }
 
-.leaflet-opacity-control {
-  width: 26px;
-  background-color: #fff;
-  font-size: 1.3em;
-  text-align: center;
-  padding-bottom: 5px;
-  padding-top: 5px;
-}
-
-.leaflet-opacity-control input[type=range] {
-  display: block;
-  width: 100%;
-  height: 150px;
-  /*
-   * -webkit-appearance is non-standard and may break in the future:
-   * https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance
-   * However, for now it's the only way to get a vertical range input on Chrome.
-   */
-  -webkit-appearance: slider-vertical;
-}
-
-/* Hack to target IE 10 & 11 */
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .leaflet-opacity-control {
-    padding-bottom: 15px;
-  }
-  .leaflet-opacity-control input[type=range] {
-    writing-mode: bt-lr;
-    width: 45px;
-    margin-left: -11px;
-  }
-}
-
 .leaflet-button {
   width: 26px;
   background-color: #fff;
@@ -10903,7 +10870,7 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
 @media screen and (max-width: 768px) {
   .leaflet-legend,
   .leaflet-control.basemaps,
-  .leaflet-opacity-control,
+  .leaflet-range-control,
   .leaflet-geonames-search,
   .leaflet-zoom-box-control {
     display: none;
