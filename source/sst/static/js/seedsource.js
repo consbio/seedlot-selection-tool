@@ -3896,7 +3896,8 @@ var runTIFJob = exports.runTIFJob = function runTIFJob() {
                 filename = _JSON$parse.filename;
 
             var today = new Date();
-            window.location = '/downloads/' + filename + '?date=' + encodeURIComponent(' ' + months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear());
+
+            window.location = '/downloads/' + filename + '?date=' + ' ' + months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
         }).catch(function (err) {
             console.log(err);
 
