@@ -5381,8 +5381,14 @@ var regions = exports.regions = [{
     name: 'nc1',
     label: 'North Central'
 }, {
+    name: 'uscentral1',
+    label: 'Central US'
+}, {
     name: 'ne1',
     label: 'North East'
+}, {
+    name: 'useast1',
+    label: "Eastern US"
 }];
 
 var regionsBoundariesUrl = exports.regionsBoundariesUrl = '/static/geometry/regions.topojson';
