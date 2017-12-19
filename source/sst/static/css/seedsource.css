@@ -10550,6 +10550,15 @@ label.panel-block:hover {
   }
 }
 
+@media screen and (min-width: 769px), print {
+  .tabs.is-boxed li.is-active-tablet a {
+    color: #3273dc;
+    background-color: white;
+    border-color: #dbdbdb;
+    border-bottom-color: transparent !important;
+  }
+}
+
 .align-middle {
   vertical-align: middle;
 }
