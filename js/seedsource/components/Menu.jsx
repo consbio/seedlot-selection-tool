@@ -209,7 +209,7 @@ class Menu extends React.Component {
                         <a href={staticResource('documents/ClimateWNA.pdf')} target="_blank">Download PDF</a>
                     </p>
                     <p>
-                        <a href="http://cfcg.forestry.ubc.ca/projects/climate-data/climatebcwna/" target="_blank">
+                        <a href="https://www.climatehubs.oce.usda.gov/hubs/northwest" target="_blank">
                             ClimateWNA:
                         </a>
                         generating high-resolution climate data for climate change studies and applications in Western
