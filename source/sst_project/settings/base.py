@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'tastypie',
     'django_celery_results',
     'social_django',
+    'webpack_loader',
 
     'sst',
     'seedsource_core.django.seedsource',
@@ -185,6 +186,20 @@ CELERYBEAT_SCHEDULE = {
 
 }
 
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'webpack_bundles/',  # must end with slash
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': ['.+\.hot-update.js', '.+\.map']
+    }
+}
+
+if not DEBUG:
+    WEBPACK_LOADER['DEFAULT']['BUNDLE_DIR_NAME'] = '/'
+
 NC_REGISTERED_JOBS = {
     'generate_scores': {
         'type': 'task',
@@ -211,5 +226,7 @@ NC_INSTALLED_INTERFACES = (
 )
 
 NC_ENABLE_STRIDING = True
+NC_SERVICE_DATA_ROOT = 'data/ncdjango/services/'
+DATASET_DOWNLOAD_DIR = 'data/downloads'
 
 SEEDSOURCE_TITLE = 'Seedlot Selection Tool'
