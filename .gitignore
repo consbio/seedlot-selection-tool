@@ -6,3 +6,4 @@ __pycache__/
 config.json
 source/sst_project/settings/custom.py
 webpack-stats.json
+data/
