@@ -5,8 +5,8 @@ import random
 import string
 from datetime import timedelta
 
-from clover.render.renderers.stretched import StretchedRenderer
-from clover.utilities.color import Color
+from trefoil.render.renderers.stretched import StretchedRenderer
+from trefoil.utilities.color import Color
 
 
 # Starting at this file, walk back up the directory tree to the project root
