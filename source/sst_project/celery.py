@@ -1,4 +1,5 @@
 import os
+import django
 
 from celery import Celery
 
@@ -7,6 +8,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sst_project.settings')
 
 from django.conf import settings  # noqa
 
+django.setup()
 app = Celery('sst_project')
 
 # Using a string here means the worker will not have to
