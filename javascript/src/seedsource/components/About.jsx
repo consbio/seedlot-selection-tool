@@ -1,5 +1,4 @@
 import React from 'react'
-import { staticResource } from 'utils'
 import hands from 'images/hands.jpg'
 import about_objective from 'images/about_objective.gif'
 import about_location from 'images/about_location.gif'

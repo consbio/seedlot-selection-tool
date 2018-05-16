@@ -1,14 +1,23 @@
 import React from 'react'
 import ModalCard from 'seedsource/components/ModalCard'
 import NavItemDropdown from 'seedsource/components/NavItemDropdown'
-import { staticResource } from 'utils'
+import purpose from '../../../images/purpose.jpg'
+import background1 from '../../../images/background1.jpg'
+import background2 from '../../../images/background2.jpg'
+import fs_logo from '../../../images/fs_logo.png'
+import osu_logo from '../../../images/osu_logo.png'
+import cbi_logo from '../../../images/cbi_logo.png'
+import nw_climate_hub_logo from '../../../images/nw_climate_hub_logo.png'
+import ClimateWNA from '../../../../source/sst/static/documents/ClimateWNA.pdf'
+import SST_Instructions from '../../../../source/sst/static/documents/SST Instructions.pdf'
+
 
 class Menu extends React.Component {
     render() {
         return [
             <div className="has-text-dark is-size-6" key="modals">
                 <ModalCard ref={input => { this.purposeModal = input }} title="Purpose">
-                    <img src={staticResource('images/purpose.jpg')} className="is-pulled-left margin-right-5" />
+                    <img src={purpose} className="is-pulled-left margin-right-5" />
                     <p>
                         The Seedlot Selection Tool (SST) is a web-based mapping application designed to help natural
                         resource managers match seedlots with planting sites based on climatic information. The SST
@@ -22,7 +31,7 @@ class Menu extends React.Component {
                     </p>
                 </ModalCard>
                 <ModalCard ref={input => { this.backgroundModal = input }} title="Background">
-                    <img src={staticResource('images/background1.jpg')} className="is-pulled-left margin-right-5" />
+                    <img src={background1} className="is-pulled-left margin-right-5" />
                     <p>
                         Populations of forest trees and other native plants are genetically different from each other,
                         and adapted to different climatic conditions. Therefore, natural resource managers must match
@@ -48,7 +57,7 @@ class Menu extends React.Component {
                         temperature—especially cold temperatures during the winter, warm temperatures during the
                         summer, and moisture related variables such as precipitation and heat:moisture index.
                     </p>
-                    <img src={staticResource('images/background2.jpg')} className="is-pulled-right margin-left-5 "/>
+                    <img src={background2} className="is-pulled-right margin-left-5 "/>
                     <p>
                         Once important climate variables are selected, it is necessary to decide on transfer
                         limits—that is, how far can we move a population climatically before performance becomes
@@ -206,7 +215,7 @@ class Menu extends React.Component {
                 </ModalCard>
                 <ModalCard ref={input => { this.climatenaModal = input }} title="ClimateNA">
                     <p>
-                        <a href={staticResource('documents/ClimateWNA.pdf')} target="_blank">Download PDF</a>
+                        <a href={ClimateWNA} target="_blank">Download PDF</a>
                     </p>
                     <p>
                         <a href="http://cfcg.forestry.ubc.ca/projects/climate-data/climatebcwna/" target="_blank">
@@ -352,22 +361,22 @@ class Menu extends React.Component {
                     <div className="columns">
                         <div className="column">
                             <a href="http://www.fs.fed.us/" target="_blank">
-                                <img src={staticResource('images/fs_logo.png')} alt="Forest Service" />
+                                <img src={fs_logo} alt="Forest Service" />
                             </a>
                         </div>
                         <div className="column">
                             <a href="http://oregonstate.edu/" target="_blank">
-                                <img src={staticResource('images/osu_logo.png')} alt="Oregon State University" />
+                                <img src={osu_logo} alt="Oregon State University" />
                             </a>
                         </div>
                         <div className="column">
                             <a href="http://consbio.org" target="_blank">
-                                <img src={staticResource('images/cbi_logo.png')} alt="Conservation Biology Institute" />
+                                <img src={cbi_logo} alt="Conservation Biology Institute" />
                             </a>
                         </div>
                         <div className="column is-half">
                             <a href="https://www.climatehubs.oce.usda.gov/hubs/northwest" target="_blank">
-                                <img src={staticResource('images/nw_climate_hub_logo.png')} alt="NW Climate Hub" />
+                                <img src={nw_climate_hub_logo} alt="NW Climate Hub" />
                             </a>
                         </div>
                     </div>
@@ -426,7 +435,7 @@ class Menu extends React.Component {
             </div>,
 
             <a className='navbar-item' onClick={() => this.purposeModal.show()} key="purpose">Purpose</a>,
-            <a className='navbar-item' href={staticResource('documents/SST Instructions.pdf')} target="_blank" key="instructions">
+            <a className='navbar-item' href={SST_Instructions} target="_blank" key="instructions">
                 Instructions
             </a>,
             <NavItemDropdown title="More Information" key="information">
