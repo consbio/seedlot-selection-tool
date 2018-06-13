@@ -28,7 +28,7 @@ export default {
                 })
             },
             {
-                test: /\.(png|pdf|gif|jpe?g)$/,
+                test: /\.(png|pdf|gif|jpe?g|svg)$/,
                 loader: 'file-loader'
             }
         ]
