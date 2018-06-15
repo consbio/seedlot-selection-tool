@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Seedlot Selection Tool",
   "scripts": {
-    "start": "webpack-dev-server --hot --config webpack.dev.babel.js"
+    "start": "webpack-dev-server --hot --config webpack.dev.babel.js",
+    "build": "webpack --config webpack.prod.babel.js --output-pathinfo"
   },
   "author": "Conservation Biology Institute",
   "license": "BSD",
