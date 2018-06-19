@@ -62,6 +62,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'javascript/build'),
 )
 
+WEBPACK_LOADER['DEFAULT']['BUNDLE_DIR_NAME'] = '/'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = CONFIG.get('email_host')
 EMAIL_HOST_USER = CONFIG.get('email_user')
