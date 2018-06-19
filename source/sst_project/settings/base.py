@@ -155,7 +155,6 @@ REST_FRAMEWORK = {
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_STORAGE = 'sst_project.storage.SSTStaticFilesStorage'
 BABEL_CMD = '/usr/local/bin/babel'
 UGLIFY_CMD = '/usr/local/bin/uglifyjs'
 
