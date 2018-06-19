@@ -29,7 +29,10 @@ export default {
             },
             {
                 test: /\.(png|pdf|gif|jpe?g|svg)$/,
-                loader: 'file-loader'
+                loader: 'file-loader',
+                options: {
+                    name: '[path][name].[hash].[ext]'
+                }
             }
         ]
     },
