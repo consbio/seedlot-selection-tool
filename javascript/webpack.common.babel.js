@@ -31,7 +31,8 @@ export default {
                 test: /\.(png|pdf|gif|jpe?g|svg)$/,
                 loader: 'file-loader',
                 options: {
-                    name: '/static/[path][name].[hash].[ext]'
+                    outputPath: 'images/',
+                    name: '[name].[hash].[ext]'
                 }
             }
         ]
