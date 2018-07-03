@@ -4,7 +4,8 @@
   "description": "Seedlot Selection Tool",
   "scripts": {
     "start": "webpack-dev-server --hot --config webpack.dev.babel.js",
-    "build": "webpack --config webpack.prod.babel.js --output-pathinfo"
+    "build": "webpack --config webpack.prod.babel.js --output-pathinfo",
+    "merge-regions": "mapshaper -i source/sst/static/geometry/*.json combine-files -o source/seedsource/static/sst/geometry/regions.topojson"
   },
   "author": "Conservation Biology Institute",
   "license": "BSD",
