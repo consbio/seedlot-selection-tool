@@ -28,11 +28,10 @@ export default {
                 })
             },
             {
-                test: /\.(png|pdf|gif|jpe?g|svg)$/,
+                test: /\.(png|gif|jpe?g|svg|pdf)$/,
                 loader: 'file-loader',
                 options: {
-                    outputPath: 'images/',
-                    name: '[name].[hash].[ext]'
+                    name: '[name]-[hash].[ext]'
                 }
             }
         ]
@@ -40,7 +39,8 @@ export default {
     resolve: {
         modules: [
             path.resolve('./node_modules'), path.resolve('./src'), path.resolve('../seedsource-core/javascript/src'),
-            path.resolve('../seedsource-core/javascript/scss'), path.resolve('./')
+            path.resolve('../seedsource-core/javascript/scss'), path.resolve('./'),
+            path.resolve('../seedsource-core/javascript')
         ],
         extensions: ['.js', '.jsx']
     }
