@@ -35,6 +35,7 @@ export default merge(common, {
     ],
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: '[name].[chunkhash].bundle.js'
+        filename: '[name].[chunkhash].bundle.js',
+        publicPath: '/static/'
     }
 })
