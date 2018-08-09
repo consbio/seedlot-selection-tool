@@ -33,15 +33,28 @@ export default {
                 options: {
                     name: '[name].[hash].[ext]'
                 }
+            },
+            {
+                test: /\.jison$/,
+                loader: path.resolve('./loaders/jison-loader.js')
             }
         ]
     },
     resolve: {
         modules: [
-            path.resolve('./node_modules'), path.resolve('./src'), path.resolve('../seedsource-core/javascript/src'),
-            path.resolve('../seedsource-core/javascript/scss'), path.resolve('./'),
-            path.resolve('../seedsource-core/javascript')
+            path.resolve('./node_modules'),
+            path.resolve('../seedsource-core/javascript/node_modules'),
+            path.resolve('./src'),
+            path.resolve('../seedsource-core/javascript/src'),
+            path.resolve('../seedsource-core/javascript/scss'),
+            path.resolve('./')
         ],
+        alias: {
+            core: path.resolve('../seedsource-core/javascript/src')
+        },
         extensions: ['.js', '.jsx']
+    },
+    node: {
+        fs: 'empty'
     }
 }
