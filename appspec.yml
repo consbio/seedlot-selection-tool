@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: .
+    destination: /home/seedsource/apps/seedlot-selection-tool
+permissions:
+  - object: .
+    owner: seedsource
+    group: seedsource
+hooks:
+  AfterInstall:
+    - location: CodeDeploy/AfterInstall.sh
+      runas: seedsource
+    - location: CodeDeploy/AfterInstall-root.sh
+      runas: seedsource
