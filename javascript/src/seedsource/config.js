@@ -1,6 +1,23 @@
 import baseConfig from 'core/seedsource/config'
+import SpeciesConstraint from 'seedsource/containers/SpeciesConstraint'
 
-const config = {
+const serializeSpeciesConstraint = ({ climate }, { species }) => {
+    let { time, model } = climate.site
+    let climateFragment
+
+    if (time === '1961_1990' || time === '1981_2010') {
+        climateFragment = `p${time}_800m`
+    }
+    else {
+        climateFragment = `15gcm_${model}_${time}`
+    }
+
+    return {
+        service: `${species}_${climateFragment}_pa`
+    }
+}
+
+const config =  Object.assign(baseConfig, {
     apiRoot: '/sst/',
     species: [
         {
@@ -31,7 +48,81 @@ const config = {
             name: 'pimo',
             label: 'Western white pine'
         }
-    ]
-}
+    ],
+    constraints: {
+        objects: Object.assign(baseConfig.constraints.objects, {
+            pico: {
+                component: SpeciesConstraint,
+                values: {
+                    species: 'pico'
+                },
+                serialize: serializeSpeciesConstraint
+            },
+            pisi: {
+                component: SpeciesConstraint,
+                values: {
+                    species: 'pisi'
+                },
+                serialize: serializeSpeciesConstraint
+            },
+            psme: {
+                component: SpeciesConstraint,
+                values: {
+                    species: 'psme'
+                },
+                serialize: serializeSpeciesConstraint
+            },
+            pipo: {
+                component: SpeciesConstraint,
+                values: {
+                    species: 'pipo'
+                },
+                serialize: serializeSpeciesConstraint
+            },
+            pien: {
+                component: SpeciesConstraint,
+                values: {
+                    species: 'pien'
+                },
+                serialize: serializeSpeciesConstraint
+            }
+        }),
+        categories: [
+            ...baseConfig.constraints.categories,
+            {
+                name: 'species',
+                label: 'Species',
+                type: 'category',
+                items: [
+                    {
+                        name: 'pico',
+                        label: 'Lodgepole Pine',
+                        type: 'constraint'
+                    },
+                    {
+                        name: 'pisi',
+                        label: 'Sitka Spruce',
+                        type: 'constraint'
+                    },
+                    {
+                        name: 'psme',
+                        label: 'Douglas-fir',
+                        type: 'constraint'
+                    },
+                    {
+                        name: 'pipo',
+                        label: 'Ponderosa Pine',
+                        type: 'constraint'
+                    },
+                    {
+                        name: 'pien',
+                        label: 'Engelmann Spruce',
+                        type: 'constraint'
+                    }
+                ]
+            }
+        ]
+    }
+})
 
-export default Object.assign(baseConfig, config)
+export default config
