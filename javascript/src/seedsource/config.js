@@ -91,7 +91,7 @@ const config =  Object.assign(baseConfig, {
             ...baseConfig.constraints.categories,
             {
                 name: 'species',
-                label: 'Species',
+                label: 'Species Range',
                 type: 'category',
                 items: [
                     {
