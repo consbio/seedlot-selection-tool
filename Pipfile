@@ -1,4 +1,4 @@
-[[source]]
+ [[source]]
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
@@ -12,6 +12,7 @@ social-auth-app-django = "*"
 "psycopg2" = "*"
 djangorestframework-filters = "*"
 django-webpack-loader = "*"
+pyproj = "*"
 
 [dev-packages]
 
