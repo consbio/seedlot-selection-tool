@@ -47,6 +47,74 @@ const config =  Object.assign(baseConfig, {
         {
             name: 'pimo',
             label: 'Western white pine'
+        },
+        {
+            name: 'abam',
+            label: 'Pacific silver fir',
+        },
+        {
+            name: 'abco',
+            label: 'White fir',
+        },
+        {
+            name: 'abgr',
+            label: 'Grand fir'
+        },
+        {
+            name: 'abpr',
+            label: 'Grand fir'
+        },
+        {
+            name: 'absh',
+            label: 'Shasta red fir'
+        },
+        {
+            name: 'alru2',
+            label: 'Red alder'
+        },
+        {
+            name: 'cade27',
+            label: 'Incense cedar'
+        },
+        {
+            name: 'chla',
+            label: 'Port orford cedar'
+        },
+        {
+            name: 'chno',
+            label: 'Alaska yellow cedar'
+        },
+        {
+            name: 'laoc',
+            label: 'Western larch'
+        },
+        {
+            name: 'pial',
+            label: 'Whitebark pine'
+        },
+        {
+            name: 'pien',
+            label: 'Engelmann spruce'
+        },
+        {
+            name: 'pije',
+            label: 'Jeffrey pine'
+        },
+        {
+            name: 'pila',
+            label: 'Sugar pine'
+        },
+        {
+            name: 'tabr2',
+            label: 'Pacific yew'
+        },
+        {
+            name: 'tshe',
+            label: 'Western red cedar'
+        },
+        {
+            name: 'tsme',
+            label: 'Mountain hemlock'
         }
     ],
     constraints: {
