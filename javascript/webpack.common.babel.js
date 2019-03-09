@@ -45,6 +45,7 @@ export default {
             path.resolve('./node_modules'),
             path.resolve('../seedsource-core/javascript/node_modules'),
             path.resolve('./src'),
+            path.resolve('../seedsource-core/javascript'),
             path.resolve('../seedsource-core/javascript/src'),
             path.resolve('../seedsource-core/javascript/scss'),
             path.resolve('./')
