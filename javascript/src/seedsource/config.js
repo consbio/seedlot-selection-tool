@@ -62,7 +62,7 @@ const config =  Object.assign(baseConfig, {
         },
         {
             name: 'abpr',
-            label: 'Grand fir'
+            label: 'Noble Fir'
         },
         {
             name: 'absh',
@@ -110,7 +110,7 @@ const config =  Object.assign(baseConfig, {
         },
         {
             name: 'tshe',
-            label: 'Western red cedar'
+            label: 'Western hemlock'
         },
         {
             name: 'tsme',
