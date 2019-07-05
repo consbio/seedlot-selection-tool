@@ -13,3 +13,7 @@ https://seedlotselectiontool.org/sst/
 * [Taylor Mutch](https://github.com/TaylorMutch)
 * [Kaveh Karimi](https://github.com/ka7eh)
 * [Ken Ferschweiler](https://github.com/kennino)
+
+# Documentation
+
+Develop documentation is available at https://seedlot-selection-tool.readthedocs.io
