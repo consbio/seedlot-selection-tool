@@ -122,36 +122,46 @@ const config =  Object.assign(baseConfig, {
             pico: {
                 component: SpeciesConstraint,
                 values: {
+                    label: 'Lodgepole Pine',
                     species: 'pico'
                 },
+                constraint: 'raster',
                 serialize: serializeSpeciesConstraint
             },
             pisi: {
                 component: SpeciesConstraint,
                 values: {
+                    label: 'Sitka Spruce',
                     species: 'pisi'
                 },
+                constraint: 'raster',
                 serialize: serializeSpeciesConstraint
             },
             psme: {
                 component: SpeciesConstraint,
                 values: {
+                    label: 'Douglas-fir',
                     species: 'psme'
                 },
+                constraint: 'raster',
                 serialize: serializeSpeciesConstraint
             },
             pipo: {
                 component: SpeciesConstraint,
                 values: {
+                    label: 'Ponderosa Pine',
                     species: 'pipo'
                 },
+                constraint: 'raster',
                 serialize: serializeSpeciesConstraint
             },
             pien: {
                 component: SpeciesConstraint,
                 values: {
+                    label: 'Engelmann Spruce',
                     species: 'pien'
                 },
+                constraint: 'raster',
                 serialize: serializeSpeciesConstraint
             }
         }),
