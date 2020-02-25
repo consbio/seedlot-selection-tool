@@ -59,15 +59,19 @@ for example (for ``psycopg2``):
 .. note::
 
     It's recommended that you not use the root account to run your application or web server. Instead, use one account
-    for nginx (if you install nginx through a package managet, this should be done automatically) and another account
+    for nginx (if you install nginx through a package manager, this should be done automatically) and another account
     for the application itself (e.g., ``seedsource``). It's also recommended to create a Python `virtual environment
     <https://virtualenv.pypa.io/en/stable/>`_ as the application user and use it to install all Python dependencies and
     run all Python commands.
 
 .. note::
 
-    ``GDAL`` will probably be the most challenging dependency to get installed. You may need to have the GDAL
-    development libraries installed first, and if you get stuck, search for installing GDAL Python for your platform.
+    ``GDAL`` will probably be the most challenging dependency to get installed. You will likely need to have the GDAL
+    development libraries for the version of GDAL required by the dependencies of this project (see `Pipfile.lock` entry
+    for `gdal` to determine the required version).
+
+    If you get stuck, search for installing the required version of GDAL Python for your platform.
+
     Once GDAL is installed, everything else should be easier.
 
 Setup & Configuration
@@ -79,7 +83,7 @@ launch. Create a spatially-enabled database, and a database user for the applica
 Configure Django
 ^^^^^^^^^^^^^^^^
 
-Create a file in ``seedlot-selectiont-tool`` directory called ``config.json``. Add the following to this file,
+Create a file in ``seedlot-selection-tool`` directory called ``config.json``. Add the following to this file,
 and fill out the values:
 
 .. code-block:: json
@@ -119,7 +123,7 @@ These keys are needed for social authentication:
 For social auth to work, make sure access to user email is activated by the OAuth providers.
 
 Create a new Python module in ``seedlot-selection-tool/source/sst_project/settings`` called ``custom.py``. Add
-he following to this new file:
+the following to this new file:
 
 .. code-block:: python
 
@@ -136,11 +140,25 @@ he following to this new file:
     You can also add additional settings to ``custom.py`` or override settings specified in ``production.py`` and
     ``base.py`` as needed.
 
-Run the database migrations:
+From the root of the project, run the database migrations:
 
 .. code-block:: text
 
-    $ python manage.py migrate
+    $ python source/manage.py migrate
+
+
+Setup data folder
+^^^^^^^^^^^^^^^^^
+
+By default, data files are expected to be within ``data/ncdjango/services/`` relative to the project root.
+
+You can override this setting within ``custom.py`` by setting the value of ``NC_SERVICE_DATA_ROOT``:
+
+.. code-block:: python
+
+    NC_SERVICE_DATA_ROOT = '/custom/data/directory'
+
+The folder structure of this directory is covered in the :ref:`setup-add-data` document.
 
 Configure Supervisor (production only)
 ^^^^^^^^^^^^^^^^^^^^
@@ -204,7 +222,7 @@ Restart or reload nginx.
 Build & Deploy Static Content
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Navigate to the ``seedsource`` root directory, install the npm dependencies, and run the build script:
+Navigate to the ``javascript`` directory in the root of this project, install the npm dependencies, and run the build script:
 
 .. code-block:: text
 
