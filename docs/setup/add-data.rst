@@ -3,7 +3,7 @@
 Adding Data
 ===========
 
-The Seedlot Seletion Tool depends on three types of data: climate data, as NetCDF files; region boundary data, as
+The Seedlot Selection Tool depends on three types of data: climate data, as NetCDF files; region boundary data, as
 shapefiles; and seed zone data, also as shapefiles.
 
 Climate Data
@@ -48,17 +48,18 @@ and ``rcp45_2025Y`` directories for the ``west2`` region should be:
     |   +-- west2_rcp45_2025Y_bFFP.nc
     |   +-- west2_rcp45_2025Y_CMD.nc
 
-Once all the data is in place, you can run the following command to create services for the region elevation and all
-climate variables:
+
+Run the following command to import the region elevation and all climate variables:
 
 .. code-block:: text
 
-    $ python manage.py populate_services <region>
+    $ python source/manage.py populate_climate_data <region>
+
 
 The command will assume the variables: ``'MAT', 'MWMT', 'MCMT', 'TD', 'MAP', 'MSP', 'AHM', 'SHM', 'DD_0', 'DD5', 'FFP',
 'PAS', 'EMT', 'EXT', 'Eref', 'CMD'`` and the years: ``'1961_1990', '1981_2010', 'rcp45_2025', 'rcp45_2055',
-'rcp45_2085', 'rcp85_2025', 'rcp85_2055', 'rcp85_2085'``. If you are using difference variables and/or years, you will
-need to edit the script, which is located at ``source/seedsource/management/commands/populate_services.py``.
+'rcp45_2085', 'rcp85_2025', 'rcp85_2055', 'rcp85_2085'``. If you are using different variables and/or years, you will
+need to edit the script, which is located at ``source/seedsource/management/commands/populate_climate_data.py``.
 
 Region Boundary Data
 --------------------
@@ -67,7 +68,7 @@ You should simplify your boundary data before importing it into the tool. Next, 
 
 .. code-block:: text
 
-    $ python manage.py add_region <region> <path to shapefile>
+    $ python source/manage.py add_region <region> <path to shapefile>
 
 
 You should also convert the region boundary to GeoJSON and, it to the directory
@@ -80,11 +81,17 @@ You should also convert the region boundary to GeoJSON and, it to the directory
 Seed Zone Data
 --------------
 
-You can import prepared seedzone with the following command:
+Seed zones are expected to be contained in ``data/seedzones``.  You can configure this by setting the value of
+``SEEDZONES_LOCATION`` in your ``custom.py`` settings file (described in :ref:`setup-install` setup document).
+
+Seed zones are stored in a ZIP file, which includes a ``config.py`` file with configuration options for the seed zones.
+
+
+You can import a prepared seed zone set with the following command:
 
 .. code-block:: text
 
-    $ python manage.py import_seed_zones <path_to_zones_file>.zip
+    $ python source/manage.py import_seedzones <base name of seed zones zipfile>
 
 After importing the zones, you should run the ``calculate_zone_transfers`` command to generate transfer limits for each
 zone and elevation band (you will need to have service data for the appropriate region loaded first). Running the
