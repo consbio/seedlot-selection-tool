@@ -419,7 +419,7 @@ class Menu extends React.Component {
                         not share your email address with anyone else.
                     </p>
                     <p>
-                        <a href="http://eepurl.com/cc1p1z" target="_blank">Sign up for our newsletter</a>
+                        <a href="http://eepurl.com/gUCYYz" target="_blank">Sign up for our newsletter</a>
                     </p>
                 </ModalCard>
                 <ModalCard ref={input => { this.issueModal = input }} title="Report an Issue">
