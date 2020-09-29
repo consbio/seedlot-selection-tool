@@ -1,5 +1,5 @@
 import path from 'path'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import BundleTracker from 'webpack-bundle-tracker'
 
 export default {
@@ -10,22 +10,30 @@ export default {
     ],
     plugins: [
         new BundleTracker({filename: '../webpack-stats.json'}),
-        new ExtractTextPlugin({filename: '[name].bundle.css'})
+        new MiniCssExtractPlugin({ filename: '[name].bundle.css' })
     ],
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
                 include: [path.resolve('./src'), path.resolve('../seedsource-core/javascript/src')],
+                exclude: [/node_modules\/.*\/dist\/.*/],
                 loader: 'babel-loader',
-                query: {presets: [require.resolve('babel-preset-env'), require.resolve('babel-preset-react')]}
+                query: {
+                    presets: ['@babel/preset-env', '@babel/preset-react'],
+                    plugins: ['@babel/plugin-syntax-dynamic-import', '@babel/plugin-proposal-class-properties']
+                }
             },
             {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader']
-                })
+                test: /\.(scss|css)$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {}
+                    },
+                    'css-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.(png|gif|jpe?g|svg|pdf)$/,
