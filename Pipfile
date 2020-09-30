@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 "trefoil" = "==0.3.0"
-"rasterio" = "==1.0a12"
+"rasterio" = "*"
 "90ed60a" = {path = "./seedsource-core", editable = true}
 django-celery-results = "*"
 social-auth-app-django = "*"
@@ -15,9 +15,6 @@ django-webpack-loader = "*"
 pyproj = "*"
 
 [dev-packages]
-
-[requires]
-python_version = "3.6"
 
 [pipenv]
 allow_prereleases = true
