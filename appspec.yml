@@ -2,11 +2,11 @@ version: 0.0
 os: linux
 files:
   - source: .
-    destination: /home/seedsource/apps/seedlot-selection-tool
+    destination: /home/sst/apps/seedlot-selection-tool
 permissions:
   - object: .
-    owner: seedsource
-    group: seedsource
+    owner: sst
+    group: sst
 hooks:
   AfterInstall:
     - location: CodeDeploy/AfterInstall.sh
