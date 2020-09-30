@@ -10,6 +10,6 @@ permissions:
 hooks:
   AfterInstall:
     - location: CodeDeploy/AfterInstall.sh
-      runas: seedsource
+      runas: sst
     - location: CodeDeploy/AfterInstall-root.sh
       runas: root
