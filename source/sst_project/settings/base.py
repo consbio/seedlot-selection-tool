@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.gis',
 
+    'waffle',
     'ncdjango',
     'rest_framework',
     'tastypie',
@@ -66,6 +67,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'waffle.middleware.WaffleMiddleware'
 )
 
 ROOT_URLCONF = 'sst_project.urls'
