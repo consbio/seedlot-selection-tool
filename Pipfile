@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-"trefoil" = "==0.3.0"
+"trefoil" = "==0.3.2"
 "rasterio" = "*"
 "90ed60a" = {path = "./seedsource-core", editable = true}
 django-celery-results = "*"
