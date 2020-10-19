@@ -8,5 +8,6 @@ source/sst_project/settings/custom.py
 webpack-stats.json
 data/
 javascript/build/
+javascript/lib/
 docs/_build
 docs/html
