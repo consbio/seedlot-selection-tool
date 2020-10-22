@@ -7,7 +7,7 @@ export default {
   entry: [path.resolve('./src/index'), path.resolve('./scss/sst.scss')],
   plugins: [
     new BundleTracker({ filename: '../webpack-stats.json' }),
-    new MiniCssExtractPlugin({ filename: '[name].bundle.css' }),
+    new MiniCssExtractPlugin({ filename: '[name].[hash].bundle.css' }),
   ],
   module: {
     rules: [
