@@ -1,6 +1,8 @@
 import baseConfig, { updateConfig } from 'seedsource-ui/lib/config'
+import { get, urlEncode } from 'seedsource-ui/lib/io'
 import SpeciesConstraint from 'seedsource-ui/lib/containers/SpeciesConstraint'
 import Logo from 'seedsource-ui/images/logo.png'
+import { receiveTransfer } from 'seedsource-ui/lib/actions/variables'
 
 const serializeSpeciesConstraint = ({ climate }: { climate: any }, { species }: { species: string }) => {
   const { time, model } = climate.site
@@ -117,6 +119,32 @@ export default () => {
       {
         name: 'tsme',
         label: 'Mountain hemlock',
+      },
+    ],
+    defaultVariables: [
+      {
+        variable: 'MCMT',
+        getValue: dispatch => dispatch(receiveTransfer('MCMT', 20, null, null)),
+      },
+      {
+        variable: 'SHM',
+        getValue: (dispatch, point, region) => {
+          const url = `/arcgis/rest/services/${region}_1961_1990Y_SHM/MapServer/identify/?${urlEncode({
+            f: 'json',
+            tolerance: 2,
+            imageDisplay: '1600,1031,96',
+            geometryType: 'esriGeometryPoint',
+            mapExtent: '0,0,0,0',
+            geometry: JSON.stringify(point),
+          })}`
+
+          get(url)
+            .then(response => response.json())
+            .then(json => {
+              const pixelValue = json.results[0].attributes['Pixel value']
+              dispatch(receiveTransfer('SHM', pixelValue / 2, null, null))
+            })
+        },
       },
     ],
     constraints: {
