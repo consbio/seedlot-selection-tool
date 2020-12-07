@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "seedlot-selection-tool"
+version = "1.0.0"
+description = "A web-based spatial analysis and mapping tool that allows managers to find appropriate seedlots for a given planting site, given information about species, transfer limits, and historic and future climate projections across the landscape."
+authors = ["Conservation Biology Institute"]
+license = "BSD-3-Clause"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+trefoil = { git = "https://github.com/consbio/trefoil.git", branch = "main" }
+rasterio = "^1.2a1"
+seedsource-core = { path = "./seedsource-core", develop = true }
+django-celery-results = "^2.0.0"
+social-auth-app-django = "^4.0.0"
+psycopg2-binary = "^2.8.6"
+djangorestframework-filters = "^0.11.1"
+django-webpack-loader = "^0.7.0"
+celery = "^4.0.0"
+pyproj = "^3.0.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
