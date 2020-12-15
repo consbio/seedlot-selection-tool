@@ -78,7 +78,7 @@ DATASET_DOWNLOAD_DIR = '/ncdjango/downloads/'
 # Preview mode
 INSTALLED_APPS += ('seedsource_core.django.preview',)
 
-MIDDLEWARE_CLASSES += ('seedsource_core.django.preview.middleware.PreviewAccessMiddleware',)
+MIDDLEWARE += ('seedsource_core.django.preview.middleware.PreviewAccessMiddleware',)
 
 PREVIEW_MODE = True
 PREVIEW_PASSWORD = 'sstearlyaccess'
