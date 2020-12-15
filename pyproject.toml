@@ -6,7 +6,7 @@ authors = ["Conservation Biology Institute"]
 license = "BSD-3-Clause"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.7"
 trefoil = { git = "https://github.com/consbio/trefoil.git", branch = "main" }
 rasterio = "^1.2a1"
 seedsource-core = { path = "./seedsource-core", develop = true }
