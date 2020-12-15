@@ -4,6 +4,20 @@ import pytz
 
 from .base import *
 
+if CONFIG.get('sentry_url'):
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+
+    sentry_sdk.init(
+        CONFIG.get('sentry_dsn'),
+        integrations=[DjangoIntegration()],
+
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=1.0,
+    )
+
 DEBUG = False
 
 ALLOWED_HOSTS = ['seedlotselectiontool.org']
@@ -14,10 +28,6 @@ BROKER_URL = 'amqp://{}:{}@localhost:5672'.format(
 CELERY_RESULT_BACKEND = 'django-db'
 
 NC_GEOPROCESSING_JOBS_QUEUE = 'gp'
-
-RAVEN_CONFIG = {
-    'dsn': CONFIG.get('raven_dsn')
-}
 
 LOGGING = {
     'version': 1,
@@ -39,20 +49,16 @@ LOGGING = {
             'filename': CONFIG.get('logfile_path', '/tmp/seedsource.log'),
             'when': 'midnight',
             'formatter': 'verbose'
-        },
-        'sentry': {
-            'level': 'ERROR',
-            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler'
         }
     },
     'loggers': {
         'django.request': {
             'level': 'WARNING',
-            'handlers': ['sentry', 'file']
+            'handlers': ['file']
         },
         '': {
             'level': 'DEBUG',
-            'handlers': ['sentry', 'file']
+            'handlers': ['file']
         }
     }
 }
