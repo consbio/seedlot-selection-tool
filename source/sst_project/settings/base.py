@@ -5,13 +5,12 @@ import random
 import string
 from datetime import timedelta
 
+from django.urls import reverse_lazy
 from trefoil.render.renderers.stretched import StretchedRenderer
 from trefoil.utilities.color import Color
 
 
 # Starting at this file, walk back up the directory tree to the project root
-from django.core.urlresolvers import reverse_lazy
-
 BASE_DIR = os.path.abspath(__file__)
 for __ in range(4):
     BASE_DIR = os.path.dirname(BASE_DIR)
@@ -57,12 +56,11 @@ INSTALLED_APPS = (
     'seedsource_core.django.accounts'
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',

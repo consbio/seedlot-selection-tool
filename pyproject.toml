@@ -13,10 +13,10 @@ seedsource-core = { path = "./seedsource-core", develop = true }
 django-celery-results = "^2.0.0"
 social-auth-app-django = "^4.0.0"
 psycopg2-binary = "^2.8.6"
-djangorestframework-filters = "^0.11.1"
 django-webpack-loader = "^0.7.0"
 celery = "^4.0.0"
 pyproj = "^3.0.0"
+djangorestframework-filters = { git = "https://github.com/philipn/django-rest-framework-filters.git", branch = "master"}
 
 [tool.poetry.dev-dependencies]
 
