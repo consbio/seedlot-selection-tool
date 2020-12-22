@@ -84,8 +84,6 @@ DATASET_DOWNLOAD_DIR = '/ncdjango/downloads/'
 # Preview mode
 INSTALLED_APPS += ('seedsource_core.django.preview',)
 
-MIDDLEWARE += ('seedsource_core.django.preview.middleware.PreviewAccessMiddleware',)
-
 PREVIEW_MODE = True
 PREVIEW_PASSWORD = 'sstearlyaccess'
 PREVIEW_EXPIRES = datetime.datetime(2016, 9, 23, tzinfo=pytz.timezone('US/Pacific'))
