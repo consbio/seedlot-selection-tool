@@ -157,7 +157,7 @@ class Menu extends React.Component {
               center, and then use either the Custom or Zone transfer limit method in Step 4. If the zone's
               climatic center is unknown, the user can use the Zone transfer limit method to get its location. In this
               case, the user would enter any location within the desired zone in Step 2, and then choose the
-              &quot;climatic center&quot; option in Step`}
+              "climatic center" option in Step`}
             </p>
             <p>
               <strong>{t`Step 3 – Select climate scenarios.`}</strong>{' '}
