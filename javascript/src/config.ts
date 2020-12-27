@@ -1,3 +1,4 @@
+import { t } from 'ttag'
 import baseConfig, { updateConfig } from 'seedsource-ui/lib/config'
 import { get, urlEncode } from 'seedsource-ui/lib/io'
 import SpeciesConstraint from 'seedsource-ui/lib/containers/SpeciesConstraint'
@@ -26,99 +27,99 @@ export default () => {
     species: [
       {
         name: 'psme',
-        label: 'Douglas-fir',
+        label: t`Douglas-fir`,
       },
       {
         name: 'pico',
-        label: 'Lodgepole pine',
+        label: t`Lodgepole pine`,
       },
       {
         name: 'piba',
-        label: 'Jack pine',
+        label: t`Jack pine`,
       },
       {
         name: 'pipo',
-        label: 'Ponderosa pine',
+        label: t`Ponderosa pine`,
       },
       {
         name: 'pima',
-        label: 'Black spruce',
+        label: t`Black spruce`,
       },
       {
         name: 'thpl',
-        label: 'Western red cedar',
+        label: t`Western red cedar`,
       },
       {
         name: 'pimo',
-        label: 'Western white pine',
+        label: t`Western white pine`,
       },
       {
         name: 'abam',
-        label: 'Pacific silver fir',
+        label: t`Pacific silver fir`,
       },
       {
         name: 'abco',
-        label: 'White fir',
+        label: t`White fir`,
       },
       {
         name: 'abgr',
-        label: 'Grand fir',
+        label: t`Grand fir`,
       },
       {
         name: 'abpr',
-        label: 'Noble Fir',
+        label: t`Noble Fir`,
       },
       {
         name: 'absh',
-        label: 'Shasta red fir',
+        label: t`Shasta red fir`,
       },
       {
         name: 'alru2',
-        label: 'Red alder',
+        label: t`Red alder`,
       },
       {
         name: 'cade27',
-        label: 'Incense cedar',
+        label: t`Incense cedar`,
       },
       {
         name: 'chla',
-        label: 'Port orford cedar',
+        label: t`Port orford cedar`,
       },
       {
         name: 'chno',
-        label: 'Alaska yellow cedar',
+        label: t`Alaska yellow cedar`,
       },
       {
         name: 'laoc',
-        label: 'Western larch',
+        label: t`Western larch`,
       },
       {
         name: 'pial',
-        label: 'Whitebark pine',
+        label: t`Whitebark pine`,
       },
       {
         name: 'pien',
-        label: 'Engelmann spruce',
+        label: t`Engelmann spruce`,
       },
       {
         name: 'pije',
-        label: 'Jeffrey pine',
+        label: t`Jeffrey pine`,
       },
       {
         name: 'pila',
-        label: 'Sugar pine',
+        label: t`Sugar pine`,
       },
       {
         name: 'tabr2',
-        label: 'Pacific yew',
+        label: t`Pacific yew`,
       },
       {
         name: 'tshe',
-        label: 'Western hemlock',
+        label: t`Western hemlock`,
       },
       {
         name: 'tsme',
-        label: 'Mountain hemlock',
+        label: t`Mountain hemlock`,
       },
     ],
     defaultVariables: [
@@ -152,7 +153,7 @@ export default () => {
         pico: {
           component: SpeciesConstraint,
           values: {
-            label: 'Lodgepole Pine',
+            label: t`Lodgepole Pine`,
             species: 'pico',
           },
           constraint: 'raster',
@@ -161,7 +162,7 @@ export default () => {
         pisi: {
           component: SpeciesConstraint,
           values: {
-            label: 'Sitka Spruce',
+            label: t`Sitka Spruce`,
             species: 'pisi',
           },
           constraint: 'raster',
@@ -170,7 +171,7 @@ export default () => {
         psme: {
           component: SpeciesConstraint,
           values: {
-            label: 'Douglas-fir',
+            label: t`Douglas-fir`,
             species: 'psme',
           },
           constraint: 'raster',
@@ -179,7 +180,7 @@ export default () => {
         pipo: {
           component: SpeciesConstraint,
           values: {
-            label: 'Ponderosa Pine',
+            label: t`Ponderosa Pine`,
             species: 'pipo',
           },
           constraint: 'raster',
@@ -188,7 +189,7 @@ export default () => {
         pien: {
           component: SpeciesConstraint,
           values: {
-            label: 'Engelmann Spruce',
+            label: t`Engelmann Spruce`,
             species: 'pien',
           },
           constraint: 'raster',
@@ -199,32 +200,32 @@ export default () => {
         ...baseConfig.constraints.categories,
         {
           name: 'species',
-          label: 'Species Range',
+          label: t`Species Range`,
           type: 'category',
           items: [
             {
               name: 'pico',
-              label: 'Lodgepole Pine',
+              label: t`Lodgepole Pine`,
               type: 'constraint',
             },
             {
               name: 'pisi',
-              label: 'Sitka Spruce',
+              label: t`Sitka Spruce`,
               type: 'constraint',
             },
             {
               name: 'psme',
-              label: 'Douglas-fir',
+              label: t`Douglas-fir`,
               type: 'constraint',
             },
             {
               name: 'pipo',
-              label: 'Ponderosa Pine',
+              label: t`Ponderosa Pine`,
               type: 'constraint',
             },
             {
               name: 'pien',
-              label: 'Engelmann Spruce',
+              label: t`Engelmann Spruce`,
               type: 'constraint',
             },
           ],
