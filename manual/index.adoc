@@ -1,0 +1,38 @@
+:doctype: book
+:source-highlighter: rouge
+:stem: latexmath
+:toc:
+:imagesdir: ./img
+:figure-caption!:
+
+= Seedlot Selection Tool (SST): User Guide
+
+== Introduction
+
+The Seedlot Selection Tool (SST) is a web-based mapping application designed to help natural resource managers match
+seedlots with planting sites based on climatic information. Plant populations are genetically differentiated from one
+another through natural selection to different climatic conditions. As a result, differences in climate reflect
+differences in adaption. The SST maps locations where a seedlot matches a planting site assuming the seedlot was
+locally adapted to the past climate. The climates of the planting sites can be chosen to represent past climates, or
+future climates based on selected climate change scenarios. The SST allows the user to control many input parameters,
+allowing them to explore different assumptions about climate change, how plant populations are adapted to climate, and
+the risk tolerance of the user. The eight steps described below will provide guidelines to tailor the tool to your
+specific reforestation or restoration needs.
+
+include::sections/01-objective.adoc[]
+
+include::sections/02-location.adoc[]
+
+include::sections/03-region.adoc[]
+
+include::sections/04-climate.adoc[]
+
+include::sections/05-transfer.adoc[]
+
+include::sections/06-variables.adoc[]
+
+include::sections/07-constraints.adoc[]
+
+include::sections/08-results.adoc[]
+
+include::sections/appendix.adoc[]

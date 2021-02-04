@@ -1,0 +1,18 @@
+=== Appendix
+
+==== Layers
+
+The *Layers* tab allows the user to map different overlays onto the results. Options include gray-scaled values for
+different climate variables, seed and breeding zone boundaries, U.S. Level III Ecoregion boundaries, and U.S. county
+boundaries.
+
+==== Saved Runs
+
+The *Saved Runs* tab will list each of your saved runs. Click on the name of the saved run to *Load* or *Delete* the
+inputs. Once a saved run is loaded, you can recreate the map by clicking on the *Run Tool* button in the Tool tab.
+
+==== Account
+
+Use the *Account* menu in the upper right corner of the web site to create or sign into an account. Use an email
+address and password to create an account. We will use this email address only if you lose your password. If you want
+to receive updates on the SST, sign up for our newsletter by clicking the *News & Updates* button in the menu.

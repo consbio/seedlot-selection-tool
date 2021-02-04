@@ -1,0 +1,18 @@
+=== Step 6. Select Climate Variables
+
+Select one or more climate variables to be mapped. The climate information is derived from a climate downscaling
+application called ClimateNA (see tab for more information). You also have the option to *Choose automatically*, in
+which case, the climate variables chosen will be mean temperature of the coldest month (MCMT) and summer heat:moisture
+index (SHM). These climate variables are chosen based on the assumption that temperate forest trees (or other plants)
+are primarily adapted to cold temperatures in the winter and aridity in the summer. This option specifies a transfer
+limit for MCMT of `+/- 2.0°C` and for SHM of `+/-` half the value at the location specified in Step 2. These transfer
+limits may be modified. After choosing climate variables, the resulting table includes:
+
+* *Name* -- the abbreviated name of the ClimateNA variable
+* *Center* -- the climatic value at the center of the mapped output
+* *Transfer limit* -- the transfer limit used in showing the extent of the mapped output
+
+We caution users from selecting too many climate variables, particularly variables that are unrelated to adaptation.
+The use of many climate variables will probably result in overly conservative climate matches; the more climate
+variables that are included, the smaller the mapped areas will be. It is also best to avoid variables that are highly
+correlated with one another.

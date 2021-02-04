@@ -1,0 +1,26 @@
+=== Step 8. Map Your Results
+
+Click *Run Tool* to produce a map that shows where you can find appropriate seedlots or planting sites for the
+locations specified in Step 2 and the climate of the time period specified in Step 6. The map shows the degree of match
+between the past climate to which a seedlot is adapted and the climate of the time period in which the trees are
+expected to be best adapted to the planting site. The darkest orange indicates the best match and the lightest orange
+indicates the match that is at the edge of the transfer limit. Note that using a greater transfer limit does not affect
+the best match but does result in a larger geographic area of suitability.
+
+The process for determining the degree of match is, first, re-scaling the gridded data for each climate variable (or
+associated trait from a genecology function) as: latexmath:[y = \frac{|x - xmid|}{TL}], where xmid is the midpoint
+value, or climatic center. Second, the multivariate climatic distance (`d`) from the climatic center to each grid point
+is calculated as the Euclidean distance for `n` climate variables:
+latexmath:[dn = ({y_1}^2 + {y_2}^2 + ... + {y_n}^2)0.5]. Finally, the climate match (`m`) (also called a similarity
+index in Step 2) is calculated as latexmath:[m = -(d-1)*100]. Values of latexmath:[m < 0] are not mapped, whereas
+values between `0` and `100` are mapped using the color scale ranging from light to dark orange.
+
+Note that the slider bar at the right side may be used to better see the map underlying the climatic match output.
+
+If you have set up an account and are signed in, you can save your inputs by clicking on the *Save Last Run* button.
+You will be asked to provide a name for the saved run. Once saved, the saved run will show up in the *Saved Runs*
+window (see below).
+
+You can also export your results to a PDF, PowerPoint, or GeoTIFF file by clicking on the *Export As...* button. Another
+option is to use *Print Scrn* on your keyboard to copy a picture of the screen that can be pasted into another file such
+as a PowerPoint presentation.

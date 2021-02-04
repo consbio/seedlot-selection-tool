@@ -1,0 +1,39 @@
+=== Step 5. Select Transfer Limit Method
+
+The transfer limit indicates how far climatically a seedlot may be moved and still have an acceptable level of
+adaptation. The SST uses two alternative approaches to determine and map transfer limits: *Custom* and *Zone*.
+
+The *Custom* and *Zone* approaches allow user-defined transfer limits for each climate variable selected in Step 6.
+Transfer limits for the *Custom* approach may be selected based on the experience of the user including the best
+available science. They may also be adjusted based on the user’s level of acceptable risk.
+
+The SST suggests a transfer limit for the *Zone* approach based on the range of climates within the zone for the
+location of the planting site or seedlot chosen in Step 2. The idea is that the user would feel comfortable with that
+climatic difference given that we have been operationally moving populations within zones for some time now. If you use
+the Zone method, the SST obtains the transfer limit (`TL`) for each climate variable using the selected zone:
+latexmath:[TL =\frac{(xmax-xmin)}{2}], where xmax and xmin are the maximum and minimum climate values for the zone. The
+assumption is that half the range of climates represents a “typical” past transfer. Because some unusual zones return
+outlier transfer limits, we also provide the average transfer limit for all zones in the selected zone set. This and
+other information will show up in a pop-up window in Step 6 if you hover over the “eye” icon to the right of the
+climate variable in the climate variable table. The transfer limit may be modified by the user.
+
+==== Custom method
+
+Click on the *Custom* button to enter your own transfer limits after selecting one or more climate variables in Step 6.
+
+==== Zone method
+
+Click on the *Zone* button to use an existing zone to calculate transfer limits for one or more climate variables.
+
+For the objective of finding seedlots for a planting site, the *Zone* approach involves two steps. First, select a
+species; then select a zone from the drop-down menu of available options. If you know that a species has a
+species-specific zone and you would like to use it, select the zone from the drop-down menu of available
+species-specific zones for that location. Otherwise select generic for zones at that location that apply across all
+species.
+
+For the objective of finding planting sites for a seedlot, the *Zone* approach involves three steps. First, you need to
+specify the climatic center of the mapped output. If you have a seedlot from a specific known location, you will
+typically use the climate of that specific location. If you have a seedlot that represents an entire zone, or you are
+ensure from where within the zone the seedlot was collected, it is probably more appropriate to use the climatic center
+of your zone. After specifying the climatic center to be used for mapping, the next two steps are as above – select the
+species followed by selecting the zone of interest.

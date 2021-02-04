@@ -1,0 +1,9 @@
+=== Step 1. Select Objective
+
+==== Find seedlots for my planting site
+
+Click on the *Find seedlots* button if you have a planting site for which you want to find adapted seedlots.
+
+==== Find planting sites for my seedlot
+
+Click on the *Find planting sites* button if you have a seedlot and you want to know where you can plant it.

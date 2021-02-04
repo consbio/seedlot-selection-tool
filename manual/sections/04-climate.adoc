@@ -1,0 +1,43 @@
+=== Step 4. Select Climate Scenarios
+
+==== Which climate are the seedlots adapted to?
+
+The first step is to select the time period (30-year normal) that represents the climate to which seedlots are adapted.
+It is typically assumed to be the climate having the greatest influence on the seedlot’s parents. For longer-lived
+plants (e.g. trees) it is recommended to choose 1961 -1990. For shorter-lived species (e.g., grass and forbs) a
+1981-2010 period may be more suitable.
+
+Using the drop-down menu, select either:
+
+* 1961 - 1990
+* 1981 - 2010
+
+==== When should plants be best adapted to the planting site?
+
+The next step is to choose a time period (30-year normal) that represents the climate to which the planted trees should
+be optimally adapted to their planting site. This may be a bit of a conundrum for forest managers since long-lived
+trees must be adapted to the near-term in addition to being adapted to the long-term. Climate is a moving target. Aim
+too far into the future and one might see cold damage in the near-term for trees moved from warmer to cooler climates.
+
+The SST allows users to explore different amounts and rates of climate change by looking at different future time
+periods and assumed relative concentration pathways (RCPs). The SST also allows users to consider adaptation to past
+climates – that is, if climate change were ignored (1961 – 1990 before appreciable climate change) or considering
+recent changes in climate (1981 – 2010).
+
+Use the drop-down menu to select either:
+
+* 1961 - 1990
+* 1981 - 2010
+* 2011 - 2040
+* 2041 - 2070
+* 2071 - 2100
+
+For future climates (i.e., 2011 to 2100), also select the relative concentration pathway (RCP), which is associated
+with different levels of atmospheric greenhouse gases and climate change. According to IPCC AR5, the RCP4.5
+“stabilization” scenario has a projected increase in mean annual temperature of 1.8°C by 2100 (range = 1.1-2.6°C),
+whereas the RCP8.5 “business as usual” scenario has a projected increase of 3.7°C by 2100 (range = 2.6-4.8°C)
+
+Use the drop-down menu to select either:
+
+* RCP 4.5
+* RCP 8.5

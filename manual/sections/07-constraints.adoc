@@ -1,0 +1,7 @@
+=== Step 7. Apply Constraints
+
+The mapped output of the SST may be further constrained using geographic limits or a species range. Using constraints
+will exclude that part of the climatic output that is beyond the geographic limits imposed or beyond the current
+species range. The geographic constraints include latitude, longitude, elevation, distance, and photoperiod. The
+species range constraints are based on recent climate-niche models. There is also an option to import your own
+shapefile to use as a constraint.
