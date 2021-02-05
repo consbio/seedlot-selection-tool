@@ -1,7 +1,8 @@
 === Step 5. Select Transfer Limit Method
 
 The transfer limit indicates how far climatically a seedlot may be moved and still have an acceptable level of
-adaptation. The SST uses two alternative approaches to determine and map transfer limits: *Custom* and *Zone*.
+adaptation. The SST uses three alternative approaches to determine and map transfer limits: *Custom*, *Zone*, and
+*Custom*. _(Note: the function approach is under construction)_
 
 The *Custom* and *Zone* approaches allow user-defined transfer limits for each climate variable selected in Step 6.
 Transfer limits for the *Custom* approach may be selected based on the experience of the user including the best
@@ -37,3 +38,15 @@ typically use the climate of that specific location. If you have a seedlot that 
 ensure from where within the zone the seedlot was collected, it is probably more appropriate to use the climatic center
 of your zone. After specifying the climatic center to be used for mapping, the next two steps are as above – select the
 species followed by selecting the zone of interest.
+
+==== Function method _(under construction)_
+
+For the *Function* approach, select the species using the drop-down menu. The values and transfer limits for the
+adaptive traits from genecology studies will be prepopulated in Step 6 for the locations chosen in Step 2. A limited
+number of species are currently available for the *Function* approach, but more species will be added from existing and
+ongoing common garden studies.
+
+[NOTE]
+_In the future, the Function approach will also offer an option of creating your own function that allows differential
+weighting of different climate variables as representative of adaptive variation. I will wait to see how this will work
+before providing instructions for this option._

@@ -19,9 +19,14 @@ their values.
 
 .Optional
 [NOTE]
+====
 You can map multiple seedlots for comparison to a planting site, or multiple planting sites for comparison to a
 seedlot, by clicking on the *Add Seedlots* or the *Add Planting Sites* button, respectively. After clicking on the
 button, you can either enter the coordinates of each location or click on the map. Be sure to click on the *Add* button
 or you could inadvertently shift the initial location to which you are comparing seedlots or planting sites. After
 running the tool, a similarity index is calculated between the initial planting site or seedlot and the locations to be
 compared to it (see Step 8 for details).
+
+_(Under construction: (1) Calculating climatic transfer distances for each climate variable for each location. (2)
+Ability to enter a batch of locations. (3) Ability to output a table showing the results of all the comparisons.)_
+====
