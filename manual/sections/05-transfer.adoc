@@ -2,7 +2,7 @@
 
 The transfer limit indicates how far climatically a seedlot may be moved and still have an acceptable level of
 adaptation. The SST uses three alternative approaches to determine and map transfer limits: *Custom*, *Zone*, and
-*Custom*. _(Note: the function approach is under construction)_
+*Function*. _(Note: the Function approach is under construction)_
 
 The *Custom* and *Zone* approaches allow user-defined transfer limits for each climate variable selected in Step 6.
 Transfer limits for the *Custom* approach may be selected based on the experience of the user including the best
@@ -12,11 +12,16 @@ The SST suggests a transfer limit for the *Zone* approach based on the range of 
 location of the planting site or seedlot chosen in Step 2. The idea is that the user would feel comfortable with that
 climatic difference given that we have been operationally moving populations within zones for some time now. If you use
 the Zone method, the SST obtains the transfer limit (`TL`) for each climate variable using the selected zone:
-latexmath:[TL =\frac{(xmax-xmin)}{2}], where xmax and xmin are the maximum and minimum climate values for the zone. The
-assumption is that half the range of climates represents a “typical” past transfer. Because some unusual zones return
-outlier transfer limits, we also provide the average transfer limit for all zones in the selected zone set. This and
-other information will show up in a pop-up window in Step 6 if you hover over the “eye” icon to the right of the
+latexmath:[TL =\frac{(xmax-xmin)}{2}], where `xmax` and `xmin` are the maximum and minimum climate values for the zone.
+The assumption is that half the range of climates represents a “typical” past transfer. Because some unusual zones
+return outlier transfer limits, we also provide the average transfer limit for all zones in the selected zone set. This
+and other information will show up in a pop-up window in Step 6 if you hover over the “eye” icon to the right of the
 climate variable in the climate variable table. The transfer limit may be modified by the user.
+
+The *Function* approach uses a genecological function to select an acceptable difference in one or more adaptive traits
+based on research from common-garden studies. Genecological functions are an association between the adaptive traits
+identified in a common-garden and the climate derived from seed-source locations. The trait usually represents a
+multivariate climate.
 
 ==== Custom method
 
@@ -48,5 +53,4 @@ ongoing common garden studies.
 
 [NOTE]
 _In the future, the Function approach will also offer an option of creating your own function that allows differential
-weighting of different climate variables as representative of adaptive variation. I will wait to see how this will work
-before providing instructions for this option._
+weighting of different climate variables as representative of adaptive variation._

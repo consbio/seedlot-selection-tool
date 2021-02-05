@@ -2,7 +2,7 @@
 
 The *Layers* tab allows the user to map different overlays onto the results. Options include gray-scaled values for
 different climate variables, seed and breeding zone boundaries, U.S. Level III Ecoregion boundaries, and U.S. county
-boundaries.
+boundaries. _(Under construction: some species ranges will be added as an option for layers.)_
 
 === Saved Runs
 
