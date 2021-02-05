@@ -6,6 +6,7 @@ import string
 from datetime import timedelta
 
 from django.urls import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
 from trefoil.render.renderers.stretched import StretchedRenderer
 from trefoil.utilities.color import Color
 
@@ -228,4 +229,4 @@ NC_ENABLE_STRIDING = True
 NC_SERVICE_DATA_ROOT = 'data/ncdjango/services/'
 DATASET_DOWNLOAD_DIR = 'data/downloads'
 
-SEEDSOURCE_TITLE = 'Seedlot Selection Tool'
+SEEDSOURCE_TITLE = _('Seedlot Selection Tool')
