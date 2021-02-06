@@ -143,6 +143,15 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+LANGUAGES = (
+    ('en', _('English')),
+    ('es', _('Spanish'))
+)
+LANGUAGE_CODE = 'en'
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locales')
+]
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 GOOGLE_ANALYTICS_ID = CONFIG.get('ga_id')
