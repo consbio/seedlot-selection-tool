@@ -2744,6 +2744,16 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.5.tgz#7fdec6a28a67ae18647c51668a9ff95bb2fa7bb8"
   integrity sha512-uVDi8LpBUKQj6sdxNaTetL6FpeCqTjOvAQuQUa/qAqq8oOd4ivkbhgnqayl0dnPal8Tb/yB1tF+gOvCBiicaiQ==
 
+csv-parse@^4.15.3:
+  version "4.15.3"
+  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-4.15.3.tgz#8a62759617a920c328cb31c351b05053b8f92b10"
+  integrity sha512-jlTqDvLdHnYMSr08ynNfk4IAUSJgJjTKy2U5CQBSu4cN9vQOJonLVZP4Qo4gKKrIgIQ5dr07UwOJdi+lRqT12w==
+
+csv-stringify@^5.6.2:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/csv-stringify/-/csv-stringify-5.6.2.tgz#e653783e2189c4c797fbb12abf7f4943c787caa9"
+  integrity sha512-n3rIVbX6ylm1YsX2NEug9IaPV8xRnT+9/NNZbrA/bcHgOSSeqtWla6XnI/xmyu57wIw+ASCAoX1oM6EZtqJV0A==
+
 csv2geojson@~5.0.0:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/csv2geojson/-/csv2geojson-5.0.2.tgz#abd649f2ec57689219ad4f19d333be75456b6f59"
@@ -7995,13 +8005,15 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
-seedsource-ui@1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/seedsource-ui/-/seedsource-ui-1.0.9.tgz#a18eca41b9db4b05d71c114ed04016d2775fc479"
-  integrity sha512-JjEepaoRHNa5uzIN+T9Brj3DQ2DdBbd3zy/uv0Rxusa0Yn2v5SmB1Fnxp//ZPIRUBA964TrLQX40h8+Som0pVA==
+seedsource-ui@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/seedsource-ui/-/seedsource-ui-1.1.1.tgz#c824a607c466e2b5a413230ec2eccbb48aca1a61"
+  integrity sha512-RsoITdISozKDsNH+GIjC3bQa1Kw8uKzraGIFfdTW42AZrdc40tZwJ5WX9ppy3GX1uxJX7wdMgySlZvgj/wf1sw==
   dependencies:
     bulma "^0.9.1"
     bulma-checkradio "^1.1.1"
+    csv-parse "^4.15.3"
+    csv-stringify "^5.6.2"
     isomorphic-fetch "^2.2.1"
     jison "^0.4.18"
     leaflet "^1.7.1"
