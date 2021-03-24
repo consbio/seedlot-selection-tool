@@ -13,7 +13,7 @@ longitude in North America.)
 
 Alternatively, use the pan and zoom tools to navigate to your area of interest, and then click on the map. This will
 show the latitude, longitude, and elevation of your location, as well as any seed or breeding zones associated with
-that location. If you click on the *Set Point* button, your current coordinates and other location information will be
+that location. If you click on the `Set Point` button, your current coordinates and other location information will be
 automatically set for use by the program. If you have already selected climate variables in Step 6, it will also show
 their values.
 
@@ -21,8 +21,8 @@ their values.
 [NOTE]
 ====
 You can map multiple seedlots for comparison to a planting site, or multiple planting sites for comparison to a
-seedlot, by clicking on the *Add Seedlots* or the *Add Planting Sites* button, respectively. After clicking on the
-button, you can either enter the coordinates of each location or click on the map. Be sure to click on the *Add* button
+seedlot, by clicking on the `Add Seedlots` or the `Add Planting Sites` button, respectively. After clicking on the
+button, you can either enter the coordinates of each location or click on the map. Be sure to click on the `Add` button
 or you could inadvertently shift the initial location to which you are comparing seedlots or planting sites. After
 running the tool, a similarity index is calculated between the initial planting site or seedlot and the locations to be
 compared to it (see Step 8 for details).

@@ -5,12 +5,12 @@ which best fits the location you selected, or you can use the custom option to m
 
 ==== Automatic
 
-Click on the *Automatic* button to let the tool select the best region for your location. The region which contains
+Click on the `Automatic` button to let the tool select the best region for your location. The region which contains
 your location and with a center point closest to your location will be selected. Before selecting a location, you can
 click on the map to see which region will be selected.
 
 ==== Custom
 
-Click on the *Custom* button to select an alternative region from a drop-down list of available regions. When you
+Click on the `Custom` button to select an alternative region from a drop-down list of available regions. When you
 choose a region from the drop-down menu, it will be outlined on the map. You can choose a region that does not contain
 your location, in which case the tool will map the results for the region you select.

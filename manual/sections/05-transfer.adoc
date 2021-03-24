@@ -25,14 +25,14 @@ multivariate climate.
 
 ==== Custom method
 
-Click on the *Custom* button to enter your own transfer limits after selecting one or more climate variables in Step 6.
+Click on the `Custom` button to enter your own transfer limits after selecting one or more climate variables in Step 6.
 
 ==== Zone method
 
-Click on the *Zone* button to use an existing zone to calculate transfer limits for one or more climate variables.
+Click on the `Zone` button to use an existing zone to calculate transfer limits for one or more climate variables.
 
 For the objective of finding seedlots for a planting site, the *Zone* approach involves two steps. First, select a
-species; then select a zone from the drop-down menu of available options. If you know that a species has a
+species. Second, select a zone from the drop-down menu of available options. If you know that a species has a
 species-specific zone and you would like to use it, select the zone from the drop-down menu of available
 species-specific zones for that location. Otherwise select generic for zones at that location that apply across all
 species.
@@ -46,7 +46,7 @@ species followed by selecting the zone of interest.
 
 ==== Function method _(under construction)_
 
-For the *Function* approach, select the species using the drop-down menu. The values and transfer limits for the
+For the `Function` approach, select the species using the drop-down menu. The values and transfer limits for the
 adaptive traits from genecology studies will be prepopulated in Step 6 for the locations chosen in Step 2. A limited
 number of species are currently available for the *Function* approach, but more species will be added from existing and
 ongoing common garden studies.

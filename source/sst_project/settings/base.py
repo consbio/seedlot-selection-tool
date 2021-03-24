@@ -32,6 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+PORT = CONFIG.get('port', 8000)
+
 # Application definition
 
 INSTALLED_APPS = (

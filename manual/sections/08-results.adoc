@@ -1,6 +1,6 @@
 === Step 8. Map Your Results
 
-Click *Run Tool* to produce a map that shows where you can find appropriate seedlots or planting sites for the
+Click `Run Tool` to produce a map that shows where you can find appropriate seedlots or planting sites for the
 locations specified in Step 2 and the climate of the time period specified in Step 6. The map shows the degree of match
 between the past climate to which a seedlot is adapted and the climate of the time period in which the trees are
 expected to be best adapted to the planting site. The darkest orange indicates the best match and the lightest orange
@@ -17,10 +17,10 @@ values between `0` and `100` are mapped using the color scale ranging from light
 
 Note that the slider bar at the right side may be used to better see the map underlying the climatic match output.
 
-If you have set up an account and are signed in, you can save your inputs by clicking on the *Save Last Run* button.
-You will be asked to provide a name for the saved run. Once saved, the saved run will show up in the *Saved Runs*
+If you have set up an account and are signed in, you can save your inputs by clicking on the `Save Last Run` button.
+You will be asked to provide a name for the saved run. Once saved, the saved run will show up in the `Saved Runs`
 window (see below).
 
-You can also export your results to a PDF, PowerPoint, or GeoTIFF file by clicking on the *Export As...* button. Another
-option is to use *Print Scrn* on your keyboard to copy a picture of the screen that can be pasted into another file such
+You can also export your results to a PDF, PowerPoint, or GeoTIFF file by clicking on the `Export As...` button. Another
+option is to use `Print Scrn` on your keyboard to copy a picture of the screen that can be pasted into another file such
 as a PowerPoint presentation.
