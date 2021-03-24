@@ -1,7 +1,8 @@
 === Step 3. Select Region
 
 North America is divided into regions to reduce processing time. You can let the tool automatically choose the region
-which best fits the location you selected, or you can use the custom option to manually select any available region.
+which best fits the location you selected (default), or you can use the Custom option to manually select any available
+region.
 
 ==== Automatic
 

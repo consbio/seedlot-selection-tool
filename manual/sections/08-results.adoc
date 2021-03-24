@@ -1,7 +1,7 @@
 === Step 8. Map Your Results
 
 Click `Run Tool` to produce a map that shows where you can find appropriate seedlots or planting sites for the
-locations specified in Step 2 and the climate of the time period specified in Step 6. The map shows the degree of match
+locations specified in Step 2 and the climate of the time period specified in Step 4. The map shows the degree of match
 between the past climate to which a seedlot is adapted and the climate of the time period in which the trees are
 expected to be best adapted to the planting site. The darkest orange indicates the best match and the lightest orange
 indicates the match that is at the edge of the transfer limit. Note that using a greater transfer limit does not affect

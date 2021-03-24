@@ -43,7 +43,10 @@ const About = () => (
       <div className="about-step">
         <img src={MethodImage} alt={t`A curved, blue arrow`} />
         <h4 className="title is-4">5. {t`Select Transfer Limit Method`}</h4>
-        <p>{t`You can enter your own custom limit or use an existing zone to calculate a transfer limit`}</p>
+        <p>
+          {t`You can enter your own custom limit, use an existing zone to calculate a transfer limit, or use a function 
+          relating genetic variation to climate to calculate a transfer limit`}
+        </p>
       </div>
       <div className="about-step">
         <img src={VariablesImage} alt={t`A cloud with raindrops falling from the bottom, in front of the sun`} />

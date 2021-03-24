@@ -1,8 +1,6 @@
 import React from 'react'
 import { t, c, jt } from 'ttag'
 import ModalCard from 'seedsource-ui/lib/components/ModalCard'
-import NavItemDropdown from 'seedsource-ui/lib/components/NavItemDropdown'
-import purpose from '../../images/purpose.jpg'
 import Background1 from '../../images/background1.jpg'
 import Background2 from '../../images/background2.jpg'
 import FSLogo from '../../images/fs_logo.png'
@@ -13,11 +11,7 @@ import ClimateWNA from '../../documents/ClimateWNA.pdf'
 import SSTInstructions from '../../documents/SST Instructions.pdf'
 
 class Menu extends React.Component {
-  purposeModal?: ModalCard
-
   backgroundModal?: ModalCard
-
-  methodsModal?: ModalCard
 
   climatenaModal?: ModalCard
 
@@ -31,28 +25,6 @@ class Menu extends React.Component {
     return (
       <>
         <div className="has-text-dark is-size-6" key="modals">
-          <ModalCard
-            ref={(input: ModalCard) => {
-              this.purposeModal = input
-            }}
-            title={t`Purpose`}
-          >
-            <img
-              src={purpose}
-              className="is-pulled-left margin-right-5"
-              alt={t`Two workers are planting a small tree`}
-            />
-            <p>
-              {t`The Seedlot Selection Tool (SST) is a web-based mapping application designed to help natural resource
-                managers match seedlots with planting sites based on climatic information. The SST can be used to map
-                current climates or future climates based on selected climate change scenarios. It is tailored for
-                matching seedlots and planting sites, but can be used by anyone interested in mapping climates defined 
-                by temperature and water availability. The SST is most valuable as a planning and educational tool 
-                because of the uncertainty associated with climate interpolation models and climate change projections. 
-                The SST allows the user to control many input parameters, and can be customized for the management 
-                practices, climate change assumptions, and risk tolerance of the user.`}
-            </p>
-          </ModalCard>
           <ModalCard
             ref={(input: ModalCard) => {
               this.backgroundModal = input
@@ -105,196 +77,6 @@ class Menu extends React.Component {
                 limits should adjusted to reflect the management practices and risk tolerance of the user. Agencies or
                 organizations that are able to adjust management practices quickly (e.g., because of short rotations), 
                 or are more willing to accept risk, may choose a wider transfer limit than those that are risk-averse.`}
-            </p>
-          </ModalCard>
-          <ModalCard
-            ref={(input: ModalCard) => {
-              this.methodsModal = input
-            }}
-            title={t`Approach & Methods`}
-          >
-            <h4 className="title is-4">{c("noun, e.g., 'an approach to learning'").t`Approach`}</h4>
-            <p>
-              {t`The Seedlot Selection Tool (SST) is a web-based mapping application designed to help natural resource
-                managers match seedlots with planting sites based on climatic information. For example, given a planting
-                site, the SST identifies geographic areas that have similar climates. Thus, the resulting mapped areas
-                show where one could collect well-adapted native seed for planting. Alternatively, when these areas
-                coincide with breeding zones, the mapped areas show where to obtain well-adapted materials from breeding
-                programs. Given a seedlot location, the SST can be used to identify geographic areas with similar
-                climates—that is, candidate planting areas where the seedlot is expected to grow well. In each case, the
-                SST defines the center of the climatic space to be mapped, and then maps all areas that fall within a
-                specified climatic distance (climatic transfer limit) based on climate variables selected by the user.
-                Within the mapped area, the degree of climatic similarity is shown using different colors. Areas that 
-                fall outside of the transfer limit are not mapped. To run the SST, the user must specific two climatic
-                regimes—the climate to which the seedlots are optimally adapted, and the climate of the planting site.
-                Typically, the user would choose one of the historical climates as the seedlot climate, and a current or
-                future projected climate as the planting site climate. By choosing a future climate, the SST can be used
-                to examine how assisted migration might be used to respond to climate change.`}
-            </p>
-            <h4 className="title is-4">{t`Methods`}</h4>
-            <p>
-              {t`The Seedlot Selection Tool involves the following steps: (1) select objective, (2) select location, (3)
-                select climate scenarios, (4) select transfer limit method, (5) select climate variables, and (6) map 
-                your results. By allowing the user to select the climate change scenarios, transfer limits, and climate
-                variables, the results can be adjusted to reflect the management practices, available knowledge of
-                adaptation, and risk tolerance of the user.`}
-            </p>
-            <p>
-              <strong>{t`Step 1 – Select objective.`}</strong>{' '}
-              {t`The SST was designed to help natural resource managers (1)
-              find seedlots for specific planting sites or (2) find planting sites for specific seedlots. Because these
-              two objectives must be approached differently, the first step is to select one of these two objectives.`}
-            </p>
-            <p>
-              <strong>{t`Step 2 – Select location.`}</strong>{' '}
-              {t`The location of interest can be selected using coordinates
-              or by clicking on the map. However, the location has two different meanings, depending on whether you are
-              searching for seedlots or planting sites. The location of a planting site is straightforward—it is the
-              geographic location of the site you intend to plant. The location of a seedlot may refer to two different
-              things. If seed are collected form a specific stand, then the user can specify the exact location of the
-              seedlot using coordinates or by clicking on the map. In other cases, the seedlot may represent seed
-              collected from a larger zone. In this case, the user can enter the location of the zone's climatic
-              center, and then use either the Custom or Zone transfer limit method in Step 4. If the zone's
-              climatic center is unknown, the user can use the Zone transfer limit method to get its location. In this
-              case, the user would enter any location within the desired zone in Step 2, and then choose the
-              "climatic center" option in Step`}
-            </p>
-            <p>
-              <strong>{t`Step 3 – Select climate scenarios.`}</strong>{' '}
-              {t`The first step is to identify which climate the seedlots are adapted to, which is typically assumed to 
-              be the climate having the greatest influence on the seedlot's parents. Two 30-year normals are available: 
-              1961-1990 and 1981-2010. The 1981-2010 normals represent the "current" climate. For the SST, we obtained 
-              climate data using ClimateNA v5.30 and a USGS DEM data at a resolution of 15-arc-seconds (∼450 m). More 
-              information on ClimateNA can be found by clicking on the "ClimateNA" tab under the "More Information" 
-              drop-down menu.`}
-            </p>
-            <p>
-              {t`The next step is to choose when you want the planted trees to be optimally adapted to their planting 
-                site. Typical choices are the current climate (e.g., 1981-2010), or if you want to account for climate 
-                change, some future time period. The future time periods available are: 2011-2040, 2041-2070, and 
-                2071-2100.`}
-            </p>
-            <p>
-              {t`If a future time period is used, the final step is to select a representative concentration pathway 
-                (RCP), which is associated with different levels of atmospheric greenhouse gases and climate change. 
-                The two options are RCP4.5 and RCP8.5. According to IPCC AR5, the RCP4.5 “stabilization” scenario has a 
-                projected increase in mean annual temperature of 1.8°C by 2100 (range = 1.1-2.6°C), whereas the RCP8.5 
-                "business as usual" scenario has a projected increase of 3.7°C by 2100 (range = 2.6-4.8°C). The 
-                projected climates used by the SST are ClimateNA ensemble projections (averages) across 15 CMIP5 
-                models.`}
-            </p>
-            <p>
-              <strong>{t`Step 4 – Select transfer limit method.`}</strong>{' '}
-              {t`Transfer limits can be set by the user using
-              the Custom method or the Zone method. The Custom method might be preferred when there is good existing
-              information on the effects of seed transfer. As described in the Background, this might come from nursery
-              or field-based genetic tests, or from the operational experience gained from long-term planting programs.
-              If appropriate climatic transfer limits are not known a priori, the user can use the Zone approach, which
-              estimates transfer limits from existing seed zones, breeding zones, or other zones that geographically
-              define acceptable transfer distances. Because managers have been using some zones for decades to guide
-              seed transfer, the climatic transfer distances associated with the zones have been empirically tested.`}
-            </p>
-            <p>
-              <strong>
-                <em>{t`Select your climatic center (Zone method).`}</em>
-              </strong>{' '}
-              {t`If you have chosen to find planting sites for a seedlot, the first step in the Zone method is to 
-                specify the climatic center of your mapped output. If you have a seedlot from a specific known 
-                location, you would typically use that location as the center of your mapped output. If you have a 
-                seedlot that represents an entire seed zone, you will probably want to use the climatic center of that 
-                zone.`}
-            </p>
-            <p>
-              <strong>
-                <em>{t`Select your species of interest (Zone method).`}</em>
-              </strong>{' '}
-              {t`The second step in the Zone method is to select your species of interest, which will determine which 
-                zones to display as available options. The generic option returns seed zones that are not species 
-                specific. Once selected, only seed zones that are either generic or specific for the selected species 
-                will show up in the drop-down menu.`}
-            </p>
-            <p>
-              <strong>
-                <em>{t`Select your zone of interest (Zone method).`}</em>
-              </strong>{' '}
-              {t`The third step in the Zone method is to select one of the available zones. Only seed zones that 
-                correspond to your selected species and location (Step 2) will be shown. If no zones are available 
-                (e.g., the location is outside the region or species range), then the SST will indicate that there are 
-                no zones at this location.`}
-            </p>
-            <p>
-              <strong>
-                <em>{t`Transfer limits.`}</em>
-              </strong>{' '}
-              {(() => {
-                const equation = (
-                  <span>
-                    TL = (x<sub>max</sub>-x<sub>min</sub>)/2
-                  </span>
-                )
-                const xmax = (
-                  <span>
-                    x<sub>max</sub>
-                  </span>
-                )
-                const xmin = (
-                  <span>
-                    x<sub>min</sub>
-                  </span>
-                )
-
-                return jt`If you use the Custom method, you will be asked to enter transfer limits for each climate 
-                  variable in Step 5. If you use the Zone method, the SST obtains the transfer limit (TL) for each 
-                  climate variable using the selected zone: ${equation}, where ${xmax} and ${xmin} are the maximum and 
-                  minimum climate values for the zone. Because some unusual zones return outlier TLs, we also provide 
-                  the average TL for all zones in the selected zone set (e.g., species/author combination). This and 
-                  other information will show up in a pop-up window if you hover over the climate variable in the 
-                  climate variable table.`
-              })()}
-            </p>
-            <p>
-              <strong>{t`Step 5 – Select climate variables.`}</strong>{' '}
-              {t`The user can choose among 16 temperature and
-              precipitation related variables available from ClimateNA. As described in the Background, these variables
-              were chosen based on a wide variety of plant genecological studies. For a location to be mapped (i.e.,
-              have a climatic match &gt; 0), it must fall within the TL for each selected climate variable (see Step 6).
-              Thus, the more climate variables that are used, the smaller the mapped areas will be. Although, the points
-              that are excluded are those that have extreme values for multiple climate variables, the use of many
-              climate variables will probably result in overly conservative climate matches. Thus, we caution users from
-              selecting too many climate variables, particularly variables that are unrelated to adaptation. It is also
-              best to avoid selecting variables that are very highly correlated with one another.`}
-            </p>
-            <p>
-              <strong>{t`Step 6 – Map results.`}</strong>
-              {(() => {
-                const equation1 = (
-                  <span>
-                    y = |x – x<sub>mid</sub>|/TL
-                  </span>
-                )
-                const xmid = (
-                  <span>
-                    x<sub>mid</sub>
-                  </span>
-                )
-                const equation2 = (
-                  <span>
-                    dn = (y<sub>1</sub>
-                    <sup>2</sup> + y<sub>2</sub>
-                    <sup>2</sup> + ∙∙∙+ y<sub>n</sub>
-                    <sup>2</sup>)<sup>0.5</sup>
-                  </span>
-                )
-                const equation3 = <span>m = ‒(d-1)*100</span>
-
-                return jt`The SST uses the Custom or Zone-based transfer limit (TL) for calculating the climatic match. 
-                  First, the gridded data for each climate variable are re-scaled: ${equation1}, where ${xmid} is the 
-                  midpoint value, or climatic center. Then, the multivariate climatic distance (d) from the climatic 
-                  center to each grid point is calculated as the Euclidean distance for n climate variables: 
-                  ${equation2}. Finally, the climate match (m) is calculated as ${equation3}. Values of m &lt; 0 are 
-                  not mapped, whereas values between 0 and 100 are mapped using a color scale ranging from light to 
-                  dark orange.`
-              })()}
             </p>
           </ModalCard>
           <ModalCard
@@ -479,13 +261,13 @@ class Menu extends React.Component {
           >
             <p>
               {t`The Seedlot Selection Tool is a collaboration between the US Forest Service, Oregon State University, 
-                and the Conservation Biology Institute. Initial conceptualization and development was done by Glenn 
-                Howe at Oregon State University College of Forestry and Brad St.Clair at the USFS Pacific Northwest 
-                Research Station, with considerable input from Ron Beloin while he was working at Oregon State 
-                University. The Conservation Biology Institute was brought onboard to bring the project to fruition 
-                through their expertise in web site design and programming for spatial applications. Personnel at the 
-                Conservation Biology Institute include Dominique Bachelet (project co-PI), Nikolas Stevenson-Molnar 
-                (tool developer), and Brendan Ward (project manager).`}
+              and the Conservation Biology Institute. Initial conceptualization and development was done by Glenn Howe 
+              at Oregon State University College of Forestry and Brad St.Clair at the US Forest Service Pacific 
+              Northwest Research Station, with considerable input from Ron Beloin while he was working at Oregon State 
+              University. The Conservation Biology Institute was brought onboard to bring the project to fruition 
+              through their expertise in web site design and programming for spatial applications. Personnel at the 
+              Conservation Biology Institute included Nikolas Stevenson-Molnar (tool developer), Brendan Ward (project 
+              manager), and Dominique Bachelet (project co-PI).`}
             </p>
             <p>
               {t`Initial funding for the Seedlot Selection Tool came from the US Forest Service Washington Office.
@@ -518,15 +300,6 @@ class Menu extends React.Component {
             <p>&nbsp;</p>
             <h4 className="title is-4">{t`Contact Information`}</h4>
             <p>
-              Dr. Glenn Howe – {t`Co - Principal Investigator`}
-              <br />
-              {t`Associate Professor, Department of Forest Ecosystems and Society`}
-              <br />
-              {t`Oregon State University, Corvallis, Oregon, USA`}
-              <br />
-              <a href="mailto:glenn.howe@oregonstate.edu">glenn.howe@oregonstate.edu</a>
-            </p>
-            <p>
               Dr. Brad St.Clair – {t`Co - Principal Investigator`}
               <br />
               {t`Research Geneticist, Pacific Northwest Research Station`}
@@ -536,15 +309,6 @@ class Menu extends React.Component {
               <a href="mailto:bstclair@fs.fed.us">bstclair@fs.fed.us</a>
             </p>
             <p>
-              Dr. Dominique Bachelet – {t`Co - Principal Investigator`}
-              <br />
-              {t`Senior Climate Change Scientist`}
-              <br />
-              {t`Conservation Biology Institute, Corvallis, Oregon, USA`}
-              <br />
-              <a href="mailto:dominique@consbio.org">dominique@consbio.org</a>
-            </p>
-            <p>
               Nikolas Stevenson-Molnar – {c('i.e., Software Developer').t`Lead Developer`}
               <br />
               {t`Software Engineer`}
@@ -552,15 +316,6 @@ class Menu extends React.Component {
               {t`Conservation Biology Institute, Corvallis, Oregon, USA`}
               <br />
               <a href="mailto:nik.molnar@consbio.org">nik.molnar@consbio.org</a>
-            </p>
-            <p>
-              Brendan Ward – {t`Project Manager`}
-              <br />
-              {t`Conservation Biologist/GIS Analyst/Software Engineer`}
-              <br />
-              {t`Conservation Biology Institute, Corvallis, Oregon, USA`}
-              <br />
-              <a href="mailto:bcward@consbio.org">bcward@consbio.org</a>
             </p>
           </ModalCard>
           <ModalCard
@@ -597,31 +352,15 @@ class Menu extends React.Component {
             </p>
           </ModalCard>
         </div>
-        <a className="navbar-item" onClick={() => this.purposeModal!.show()} key="purpose">
-          {t`Purpose`}
-        </a>
         <a className="navbar-item" href={SSTInstructions} target="_blank" rel="noreferrer" key="instructions">
           {t`Instructions`}
         </a>
-        <NavItemDropdown title="More Information" key="information">
-          <a className="navbar-item" onClick={() => this.backgroundModal!.show()}>
-            {t`Background`}
-          </a>
-          <a className="navbar-item" onClick={() => this.methodsModal!.show()}>
-            {t`Approach & Methods`}
-          </a>
-          <a className="navbar-item" onClick={() => this.climatenaModal!.show()}>
-            ClimateNA
-          </a>
-          <a
-            className="navbar-item"
-            href="https://github.com/consbio/seedlot-selection-tool"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t`Source Code`}
-          </a>
-        </NavItemDropdown>
+        <a className="navbar-item" onClick={() => this.backgroundModal!.show()}>
+          {t`Background`}
+        </a>
+        <a className="navbar-item" onClick={() => this.climatenaModal!.show()}>
+          {t`ClimateNA`}
+        </a>
         <a className="navbar-item" key="people" onClick={() => this.peopleModal!.show()}>
           {t`People`}
         </a>
