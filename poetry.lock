@@ -425,17 +425,6 @@ s3 = ["boto3 (>=1.2.4)"]
 test = ["pytest (>=3)", "pytest-cov", "boto3 (>=1.2.4)", "mock"]
 
 [[package]]
-name = "gdal"
-version = "3.2.2"
-description = "GDAL: Geospatial Data Abstraction Library"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.extras]
-numpy = ["numpy (>1.0.0)"]
-
-[[package]]
 name = "geographiclib"
 version = "1.50"
 description = "The geodesic routines from GeographicLib"
@@ -616,11 +605,10 @@ yaml = ["PyYAML (>=5.1.0)"]
 [[package]]
 name = "ncdjango"
 version = "1.2.0"
-description = ""
+description = "A map server for NetCDF data"
 category = "main"
 optional = false
 python-versions = "*"
-develop = false
 
 [package.dependencies]
 celery = ">=4.4.6"
@@ -637,12 +625,6 @@ pytest-django = "*"
 requests = "*"
 Shapely = ">=1.7.0"
 trefoil = "*"
-
-[package.source]
-type = "git"
-url = "https://github.com/consbio/ncdjango.git"
-reference = "main"
-resolved_reference = "1712a03fa2ba0bfc6cb13337a4d36a59f671dbf6"
 
 [[package]]
 name = "netcdf4"
@@ -959,10 +941,9 @@ celery = "^4.0.0"
 Django = "^2.2"
 django-waffle = "^1"
 djangorestframework = "~3.7"
-GDAL = "*"
 geopy = "^1.23.0"
 mercantile = "^1.1.6"
-ncdjango = "branch main"
+ncdjango = "^1.2.0"
 netCDF4 = "^1.5.5"
 progress = "^1.5"
 pyproj = "~3.0.0"
@@ -1478,9 +1459,6 @@ fiona = [
     {file = "Fiona-1.8.18-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:1c26f38bfbcd51e710c361f26db605ccf2b5f2a7967e0f4a88683cac3845c947"},
     {file = "Fiona-1.8.18.tar.gz", hash = "sha256:b732ece0ff8886a29c439723a3e1fc382718804bb057519d537a81308854967a"},
 ]
-gdal = [
-    {file = "GDAL-3.2.2.tar.gz", hash = "sha256:b8e9079f3a0b4dc0c69eafda29a655b70f5c1e2a94a039a3b6dfae0a083e07b6"},
-]
 geographiclib = [
     {file = "geographiclib-1.50-py3-none-any.whl", hash = "sha256:51cfa698e7183792bce27d8fb63ac8e83689cd8170a730bf35e1a5c5bf8849b9"},
     {file = "geographiclib-1.50.tar.gz", hash = "sha256:12bd46ee7ec25b291ea139b17aa991e7ef373e21abd053949b75c0e9ca55c632"},
@@ -1631,7 +1609,10 @@ munch = [
     {file = "munch-2.5.0-py2.py3-none-any.whl", hash = "sha256:6f44af89a2ce4ed04ff8de41f70b226b984db10a91dcc7b9ac2efc1c77022fdd"},
     {file = "munch-2.5.0.tar.gz", hash = "sha256:2d735f6f24d4dba3417fa448cae40c6e896ec1fdab6cdb5e6510999758a4dbd2"},
 ]
-ncdjango = []
+ncdjango = [
+    {file = "ncdjango-1.2.0-py3-none-any.whl", hash = "sha256:0c30e6412515f5323e51c8fdfc70f74adf2e8652aa4021b57fb301199b887297"},
+    {file = "ncdjango-1.2.0.tar.gz", hash = "sha256:23b257defdeb57c80d9a30e0983eaaf3b59ae0525dc522943bea6ccae7f3de2b"},
+]
 netcdf4 = [
     {file = "netCDF4-1.5.6-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:573369b148aadc47e1da0e82b001412ecd7577f72ae742e2508e03d2cff2a2ce"},
     {file = "netCDF4-1.5.6-cp36-cp36m-manylinux1_i686.whl", hash = "sha256:e0a2ff2caec5e492d55f8f2e4666876899bb504f70c7b3c71e31c2791f46fee2"},
