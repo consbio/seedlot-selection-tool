@@ -20,10 +20,6 @@ export default {
         test: /\.tsx?$/,
         exclude: [/node_modules\/.*\/dist\/.*/],
         loader: 'ts-loader',
-        // query: {
-        //     presets: ['@babel/preset-env', '@babel/preset-react'],
-        //     plugins: ['@babel/plugin-syntax-dynamic-import', '@babel/plugin-proposal-class-properties']
-        // }
       },
       {
         test: /\.(scss|css)$/,
@@ -55,7 +51,7 @@ export default {
     alias: {
       'react': path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom'),
-      'react-redux': path.resolve('./node_modules/react-redux')
+      'react-redux': path.resolve('./node_modules/react-redux'),
     },
   },
   node: {
