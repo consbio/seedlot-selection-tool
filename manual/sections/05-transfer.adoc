@@ -42,7 +42,7 @@ only to USFS lands).
 For the objective of finding planting sites for a seedlot, the *Zone* approach involves three steps. First, you need to
 specify the climatic center of the mapped output. If you have a seedlot from a specific known location, you will
 typically use the climate of that specific location. If you have a seedlot that represents an entire zone, or you are
-ensure from where within the zone the seedlot was collected, it is probably more appropriate to use the climatic center
+unsure from where within the zone the seedlot was collected, it is probably more appropriate to use the climatic center
 of your zone. After specifying the climatic center to be used for mapping, the next two steps are as above – select the
 species followed by selecting the zone of interest.
 
