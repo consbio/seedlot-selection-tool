@@ -424,7 +424,7 @@ class Menu extends React.Component {
                 need to sign up for a GitHub account).`}
             </p>
             <p>
-              <a href="https://github.com/consbio/seedsource/issues" target="_blank" rel="noreferrer">
+              <a href="https://github.com/consbio/seedlot-selection-tool/issues" target="_blank" rel="noreferrer">
                 {t`Report an Issue`}
               </a>
             </p>
