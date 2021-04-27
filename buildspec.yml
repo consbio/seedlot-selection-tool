@@ -3,13 +3,10 @@ version: 0.2
 phases:
   install:
     commands:
-      - git clone https://github.com/consbio/seedlot-selection-tool.git sst-build
-      - (cd sst-build/ && git checkout master && git submodule update --init)
-      - (cd sst-build/javascript && npm install)
-      - (cd sst-build/seedsource-core/javascript && npm install)
+      - (cd javascript && yarn install)
   build:
     commands:
-      - (cd sst-build/javascript && npm run-script build)
+      - (cd javascript && npm run build)
 
 artifacts:
   files: "**/*"
