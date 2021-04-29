@@ -10,7 +10,6 @@ import zones from 'seedsource-ui/lib/async/zones'
 import legends from 'seedsource-ui/lib/async/legends'
 import point from 'seedsource-ui/lib/async/point'
 import popup from 'seedsource-ui/lib/async/popup'
-import userSites from 'seedsource-ui/lib/async/userSites'
 import traits from 'seedsource-ui/lib/async/traits'
 import Sidebar from 'seedsource-ui/lib/containers/Sidebar'
 import ObjectiveStep from 'seedsource-ui/lib/containers/ObjectiveStep'
@@ -27,7 +26,6 @@ import Menu from './components/Menu'
 import initConfig from './config'
 
 const store = createStore(reducers as any, applyMiddleware(thunkMiddleware))
-
 
 initConfig()
 render(
@@ -55,5 +53,4 @@ zones(store)
 legends(store)
 point(store)
 popup(store)
-userSites(store)
 traits(store)
