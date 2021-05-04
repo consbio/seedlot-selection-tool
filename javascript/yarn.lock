@@ -8102,10 +8102,10 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
-seedsource-ui@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/seedsource-ui/-/seedsource-ui-1.4.1.tgz#23c845eb2109452c063c9757b7fcfd7034f6fc7c"
-  integrity sha512-gdk/zlHvGNPz2H5O2pOFH2l0fpM/kdP/1PdidNiJba17yT4a2hb39h9xdCdiVPxjJ+XRWu1VEycZoZlQf86qxg==
+seedsource-ui@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/seedsource-ui/-/seedsource-ui-1.4.2.tgz#331a9abd55e699bc85f9f1bef3aef88e456ea993"
+  integrity sha512-Y/TKMb6669rTFJ8zf2OxmNNksAwEAae0s6q9b1AXvY54nKjtiaWvIzUaCf4yU8lLZWBtY8jIwM5RfoVW/eyuog==
   dependencies:
     bulma "^0.9.1"
     bulma-checkradio "^1.1.1"

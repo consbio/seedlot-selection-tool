@@ -122,6 +122,17 @@ export default () => {
         label: t`Mountain hemlock`,
       },
     ],
+    functions: [
+      {
+        name: 'HT',
+        label: 'Height',
+        fn: '20.96417 + (2.80648*Tmin_sp) + (0.03923*Eref) + (0.02529*PPT_sm)',
+        transfer: 5.2,
+        units: '',
+        customTransfer: false,
+        species: ['pien'],
+      },
+    ],
     defaultVariables: [
       {
         variable: 'MCMT',
