@@ -21,6 +21,16 @@ class Menu extends React.Component {
   issueModal?: ModalCard
 
   render() {
+    const tl = <span className="pre">TL</span>
+    const formula = <span className="pre">y = |x – xmid|/TL</span>
+    const xmid = <span className="pre">xmid</span>
+    const d = <span className="pre">d</span>
+    const n = <span className="pre">n</span>
+    const distanceFormula = <span className="pre">dn = (y12 + y22 + ∙∙∙+ yn2)0.5</span>
+    const m = <span className="pre">m</span>
+    const matchFormula = <span className="pre">m = ‒(d-1)*100</span>
+    const mLessThan0 = <span className="pre">m &lt; 0</span>
+
     return (
       <>
         <div className="has-text-dark is-size-6" key="modals">
@@ -50,9 +60,9 @@ class Menu extends React.Component {
               to late-21st century.`}
             </p>
             <p>
-              {t`Natural resource managers may respond to concerns of maladaptation and declines in ecosystem productivity
-              by matching the climatic adaptability of their plant material to the climatic conditions of their
-              reforestation or restoration sites. Software applications are now available that can be used to
+              {t`Natural resource managers may respond to concerns of maladaptation and declines in ecosystem 
+              productivity by matching the climatic adaptability of their plant material to the climatic conditions of 
+              their reforestation or restoration sites. Software applications are now available that can be used to
               characterize the local climates of seed sources and planting sites, including past climates and future
               climates given different climate change models. For the Seedlot Selection Tool (SST), we use ClimateNA
               v5.30 and a USGS DEM data a resolution of 15-arc seconds (~450 m) to determine the climate for each grid
@@ -70,22 +80,13 @@ class Menu extends React.Component {
             <p>
               {jt`Using the climate estimates for each grid point on a map, the SST determines the climatic distances
               between a focal point location and each grid point on a map. The area mapped is limited to the maximum
-              climatic distance a user is willing to move as indicated by the transfer limit (${(
-                <span className="pre">TL</span>
-              )}). The gridded data for
-              each climate variable is rescaled as: ${(<span className="pre">y = |x – xmid|/TL</span>)}, where ${(
-                <span className="pre">xmid</span>
-              )} is the midpoint value, or climatic center, of the focal point. Then, the multivariate climatic 
-              distance (${(
-                <span className="pre">d</span>
-              )}) from the focal point to each grid point is calculated as the 
-              Euclidean distance for ${(<span className="pre">n</span>)} climate variables: ${(
-                <span className="pre">dn = (y12 + y22 + ∙∙∙+ yn2)0.5</span>
-              )}. Finally, the climate match (${(<span className="pre">m</span>)}) is calculated as 
-              ${(<span className="pre">m = ‒(d-1)*100</span>)}. Values of ${(
-                <span className="pre">m &lt; 0</span>
-              )} are not mapped, whereas values between 0 and 100 are mapped using the 
-              color scale ranging from light to dark orange.`}
+              climatic distance a user is willing to move as indicated by the transfer limit (${tl}). The gridded data 
+              for each climate variable is rescaled as: ${formula}, where ${xmid} is the midpoint value, or climatic 
+              center, of the focal point. Then, the multivariate climatic distance (${d}) from the focal point to each 
+              grid point is calculated as the Euclidean distance for ${n} climate variables: ${distanceFormula}. 
+              Finally, the climate match (${m}) is calculated as ${matchFormula}. Values of ${mLessThan0} are not 
+              mapped, whereas values between 0 and 100 are mapped using the color scale ranging from light to dark 
+              orange.`}
             </p>
             <p>
               {t`To match seedlots and planting sites, it is necessary to choose appropriate climate variables that reflect
@@ -224,7 +225,7 @@ class Menu extends React.Component {
                 {(() => {
                   const prismLink = (
                     <a href="http://www.prism.oregonstate.edu/" target="_blank" rel="noreferrer">
-                      {c('prismLink').t`PRISM Climate Group`}
+                      {c("This is the value of 'prismLink'").t`PRISM Climate Group`}
                     </a>
                   )
                   return jt`Prairie provinces: PRISM at 4 x 4 km from the ${prismLink}`
@@ -387,7 +388,7 @@ class Menu extends React.Component {
               <a href="mailto:bstclair@fs.fed.us">bstclair@fs.fed.us</a>
             </p>
             <p>
-              Nikolas Stevenson-Molnar – {c('i.e., Software Developer').t`Lead Developer`}
+              Nikolas Stevenson-Molnar – {c('i.e., Lead Software Developer').t`Lead Developer`}
               <br />
               {t`Software Engineer`}
               <br />

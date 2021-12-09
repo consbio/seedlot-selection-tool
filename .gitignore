@@ -11,3 +11,6 @@ javascript/lib/
 docs/_build
 docs/html
 manual/img/stem-*.svg
+merged.po
+*.mo
+

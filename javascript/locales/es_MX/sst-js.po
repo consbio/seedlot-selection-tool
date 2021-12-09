@@ -1,0 +1,771 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Plural-Forms: nplurals = 2; plural = (n != 1);\n"
+"Language: es_MX\n"
+"mime-version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/config.ts:34
+#: src/config.ts:200
+#: src/config.ts:244
+msgid "Douglas-fir"
+msgstr ""
+
+#: src/config.ts:38
+msgid "Lodgepole pine"
+msgstr ""
+
+#: src/config.ts:42
+msgid "Jack pine"
+msgstr ""
+
+#: src/config.ts:46
+msgid "Ponderosa pine"
+msgstr ""
+
+#: src/config.ts:50
+msgid "Black spruce"
+msgstr ""
+
+#: src/config.ts:54
+msgid "Western red cedar"
+msgstr ""
+
+#: src/config.ts:58
+msgid "Western white pine"
+msgstr ""
+
+#: src/config.ts:62
+msgid "Pacific silver fir"
+msgstr ""
+
+#: src/config.ts:66
+msgid "White fir"
+msgstr ""
+
+#: src/config.ts:70
+msgid "Grand fir"
+msgstr ""
+
+#: src/config.ts:74
+msgid "Noble Fir"
+msgstr ""
+
+#: src/config.ts:78
+msgid "Shasta red fir"
+msgstr ""
+
+#: src/config.ts:82
+msgid "Red alder"
+msgstr ""
+
+#: src/config.ts:86
+msgid "Incense cedar"
+msgstr ""
+
+#: src/config.ts:90
+msgid "Port orford cedar"
+msgstr ""
+
+#: src/config.ts:94
+msgid "Alaska yellow cedar"
+msgstr ""
+
+#: src/config.ts:98
+msgid "Western larch"
+msgstr ""
+
+#: src/config.ts:102
+msgid "Whitebark pine"
+msgstr ""
+
+#: src/config.ts:106
+msgid "Engelmann spruce"
+msgstr ""
+
+#: src/config.ts:110
+msgid "Jeffrey pine"
+msgstr ""
+
+#: src/config.ts:114
+msgid "Sugar pine"
+msgstr ""
+
+#: src/config.ts:118
+msgid "Pacific yew"
+msgstr ""
+
+#: src/config.ts:122
+msgid "Western hemlock"
+msgstr ""
+
+#: src/config.ts:126
+msgid "Mountain hemlock"
+msgstr ""
+
+#: src/config.ts:182
+#: src/config.ts:234
+msgid "Lodgepole Pine"
+msgstr ""
+
+#: src/config.ts:191
+#: src/config.ts:239
+msgid "Sitka Spruce"
+msgstr ""
+
+#: src/config.ts:209
+#: src/config.ts:249
+msgid "Ponderosa Pine"
+msgstr ""
+
+#: src/config.ts:218
+#: src/config.ts:254
+msgid "Engelmann Spruce"
+msgstr ""
+
+#: src/config.ts:229
+msgid "Species Range"
+msgstr ""
+
+#: src/components/About.tsx:14
+msgid "Planting Healthy Forests"
+msgstr ""
+
+#: src/components/About.tsx:15
+msgid "Hands holding a small tree seedling"
+msgstr ""
+
+#: src/components/About.tsx:17
+msgid ""
+"The Seedlot Selection Tool (SST) is a GIS mapping program designed to help "
+"forest managers match seedlots with\n"
+"planting sites based on climatic information. The climates of the planting "
+"sites can be chosen to represent\n"
+"current climates, or future climates based on selected climate change "
+"scenarios."
+msgstr ""
+
+#: src/components/About.tsx:24
+msgid "A bullseye"
+msgstr ""
+
+#: src/components/About.tsx:25
+msgid "Select Objective"
+msgstr ""
+
+#: src/components/About.tsx:26
+msgid ""
+"You can find seedlots for your planting site or planting sites for your "
+"seedlot"
+msgstr ""
+
+#: src/components/About.tsx:30
+msgid "Select Location"
+msgstr ""
+
+#: src/components/About.tsx:31
+msgid ""
+"You can click on the map or enter coordinates to locate your seedlot or "
+"planting site"
+msgstr ""
+
+#: src/components/About.tsx:34
+msgid "A map of North America with the western United States highlighted in red"
+msgstr ""
+
+#: src/components/About.tsx:35
+msgid "Select Region"
+msgstr ""
+
+#: src/components/About.tsx:36
+msgid ""
+"You can select the geographic region closest to your site or choose from a "
+"list of available regions"
+msgstr ""
+
+#: src/components/About.tsx:39
+msgid "A calendar icon showing the year 2050"
+msgstr ""
+
+#: src/components/About.tsx:40
+msgid "Select Climate Scenarios"
+msgstr ""
+
+#: src/components/About.tsx:41
+msgid ""
+"You can select historical, current, or future climates for your seedlots of "
+"planting sites"
+msgstr ""
+
+#: src/components/About.tsx:44
+msgid "A curved, blue arrow"
+msgstr ""
+
+#: src/components/About.tsx:45
+msgid "Select Transfer Limit Method"
+msgstr ""
+
+#: src/components/About.tsx:47
+msgid ""
+"You can enter your own custom limit, use an existing zone to calculate a "
+"transfer limit, or use a function \n"
+"relating genetic variation to climate to calculate a transfer limit"
+msgstr ""
+
+#: src/components/About.tsx:52
+msgid "A cloud with raindrops falling from the bottom, in front of the sun"
+msgstr ""
+
+#: src/components/About.tsx:53
+msgid "Select Climate Variables"
+msgstr ""
+
+#: src/components/About.tsx:54
+msgid ""
+"You can use a variety of climate variables to match your seedlot and "
+"planting site"
+msgstr ""
+
+#: src/components/About.tsx:57
+msgid "An icon of the globe"
+msgstr ""
+
+#: src/components/About.tsx:58
+msgid "Map your Results"
+msgstr ""
+
+#: src/components/About.tsx:59
+msgid "The map shows where to find appropriate seedlots or planting sites"
+msgstr ""
+
+#: src/components/Menu.tsx:41
+#: src/components/Menu.tsx:438
+msgid "Background"
+msgstr ""
+
+#: src/components/Menu.tsx:46
+msgid "Trees on a hillside enveloped in fog"
+msgstr ""
+
+#: src/components/Menu.tsx:49
+msgid ""
+"Populations of forest trees and other native plants are genetically "
+"different from one another and are\n"
+"locally adapted owing to natural selection to different climatic pressures "
+"across the landscape (Leimu and\n"
+"Fischer 2008, Alberto et al. 2013, Baughman et al. 2019). As a result, "
+"local seed sources are usually\n"
+"recommended for reforestation and restoration. Typically, this has been "
+"accomplished using geographically\n"
+"defined zones or seed transfer rules that limit the geographic or climatic "
+"distance that populations may\n"
+"be moved. As climates change, however, the assumption of “local is best” "
+"and the use of local seed zones\n"
+"and guidelines may no longer apply. Because populations are genetically "
+"adapted to their local climates,\n"
+"the health and productivity of native or newly established ecosystems using "
+"local seed sources will likely\n"
+"decline. We are already seeing increased mortality across many forest tree "
+"species in North America likely\n"
+"attributed to changes in climate (van Mantgem et al. 2009, Sáenz-Romero et "
+"al. 2020). And the problem will\n"
+"only get worse – the amount of climate change to date is small compared to "
+"what is projected by the mid-\n"
+"to late-21st century."
+msgstr ""
+
+#: src/components/Menu.tsx:63
+msgid ""
+"Natural resource managers may respond to concerns of maladaptation and "
+"declines in ecosystem \n"
+"productivity by matching the climatic adaptability of their plant material "
+"to the climatic conditions of \n"
+"their reforestation or restoration sites. Software applications are now "
+"available that can be used to\n"
+"characterize the local climates of seed sources and planting sites, "
+"including past climates and future\n"
+"climates given different climate change models. For the Seedlot Selection "
+"Tool (SST), we use ClimateNA\n"
+"v5.30 and a USGS DEM data a resolution of 15-arc seconds (~450 m) to "
+"determine the climate for each grid\n"
+"point on a map (Wang et al. 2016 – more information may be found by "
+"clicking on the ClimateNA tab).\n"
+"ClimateNA is a user-friendly application that locally downscales historical "
+"and future climate from\n"
+"various baseline gridded climate data into scale-free point estimates of "
+"climate values for the entire\n"
+"continent of North America. It also calculates a large number of "
+"biologically relevant climate variables.\n"
+"The SST uses sixteen temperature- and precipitation-related variables as "
+"determined for two 30-year\n"
+"normals for past climates (1961 – 1990 and 1981-2010) and three 30-year "
+"normals for future climates (2011\n"
+"– 2040, 2041 – 2070, and 2071 – 2100). For the three future climates, the "
+"SST allows the user to make\n"
+"assumptions about future emission scenarios (relative concentration "
+"pathways) of RCP 4.5 or RCP 8.5. The\n"
+"climate projections are based on an ensemble of the average projections "
+"from fifteen climate models from\n"
+"the Coupled Model Intercomparison Project phase 5 (CMIP5) database of the "
+"5th IPCC Assessment Report."
+msgstr ""
+
+#: src/components/Menu.tsx:81
+#, javascript-format
+msgid ""
+"Using the climate estimates for each grid point on a map, the SST "
+"determines the climatic distances\n"
+"between a focal point location and each grid point on a map. The area "
+"mapped is limited to the maximum\n"
+"climatic distance a user is willing to move as indicated by the transfer "
+"limit (${ tl }). The gridded data \n"
+"for each climate variable is rescaled as: ${ formula }, where ${ xmid } is "
+"the midpoint value, or climatic \n"
+"center, of the focal point. Then, the multivariate climatic distance (${ d "
+"}) from the focal point to each \n"
+"grid point is calculated as the Euclidean distance for ${ n } climate "
+"variables: ${ distanceFormula }. \n"
+"Finally, the climate match (${ m }) is calculated as ${ matchFormula }. "
+"Values of ${ mLessThan0 } are not \n"
+"mapped, whereas values between 0 and 100 are mapped using the color scale "
+"ranging from light to dark \n"
+"orange."
+msgstr ""
+
+#: src/components/Menu.tsx:92
+msgid ""
+"To match seedlots and planting sites, it is necessary to choose appropriate "
+"climate variables that reflect\n"
+"the adaptive capacity of seedlots. Evidence for adaptation comes from two "
+"types of genetic studies: (1)\n"
+"genecology studies and (2) reciprocal transplant studies (or provenance "
+"studies that approximate\n"
+"reciprocal transplants). Both types of studies use a common-garden approach "
+"which minimizes environmental\n"
+"variation such that genetic differences are more easily observed. "
+"Genecology studies relate differences\n"
+"among seedlings from different populations to the environment of the seed "
+"sources. Consistent correlations\n"
+"between traits and source climates are indicative of adaptation as a result "
+"of natural selection of the\n"
+"parents in those source climates. Reciprocal transplant studies test "
+"adaptation directly by relating\n"
+"survival and growth of different populations from different source climates "
+"to the climates in which they\n"
+"are growing. Populations that survive and grow best in test climates that "
+"are similar to their source\n"
+"climates are considered to be locally adapted. In both types of studies, "
+"those climate variables showing\n"
+"the strongest relationships to population differences may be considered "
+"most important for adaptation. In\n"
+"general, genetic studies indicate that temperate trees are most strongly "
+"related to climate variables that\n"
+"reflect adaptation to cold temperatures in the winter and aridity during "
+"the growing season (Aitken and\n"
+"Bemmels 2015). Aridity is driven by both moisture availability and "
+"evapotranspiration, and is, thus, best\n"
+"reflected by climate variables that reflect both, such as climate moisture "
+"deficit and heat:moisture\n"
+"index, as well as related variables such as annual precipitation and summer "
+"temperatures."
+msgstr ""
+
+#: src/components/Menu.tsx:113
+msgid "A clear-cut hillside in the foreground, a wooded hillside in the background"
+msgstr ""
+
+#: src/components/Menu.tsx:116
+msgid ""
+"Once important climate variables are selected, it is necessary to decide on "
+"transfer limits – that is, how\n"
+"far can one move a population climatically before performance becomes "
+"unacceptable. This information is\n"
+"best obtained by measuring growth and survival in reciprocal transplant "
+"studies or provenance tests that\n"
+"move populations across large climatic gradients. As populations are moved "
+"greater climatic distances\n"
+"between seed sources and planting sites, we can expect that growth and "
+"survival will decrease,\n"
+"particularly for growing environments showing strong local adaptation, as "
+"is frequently the case. Because\n"
+"the decrease in growth and survival is a gradient, deciding on a transfer "
+"limit that is acceptable depends\n"
+"on the risk tolerance of the manager."
+msgstr ""
+
+#: src/components/Menu.tsx:126
+msgid ""
+"Because long-term, well-designed studies are rare for many plant species, "
+"we must often rely on\n"
+"generalizations from other species as well as practical experience for "
+"determining climate variables and\n"
+"transfer limits. For example, climatic variation in seed zones and breeding "
+"zones can be used to set\n"
+"transfer limits. Many of these zones have been used for decades—solving "
+"earlier problems with\n"
+"maladaptation resulting from excessive seed transfer. No matter what method "
+"is used, transfer limits\n"
+"should be adjusted to reflect the management practices and risk tolerance "
+"of the user. Agencies or\n"
+"organizations that are able to adjust management practices quickly (e.g., "
+"because of short rotations), or\n"
+"are more willing to accept risk, may choose a wider transfer limit than "
+"those that are risk-averse."
+msgstr ""
+
+#: src/components/Menu.tsx:136
+msgid ""
+"Once climate variables important for adaptation are determined and climatic "
+"transfer limits have been\n"
+"defined, natural resource managers can use the SST to explore options for "
+"responding to climate change\n"
+"through assisted migration. The output from the SST indicates the "
+"suitability of each point on the map to\n"
+"the focal point of interest. The difficulty arises, however, in that "
+"climate is a moving target – what is\n"
+"suitable in the near-term may not be suitable by mid- to late-century. For "
+"long-lived species such as\n"
+"forest trees, the best a natural resource manager can do is to aim as far "
+"into the future as possible to\n"
+"find the best match – that is, a climatic transfer distance of zero – while "
+"still remaining with their\n"
+"specified transfer limit in the near-term. For the Pacific Northwest, for "
+"example, that generally implies\n"
+"looking for the best match for mid-century while still being within the "
+"transfer limits for the next few\n"
+"decades. This is indicated on the mapped output by dark orange for the time "
+"period 2041-2070 (or a\n"
+"similarity index near 100 if you have mapped locations for comparison to "
+"the focal point) while still\n"
+"being within the light orange area by 2011-2040 (or a similarity index "
+"above zero). The goal is to\n"
+"minimize the climatic transfer distance for the future, but still remain "
+"within a transfer limit beyond\n"
+"which declines in health and productivity may be deemed unacceptable in the "
+"near-term. What is clear,\n"
+"however, is that the difference between the climatic adaptation of local "
+"populations and future climates\n"
+"will likely be well beyond acceptable transfer limits by mid- to "
+"late-century for much of North America,\n"
+"leading to declines in forest health and productivity – unless forest "
+"managers work to match suitable seed\n"
+"sources to projected future climates."
+msgstr ""
+
+#: src/components/Menu.tsx:155
+msgid "Literature Cited"
+msgstr ""
+
+#: src/components/Menu.tsx:202
+#, javascript-format
+msgid ""
+"ClimateNA is a software program written by ${ name } and others that "
+"extracts and downscales \n"
+"monthly climate data layers for the normal period of 1961-1990 from "
+"moderate spatial resolution \n"
+"(4 x 4 km) to scale-free point estimates for the entire continent of North "
+"America (Wang et al. \n"
+"2016). The downscaling is achieved through a combination of bilinear "
+"interpolation and dynamic \n"
+"local elevational adjustment. ClimateNA uses the derived data as a baseline "
+"to determine downscaled \n"
+"historical and future climate variables for individual years and periods "
+"between 1901 and 2100. \n"
+"ClimateNA also calculates a number of biologically relevant climate "
+"variables from the temperature \n"
+"and precipitation data."
+msgstr ""
+
+#: src/components/Menu.tsx:213
+msgid "Data sources"
+msgstr ""
+
+#: src/components/Menu.tsx:215
+msgid "Baseline data"
+msgstr ""
+
+#: src/components/Menu.tsx:218
+msgid ""
+"The monthly baseline data for 1961-1990 normals were compiled from the "
+"following sources and unified \n"
+"at 4 x 4 km spatial resolution"
+msgstr ""
+
+#: src/components/Menu.tsx:223
+msgid ""
+"British Columbia: PRISM at 800 x 800 m from Pacific Climate Impact "
+"Consortium"
+msgstr ""
+
+#: src/components/Menu.tsx:231
+#, javascript-format
+msgid "Prairie provinces: PRISM at 4 x 4 km from the ${ prismLink }"
+msgstr ""
+
+#: src/components/Menu.tsx:235
+msgid ""
+"United States: PRISM at 800 x 800 m from the PRISM Climate Group (Daly et "
+"al. 2008)"
+msgstr ""
+
+#: src/components/Menu.tsx:236
+msgid "The rest: ANUSPLIN at 4 x 4 km"
+msgstr ""
+
+#: src/components/Menu.tsx:237
+msgid "The rest of North America: ANUSPLIN at 4 x 4 km"
+msgstr ""
+
+#: src/components/Menu.tsx:240
+msgid "Historical data"
+msgstr ""
+
+#: src/components/Menu.tsx:243
+msgid ""
+"Historical monthly data were obtained from Climate Research Unit (CRU) "
+"(Harris et al 2014). The data\n"
+"version is CRU TS 3.23. The spatial resolution is 0.5 x 0.5° and covers the "
+"period of 1901-2014. \n"
+"Anomalies were calculated for each year and period relative to the "
+"1961-1990 normals."
+msgstr ""
+
+#: src/components/Menu.tsx:247
+msgid "Future climate data"
+msgstr ""
+
+#: src/components/Menu.tsx:260
+#, javascript-format
+msgid ""
+"The climate data for future periods, including 2020s (2010-2039), 2050s "
+"(2040-69) and 2080s \n"
+"(2070-2100), were from General Circulation Models (GCMs) of the Coupled "
+"Model Intercomparison Project \n"
+"(CMIP5) included in the IPCC Fifth Assessment Report (IPCC 2014). Fifteen "
+"GCMs were selected for two \n"
+"greenhouse gas emission scenarios (RCP 4.5 and RCP 8.5). When multiple "
+"ensembles are available for each \n"
+"GCM, an average was taken over the available (up to five) ensembles. "
+"Ensembles among the 15 GCMs are \n"
+"also available. The 15 AOGCMs are CanESM2, ACCESS1.0, IPSL-CM5A-MR, MIROC5, "
+"MPI-ESM-LR, CCSM4, \n"
+"HadGEM2-ES, CNRM-CM5, CSIRO Mk 3.6, GFDL-CM3, INM-CM4, MRI-CGCM3, "
+"MIROC-ESM, CESM1-CAM5, GISS-E2R and \n"
+"were chosen to represent all major clusters of similar AOGCMs by ${ name }."
+msgstr ""
+
+#: src/components/Menu.tsx:271
+msgid "Climate variables used in Seedlot Select Tool"
+msgstr ""
+
+#: src/components/Menu.tsx:273
+msgid "Annual variables"
+msgstr ""
+
+#: src/components/Menu.tsx:276
+msgid "Directly calculated annual variables"
+msgstr ""
+
+#: src/components/Menu.tsx:280
+msgid "mean annual temperature (°C)"
+msgstr ""
+
+#: src/components/Menu.tsx:281
+msgid "mean warmest month temperature (°C)"
+msgstr ""
+
+#: src/components/Menu.tsx:282
+msgid "mean coldest month temperature (°C)"
+msgstr ""
+
+#: src/components/Menu.tsx:283
+msgid "temperature difference between MWMT and MCMT, or continentality (°C)"
+msgstr ""
+
+#: src/components/Menu.tsx:286
+msgid "annual heat-moisture index"
+msgstr ""
+
+#: src/components/Menu.tsx:287
+msgid "summer heat-moisture index"
+msgstr ""
+
+#: src/components/Menu.tsx:292
+msgid "Derived annual variables"
+msgstr ""
+
+#: src/components/Menu.tsx:296
+msgid "degree-days below 0°C, chilling degree-days"
+msgstr ""
+
+#: src/components/Menu.tsx:297
+msgid "degree-days above 5°C, growing degree-days"
+msgstr ""
+
+#: src/components/Menu.tsx:298
+msgid "frost-free period"
+msgstr ""
+
+#: src/components/Menu.tsx:304
+msgid "extreme minimum temperature over 30 years"
+msgstr ""
+
+#: src/components/Menu.tsx:305
+msgid "extreme maximum temperature over 30 years"
+msgstr ""
+
+#: src/components/Menu.tsx:311
+msgid "References"
+msgstr ""
+
+#: src/components/Menu.tsx:338
+#: src/components/Menu.tsx:444
+msgid "People"
+msgstr ""
+
+#: src/components/Menu.tsx:341
+msgid ""
+"The Seedlot Selection Tool is a collaboration between the US Forest "
+"Service, Oregon State University, \n"
+"and the Conservation Biology Institute. Initial conceptualization and "
+"development was done by Glenn Howe \n"
+"at Oregon State University College of Forestry and Brad St.Clair at the US "
+"Forest Service Pacific \n"
+"Northwest Research Station, with considerable input from Ron Beloin while "
+"he was working at Oregon State \n"
+"University. The Conservation Biology Institute was brought onboard to bring "
+"the project to fruition \n"
+"through their expertise in web site design and programming for spatial "
+"applications. Personnel at the \n"
+"Conservation Biology Institute included Nikolas Stevenson-Molnar (tool "
+"developer), Brendan Ward (project \n"
+"manager), and Dominique Bachelet (project co-PI)."
+msgstr ""
+
+#: src/components/Menu.tsx:351
+msgid ""
+"Initial funding for the Seedlot Selection Tool came from the US Forest "
+"Service Washington Office.\n"
+"Subsequent funding came from the USFS Pacific Northwest Research Station, "
+"Oregon State University,\n"
+"Conservation Biology Institute, the USDA Northwest Climate Hub, Natural "
+"Resources Canada, \n"
+"USFS International Programs, and USFS State & Private"
+msgstr ""
+
+#: src/components/Menu.tsx:360
+msgid "United States Forest Service"
+msgstr ""
+
+#: src/components/Menu.tsx:365
+msgid "Oregon State University"
+msgstr ""
+
+#: src/components/Menu.tsx:370
+msgid "Conservation Biology Institute"
+msgstr ""
+
+#: src/components/Menu.tsx:375
+msgid "NW Climate Hub"
+msgstr ""
+
+#: src/components/Menu.tsx:380
+msgid "Contact Information"
+msgstr ""
+
+#: src/components/Menu.tsx:382
+msgid "Co - Principal Investigator"
+msgstr ""
+
+#: src/components/Menu.tsx:384
+msgid "Research Geneticist, Pacific Northwest Research Station"
+msgstr ""
+
+#: src/components/Menu.tsx:386
+msgid "USDA Forest Service, Corvallis, Oregon, USA"
+msgstr ""
+
+#: src/components/Menu.tsx:393
+msgid "Software Engineer"
+msgstr ""
+
+#: src/components/Menu.tsx:395
+msgid "Conservation Biology Institute, Corvallis, Oregon, USA"
+msgstr ""
+
+#: src/components/Menu.tsx:404
+#: src/components/Menu.tsx:447
+msgid "News & Updates"
+msgstr ""
+
+#: src/components/Menu.tsx:407
+msgid ""
+"Sign up for the SST newsletter. We will send you emails to inform you of "
+"major updates. We will not\n"
+"share your email address with anyone else."
+msgstr ""
+
+#: src/components/Menu.tsx:412
+msgid "Sign up for our newsletter"
+msgstr ""
+
+#: src/components/Menu.tsx:420
+#: src/components/Menu.tsx:429
+#: src/components/Menu.tsx:450
+msgid "Report an Issue"
+msgstr ""
+
+#: src/components/Menu.tsx:423
+msgid ""
+"Issues are used to track to-dos, bugs, feature requests, and more. As "
+"issues are created, they'll\n"
+"appear here in a searchable and filterable list. To get started, you should "
+"create an issue (you will \n"
+"need to sign up for a GitHub account)."
+msgstr ""
+
+#: src/components/Menu.tsx:435
+msgid "User Guide"
+msgstr ""
+
+#: src/components/Menu.tsx:441
+msgid "ClimateNA"
+msgstr ""
+
+#: src/components/Menu.tsx:228
+msgctxt "This is the value of 'prismLink'"
+msgid "PRISM Climate Group"
+msgstr ""
+
+#: src/components/Menu.tsx:284
+msgctxt "mm = millimeters"
+msgid "mean annual precipitation (mm)"
+msgstr ""
+
+#: src/components/Menu.tsx:285
+msgctxt "mm = millimeters"
+msgid "mean annual summer (May to Sept.) precipitation (mm)"
+msgstr ""
+
+#: src/components/Menu.tsx:301
+msgctxt "mm = millimeters"
+msgid ""
+"precipitation as snow (mm) between August in previous year and July in "
+"current year"
+msgstr ""
+
+#: src/components/Menu.tsx:306
+msgctxt "mm = millimeters"
+msgid "Hargreaves reference evaporation (mm)"
+msgstr ""
+
+#: src/components/Menu.tsx:307
+msgctxt "mm = millimeters"
+msgid "Hargreaves climatic moisture deficit (mm)"
+msgstr ""
+
+#: src/components/Menu.tsx:391
+msgctxt "i.e., Lead Software Developer"
+msgid "Lead Developer"
+msgstr ""

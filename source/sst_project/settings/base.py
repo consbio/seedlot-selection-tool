@@ -4,6 +4,7 @@ import os
 import random
 import string
 from datetime import timedelta
+from pathlib import Path
 
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -67,6 +68,7 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
     'waffle.middleware.WaffleMiddleware'
 )
@@ -139,17 +141,16 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details'
 )
 
-LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'America/Los_Angeles'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
 LANGUAGES = (
-    ('en', _('English')),
-    ('es', _('Spanish'))
+    ('en_US', _('English')),
+    ('es_MX', _('Spanish'))
 )
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'en_US'
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locales')
 ]
@@ -238,6 +239,6 @@ NC_INSTALLED_INTERFACES = (
 
 NC_ENABLE_STRIDING = True
 NC_SERVICE_DATA_ROOT = 'data/ncdjango/services/'
-DATASET_DOWNLOAD_DIR = 'data/downloads'
+DATASET_DOWNLOAD_DIR = Path('data/downloads')
 
 SEEDSOURCE_TITLE = _('Seedlot Selection Tool')
