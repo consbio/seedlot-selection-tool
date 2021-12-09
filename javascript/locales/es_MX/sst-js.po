@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals = 2; plural = (n != 1);\n"
-"Language: es-mx\n"
+"Language: es_MX\n"
 "mime-version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 

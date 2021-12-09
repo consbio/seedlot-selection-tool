@@ -13,7 +13,7 @@ const languages = [
   },
   {
     name: 'es-mx',
-    file: path.resolve('./locales/es-mx/merged.po'),
+    file: path.resolve('./locales/es_MX/merged.po'),
   },
 ]
 
@@ -30,7 +30,7 @@ export default languages.map(language => {
     context: __dirname,
     devtool: 'source-map',
     entry: {
-      [language.name === 'default' ? 'main' : `main-${language.name}`]: [
+      [language.name === 'default' ? 'main' : `main.${language.name}`]: [
         ...(production ? ['webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server'] : []),
         './src/index',
         './scss/sst.scss',
