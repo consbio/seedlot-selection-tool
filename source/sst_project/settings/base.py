@@ -147,10 +147,10 @@ USE_L10N = True
 USE_TZ = True
 
 LANGUAGES = (
-    ('en_US', _('English')),
-    ('es_MX', _('Spanish'))
+    ('en-us', _('English')),
+    ('es-mx', _('Spanish'))
 )
-LANGUAGE_CODE = 'en_US'
+LANGUAGE_CODE = 'en-us'
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locales')
 ]

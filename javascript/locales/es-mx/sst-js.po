@@ -2,13 +2,13 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals = 2; plural = (n != 1);\n"
-"Language: es_MX\n"
+"Language: es-mx\n"
 "mime-version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/config.ts:34
-#: src/config.ts:200
-#: src/config.ts:244
+#: src/config.ts:190
+#: src/config.ts:234
 msgid "Douglas-fir"
 msgstr ""
 
@@ -104,27 +104,27 @@ msgstr ""
 msgid "Mountain hemlock"
 msgstr ""
 
-#: src/config.ts:182
-#: src/config.ts:234
+#: src/config.ts:172
+#: src/config.ts:224
 msgid "Lodgepole Pine"
 msgstr ""
 
-#: src/config.ts:191
-#: src/config.ts:239
+#: src/config.ts:181
+#: src/config.ts:229
 msgid "Sitka Spruce"
 msgstr ""
 
-#: src/config.ts:209
-#: src/config.ts:249
+#: src/config.ts:199
+#: src/config.ts:239
 msgid "Ponderosa Pine"
 msgstr ""
 
-#: src/config.ts:218
-#: src/config.ts:254
+#: src/config.ts:208
+#: src/config.ts:244
 msgid "Engelmann Spruce"
 msgstr ""
 
-#: src/config.ts:229
+#: src/config.ts:219
 msgid "Species Range"
 msgstr ""
 

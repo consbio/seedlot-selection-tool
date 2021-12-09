@@ -12,8 +12,8 @@ const languages = [
     name: 'default',
   },
   {
-    name: 'es_MX',
-    file: path.resolve('./locales/es/merged.po'),
+    name: 'es-mx',
+    file: path.resolve('./locales/es-mx/merged.po'),
   },
 ]
 
