@@ -104,20 +104,13 @@ export default languages.map(language => {
         },
         {
           test: /\.(scss|css)$/,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-              options: { publicPath: '' },
-            },
-            'css-loader',
-            'sass-loader',
-          ],
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         },
         {
           test: /\.(png|gif|jpe?g|svg|pdf)$/,
-          loader: 'file-loader',
-          options: {
-            name: '[name].[hash].[ext]',
+          type: 'asset/resource',
+          generator: {
+            filename: '[name].[hash][ext]',
           },
         },
         {
