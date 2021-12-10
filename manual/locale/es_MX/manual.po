@@ -1,0 +1,628 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2021-12-09 14:36-0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title =
+#: index.adoc:8
+#, no-wrap
+msgid "Seedlot Selection Tool (SST): User Guide"
+msgstr ""
+
+#. type: Title ==
+#: index.adoc:10
+#, no-wrap
+msgid "Introduction"
+msgstr ""
+
+#. type: Plain text
+#: index.adoc:21
+msgid ""
+"The Seedlot Selection Tool (SST) is a web-based mapping application designed "
+"to help natural resource managers match seedlots with planting sites based "
+"on climatic information. Because of natural selection to different climatic "
+"conditions at a location, plant populations are genetically differentiated "
+"from one another and are generally locally adapted. As a result, differences "
+"in climates among seedlots reflect differences in adaption. The SST maps "
+"locations where a seedlot matches a planting site assuming the seedlot was "
+"locally adapted to the past climate. The climates of the planting sites can "
+"be chosen to represent past climates, or future climates based on selected "
+"climate change scenarios. The SST allows the user to control many input "
+"parameters, allowing them to explore different assumptions about climate "
+"change, how plant populations are adapted to climate, and the risk tolerance "
+"of the user. The eight steps described below will provide guidelines to "
+"tailor the tool to your specific reforestation or restoration needs."
+msgstr ""
+
+#. type: Title ===
+#: sections/01-objective.adoc:1
+#, no-wrap
+msgid "Step 1. Select Objective"
+msgstr ""
+
+#. type: Title ====
+#: sections/01-objective.adoc:3
+#, no-wrap
+msgid "Find seedlots for my planting site"
+msgstr ""
+
+#. type: Plain text
+#: sections/01-objective.adoc:6
+msgid ""
+"Click on the `Find seedlots` button if you have a planting site for which "
+"you want to find adapted seedlots."
+msgstr ""
+
+#. type: Title ====
+#: sections/01-objective.adoc:7
+#, no-wrap
+msgid "Find planting sites for my seedlot"
+msgstr ""
+
+#. type: Plain text
+#: sections/01-objective.adoc:9
+msgid ""
+"Click on the `Find planting sites` button if you have a seedlot and you want "
+"to know where you can plant it."
+msgstr ""
+
+#. type: Title ===
+#: sections/02-location.adoc:1
+#, no-wrap
+msgid "Step 2. Select Location"
+msgstr ""
+
+#. type: Plain text
+#: sections/02-location.adoc:7
+msgid ""
+"You can either enter coordinates or click on the map to indicate the "
+"location of your planting site or seedlot. If looking for seedlots for a "
+"planting site, indicate the location of the planting site. If looking for "
+"planting sites for a seedlot, indicate the location of the seedlot. The "
+"location of a seedlot represents the geographic location where it is best "
+"adaptedâthat is, the center of its adaptive climate space."
+msgstr ""
+
+#. type: Title ====
+#: sections/02-location.adoc:8
+#, no-wrap
+msgid "Enter your location as coordinates"
+msgstr ""
+
+#. type: Plain text
+#: sections/02-location.adoc:12
+msgid ""
+"You can enter the latitude and longitude of your location in decimal "
+"degrees. (Note: enter a negative value for a longitude in North America.)"
+msgstr ""
+
+#. type: Title ====
+#: sections/02-location.adoc:13
+#, no-wrap
+msgid "Use the map to select your location"
+msgstr ""
+
+#. type: Plain text
+#: sections/02-location.adoc:20
+msgid ""
+"Alternatively, use the pan and zoom tools to navigate to your area of "
+"interest, and then click on the map. This pop-up will show the latitude, "
+"longitude, and elevation of your location, and any seed or breeding zones "
+"associated with that location. If you click on the `Set Point` button, your "
+"current coordinates and other location information will be automatically set "
+"for use by the program. If you have already selected climate variables in "
+"Step 6, it will also show their values."
+msgstr ""
+
+#. type: Block title
+#: sections/02-location.adoc:21
+#, no-wrap
+msgid "Optional"
+msgstr ""
+
+#. type: delimited block =
+#: sections/02-location.adoc:31
+msgid ""
+"You can map multiple seedlots for comparison to a planting site, or multiple "
+"planting sites for comparison to a seedlot, by clicking on the `Add "
+"Seedlots` or the `Add Planting Sites` button, respectively. After clicking "
+"on the button, you can either enter the coordinates of each location or "
+"click on the map and select `Add Location` in the pop-up. Be sure to click "
+"on the `Add` button each time you add a location or you could inadvertently "
+"shift the initial location to which you are comparing seedlots or planting "
+"sites by selecting Set Point. After running the tool, a similarity index is "
+"calculated between the initial planting site or seedlot and the locations to "
+"be compared to it (initially set as N/A until the tool is run; see Step 8 "
+"for details)."
+msgstr ""
+
+#. type: delimited block =
+#: sections/02-location.adoc:34
+msgid ""
+"_(Under construction: (1) Calculating climatic transfer distances for each "
+"climate variable for each location. (2)  Ability to enter a batch of "
+"locations. (3) Ability to output a table showing the results of all the "
+"comparisons.)_"
+msgstr ""
+
+#. type: Title ===
+#: sections/03-region.adoc:1
+#, no-wrap
+msgid "Step 3. Select Region"
+msgstr ""
+
+#. type: Plain text
+#: sections/03-region.adoc:6
+msgid ""
+"North America is divided into regions to reduce processing time. You can let "
+"the tool automatically choose the region which best fits the location you "
+"selected (default), or you can use the Custom option to manually select any "
+"available region."
+msgstr ""
+
+#. type: Title ====
+#: sections/03-region.adoc:7
+#, no-wrap
+msgid "Automatic"
+msgstr ""
+
+#. type: Plain text
+#: sections/03-region.adoc:12
+msgid ""
+"Click on the `Automatic` button to let the tool select the best region for "
+"your location. The region which contains your location and with a center "
+"point closest to your location will be selected. Before selecting a "
+"location, you can click on the map to see which region will be selected."
+msgstr ""
+
+#. type: Title ====
+#: sections/03-region.adoc:13
+#, no-wrap
+msgid "Custom"
+msgstr ""
+
+#. type: Plain text
+#: sections/03-region.adoc:17
+msgid ""
+"Click on the `Custom` button to select an alternative region from a "
+"drop-down list of available regions. When you choose a region from the "
+"drop-down menu, it will be outlined on the map. You can choose a region that "
+"does not contain your location, in which case the tool will map the results "
+"for the region you select."
+msgstr ""
+
+#. type: Title ===
+#: sections/04-climate.adoc:1
+#, no-wrap
+msgid "Step 4. Select Climate Scenarios"
+msgstr ""
+
+#. type: Title ====
+#: sections/04-climate.adoc:3
+#, no-wrap
+msgid "Which climate are the seedlots adapted to?"
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:9
+msgid ""
+"The first step is to select the time period (given as a 30-year average "
+"known as a climate normal) that represents the climate to which seedlots are "
+"adapted. It is typically assumed to be the climate having the greatest "
+"influence on the seedlot's parents. For longer-lived plants (e.g. trees) it "
+"is recommended to choose 1961 -1990. For shorter-lived species (e.g., grass "
+"and forbs) a 1981-2010 period may be more suitable."
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:11
+msgid "Using the drop-down menu, select either:"
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:13 sections/04-climate.adoc:31
+msgid "1961 - 1990"
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:14 sections/04-climate.adoc:32
+msgid "1981 - 2010"
+msgstr ""
+
+#. type: Title ====
+#: sections/04-climate.adoc:15
+#, no-wrap
+msgid "When should plants be best adapted to the planting site?"
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:21
+msgid ""
+"The next step is to choose a time period that represents the climate to "
+"which the planted trees should be optimally adapted to their planting "
+"site. This may be a bit of a conundrum for forest managers since long-lived "
+"trees must be adapted to the near-term in addition to being adapted to the "
+"long-term. Climate is a moving target. Aim too far into the future and one "
+"might see cold damage in the near-term for trees moved from warmer to cooler "
+"climates."
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:27
+msgid ""
+"The SST allows users to explore different scenarios of climate change by "
+"looking at different future time periods and assumed relative concentration "
+"pathways (RCPs). The SST also allows users to consider adaptation to past "
+"climates â that is, if climate change were ignored (1961 â 1990 before "
+"appreciable climate change) or considering recent changes in climate (1981 "
+"â 2010). Note that the current time period (2011-2040) represents modeled "
+"projections and not observations."
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:29 sections/04-climate.adoc:42
+msgid "Use the drop-down menu to select either:"
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:33
+msgid "2011 - 2040"
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:34
+msgid "2041 - 2070"
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:35
+msgid "2071 - 2100"
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:40
+msgid ""
+"For future climates (i.e., 2011 to 2100), also select the relative "
+"concentration pathway (RCP), which is associated with different levels of "
+"atmospheric greenhouse gases and climate change. According to IPCC AR5, the "
+"RCP 4.5 \"stabilization\" scenario has a projected increase in mean annual "
+"temperature of 1.8Â°C by 2100 (range = 1.1-2.6Â°C), whereas the RCP 8.5 "
+"higher-emissions scenario has a projected increase of 3.7Â°C by 2100 (range "
+"= 2.6-4.8Â°C)."
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:44
+msgid "RCP 4.5"
+msgstr ""
+
+#. type: Plain text
+#: sections/04-climate.adoc:44
+msgid "RCP 8.5"
+msgstr ""
+
+#. type: Title ===
+#: sections/05-transfer.adoc:1
+#, no-wrap
+msgid "Step 5. Select Transfer Limit Method"
+msgstr ""
+
+#. type: Plain text
+#: sections/05-transfer.adoc:6
+msgid ""
+"The transfer limit indicates how far climatically a seedlot may be moved and "
+"still have an acceptable level of adaptation. The SST uses three alternative "
+"approaches to determine and map transfer limits: *Custom*, *Zone*, and "
+"*Function*. _(Note: the Function approach is under construction)_"
+msgstr ""
+
+#. type: Plain text
+#: sections/05-transfer.adoc:10
+msgid ""
+"The *Custom* and *Zone* approaches allow user-defined transfer limits for "
+"each climate variable selected in Step 6.  Transfer limits for the *Custom* "
+"approach may be selected based on the experience of the user including the "
+"best available science. They may also be adjusted based on the userâs "
+"level of acceptable risk."
+msgstr ""
+
+#. type: Plain text
+#: sections/05-transfer.adoc:20
+msgid ""
+"The SST suggests a transfer limit for the Zone approach based on the range "
+"of climates within the zone for the location of the planting site or seedlot "
+"chosen in Step 2. The idea is that the user would feel comfortable with that "
+"climatic difference given that we have been operationally moving populations "
+"within zones for 60 or more years. If you use the Zone method, the SST "
+"obtains the transfer limit (`TL`) for each climate variable using the "
+"selected zone: latexmath:[TL = \\frac{xmax-xmin}{2}], where `xmax` and "
+"`xmin` are the maximum and minimum climate values for the zone.  The "
+"assumption is that half the range of climates represents a \"typical\" past "
+"transfer. Because some zones show greater climatic variation than the "
+"typical zone, we also provide the average transfer limit for all zones in "
+"the selected zone set. This and other information will show up in a pop-up "
+"window in Step 6 if you hover over the \"eye\" icon to the right of the "
+"climate variable in the climate variable table. The transfer limit may be "
+"modified by the user."
+msgstr ""
+
+#. type: Plain text
+#: sections/05-transfer.adoc:26
+msgid ""
+"The *Function* approach uses a genecological function to select an "
+"acceptable difference in one or more adaptive traits based on research from "
+"common-garden studies. Genecological functions are an association between "
+"the adaptive traits identified in a common-garden and the climate derived "
+"from seed-source locations. The trait usually represents a multivariate "
+"climate."
+msgstr ""
+
+#. type: Title ====
+#: sections/05-transfer.adoc:27
+#, no-wrap
+msgid "Custom method"
+msgstr ""
+
+#. type: Plain text
+#: sections/05-transfer.adoc:30
+msgid ""
+"Click on the `Custom` button to enter your own transfer limits after "
+"selecting one or more climate variables in Step 6."
+msgstr ""
+
+#. type: Title ====
+#: sections/05-transfer.adoc:31
+#, no-wrap
+msgid "Zone method"
+msgstr ""
+
+#. type: Plain text
+#: sections/05-transfer.adoc:34
+msgid ""
+"Click on the `Zone` button to use an existing zone to calculate transfer "
+"limits for one or more climate variables."
+msgstr ""
+
+#. type: Plain text
+#: sections/05-transfer.adoc:41
+msgid ""
+"For the objective of finding seedlots for a planting site, the *Zone* "
+"approach involves two steps. First, select a species. Second, select a zone "
+"from the drop-down menu of available options. If you know that a species has "
+"a species-specific zone and you would like to use it, select the zone from "
+"the drop-down menu of available species-specific zones for that "
+"location. Otherwise select generic for zones at that location that apply "
+"across all species. Note that the available zones are dependent upon the "
+"specific location selected (e.g., USFS zones may apply only to USFS lands)."
+msgstr ""
+
+#. type: Plain text
+#: sections/05-transfer.adoc:48
+msgid ""
+"For the objective of finding planting sites for a seedlot, the *Zone* "
+"approach involves three steps. First, you need to specify the climatic "
+"center of the mapped output. If you have a seedlot from a specific known "
+"location, you will typically use the climate of that specific location. If "
+"you have a seedlot that represents an entire zone, or you are unsure from "
+"where within the zone the seedlot was collected, it is probably more "
+"appropriate to use the climatic center of your zone. After specifying the "
+"climatic center to be used for mapping, the next two steps are as above â "
+"select the species followed by selecting the zone of interest."
+msgstr ""
+
+#. type: Title ====
+#: sections/05-transfer.adoc:49
+#, no-wrap
+msgid "Function method _(under construction February 2021)_"
+msgstr ""
+
+#. type: Plain text
+#: sections/05-transfer.adoc:55
+msgid ""
+"For the *Function* approach, select the species using the drop-down "
+"menu. The values and transfer limits for the adaptive traits from genecology "
+"studies will be prepopulated in Step 6 for the locations chosen in Step 2. A "
+"limited number of species are currently available for the *Function* "
+"approach, but more species will be added from existing and ongoing common "
+"garden studies."
+msgstr ""
+
+#. type: Plain text
+#: sections/05-transfer.adoc:58
+msgid ""
+"_In the future, the Function approach will also offer an option of creating "
+"your own function that allows differential weighting of different climate "
+"variables as representative of adaptive variation._"
+msgstr ""
+
+#. type: Title ===
+#: sections/06-variables.adoc:1
+#, no-wrap
+msgid "Step 6. Select Climate Variables"
+msgstr ""
+
+#. type: Plain text
+#: sections/06-variables.adoc:10
+msgid ""
+"Select one or more climate variables to be mapped. The climate information "
+"is derived from a climate downscaling application called ClimateNA (see tab "
+"for more information). You also have the option to `Choose automatically`, "
+"in which case, the climate variables chosen will be mean temperature of the "
+"coldest month (MCMT) and summer heat:moisture index (SHM). These climate "
+"variables are chosen based on the assumption that temperate forest trees (or "
+"other plants)  are primarily adapted to cold temperatures in the winter and "
+"aridity in the summer. This option specifies a transfer limit for MCMT of "
+"`+/- 2.0Â°C` and for SHM of `+/-` half the value at the location specified "
+"in Step 2. These transfer limits may be modified. After choosing climate "
+"variables, the resulting table includes:"
+msgstr ""
+
+#. type: Plain text
+#: sections/06-variables.adoc:12
+#, no-wrap
+msgid "*Name* -- the abbreviated name of the ClimateNA variable\n"
+msgstr ""
+
+#. type: Plain text
+#: sections/06-variables.adoc:13
+#, no-wrap
+msgid "*Center* -- the climatic value at the center of the mapped output\n"
+msgstr ""
+
+#. type: Plain text
+#: sections/06-variables.adoc:14
+#, no-wrap
+msgid ""
+"*Transfer limit* -- the transfer limit used in showing the extent of the "
+"mapped output\n"
+msgstr ""
+
+#. type: Plain text
+#: sections/06-variables.adoc:18
+msgid ""
+"We caution users from selecting too many climate variables, particularly "
+"variables that are unrelated to adaptation.  The use of many climate "
+"variables will probably result in overly conservative climate matches; the "
+"more climate variables that are included, the smaller the mapped areas will "
+"be. It is also best to avoid variables that are highly correlated with one "
+"another."
+msgstr ""
+
+#. type: Title ===
+#: sections/07-constraints.adoc:1
+#, no-wrap
+msgid "Step 7. Apply Constraints"
+msgstr ""
+
+#. type: Plain text
+#: sections/07-constraints.adoc:7
+msgid ""
+"The mapped output of the SST may be further constrained using geographic "
+"limits or a species range. Using constraints will exclude that part of the "
+"climatic output that is beyond the geographic limits imposed or beyond the "
+"current species range. The geographic constraints include latitude, "
+"longitude, elevation, distance, and photoperiod. The species range "
+"constraints are based on recent climate-niche models. There is also an "
+"option to import your own shapefile to use as a constraint."
+msgstr ""
+
+#. type: Title ===
+#: sections/08-results.adoc:1
+#, no-wrap
+msgid "Step 8. Map Your Results"
+msgstr ""
+
+#. type: Plain text
+#: sections/08-results.adoc:9
+msgid ""
+"Click `Run Tool` to produce a map that shows where you can find appropriate "
+"seedlots or planting sites for the locations specified in Step 2 and the "
+"climate of the time period specified in Step 4. The map shows the degree of "
+"match between the past climate to which a seedlot is adapted and the climate "
+"of the time period in which the trees are expected to be best adapted to the "
+"planting site. The darkest orange indicates the best match and the lightest "
+"orange indicates the match that is at the edge of the transfer limit. Note "
+"that using a greater transfer limit does not affect the best match but does "
+"result in a larger geographic area of suitability."
+msgstr ""
+
+#. type: Plain text
+#: sections/08-results.adoc:17
+msgid ""
+"The process for determining the degree of match is, first, re-scaling the "
+"gridded data for each climate variable (or associated trait from a "
+"genecology function) as: latexmath:[y = \\frac{|x - xmid|}{TL}], where xmid "
+"is the midpoint value, or climatic center. Second, the multivariate climatic "
+"distance (`d`) from the climatic center to each grid point is calculated as "
+"the Euclidean distance for `n` climate variables: latexmath:[dn = ({y_1}^2 + "
+"{y_2}^2 + ... + {y_n}^2)0.5]. Finally, the climate match (`m`) (also called "
+"a similarity index in Step 2) is calculated as latexmath:[m = "
+"-(d-1)*100]. Values of latexmath:[m < 0] are not mapped, whereas values "
+"between `0` and `100` are mapped using the color scale ranging from light to "
+"dark orange."
+msgstr ""
+
+#. type: Plain text
+#: sections/08-results.adoc:19
+msgid ""
+"Note that the slider bar at the right side may be used to better see the map "
+"underlying the climatic match output."
+msgstr ""
+
+#. type: Plain text
+#: sections/08-results.adoc:23
+msgid ""
+"If you have set up an account and are signed in, you can save your inputs by "
+"clicking on the `Save Last Run` button.  You will be asked to provide a name "
+"for the saved run. Once saved, the saved run will show up in the `Saved "
+"Runs` window (see below)."
+msgstr ""
+
+#. type: Plain text
+#: sections/08-results.adoc:26
+msgid ""
+"You can also export your results to a PDF, PowerPoint, or GeoTIFF file by "
+"clicking on the `Export As...` button. Another option is to use `Print Scrn` "
+"on your keyboard to copy a picture of the screen that can be pasted into "
+"another file such as a PowerPoint presentation."
+msgstr ""
+
+#. type: Title ===
+#: sections/appendix.adoc:1
+#, no-wrap
+msgid "Layers"
+msgstr ""
+
+#. type: Plain text
+#: sections/appendix.adoc:6
+msgid ""
+"The *Layers* tab allows the user to map different overlays onto the "
+"results. Options include gray-scaled values for different climate variables, "
+"seed and breeding zone boundaries, U.S. Level III Ecoregion boundaries, and "
+"U.S. county boundaries. _(Under construction: some species ranges will be "
+"added as an option for layers.)_"
+msgstr ""
+
+#. type: Title ===
+#: sections/appendix.adoc:7
+#, no-wrap
+msgid "Saved Runs"
+msgstr ""
+
+#. type: Plain text
+#: sections/appendix.adoc:11
+msgid ""
+"The *Saved Runs* tab will list each of your saved runs. Click on the name of "
+"the saved run to `Load` or `Delete` the inputs. Once a saved run is loaded, "
+"you can recreate the map by clicking on the `Run Tool` button in the Tool "
+"tab."
+msgstr ""
+
+#. type: Title ===
+#: sections/appendix.adoc:12
+#, no-wrap
+msgid "Account"
+msgstr ""
+
+#. type: Plain text
+#: sections/appendix.adoc:16
+msgid ""
+"Use the *Account* menu in the upper right corner of the web site to create "
+"or sign into an account. Use an email address and password to create an "
+"account. We will use this email address only if you lose your password. If "
+"you want to receive updates on the SST, sign up for our newsletter by "
+"clicking the `News & Updates` button in the menu."
+msgstr ""
