@@ -128,6 +128,16 @@ export default () => {
     ],
     functions: [
       {
+        name: 'HGT',
+        label: t`Scaled Height`,
+        // Tmin_sp is multiplied by 10, so we divide by 10 here to get the real value
+        fn: 'math_e**(6.705 + (0.07443/10 * Tmin_sp))',
+        transfer: 66,
+        units: '',
+        customTransfer: false,
+        species: ['pico'],
+      },
+      {
         name: 'HT',
         label: t`Height`,
         // Tmin_sp is multiplied by 10, so we divide by 10 here to get the real value
