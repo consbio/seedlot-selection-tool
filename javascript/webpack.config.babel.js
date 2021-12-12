@@ -3,7 +3,7 @@ import webpack from 'webpack'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import BundleTracker from 'webpack-bundle-tracker'
 
-const mode = process.env.NODE_END || 'development'
+const mode = process.env.NODE_ENV || 'development'
 const production = mode === 'production'
 const bundleTracker = new BundleTracker({ filename: '../webpack-stats.json' })
 
@@ -31,7 +31,7 @@ export default languages.map(language => {
     devtool: 'source-map',
     entry: {
       [language.name === 'default' ? 'main' : `main.${language.name}`]: [
-        ...(production ? ['webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server'] : []),
+        ...(production ? [] : ['webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server']),
         './src/index',
         './scss/sst.scss',
       ],
