@@ -4,7 +4,7 @@ import pytz
 
 from .base import *
 
-if CONFIG.get('sentry_url'):
+if CONFIG.get('sentry_dsn'):
     import sentry_sdk
     from sentry_sdk.integrations.django import DjangoIntegration
 
