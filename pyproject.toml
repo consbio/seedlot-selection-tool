@@ -12,7 +12,7 @@ rasterio = "^1.2a1"
 seedsource-core = { path = "./seedsource-core", develop = true }
 django-celery-results = "^2.0.0"
 social-auth-app-django = "^4.0.0"
-psycopg2-binary = "^2.8.6"
+psycopg2-binary = "~2.8.6"
 django-webpack-loader = "^1.1.0"
 celery = "^4.0.0"
 pyproj = "^3.0.0"
