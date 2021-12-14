@@ -27,6 +27,7 @@ export default languages.map(language => {
   return {
     name: language.name,
     mode,
+    target: ['web', 'es5'],
     context: __dirname,
     devtool: 'source-map',
     entry: {
@@ -39,18 +40,16 @@ export default languages.map(language => {
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: '[name].[chunkhash].bundle.js',
-      publicPath: production ? '/static/' : 'http://127.0.0.1:3000/assets/bundles/',
+      publicPath: production ? 'https://seedlotselectiontool.org/static/' : 'http://127.0.0.1:3000/assets/bundles/',
       crossOriginLoading: production ? false : 'anonymous',
     },
     ...(production || language.name !== 'default'
       ? {}
       : {
           devServer: {
-            // contentBase: './',
             hot: false,
             host: '127.0.0.1',
             port: 3000,
-            // inline: true,
             headers: { 'Access-Control-Allow-Origin': '*' },
             devMiddleware: {
               index: true,
