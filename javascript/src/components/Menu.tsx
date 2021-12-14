@@ -1,6 +1,7 @@
 import React from 'react'
 import { t, c, jt } from 'ttag'
 import ModalCard from 'seedsource-ui/lib/components/ModalCard'
+import NavItemDropdown from 'seedsource-ui/lib/components/NavItemDropdown'
 import Background1 from '../../images/background1.jpg'
 import Background2 from '../../images/background2.jpg'
 import FSLogo from '../../images/fs_logo.png'
@@ -434,18 +435,20 @@ class Menu extends React.Component {
         <a className="navbar-item" href={SSTInstructions} target="_blank" rel="noreferrer" key="instructions">
           {t`User Guide`}
         </a>
-        <a className="navbar-item" onClick={() => this.backgroundModal!.show()}>
-          {t`Background`}
-        </a>
-        <a className="navbar-item" onClick={() => this.climatenaModal!.show()}>
-          {t`ClimateNA`}
-        </a>
-        <a className="navbar-item" key="people" onClick={() => this.peopleModal!.show()}>
-          {t`People`}
-        </a>
-        <a className="navbar-item" key="news" onClick={() => this.newsModal!.show()}>
-          {t`News & Updates`}
-        </a>
+        <NavItemDropdown title={t`About`}>
+          <a className="navbar-item" onClick={() => this.backgroundModal!.show()}>
+            {t`Background`}
+          </a>
+          <a className="navbar-item" onClick={() => this.climatenaModal!.show()}>
+            {t`ClimateNA`}
+          </a>
+          <a className="navbar-item" key="people" onClick={() => this.peopleModal!.show()}>
+            {t`People`}
+          </a>
+          <a className="navbar-item" key="news" onClick={() => this.newsModal!.show()}>
+            {t`News & Updates`}
+          </a>
+        </NavItemDropdown>
         <a className="navbar-item" key="issues" onClick={() => this.issueModal!.show()}>
           {t`Report an Issue`}
         </a>
