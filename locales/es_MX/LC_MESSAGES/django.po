@@ -6,169 +6,149 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 11:10-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: es_MX\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: PACKAGE VERSION\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2021-12-09 11:10-0800\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: es_MX\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: seedsource-core/seedsource_core/django/accounts/forms.py:18
 msgid "Sorry, the link you are using is not valid."
-msgstr ""
+msgstr "Lo sentimos, el enlace que está utilizando no es válido."
 
 #: seedsource-core/seedsource_core/django/accounts/forms.py:21
 msgid "This link has already been used."
-msgstr ""
+msgstr "Este enlace ya se ha utilizado."
 
 #: seedsource-core/seedsource_core/django/accounts/forms.py:31
 msgid "Passwords do not match."
-msgstr ""
+msgstr "Las contraseñas no coinciden."
 
 #: seedsource-core/seedsource_core/django/accounts/serializers.py:9
 msgid "An account with this email address already exists."
-msgstr ""
+msgstr "Ya existe una cuenta con esta dirección de correo electrónico."
 
 #: seedsource-core/seedsource_core/django/accounts/serializers.py:69
 msgid "No account with this email address exists. Please create a new account."
-msgstr ""
+msgstr "No existe ninguna cuenta con esta dirección de correo electrónico. Cree una nueva cuenta."
 
 #: seedsource-core/seedsource_core/django/accounts/templates/emails/password_reset.txt:2
-msgid ""
-"We have received a request to reset your password for the Seedlot Selection "
-"Tool. To reset your password, please click the link below and choose a new "
-"password."
-msgstr ""
+msgid "We have received a request to reset your password for the Seedlot Selection Tool. To reset your password, please click the link below and choose a new password."
+msgstr "Hemos recibido una solicitud para restablecer su contraseña para la Herramienta de selección de lotes de semillas. Para restablecer su contraseña, haga clic en el siguiente vínculo y elija una nueva contraseña."
 
 #: seedsource-core/seedsource_core/django/accounts/templates/emails/password_reset.txt:4
 #, python-format
 msgid "Username: %(email)s"
-msgstr ""
+msgstr "Nombre de usuario: %(email)s"
 
 #: seedsource-core/seedsource_core/django/accounts/templates/emails/password_reset.txt:7
-msgid ""
-"If you did not request a password reset, please ignore this message. You "
-"should never share you password with anyone and we will never ask you for "
-"your password."
-msgstr ""
+msgid "If you did not request a password reset, please ignore this message. You should never share you password with anyone and we will never ask you for your password."
+msgstr "Si no solicitó un restablecimiento de contraseña, haga caso omiso a este mensaje. Jamás comparta su contraseña con nadie; tampoco le pediremos nunca su contraseña."
 
 #: seedsource-core/seedsource_core/django/accounts/templates/emails/password_reset.txt:9
 msgctxt "Email sign-off"
 msgid "Sincerely,"
-msgstr ""
+msgstr "Atentamente,"
 
 #: seedsource-core/seedsource_core/django/accounts/templates/emails/password_reset.txt:10
 msgid "The SST Team"
-msgstr ""
+msgstr "El personal de la Herramienta de selección de lotes de semillas (Seedlot Selection Tool, SST)"
 
 #: seedsource-core/seedsource_core/django/accounts/templates/password_reset_base.html:7
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:14
 #: source/sst_project/settings/base.py:244
 msgid "Seedlot Selection Tool"
-msgstr ""
+msgstr "Herramienta de selección de lotes de semillas"
 
 #: seedsource-core/seedsource_core/django/accounts/templates/password_reset_form.html:5
 #: seedsource-core/seedsource_core/django/accounts/templates/password_reset_success.html:5
 msgid "Reset Password"
-msgstr ""
+msgstr "Restablecer contraseña"
 
 #: seedsource-core/seedsource_core/django/accounts/templates/password_reset_form.html:22
 msgid "New Password:"
-msgstr ""
+msgstr "Nueva contraseña:"
 
 #: seedsource-core/seedsource_core/django/accounts/templates/password_reset_form.html:26
 msgid "Confirm Password:"
-msgstr ""
+msgstr "Confirmar contraseña:"
 
 #: seedsource-core/seedsource_core/django/accounts/templates/password_reset_success.html:6
-msgid ""
-"Your new password has been set. You can now login to your account using the "
-"new password."
-msgstr ""
+msgid "Your new password has been set. You can now login to your account using the new password."
+msgstr "Se ha establecido su nueva contraseña. Ahora puede iniciar sesión en su cuenta con la nueva contraseña."
 
 #: seedsource-core/seedsource_core/django/accounts/templates/password_reset_success.html:7
 msgid "Return to the Seedlot Selection Tool"
-msgstr ""
+msgstr "Volver a la Herramienta de selección de lotes de semillas"
 
 #: seedsource-core/seedsource_core/django/accounts/views.py:115
 msgid "Seedlot Selection Tool: Reset Password"
-msgstr ""
+msgstr "Herramienta de selección de lotes de semillas: Restablecer contraseña"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:40
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:212
 msgid "Custom transfer limits, climatic center based on the selected location"
-msgstr ""
+msgstr "Límites de transferencia personalizados; centro climático según la ubicación seleccionada"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:42
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:207
 msgid "Transfer limits and climatic center based on seed zone"
-msgstr ""
+msgstr "Límites de transferencia y centro climático según la zona de origen de las semillas"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:44
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:209
-msgid ""
-"Transfer limits based on seed zone, climatic center based on the selected "
-"location"
-msgstr ""
+msgid "Transfer limits based on seed zone, climatic center based on the selected location"
+msgstr "Límites de transferencia según la zona de origen de las semillas; centro climático según la ubicación seleccionada"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:123
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:218
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:178
 msgid "Objective:"
-msgstr ""
+msgstr "Objetivo:"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:126
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:220
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:189
 msgid "Elevation:"
-msgstr ""
+msgstr "Elevación:"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:126
 #, python-brace-format
 msgid "{elevation} ft"
-msgstr ""
+msgstr "{elevation} pies"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:128
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:195
 msgid "Climate scenarios"
-msgstr ""
+msgstr "Escenarios climáticos"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:129
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:222
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:196
 msgid "Seedlot climate:"
-msgstr ""
+msgstr "Clima del lote de semillas:"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:130
 msgid "Planting site climate: "
-msgstr ""
+msgstr "Clima del sitio de plantación: "
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:132
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:224
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:204
 msgid "Transfer limit method:"
-msgstr ""
+msgstr "Método del límite de transferencia:"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:134
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:326
 msgid "Data URL:"
-msgstr ""
+msgstr "Dirección URL de los datos:"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:142
 msgid "Climate Variables"
-msgstr ""
+msgstr "Variables climáticas"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:155
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:237
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:257
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:267
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:156
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:239
@@ -177,7 +157,7 @@ msgstr ""
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:268
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:297
 msgid "Center"
-msgstr ""
+msgstr "Centro"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:157
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:242
@@ -185,101 +165,101 @@ msgstr ""
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:242
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:269
 msgid "Transfer limit"
-msgstr ""
+msgstr "Límite de transferencia"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:165
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:247
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:273
 msgid "modified"
-msgstr ""
+msgstr "modificado"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:174
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:300
 msgid "Constraints"
-msgstr ""
+msgstr "Limitaciones"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:187
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:302
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:296
 msgid "Constraint"
-msgstr ""
+msgstr "Limitación"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:188
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:283
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:303
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:189
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:287
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:304
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:298
 msgid "Range"
-msgstr ""
+msgstr "Rango"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:221
 msgid "Climate Scenarios"
-msgstr ""
+msgstr "Escenarios climáticos"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:223
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:197
 msgid "Planting site climate:"
-msgstr ""
+msgstr "Clima del sitio de plantación:"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:231
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:220
 msgid "Species:"
-msgstr ""
+msgstr "Especie:"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:232
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:227
 msgid "Seed zone:"
-msgstr ""
+msgstr "Zona de origen de las semillas:"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:255
 msgid "Variables"
-msgstr ""
+msgstr "Variables"
 
 #: seedsource-core/seedsource_core/django/seedsource/ppt.py:345
 #, python-brace-format
 msgid "Generated {date} by the Seedlot Selection Tool"
-msgstr ""
+msgstr "Generado {date} por la Herramienta de selección de lotes de semillas"
 
 #: seedsource-core/seedsource_core/django/seedsource/report.py:228
 msgid "Find seedlots"
-msgstr ""
+msgstr "Buscar lotes de semillas"
 
 #: seedsource-core/seedsource_core/django/seedsource/report.py:228
 msgid "Find planting sites"
-msgstr ""
+msgstr "Buscar sitios de plantación"
 
 #: seedsource-core/seedsource_core/django/seedsource/report.py:229
 msgid "Planting site location"
-msgstr ""
+msgstr "Ubicación del sitio de plantación"
 
 #: seedsource-core/seedsource_core/django/seedsource/report.py:229
 msgid "Seedlot location"
-msgstr ""
+msgstr "Ubicación del lote de semillas"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:61
 msgid "Mean annual temperature"
-msgstr ""
+msgstr "Temperatura media anual"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:64
 msgid "Mean warmest month temperature"
-msgstr ""
+msgstr "Temperatura media del mes más cálido"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:67
 msgid "Mean coldest month temperature"
-msgstr ""
+msgstr "Temperatura media del mes más frío"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:70
 msgid "Temperature difference between MWMT and MCMT, or continentality"
-msgstr ""
+msgstr "Diferencia de temperatura entre la temperatura media del mes más caluroso (TMMC) y la temperatura media del mes más frío (TMMF), o continentalidad"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:74
 msgid "Mean annual precipitation"
-msgstr ""
+msgstr "Precipitación media anual"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:75
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:80
@@ -288,7 +268,7 @@ msgstr ""
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:108
 msgctxt "mm"
 msgid "Abbreviation of 'millimeters'"
-msgstr ""
+msgstr "Abreviatura de “milímetros”"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:76
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:81
@@ -297,204 +277,184 @@ msgstr ""
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:109
 msgctxt "in"
 msgid "Abbreviation of 'inches'"
-msgstr ""
+msgstr "Abreviatura de “pulgadas”"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:79
 msgid "Mean summer precipitation, May to September"
-msgstr ""
+msgstr "Precipitación media en verano, de mayo a septiembre"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:83
 msgid "Annual heat-moisture index"
-msgstr ""
+msgstr "Índice de calor-humedad anual"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:84
 msgid "Summer heat-moisture index"
-msgstr ""
+msgstr "Índice de calor-humedad en verano"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:85
 msgid "Degree-days below 0°C"
-msgstr ""
+msgstr "Grados/días por debajo de 0 °C"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:86
 msgid "Degree-days above 5°C"
-msgstr ""
+msgstr "Grados/días-grado por encima de 5 °C"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:87
 msgid "Frost-free period"
-msgstr ""
+msgstr "Periodo sin escarcha"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:87
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:115
 msgid "days"
-msgstr ""
+msgstr "días"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:89
 msgid "Precipitation as snow, August to July"
-msgstr ""
+msgstr "Precipitación en forma de nieve, de agosto a julio"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:94
 msgid "Extreme minimum temperature over 30 years"
-msgstr ""
+msgstr "Temperatura mínima extrema durante 30 años"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:98
 msgid "Extreme maximum temperature over 30 years"
-msgstr ""
+msgstr "Temperatura máxima extrema durante 30 años"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:102
 msgid "Hargreaves reference evaporation"
-msgstr ""
+msgstr "Evaporación de referencia de Hargreaves"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:107
 msgid "Hargreaves climatic moisture deficit"
-msgstr ""
+msgstr "Déficit de humedad climática de Hargreaves"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:115
 msgid "Flower Date"
-msgstr ""
+msgstr "Fecha de floración"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:116
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:117
 msgid "Survival"
-msgstr ""
+msgstr "Supervivencia"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:127
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:134
 msgctxt "ft"
 msgid "Abbreviation of 'feet'"
-msgstr ""
+msgstr "Abreviatura de “pies”"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:128
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:135
 msgctxt "m"
 msgid "Abbreviation of 'meters'"
-msgstr ""
+msgstr "Abreviatura de “metros”"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:144
 msgid "hours"
-msgstr ""
+msgstr "horas"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:165
 msgctxt "mi"
 msgid "Abbreviation of 'miles'"
-msgstr ""
+msgstr "Abreviatura de “millas”"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:166
 msgctxt "km"
 msgid "Abbreviation of 'kilometers'"
-msgstr ""
+msgstr "Abreviatura de “kilómetros”"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:171
 msgid "Elevation"
-msgstr ""
+msgstr "Elevación"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:172
 msgid "Photoperiod"
-msgstr ""
+msgstr "Fotoperiodo"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:173
 msgid "Latitutde"
-msgstr ""
+msgstr "Latitud"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:174
 msgid "Longitude"
-msgstr ""
+msgstr "Longitud"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:175
 msgid "Distance"
-msgstr ""
+msgstr "Distancia"
 
 #: seedsource-core/seedsource_core/django/seedsource/report_config.py:177
 msgid "Raster"
-msgstr ""
+msgstr "Imagen en mapa de bits"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:160
 msgid "Match"
-msgstr ""
+msgstr "Coincidencia"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:168
 msgid "High"
-msgstr ""
+msgstr "Alta"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:171
 msgid "Low"
-msgstr ""
+msgstr "Baja"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:185
 msgctxt "Abbreviation of 'Latitude'"
 msgid "Lat:"
-msgstr ""
+msgstr "Lat:"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:186
 msgctxt "Abbreviation of 'Longitude'"
 msgid "Lon:"
-msgstr ""
+msgstr "Long:"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:190
 #, python-format
 msgid "%(elevation)s ft"
-msgstr ""
+msgstr "%(elevation)s pies"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:235
 msgid "Traits"
-msgstr ""
+msgstr "Características"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:240
 msgid "Trait"
-msgstr ""
+msgstr "Característica"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/pdf/report.html:262
 msgid "Climate variables"
-msgstr ""
+msgstr "Variables climáticas"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/txt/download_readme.txt:2
 msgid "ABOUT"
-msgstr ""
+msgstr "ACERCA DE"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/txt/download_readme.txt:4
 #, python-format
-msgid ""
-"This dataset was generated by the Seedlot Selection Tool (https://"
-"seedlotselectiontool.org) on %(today)s."
-msgstr ""
+msgid "This dataset was generated by the Seedlot Selection Tool (https://seedlotselectiontool.org) on %(today)s."
+msgstr "Este conjunto de datos fue generado por la Herramienta de selección de lotes de semillas (https://seedlotselectiontool.org), el %(today)s."
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/txt/download_readme.txt:6
-msgid ""
-"The Seedlot Selection Tool is a collaboration between the US Forest Service, "
-"Oregon State University, and the Conservation Biology Institute. Initial "
-"conceptualization and development was done by Glenn Howe at Oregon State "
-"University College of Forestry and Brad St.Clair at the USFS Pacific "
-"Northwest Research Station, with considerable input from Ron Beloin while he "
-"was working at Oregon State University. The Conservation Biology Institute "
-"was brought onboard to bring the project to fruition through their expertise "
-"in web site design and programming for spatial applications. Personnel at "
-"the Conservation Biology Institute include Dominique Bachelet (project co-"
-"PI), Nikolas Stevenson-Molnar (tool developer), and Brendan Ward (project "
-"manager)."
-msgstr ""
+msgid "The Seedlot Selection Tool is a collaboration between the US Forest Service, Oregon State University, and the Conservation Biology Institute. Initial conceptualization and development was done by Glenn Howe at Oregon State University College of Forestry and Brad St.Clair at the USFS Pacific Northwest Research Station, with considerable input from Ron Beloin while he was working at Oregon State University. The Conservation Biology Institute was brought onboard to bring the project to fruition through their expertise in web site design and programming for spatial applications. Personnel at the Conservation Biology Institute include Dominique Bachelet (project co-PI), Nikolas Stevenson-Molnar (tool developer), and Brendan Ward (project manager)."
+msgstr "La Herramienta de selección de lotes de semillas es una colaboración entre el Forest Service de los Estados Unidos, la Oregon State University y el Conservation Biology Institute. La conceptualización y el desarrollo iniciales estuvieron a cargo de Glenn Howe, de la Facultad de Ciencias Forestales de la Oregon State University, y Brad St. Clair, de la Estación de Investigación de la Región Noroeste del Pacífico (Pacific Northwest Research Station) del Servicio Forestal de los Estados Unidos (United States Forest Service, USFS), con una destacada aportación de Ron Beloin, cuando trabajaba en la Oregon State University. El Conservation Biology Institute se incorporó al proyecto para hacerlo realidad gracias a su experiencia en el diseño y programación de sitios web para aplicaciones espaciales. El personal del Conservation Biology Institute está representado por Dominique Bachelet (coinvestigadora principal del proyecto), Nikolas Stevenson-Molnar (desarrollador de herramientas) y Brendan Ward (gerente del proyecto)."
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/txt/download_readme.txt:8
-msgid ""
-"Initial funding for the Seedlot Selection Tool came from the US Forest "
-"Service Washington Office. Subsequent funding came from the USFS Pacific "
-"Northwest Research Station, Oregon State University, Conservation Biology "
-"Institute, the USDA Northwest Climate Hub, and Natural Resources Canada."
-msgstr ""
+msgid "Initial funding for the Seedlot Selection Tool came from the US Forest Service Washington Office. Subsequent funding came from the USFS Pacific Northwest Research Station, Oregon State University, Conservation Biology Institute, the USDA Northwest Climate Hub, and Natural Resources Canada."
+msgstr "El financiamiento inicial para la Herramienta de selección de lotes de semillas provino de la Oficina del Forest Service de los Estados Unidos en Washington. El financiamiento posterior provino de la Estación de Investigación de la Región Noroeste del Pacífico del USFS, de la Oregon State University, del Conservation Biology Institute, del Centro Climático del Noroeste (Northwest Climate Hub) del Departamento de Agricultura de los Estados Unidos (United States Department of Agriculture, USDA), y de Natural Resources Canada."
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/txt/download_readme.txt:10
 msgid "USING THE DATA"
-msgstr ""
+msgstr "USO DE LOS DATOS"
 
 #: seedsource-core/seedsource_core/django/seedsource/templates/txt/download_readme.txt:12
-msgid ""
-"The file results.tif is a GeoTIFF dataset. This file can be opened using "
-"desktop GIS software such as ArcGIS or QGIS. The value of each cell ranges "
-"from 0 - 100 with 0 being the worst possible match and 100 being the best."
-msgstr ""
+msgid "The file results.tif is a GeoTIFF dataset. This file can be opened using desktop GIS software such as ArcGIS or QGIS. The value of each cell ranges from 0 - 100 with 0 being the worst possible match and 100 being the best."
+msgstr "El archivo results.tif es un conjunto de datos de GeoTIFF. Este archivo se puede abrir con un software GIS de escritorio, como ArcGIS o QGIS. El valor de cada celda va de 0 a 100, donde 0 es la peor coincidencia posible y 100 es la mejor."
 
 #: source/sst_project/settings/base.py:150
 msgid "English"
-msgstr ""
+msgstr "Inglés"
 
 #: source/sst_project/settings/base.py:151
 msgid "Spanish"
-msgstr ""
+msgstr "Español"

@@ -2,6 +2,7 @@ import React from 'react'
 import { t, c, jt } from 'ttag'
 import ModalCard from 'seedsource-ui/lib/components/ModalCard'
 import NavItemDropdown from 'seedsource-ui/lib/components/NavItemDropdown'
+import { getCookies } from 'seedsource-ui/lib/utils'
 import Background1 from '../../images/background1.jpg'
 import Background2 from '../../images/background2.jpg'
 import FSLogo from '../../images/fs_logo.png'
@@ -9,6 +10,7 @@ import OSULogo from '../../images/osu_logo.png'
 import CBILogo from '../../images/cbi_logo.png'
 import ClimateHubLogo from '../../images/nw_climate_hub_logo.png'
 import SSTInstructions from '../../documents/SST User Guide.pdf'
+import SSTInstructionsESMX from '../../documents/translations/es_MX/SST User Guide.pdf'
 
 class Menu extends React.Component {
   backgroundModal?: ModalCard
@@ -22,6 +24,9 @@ class Menu extends React.Component {
   issueModal?: ModalCard
 
   render() {
+    const cookies = getCookies()
+    const manual = cookies.django_language === 'es-mx' ? SSTInstructionsESMX : SSTInstructions
+
     const tl = <span className="pre">TL</span>
     const formula = <span className="pre">y = |x – xmid|/TL</span>
     const xmid = <span className="pre">xmid</span>
@@ -432,7 +437,7 @@ class Menu extends React.Component {
             </p>
           </ModalCard>
         </div>
-        <a className="navbar-item" href={SSTInstructions} target="_blank" rel="noreferrer" key="instructions">
+        <a className="navbar-item" href={manual} target="_blank" rel="noreferrer" key="instructions">
           {t`User Guide`}
         </a>
         <NavItemDropdown title={t`About`}>

@@ -6,623 +6,397 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-12-09 14:36-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: PACKAGE VERSION\nPOT-Creation-Date: 2021-12-09 14:36-0800\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title =
 #: index.adoc:8
 #, no-wrap
 msgid "Seedlot Selection Tool (SST): User Guide"
-msgstr ""
+msgstr "Herramienta de selección de lotes de semillas (Seedlot Selection Tool, SST): Guía del usuario"
 
 #. type: Title ==
 #: index.adoc:10
 #, no-wrap
 msgid "Introduction"
-msgstr ""
+msgstr "Introducción"
 
 #. type: Plain text
 #: index.adoc:21
-msgid ""
-"The Seedlot Selection Tool (SST) is a web-based mapping application designed "
-"to help natural resource managers match seedlots with planting sites based "
-"on climatic information. Because of natural selection to different climatic "
-"conditions at a location, plant populations are genetically differentiated "
-"from one another and are generally locally adapted. As a result, differences "
-"in climates among seedlots reflect differences in adaption. The SST maps "
-"locations where a seedlot matches a planting site assuming the seedlot was "
-"locally adapted to the past climate. The climates of the planting sites can "
-"be chosen to represent past climates, or future climates based on selected "
-"climate change scenarios. The SST allows the user to control many input "
-"parameters, allowing them to explore different assumptions about climate "
-"change, how plant populations are adapted to climate, and the risk tolerance "
-"of the user. The eight steps described below will provide guidelines to "
-"tailor the tool to your specific reforestation or restoration needs."
-msgstr ""
+msgid "The Seedlot Selection Tool (SST) is a web-based mapping application designed to help natural resource managers match seedlots with planting sites based on climatic information. Because of natural selection to different climatic conditions at a location, plant populations are genetically differentiated from one another and are generally locally adapted. As a result, differences in climates among seedlots reflect differences in adaption. The SST maps locations where a seedlot matches a planting site assuming the seedlot was locally adapted to the past climate. The climates of the planting sites can be chosen to represent past climates, or future climates based on selected climate change scenarios. The SST allows the user to control many input parameters, allowing them to explore different assumptions about climate change, how plant populations are adapted to climate, and the risk tolerance of the user. The eight steps described below will provide guidelines to tailor the tool to your specific reforestation or restoration needs."
+msgstr "La Herramienta de selección de lotes de semillas (SST) es una aplicación de cartografía basada en la web, diseñada para ayudar a los administradores de recursos naturales a combinar lotes de semillas con sitios de plantación según la información climática. Debido a la selección natural en las diferentes condiciones climáticas de una ubicación, las poblaciones vegetales se diferencian genéticamente entre sí y, en general, están localmente adaptadas. Como resultado, las diferencias de clima entre los lotes de semillas reflejan diferencias en adaptación. La SST mapea ubicaciones donde un lote de semillas coincide con un sitio de plantación, suponiendo que el lote de semillas estaba localmente adaptado al clima del pasado. Los climas de los sitios de plantación pueden elegirse de tal modo que representen climas del pasado o del futuro según los escenarios de cambio climático seleccionados. La SST permite que el usuario controle muchos parámetros de entrada, lo que le permite explorar diferentes suposiciones sobre el cambio climático, la manera en que las poblaciones vegetales se adaptan al clima, y la tolerancia al riesgo del usuario. Los ocho pasos que se describen a continuación servirán de guía para adaptar la herramienta a sus necesidades específicas de reforestación o restauración."
 
 #. type: Title ===
 #: sections/01-objective.adoc:1
 #, no-wrap
 msgid "Step 1. Select Objective"
-msgstr ""
+msgstr "Paso 1. Seleccionar el objetivo"
 
 #. type: Title ====
 #: sections/01-objective.adoc:3
 #, no-wrap
 msgid "Find seedlots for my planting site"
-msgstr ""
+msgstr "Buscar lotes de semillas para mi sitio de plantación"
 
 #. type: Plain text
 #: sections/01-objective.adoc:6
-msgid ""
-"Click on the `Find seedlots` button if you have a planting site for which "
-"you want to find adapted seedlots."
-msgstr ""
+msgid "Click on the `Find seedlots` button if you have a planting site for which you want to find adapted seedlots."
+msgstr "Haga clic en el botón “Find seedlots” (Buscar lotes de semillas) si tiene un sitio de plantación para el cual desea encontrar lotes de semillas adaptados."
 
 #. type: Title ====
 #: sections/01-objective.adoc:7
 #, no-wrap
 msgid "Find planting sites for my seedlot"
-msgstr ""
+msgstr "Buscar sitios de plantación para mi lote de semillas"
 
 #. type: Plain text
 #: sections/01-objective.adoc:9
-msgid ""
-"Click on the `Find planting sites` button if you have a seedlot and you want "
-"to know where you can plant it."
-msgstr ""
+msgid "Click on the `Find planting sites` button if you have a seedlot and you want to know where you can plant it."
+msgstr "Haga clic en el botón “Find planting sites” (Buscar sitios de plantación) si tiene un lote de semillas y quiere saber en dónde puede plantarlo."
 
 #. type: Title ===
 #: sections/02-location.adoc:1
 #, no-wrap
 msgid "Step 2. Select Location"
-msgstr ""
+msgstr "Paso 2. Seleccionar la ubicación"
 
 #. type: Plain text
 #: sections/02-location.adoc:7
-msgid ""
-"You can either enter coordinates or click on the map to indicate the "
-"location of your planting site or seedlot. If looking for seedlots for a "
-"planting site, indicate the location of the planting site. If looking for "
-"planting sites for a seedlot, indicate the location of the seedlot. The "
-"location of a seedlot represents the geographic location where it is best "
-"adaptedâthat is, the center of its adaptive climate space."
-msgstr ""
+msgid "You can either enter coordinates or click on the map to indicate the location of your planting site or seedlot. If looking for seedlots for a planting site, indicate the location of the planting site. If looking for planting sites for a seedlot, indicate the location of the seedlot. The location of a seedlot represents the geographic location where it is best adaptedâ&#128;&#148;that is, the center of its adaptive climate space."
+msgstr "Puede introducir las coordenadas o hacer clic en el mapa para indicar la ubicación del sitio de plantación o del lote de semillas. Si busca lotes de semillas para un sitio de plantación, indique la ubicación del sitio de plantación. Si busca sitios de plantación para un lote de semillas, indique la ubicación del lote de semillas. La ubicación de un lote de semillas representa la ubicación geográfica a la que está mejor adaptado, es decir, el centro de su espacio climático adaptativo."
 
 #. type: Title ====
 #: sections/02-location.adoc:8
 #, no-wrap
 msgid "Enter your location as coordinates"
-msgstr ""
+msgstr "Introducir su ubicación como coordenadas"
 
 #. type: Plain text
 #: sections/02-location.adoc:12
-msgid ""
-"You can enter the latitude and longitude of your location in decimal "
-"degrees. (Note: enter a negative value for a longitude in North America.)"
-msgstr ""
+msgid "You can enter the latitude and longitude of your location in decimal degrees. (Note: enter a negative value for a longitude in North America.)"
+msgstr "Puede introducir la latitud y longitud de la ubicación en grados decimales. (Nota: Introduzca valores negativos para indicar la longitud en América del Norte)."
 
 #. type: Title ====
 #: sections/02-location.adoc:13
 #, no-wrap
 msgid "Use the map to select your location"
-msgstr ""
+msgstr "Usar el mapa para seleccionar su ubicación"
 
 #. type: Plain text
 #: sections/02-location.adoc:20
-msgid ""
-"Alternatively, use the pan and zoom tools to navigate to your area of "
-"interest, and then click on the map. This pop-up will show the latitude, "
-"longitude, and elevation of your location, and any seed or breeding zones "
-"associated with that location. If you click on the `Set Point` button, your "
-"current coordinates and other location information will be automatically set "
-"for use by the program. If you have already selected climate variables in "
-"Step 6, it will also show their values."
-msgstr ""
+msgid "Alternatively, use the pan and zoom tools to navigate to your area of interest, and then click on the map. This pop-up will show the latitude, longitude, and elevation of your location, and any seed or breeding zones associated with that location. If you click on the `Set Point` button, your current coordinates and other location information will be automatically set for use by the program. If you have already selected climate variables in Step 6, it will also show their values."
+msgstr "También puede utilizar las herramientas “Pan” (Desplazamiento horizontal) y “Zoom” (Acercamiento) para desplazarse hasta el área de interés y, a continuación, hacer clic en el mapa. Esta ventana emergente mostrará la latitud, la longitud y la elevación de la ubicación elegida, así como cualquier zona de origen de las semillas o de mejoramiento asociada a dicha ubicación. Si hace clic en el botón “Set Point” (Punto de ajuste), las coordenadas actuales y cualquier otra información de ubicación se configurarán automáticamente para que el programa las utilice. Si ya seleccionó las variables climáticas en el Paso 6, también verá sus valores."
 
 #. type: Block title
 #: sections/02-location.adoc:21
 #, no-wrap
 msgid "Optional"
-msgstr ""
+msgstr "Opcional"
 
 #. type: delimited block =
 #: sections/02-location.adoc:31
-msgid ""
-"You can map multiple seedlots for comparison to a planting site, or multiple "
-"planting sites for comparison to a seedlot, by clicking on the `Add "
-"Seedlots` or the `Add Planting Sites` button, respectively. After clicking "
-"on the button, you can either enter the coordinates of each location or "
-"click on the map and select `Add Location` in the pop-up. Be sure to click "
-"on the `Add` button each time you add a location or you could inadvertently "
-"shift the initial location to which you are comparing seedlots or planting "
-"sites by selecting Set Point. After running the tool, a similarity index is "
-"calculated between the initial planting site or seedlot and the locations to "
-"be compared to it (initially set as N/A until the tool is run; see Step 8 "
-"for details)."
-msgstr ""
+msgid "You can map multiple seedlots for comparison to a planting site, or multiple planting sites for comparison to a seedlot, by clicking on the `Add Seedlots` or the `Add Planting Sites` button, respectively. After clicking on the button, you can either enter the coordinates of each location or click on the map and select `Add Location` in the pop-up. Be sure to click on the `Add` button each time you add a location or you could inadvertently shift the initial location to which you are comparing seedlots or planting sites by selecting Set Point. After running the tool, a similarity index is calculated between the initial planting site or seedlot and the locations to be compared to it (initially set as N/A until the tool is run; see Step 8 for details)."
+msgstr "Puede mapear varios lotes de semillas para compararlos con un sitio de plantación, o varios sitios de plantación para compararlos con un lote de semillas, haciendo clic en el botón “Add Seedlots” (Agregar lotes de semillas) o en el botón “Add Planting Sites” (Agregar sitios de plantación), respectivamente. Después de hacer clic en el botón, puede introducir las coordenadas de cada ubicación o hacer clic en el mapa y seleccionar “Add Location” (Agregar ubicación) en la ventana emergente. Asegúrese de hacer clic en el botón “Add” (Añadir) cada vez que añada una ubicación, ya que de no hacerlo podría cambiar sin querer la ubicación inicial con la que está comparando los lotes de semillas o los sitios de plantación, al seleccionar Set Point (Punto de ajuste). Después de ejecutar la herramienta, se calcula un índice de similitud entre el sitio de plantación o el lote de semillas inicial, y las ubicaciones que se compararán con aquel (definido inicialmente como N/C [no corresponde] hasta que se ejecute la herramienta; consulte el Paso 8 para obtener más detalles)."
 
 #. type: delimited block =
 #: sections/02-location.adoc:34
-msgid ""
-"_(Under construction: (1) Calculating climatic transfer distances for each "
-"climate variable for each location. (2)  Ability to enter a batch of "
-"locations. (3) Ability to output a table showing the results of all the "
-"comparisons.)_"
-msgstr ""
+msgid "_(Under construction: (1) Calculating climatic transfer distances for each climate variable for each location. (2)  Ability to enter a batch of locations. (3) Ability to output a table showing the results of all the comparisons.)_"
+msgstr "_(En construcción: (1) Cálculo de las distancias de transferencia climática para cada variable climática de cada ubicación; (2) capacidad para introducir un lote de ubicaciones; (3) capacidad para generar una tabla que muestre los resultados de todas las comparaciones.)_"
 
 #. type: Title ===
 #: sections/03-region.adoc:1
 #, no-wrap
 msgid "Step 3. Select Region"
-msgstr ""
+msgstr "Paso 3. Seleccionar la región"
 
 #. type: Plain text
 #: sections/03-region.adoc:6
-msgid ""
-"North America is divided into regions to reduce processing time. You can let "
-"the tool automatically choose the region which best fits the location you "
-"selected (default), or you can use the Custom option to manually select any "
-"available region."
-msgstr ""
+msgid "North America is divided into regions to reduce processing time. You can let the tool automatically choose the region which best fits the location you selected (default), or you can use the Custom option to manually select any available region."
+msgstr "América del Norte se ha dividido en regiones para reducir el tiempo de procesamiento. Puede dejar que la herramienta elija automáticamente la región que mejor se adapte a la ubicación que seleccionó (predeterminada) o utilizar la opción “Custom” (Personalizada) para seleccionar manualmente cualquier región disponible."
 
 #. type: Title ====
 #: sections/03-region.adoc:7
 #, no-wrap
 msgid "Automatic"
-msgstr ""
+msgstr "Automático"
 
 #. type: Plain text
 #: sections/03-region.adoc:12
-msgid ""
-"Click on the `Automatic` button to let the tool select the best region for "
-"your location. The region which contains your location and with a center "
-"point closest to your location will be selected. Before selecting a "
-"location, you can click on the map to see which region will be selected."
-msgstr ""
+msgid "Click on the `Automatic` button to let the tool select the best region for your location. The region which contains your location and with a center point closest to your location will be selected. Before selecting a location, you can click on the map to see which region will be selected."
+msgstr "Haga clic en el botón “Automatic” (Automático) para que la herramienta seleccione la mejor región para su ubicación. Se seleccionará la región que contenga su ubicación y el punto central más cercano a esta. Antes de seleccionar una ubicación, puede hacer clic en el mapa para ver la región que se seleccionará."
 
 #. type: Title ====
 #: sections/03-region.adoc:13
 #, no-wrap
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
 
 #. type: Plain text
 #: sections/03-region.adoc:17
-msgid ""
-"Click on the `Custom` button to select an alternative region from a "
-"drop-down list of available regions. When you choose a region from the "
-"drop-down menu, it will be outlined on the map. You can choose a region that "
-"does not contain your location, in which case the tool will map the results "
-"for the region you select."
-msgstr ""
+msgid "Click on the `Custom` button to select an alternative region from a drop-down list of available regions. When you choose a region from the drop-down menu, it will be outlined on the map. You can choose a region that does not contain your location, in which case the tool will map the results for the region you select."
+msgstr "Haga clic en el botón “Custom” (Personalizado) para seleccionar una región alternativa en la lista desplegable de regiones disponibles. Cuando elija una región en el menú desplegable, esta se delineará en el mapa. Puede elegir una región que no contenga su ubicación, en cuyo caso la herramienta mapeará los resultados de la región seleccionada."
 
 #. type: Title ===
 #: sections/04-climate.adoc:1
 #, no-wrap
 msgid "Step 4. Select Climate Scenarios"
-msgstr ""
+msgstr "Paso 4. Seleccionar los escenarios climáticos"
 
 #. type: Title ====
 #: sections/04-climate.adoc:3
 #, no-wrap
 msgid "Which climate are the seedlots adapted to?"
-msgstr ""
+msgstr "¿A qué clima están adaptados los lotes de semillas?"
 
 #. type: Plain text
 #: sections/04-climate.adoc:9
-msgid ""
-"The first step is to select the time period (given as a 30-year average "
-"known as a climate normal) that represents the climate to which seedlots are "
-"adapted. It is typically assumed to be the climate having the greatest "
-"influence on the seedlot's parents. For longer-lived plants (e.g. trees) it "
-"is recommended to choose 1961 -1990. For shorter-lived species (e.g., grass "
-"and forbs) a 1981-2010 period may be more suitable."
-msgstr ""
+msgid "The first step is to select the time period (given as a 30-year average known as a climate normal) that represents the climate to which seedlots are adapted. It is typically assumed to be the climate having the greatest influence on the seedlot's parents. For longer-lived plants (e.g. trees) it is recommended to choose 1961 -1990. For shorter-lived species (e.g., grass and forbs) a 1981-2010 period may be more suitable."
+msgstr "El primer paso es seleccionar el periodo (expresado como el promedio de 30 años, conocido como una normal climática) que representa el clima al cual están adaptados los lotes de semillas. En general, se supone que es el clima con mayor influencia en los progenitores del lote de semillas. Para plantas más longevas (p. ej., árboles), se recomienda elegir 1961-1990. Para especies con ciclo de vida más corto (p. ej., gramíneas y herbáceas de hoja ancha) un periodo 1981-2010 podría ser más adecuado."
 
 #. type: Plain text
 #: sections/04-climate.adoc:11
 msgid "Using the drop-down menu, select either:"
-msgstr ""
+msgstr "Por medio del menú desplegable, seleccione:"
 
 #. type: Plain text
 #: sections/04-climate.adoc:13 sections/04-climate.adoc:31
 msgid "1961 - 1990"
-msgstr ""
+msgstr "1961-1990"
 
 #. type: Plain text
 #: sections/04-climate.adoc:14 sections/04-climate.adoc:32
 msgid "1981 - 2010"
-msgstr ""
+msgstr "1981-2010"
 
 #. type: Title ====
 #: sections/04-climate.adoc:15
 #, no-wrap
 msgid "When should plants be best adapted to the planting site?"
-msgstr ""
+msgstr "¿Cuándo conviene que las plantas estén mejor adaptadas al sitio de plantación?"
 
 #. type: Plain text
 #: sections/04-climate.adoc:21
-msgid ""
-"The next step is to choose a time period that represents the climate to "
-"which the planted trees should be optimally adapted to their planting "
-"site. This may be a bit of a conundrum for forest managers since long-lived "
-"trees must be adapted to the near-term in addition to being adapted to the "
-"long-term. Climate is a moving target. Aim too far into the future and one "
-"might see cold damage in the near-term for trees moved from warmer to cooler "
-"climates."
-msgstr ""
+msgid "The next step is to choose a time period that represents the climate to which the planted trees should be optimally adapted to their planting site. This may be a bit of a conundrum for forest managers since long-lived trees must be adapted to the near-term in addition to being adapted to the long-term. Climate is a moving target. Aim too far into the future and one might see cold damage in the near-term for trees moved from warmer to cooler climates."
+msgstr "El siguiente paso es elegir un periodo que represente el clima al que los árboles plantados deberán adaptarse de forma óptima en su sitio de plantación. Esto puede ser un poco confuso para los administradores forestales, ya que los árboles longevos deben adaptarse a corto plazo, además de adaptarse a largo plazo. El clima es un objetivo en movimiento. Si se apunta demasiado lejos en el futuro, posiblemente se vean daños por frío a corto plazo en los árboles trasladados de climas más cálidos a climas fríos."
 
 #. type: Plain text
 #: sections/04-climate.adoc:27
-msgid ""
-"The SST allows users to explore different scenarios of climate change by "
-"looking at different future time periods and assumed relative concentration "
-"pathways (RCPs). The SST also allows users to consider adaptation to past "
-"climates â that is, if climate change were ignored (1961 â 1990 before "
-"appreciable climate change) or considering recent changes in climate (1981 "
-"â 2010). Note that the current time period (2011-2040) represents modeled "
-"projections and not observations."
-msgstr ""
+msgid "The SST allows users to explore different scenarios of climate change by looking at different future time periods and assumed relative concentration pathways (RCPs). The SST also allows users to consider adaptation to past climates â&#128;&#147; that is, if climate change were ignored (1961 â&#128;&#147; 1990 before appreciable climate change) or considering recent changes in climate (1981 â&#128;&#147; 2010). Note that the current time period (2011-2040) represents modeled projections and not observations."
+msgstr "La SST permite a los usuarios explorar diferentes escenarios de cambio climático mediante observación en diferentes periodos futuros y vías de concentración relativa (relative concentration pathways, RCP) asumidas. La SST también permite a los usuarios tener en cuenta la adaptación a climas pasados, es decir, si el cambio climático se ignoró (1961-1990 antes de un cambio climático apreciable), o tener en cuenta los cambios recientes en el clima (1981-2010). Tenga en cuenta que el periodo actual (2011-2040) representa proyecciones basadas en modelos y no observaciones."
 
 #. type: Plain text
 #: sections/04-climate.adoc:29 sections/04-climate.adoc:42
 msgid "Use the drop-down menu to select either:"
-msgstr ""
+msgstr "Use el menú desplegable para seleccionar:"
 
 #. type: Plain text
 #: sections/04-climate.adoc:33
 msgid "2011 - 2040"
-msgstr ""
+msgstr "2011-2040"
 
 #. type: Plain text
 #: sections/04-climate.adoc:34
 msgid "2041 - 2070"
-msgstr ""
+msgstr "2041-2070"
 
 #. type: Plain text
 #: sections/04-climate.adoc:35
 msgid "2071 - 2100"
-msgstr ""
+msgstr "2071-2100"
 
 #. type: Plain text
 #: sections/04-climate.adoc:40
-msgid ""
-"For future climates (i.e., 2011 to 2100), also select the relative "
-"concentration pathway (RCP), which is associated with different levels of "
-"atmospheric greenhouse gases and climate change. According to IPCC AR5, the "
-"RCP 4.5 \"stabilization\" scenario has a projected increase in mean annual "
-"temperature of 1.8Â°C by 2100 (range = 1.1-2.6Â°C), whereas the RCP 8.5 "
-"higher-emissions scenario has a projected increase of 3.7Â°C by 2100 (range "
-"= 2.6-4.8Â°C)."
+msgid "For future climates (i.e., 2011 to 2100), also select the relative concentration pathway (RCP), which is associated with different levels of atmospheric greenhouse gases and climate change. According to IPCC AR5, the RCP 4.5 \"stabilization\" scenario has a projected increase in mean annual temperature of 1.8Â°C by 2100 (range = 1.1-2.6Â°C), whereas the RCP 8.5 higher-emissions scenario has a projected increase of 3.7Â°C by 2100 (range = 2.6-4.8Â°C)."
 msgstr ""
 
 #. type: Plain text
 #: sections/04-climate.adoc:44
 msgid "RCP 4.5"
-msgstr ""
+msgstr "RCP 4.5"
 
 #. type: Plain text
 #: sections/04-climate.adoc:44
 msgid "RCP 8.5"
-msgstr ""
+msgstr "RCP 8.5"
 
 #. type: Title ===
 #: sections/05-transfer.adoc:1
 #, no-wrap
 msgid "Step 5. Select Transfer Limit Method"
-msgstr ""
+msgstr "Paso 5. Seleccionar el método de límite de transferencia"
 
 #. type: Plain text
 #: sections/05-transfer.adoc:6
-msgid ""
-"The transfer limit indicates how far climatically a seedlot may be moved and "
-"still have an acceptable level of adaptation. The SST uses three alternative "
-"approaches to determine and map transfer limits: *Custom*, *Zone*, and "
-"*Function*. _(Note: the Function approach is under construction)_"
-msgstr ""
+msgid "The transfer limit indicates how far climatically a seedlot may be moved and still have an acceptable level of adaptation. The SST uses three alternative approaches to determine and map transfer limits: *Custom*, *Zone*, and *Function*. _(Note: the Function approach is under construction)_"
+msgstr "El límite de transferencia indica a qué distancia climática se puede desplazar un lote de semillas y seguir teniendo un nivel de adaptación aceptable. La SST utiliza tres enfoques alternativos para determinar y mapear los límites de transferencia: *Personalizado*, *Zona* y *Función*. _(Nota: el enfoque *Función* está en construcción)_"
 
 #. type: Plain text
 #: sections/05-transfer.adoc:10
-msgid ""
-"The *Custom* and *Zone* approaches allow user-defined transfer limits for "
-"each climate variable selected in Step 6.  Transfer limits for the *Custom* "
-"approach may be selected based on the experience of the user including the "
-"best available science. They may also be adjusted based on the userâs "
-"level of acceptable risk."
-msgstr ""
+msgid "The *Custom* and *Zone* approaches allow user-defined transfer limits for each climate variable selected in Step 6.  Transfer limits for the *Custom* approach may be selected based on the experience of the user including the best available science. They may also be adjusted based on the userâ&#128;&#153;s level of acceptable risk."
+msgstr "Los enfoques *Personalizado* y *de Zona* permiten al usuario definir límites de transferencia para cada variable climática seleccionada en el Paso 6.  Los límites de transferencia del enfoque *Personalizado* pueden seleccionarse según la experiencia del usuario, incluyendo los mejores conocimientos científicos a su alcance. También se pueden ajustar según el nivel de riesgo aceptable para el usuario."
 
 #. type: Plain text
 #: sections/05-transfer.adoc:20
-msgid ""
-"The SST suggests a transfer limit for the Zone approach based on the range "
-"of climates within the zone for the location of the planting site or seedlot "
-"chosen in Step 2. The idea is that the user would feel comfortable with that "
-"climatic difference given that we have been operationally moving populations "
-"within zones for 60 or more years. If you use the Zone method, the SST "
-"obtains the transfer limit (`TL`) for each climate variable using the "
-"selected zone: latexmath:[TL = \\frac{xmax-xmin}{2}], where `xmax` and "
-"`xmin` are the maximum and minimum climate values for the zone.  The "
-"assumption is that half the range of climates represents a \"typical\" past "
-"transfer. Because some zones show greater climatic variation than the "
-"typical zone, we also provide the average transfer limit for all zones in "
-"the selected zone set. This and other information will show up in a pop-up "
-"window in Step 6 if you hover over the \"eye\" icon to the right of the "
-"climate variable in the climate variable table. The transfer limit may be "
-"modified by the user."
+msgid "The SST suggests a transfer limit for the Zone approach based on the range of climates within the zone for the location of the planting site or seedlot chosen in Step 2. The idea is that the user would feel comfortable with that climatic difference given that we have been operationally moving populations within zones for 60 or more years. If you use the Zone method, the SST obtains the transfer limit (`TL`) for each climate variable using the selected zone: latexmath:[TL = \\frac{xmax-xmin}{2}], where `xmax` and `xmin` are the maximum and minimum climate values for the zone.  The assumption is that half the range of climates represents a \"typical\" past transfer. Because some zones show greater climatic variation than the typical zone, we also provide the average transfer limit for all zones in the selected zone set. This and other information will show up in a pop-up window in Step 6 if you hover over the \"eye\" icon to the right of the climate variable in the climate variable table. The transfer limit may be modified by the user."
 msgstr ""
 
 #. type: Plain text
 #: sections/05-transfer.adoc:26
-msgid ""
-"The *Function* approach uses a genecological function to select an "
-"acceptable difference in one or more adaptive traits based on research from "
-"common-garden studies. Genecological functions are an association between "
-"the adaptive traits identified in a common-garden and the climate derived "
-"from seed-source locations. The trait usually represents a multivariate "
-"climate."
-msgstr ""
+msgid "The *Function* approach uses a genecological function to select an acceptable difference in one or more adaptive traits based on research from common-garden studies. Genecological functions are an association between the adaptive traits identified in a common-garden and the climate derived from seed-source locations. The trait usually represents a multivariate climate."
+msgstr "En el enfoque *de Función* se recurre a una función genecológica para seleccionar una diferencia aceptable en una o más características adaptativas en función de la investigación en estudios de jardín común. Las funciones genecológicas son una asociación entre las características adaptativas identificadas en un jardín común y el clima derivado de las ubicaciones de la fuente de semillas. La característica suele representar un clima multivariable."
 
 #. type: Title ====
 #: sections/05-transfer.adoc:27
 #, no-wrap
 msgid "Custom method"
-msgstr ""
+msgstr "Método personalizado"
 
 #. type: Plain text
 #: sections/05-transfer.adoc:30
-msgid ""
-"Click on the `Custom` button to enter your own transfer limits after "
-"selecting one or more climate variables in Step 6."
-msgstr ""
+msgid "Click on the `Custom` button to enter your own transfer limits after selecting one or more climate variables in Step 6."
+msgstr "Haga clic en el botón “Custom” (Personalizado) para introducir sus propios límites de transferencia después de seleccionar una o más variables climáticas en el Paso 6."
 
 #. type: Title ====
 #: sections/05-transfer.adoc:31
 #, no-wrap
 msgid "Zone method"
-msgstr ""
+msgstr "Método de Zona"
 
 #. type: Plain text
 #: sections/05-transfer.adoc:34
-msgid ""
-"Click on the `Zone` button to use an existing zone to calculate transfer "
-"limits for one or more climate variables."
-msgstr ""
+msgid "Click on the `Zone` button to use an existing zone to calculate transfer limits for one or more climate variables."
+msgstr "Haga clic en el botón “Zone” (Zona) si desea utilizar una zona existente para calcular los límites de transferencia de una o más variables climáticas."
 
 #. type: Plain text
 #: sections/05-transfer.adoc:41
-msgid ""
-"For the objective of finding seedlots for a planting site, the *Zone* "
-"approach involves two steps. First, select a species. Second, select a zone "
-"from the drop-down menu of available options. If you know that a species has "
-"a species-specific zone and you would like to use it, select the zone from "
-"the drop-down menu of available species-specific zones for that "
-"location. Otherwise select generic for zones at that location that apply "
-"across all species. Note that the available zones are dependent upon the "
-"specific location selected (e.g., USFS zones may apply only to USFS lands)."
-msgstr ""
+msgid "For the objective of finding seedlots for a planting site, the *Zone* approach involves two steps. First, select a species. Second, select a zone from the drop-down menu of available options. If you know that a species has a species-specific zone and you would like to use it, select the zone from the drop-down menu of available species-specific zones for that location. Otherwise select generic for zones at that location that apply across all species. Note that the available zones are dependent upon the specific location selected (e.g., USFS zones may apply only to USFS lands)."
+msgstr "Cuando el objetivo es encontrar lotes de semillas para un sitio de plantación, el enfoque *de Zona* implica dos pasos. Primero, seleccione una especie. Segundo, seleccione una zona entre las opciones disponibles del menú desplegable. Si sabe que una especie tiene una zona específica y desea utilizarla, seleccione la zona en el menú desplegable de zonas disponibles específicas para la especie en dicha ubicación. De lo contrario, seleccione las zonas genéricas de esa ubicación que sean pertinentes a todas las especies. Tenga en cuenta que las zonas disponibles dependen de la ubicación específica seleccionada (p. ej., las zonas del Servicio Forestal de los Estados Unidos [United States Forest Service, USFS] solo pueden aplicarse a tierras del USFS)."
 
 #. type: Plain text
 #: sections/05-transfer.adoc:48
-msgid ""
-"For the objective of finding planting sites for a seedlot, the *Zone* "
-"approach involves three steps. First, you need to specify the climatic "
-"center of the mapped output. If you have a seedlot from a specific known "
-"location, you will typically use the climate of that specific location. If "
-"you have a seedlot that represents an entire zone, or you are unsure from "
-"where within the zone the seedlot was collected, it is probably more "
-"appropriate to use the climatic center of your zone. After specifying the "
-"climatic center to be used for mapping, the next two steps are as above â "
-"select the species followed by selecting the zone of interest."
-msgstr ""
+msgid "For the objective of finding planting sites for a seedlot, the *Zone* approach involves three steps. First, you need to specify the climatic center of the mapped output. If you have a seedlot from a specific known location, you will typically use the climate of that specific location. If you have a seedlot that represents an entire zone, or you are unsure from where within the zone the seedlot was collected, it is probably more appropriate to use the climatic center of your zone. After specifying the climatic center to be used for mapping, the next two steps are as above â&#128;&#147; select the species followed by selecting the zone of interest."
+msgstr "Cuando el objetivo es encontrar sitios de plantación para un lote de semillas, el enfoque *Zona* implica tres pasos. Primero, debe especificar el centro climático del resultado cartográfico proporcionado. Si tiene un lote de semillas de una ubicación específica conocida, normalmente utilizará el clima de dicha ubicación. Si tiene un lote de semillas que representa toda una zona, o no está seguro del sitio de donde se obtuvo el lote de semillas, podría ser mejor utilizar el centro climático de su zona. Una vez que especifique el centro climático que va a utilizar para la cartografía, los dos pasos siguientes son los mismos que se indicaron anteriormente para seleccionar primero la especie, y luego la zona de interés."
 
 #. type: Title ====
 #: sections/05-transfer.adoc:49
 #, no-wrap
 msgid "Function method _(under construction February 2021)_"
-msgstr ""
+msgstr "Método de Función _(en construcción, febrero de 2021)_"
 
 #. type: Plain text
 #: sections/05-transfer.adoc:55
-msgid ""
-"For the *Function* approach, select the species using the drop-down "
-"menu. The values and transfer limits for the adaptive traits from genecology "
-"studies will be prepopulated in Step 6 for the locations chosen in Step 2. A "
-"limited number of species are currently available for the *Function* "
-"approach, but more species will be added from existing and ongoing common "
-"garden studies."
-msgstr ""
+msgid "For the *Function* approach, select the species using the drop-down menu. The values and transfer limits for the adaptive traits from genecology studies will be prepopulated in Step 6 for the locations chosen in Step 2. A limited number of species are currently available for the *Function* approach, but more species will be added from existing and ongoing common garden studies."
+msgstr "Para el enfoque *de Función*, seleccione la especie en el menú desplegable. Los valores y límites de transferencia de las características adaptativas de los estudios genecológicos se llenarán previamente en el Paso 6 para las ubicaciones elegidas en el Paso 2. En la actualidad, el número de especies disponibles para el enfoque *de Función* es limitado, pero se añadirán más especies provenientes de los estudios de jardín común en curso."
 
 #. type: Plain text
 #: sections/05-transfer.adoc:58
-msgid ""
-"_In the future, the Function approach will also offer an option of creating "
-"your own function that allows differential weighting of different climate "
-"variables as representative of adaptive variation._"
-msgstr ""
+msgid "_In the future, the Function approach will also offer an option of creating your own function that allows differential weighting of different climate variables as representative of adaptive variation._"
+msgstr "_En el futuro, el enfoque *de Función* también ofrecerá la opción de crear funciones personalizadas, lo que permitirá hacer una ponderación diferencial de las diferentes variables climáticas como representativas de variación adaptativa._"
 
 #. type: Title ===
 #: sections/06-variables.adoc:1
 #, no-wrap
 msgid "Step 6. Select Climate Variables"
-msgstr ""
+msgstr "Paso 6. Seleccionar variables climáticas"
 
 #. type: Plain text
 #: sections/06-variables.adoc:10
-msgid ""
-"Select one or more climate variables to be mapped. The climate information "
-"is derived from a climate downscaling application called ClimateNA (see tab "
-"for more information). You also have the option to `Choose automatically`, "
-"in which case, the climate variables chosen will be mean temperature of the "
-"coldest month (MCMT) and summer heat:moisture index (SHM). These climate "
-"variables are chosen based on the assumption that temperate forest trees (or "
-"other plants)  are primarily adapted to cold temperatures in the winter and "
-"aridity in the summer. This option specifies a transfer limit for MCMT of "
-"`+/- 2.0Â°C` and for SHM of `+/-` half the value at the location specified "
-"in Step 2. These transfer limits may be modified. After choosing climate "
-"variables, the resulting table includes:"
-msgstr ""
+msgid "Select one or more climate variables to be mapped. The climate information is derived from a climate downscaling application called ClimateNA (see tab for more information). You also have the option to `Choose automatically`, in which case, the climate variables chosen will be mean temperature of the coldest month (MCMT) and summer heat:moisture index (SHM). These climate variables are chosen based on the assumption that temperate forest trees (or other plants)  are primarily adapted to cold temperatures in the winter and aridity in the summer. This option specifies a transfer limit for MCMT of `+/- 2.0Â°C` and for SHM of `+/-` half the value at the location specified in Step 2. These transfer limits may be modified. After choosing climate variables, the resulting table includes:"
+msgstr "Seleccione una o más variables climáticas para mapear. La información climática se deriva de una aplicación de reducción climática llamada ClimateNA (consulte la pestaña para obtener más información). También existe la opción de “Choose automatically” (Elección automática), en cuyo caso, las variables climáticas elegidas serán la temperatura media del mes más frío (TMMF) y el índice de calor-humedad en verano (summer heat:moisture, SHM). Estas variables climáticas se eligen según la suposición de que los árboles forestales (u otras plantas) de climas templados están adaptados principalmente a temperaturas frías durante el invierno y a condiciones de aridez durante el verano. Esta opción especifica un límite de transferencia para la TMMF de “+/- 2.0 °C”, y para el SHM de “+/-” la mitad del valor en la ubicación especificada en el Paso 2. Estos límites de transferencia pueden modificarse. Después de elegir las variables climáticas, la tabla resultante incluye:"
 
 #. type: Plain text
 #: sections/06-variables.adoc:12
 #, no-wrap
 msgid "*Name* -- the abbreviated name of the ClimateNA variable\n"
-msgstr ""
+msgstr "*Nombre*: el nombre abreviado de la variable en ClimateNA\n"
 
 #. type: Plain text
 #: sections/06-variables.adoc:13
 #, no-wrap
 msgid "*Center* -- the climatic value at the center of the mapped output\n"
-msgstr ""
+msgstr "*Centro*: el valor climático en el centro del resultado cartográfico proporcionado\n"
 
 #. type: Plain text
 #: sections/06-variables.adoc:14
 #, no-wrap
-msgid ""
-"*Transfer limit* -- the transfer limit used in showing the extent of the "
-"mapped output\n"
-msgstr ""
+msgid "*Transfer limit* -- the transfer limit used in showing the extent of the mapped output\n"
+msgstr "*Límite de transferencia*: el límite de transferencia utilizado para mostrar la magnitud del resultado cartográfico proporcionado\n"
 
 #. type: Plain text
 #: sections/06-variables.adoc:18
-msgid ""
-"We caution users from selecting too many climate variables, particularly "
-"variables that are unrelated to adaptation.  The use of many climate "
-"variables will probably result in overly conservative climate matches; the "
-"more climate variables that are included, the smaller the mapped areas will "
-"be. It is also best to avoid variables that are highly correlated with one "
-"another."
-msgstr ""
+msgid "We caution users from selecting too many climate variables, particularly variables that are unrelated to adaptation.  The use of many climate variables will probably result in overly conservative climate matches; the more climate variables that are included, the smaller the mapped areas will be. It is also best to avoid variables that are highly correlated with one another."
+msgstr "Se recomienda a los usuarios no seleccionar demasiadas variables climáticas, en especial variables no relacionadas con la adaptación.  El uso de muchas variables climáticas podría dar lugar a coincidencias climáticas excesivamente conservadoras; cuantas más variables climáticas se incluyan, más pequeñas serán las áreas mapeadas. También es mejor evitar las variables que están muy correlacionadas."
 
 #. type: Title ===
 #: sections/07-constraints.adoc:1
 #, no-wrap
 msgid "Step 7. Apply Constraints"
-msgstr ""
+msgstr "Paso 7. Aplicar limitaciones"
 
 #. type: Plain text
 #: sections/07-constraints.adoc:7
-msgid ""
-"The mapped output of the SST may be further constrained using geographic "
-"limits or a species range. Using constraints will exclude that part of the "
-"climatic output that is beyond the geographic limits imposed or beyond the "
-"current species range. The geographic constraints include latitude, "
-"longitude, elevation, distance, and photoperiod. The species range "
-"constraints are based on recent climate-niche models. There is also an "
-"option to import your own shapefile to use as a constraint."
-msgstr ""
+msgid "The mapped output of the SST may be further constrained using geographic limits or a species range. Using constraints will exclude that part of the climatic output that is beyond the geographic limits imposed or beyond the current species range. The geographic constraints include latitude, longitude, elevation, distance, and photoperiod. The species range constraints are based on recent climate-niche models. There is also an option to import your own shapefile to use as a constraint."
+msgstr "La información cartográfica proporcionada de la SST se puede limitar aún más mediante el uso de límites geográficos o de una gama de especies. El uso de limitaciones excluirá la parte de la información climática proporcionada que esté más allá de los límites geográficos impuestos o de la gama de especies actual. Las limitaciones geográficas incluyen: latitud, longitud, elevación, distancia y fotoperiodo. Las limitaciones de la gama de especies se basan en modelos recientes de clima-nicho. También hay una opción para importar su propio archivo shapefile para usarlo como una limitación."
 
 #. type: Title ===
 #: sections/08-results.adoc:1
 #, no-wrap
 msgid "Step 8. Map Your Results"
-msgstr ""
+msgstr "Paso 8. Mapear sus resultados"
 
 #. type: Plain text
 #: sections/08-results.adoc:9
-msgid ""
-"Click `Run Tool` to produce a map that shows where you can find appropriate "
-"seedlots or planting sites for the locations specified in Step 2 and the "
-"climate of the time period specified in Step 4. The map shows the degree of "
-"match between the past climate to which a seedlot is adapted and the climate "
-"of the time period in which the trees are expected to be best adapted to the "
-"planting site. The darkest orange indicates the best match and the lightest "
-"orange indicates the match that is at the edge of the transfer limit. Note "
-"that using a greater transfer limit does not affect the best match but does "
-"result in a larger geographic area of suitability."
-msgstr ""
+msgid "Click `Run Tool` to produce a map that shows where you can find appropriate seedlots or planting sites for the locations specified in Step 2 and the climate of the time period specified in Step 4. The map shows the degree of match between the past climate to which a seedlot is adapted and the climate of the time period in which the trees are expected to be best adapted to the planting site. The darkest orange indicates the best match and the lightest orange indicates the match that is at the edge of the transfer limit. Note that using a greater transfer limit does not affect the best match but does result in a larger geographic area of suitability."
+msgstr "Haga clic en “Ejecutar herramienta” para producir un mapa que muestre en dónde puede encontrar lotes de semillas o sitios de plantación adecuados para las ubicaciones especificadas en el Paso 2 y el clima del periodo especificado en el Paso 4. El mapa muestra el grado de coincidencia entre el clima del pasado al que está adaptado un lote de semillas y el clima del periodo en el que se espera que los árboles se adapten mejor al sitio de plantación. El naranja más oscuro indica la mejor coincidencia; el naranja más claro indica la coincidencia que está en el borde del límite de transferencia. Tenga en cuenta que el uso de un límite de transferencia más grande no afecta la mejor coincidencia, pero da como resultado un área geográfica de adecuación más amplia."
 
 #. type: Plain text
 #: sections/08-results.adoc:17
-msgid ""
-"The process for determining the degree of match is, first, re-scaling the "
-"gridded data for each climate variable (or associated trait from a "
-"genecology function) as: latexmath:[y = \\frac{|x - xmid|}{TL}], where xmid "
-"is the midpoint value, or climatic center. Second, the multivariate climatic "
-"distance (`d`) from the climatic center to each grid point is calculated as "
-"the Euclidean distance for `n` climate variables: latexmath:[dn = ({y_1}^2 + "
-"{y_2}^2 + ... + {y_n}^2)0.5]. Finally, the climate match (`m`) (also called "
-"a similarity index in Step 2) is calculated as latexmath:[m = "
-"-(d-1)*100]. Values of latexmath:[m < 0] are not mapped, whereas values "
-"between `0` and `100` are mapped using the color scale ranging from light to "
-"dark orange."
-msgstr ""
+msgid "The process for determining the degree of match is, first, re-scaling the gridded data for each climate variable (or associated trait from a genecology function) as: latexmath:[y = \\frac{|x - xmid|}{TL}], where xmid is the midpoint value, or climatic center. Second, the multivariate climatic distance (`d`) from the climatic center to each grid point is calculated as the Euclidean distance for `n` climate variables: latexmath:[dn = ({y_1}^2 + {y_2}^2 + ... + {y_n}^2)0.5]. Finally, the climate match (`m`) (also called a similarity index in Step 2) is calculated as latexmath:[m = -(d-1)*100]. Values of latexmath:[m < 0] are not mapped, whereas values between `0` and `100` are mapped using the color scale ranging from light to dark orange."
+msgstr "El proceso para determinar el grado de coincidencia consiste, en primer lugar, en redimensionar a escala los datos de la cuadrícula de cada variable climática (o característica asociada de una función de genecología) como: latexmath:[y = \\frac{|x - xmid|}{TL}], donde xmid es el valor del punto medio, o centro climático. En segundo lugar, la distancia climática multivariable (“d”) desde el centro climático hasta cada punto de la cuadrícula, se calcula como la distancia euclidiana de “n” variables climáticas: latexmath:[dn = ({y_1}^2 + {y_2}^2 + … + {y_n}^2)0.5]. Por último, la coincidencia climática (“m”) (también se denomina índice de similitud en el Paso 2) se calcula como latexmath:[m = -(d-1)*100]. Valores de latexmath: [m < 0]no se mapean, mientras que los valores entre “0” y “100” se mapean mediante una escala de colores que va del naranja claro al naranja oscuro."
 
 #. type: Plain text
 #: sections/08-results.adoc:19
-msgid ""
-"Note that the slider bar at the right side may be used to better see the map "
-"underlying the climatic match output."
-msgstr ""
+msgid "Note that the slider bar at the right side may be used to better see the map underlying the climatic match output."
+msgstr "Tenga en cuenta que puede usar la barra deslizante del lado derecho para ver mejor el mapa subyacente de la información de coincidencia climática proporcionada."
 
 #. type: Plain text
 #: sections/08-results.adoc:23
-msgid ""
-"If you have set up an account and are signed in, you can save your inputs by "
-"clicking on the `Save Last Run` button.  You will be asked to provide a name "
-"for the saved run. Once saved, the saved run will show up in the `Saved "
-"Runs` window (see below)."
-msgstr ""
+msgid "If you have set up an account and are signed in, you can save your inputs by clicking on the `Save Last Run` button.  You will be asked to provide a name for the saved run. Once saved, the saved run will show up in the `Saved Runs` window (see below)."
+msgstr "Si configuró una cuenta y está registrado, puede guardar sus entradas haciendo clic en el botón “Save Last Run” (Guardar última ejecución).  Se le pedirá que indique un nombre para la ejecución guardada. Una vez guardada, la ejecución aparecerá en la ventana de “Saved Runs” (Ejecuciones guardadas) (ver a continuación)."
 
 #. type: Plain text
 #: sections/08-results.adoc:26
-msgid ""
-"You can also export your results to a PDF, PowerPoint, or GeoTIFF file by "
-"clicking on the `Export As...` button. Another option is to use `Print Scrn` "
-"on your keyboard to copy a picture of the screen that can be pasted into "
-"another file such as a PowerPoint presentation."
-msgstr ""
+msgid "You can also export your results to a PDF, PowerPoint, or GeoTIFF file by clicking on the `Export As...` button. Another option is to use `Print Scrn` on your keyboard to copy a picture of the screen that can be pasted into another file such as a PowerPoint presentation."
+msgstr "También puede exportar los resultados a un archivo PDF, PowerPoint o GeoTIFF haciendo clic en el botón “Expor As…” (Exporta como). Otra opción es usar la tecla “Print Scrn” (Impr. pant.) del teclado para hacer una copia de la pantalla que es posible pegar en otro archivo, como por ejemplo, una presentación de PowerPoint."
 
 #. type: Title ===
 #: sections/appendix.adoc:1
 #, no-wrap
 msgid "Layers"
-msgstr ""
+msgstr "Capas"
 
 #. type: Plain text
 #: sections/appendix.adoc:6
-msgid ""
-"The *Layers* tab allows the user to map different overlays onto the "
-"results. Options include gray-scaled values for different climate variables, "
-"seed and breeding zone boundaries, U.S. Level III Ecoregion boundaries, and "
-"U.S. county boundaries. _(Under construction: some species ranges will be "
-"added as an option for layers.)_"
-msgstr ""
+msgid "The *Layers* tab allows the user to map different overlays onto the results. Options include gray-scaled values for different climate variables, seed and breeding zone boundaries, U.S. Level III Ecoregion boundaries, and U.S. county boundaries. _(Under construction: some species ranges will be added as an option for layers.)_"
+msgstr "La pestaña *Layers* (Capas) permite al usuario mapear diferentes capas superpuestas a los resultados. Entre las opciones figuran valores de escala de grises para las diferentes variables climáticas, los límites de zonas de origen de las semillas y de mejoramiento, los límites de la Región Ecológica Nivel III de los Estados Unidos, y los límites de los condados de los Estados Unidos. _(En construcción: se añadirán algunas gamas de especies como opción para las capas.)_"
 
 #. type: Title ===
 #: sections/appendix.adoc:7
 #, no-wrap
 msgid "Saved Runs"
-msgstr ""
+msgstr "Ejecuciones guardadas"
 
 #. type: Plain text
 #: sections/appendix.adoc:11
-msgid ""
-"The *Saved Runs* tab will list each of your saved runs. Click on the name of "
-"the saved run to `Load` or `Delete` the inputs. Once a saved run is loaded, "
-"you can recreate the map by clicking on the `Run Tool` button in the Tool "
-"tab."
-msgstr ""
+msgid "The *Saved Runs* tab will list each of your saved runs. Click on the name of the saved run to `Load` or `Delete` the inputs. Once a saved run is loaded, you can recreate the map by clicking on the `Run Tool` button in the Tool tab."
+msgstr "En la pestaña *Saved Runs* (Ejecuciones guardadas) verá una lista de todas las ejecuciones guardadas. Haga clic en el nombre de la ejecución guardada para “Cargar” o “Eliminar” las entradas. Una vez que cargue una ejecución guardada, puede volver a crear el mapa haciendo clic en el botón “Run Tool” (Ejecutar herramienta), en la pestaña “Tool” (Herramienta)."
 
 #. type: Title ===
 #: sections/appendix.adoc:12
 #, no-wrap
 msgid "Account"
-msgstr ""
+msgstr "Cuenta"
 
 #. type: Plain text
 #: sections/appendix.adoc:16
-msgid ""
-"Use the *Account* menu in the upper right corner of the web site to create "
-"or sign into an account. Use an email address and password to create an "
-"account. We will use this email address only if you lose your password. If "
-"you want to receive updates on the SST, sign up for our newsletter by "
-"clicking the `News & Updates` button in the menu."
-msgstr ""
+msgid "Use the *Account* menu in the upper right corner of the web site to create or sign into an account. Use an email address and password to create an account. We will use this email address only if you lose your password. If you want to receive updates on the SST, sign up for our newsletter by clicking the `News & Updates` button in the menu."
+msgstr "Utilice el menú *Account* (Cuenta), ubicado en la esquina superior derecha del sitio web, para crear o iniciar sesión en una cuenta. Utilice una dirección de correo electrónico y una contraseña para crear la cuenta. Utilizaremos la dirección de correo electrónico que nos proporcione únicamente si pierde u olvida su contraseña. Si desea recibir actualizaciones sobre la SST, suscríbase a nuestro boletín haciendo clic en el botón “News & Updates” (Noticias y actualizaciones) del menú."

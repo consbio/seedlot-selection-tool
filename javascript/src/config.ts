@@ -22,10 +22,10 @@ const serializeSpeciesConstraint = ({ climate }: { climate: any }, { species }: 
 
 export default () => {
   updateConfig({
-    // languages: {
-    //   'en-us': 'English',
-    //   'es-mx': 'Español',
-    // },
+    languages: {
+      'en-us': 'English',
+      'es-mx': 'Español',
+    },
     apiRoot: '/sst/',
     logo: Logo as string,
     species: [

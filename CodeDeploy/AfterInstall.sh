@@ -8,3 +8,4 @@ poetry install
 cd source
 poetry run python manage.py migrate --noinput
 poetry run python manage.py collectstatic --noinput
+poetry run python manage.py compilemessages
