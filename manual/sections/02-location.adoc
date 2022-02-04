@@ -3,7 +3,7 @@
 You can either enter coordinates or click on the map to indicate the location of your planting site or seedlot. If
 looking for seedlots for a planting site, indicate the location of the planting site. If looking for planting sites for
 a seedlot, indicate the location of the seedlot. The location of a seedlot represents the geographic location where it
-is best adapted—that is, the center of its adaptive climate space.
+is best adapted--that is, the center of its adaptive climate space.
 
 ==== Enter your location as coordinates
 

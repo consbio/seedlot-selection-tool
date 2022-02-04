@@ -61,7 +61,7 @@ msgstr "Paso 2. Seleccionar la ubicación"
 
 #. type: Plain text
 #: sections/02-location.adoc:7
-msgid "You can either enter coordinates or click on the map to indicate the location of your planting site or seedlot. If looking for seedlots for a planting site, indicate the location of the planting site. If looking for planting sites for a seedlot, indicate the location of the seedlot. The location of a seedlot represents the geographic location where it is best adaptedâ&#128;&#148;that is, the center of its adaptive climate space."
+msgid "You can either enter coordinates or click on the map to indicate the location of your planting site or seedlot. If looking for seedlots for a planting site, indicate the location of the planting site. If looking for planting sites for a seedlot, indicate the location of the seedlot. The location of a seedlot represents the geographic location where it is best adapted--that is, the center of its adaptive climate space."
 msgstr "Puede introducir las coordenadas o hacer clic en el mapa para indicar la ubicación del sitio de plantación o del lote de semillas. Si busca lotes de semillas para un sitio de plantación, indique la ubicación del sitio de plantación. Si busca sitios de plantación para un lote de semillas, indique la ubicación del lote de semillas. La ubicación de un lote de semillas representa la ubicación geográfica a la que está mejor adaptado, es decir, el centro de su espacio climático adaptativo."
 
 #. type: Title ====
@@ -180,7 +180,7 @@ msgstr "El siguiente paso es elegir un periodo que represente el clima al que lo
 
 #. type: Plain text
 #: sections/04-climate.adoc:27
-msgid "The SST allows users to explore different scenarios of climate change by looking at different future time periods and assumed relative concentration pathways (RCPs). The SST also allows users to consider adaptation to past climates â&#128;&#147; that is, if climate change were ignored (1961 â&#128;&#147; 1990 before appreciable climate change) or considering recent changes in climate (1981 â&#128;&#147; 2010). Note that the current time period (2011-2040) represents modeled projections and not observations."
+msgid "The SST allows users to explore different scenarios of climate change by looking at different future time periods and assumed relative concentration pathways (RCPs). The SST also allows users to consider adaptation to past climates--that is, if climate change were ignored (1961 - 1990 before appreciable climate change) or considering recent changes in climate (1981 - 2010). Note that the current time period (2011-2040) represents modeled projections and not observations."
 msgstr "La SST permite a los usuarios explorar diferentes escenarios de cambio climático mediante observación en diferentes periodos futuros y vías de concentración relativa (relative concentration pathways, RCP) asumidas. La SST también permite a los usuarios tener en cuenta la adaptación a climas pasados, es decir, si el cambio climático se ignoró (1961-1990 antes de un cambio climático apreciable), o tener en cuenta los cambios recientes en el clima (1981-2010). Tenga en cuenta que el periodo actual (2011-2040) representa proyecciones basadas en modelos y no observaciones."
 
 #. type: Plain text
@@ -206,7 +206,7 @@ msgstr "2071-2100"
 #. type: Plain text
 #: sections/04-climate.adoc:40
 msgid "For future climates (i.e., 2011 to 2100), also select the relative concentration pathway (RCP), which is associated with different levels of atmospheric greenhouse gases and climate change. According to IPCC AR5, the RCP 4.5 \"stabilization\" scenario has a projected increase in mean annual temperature of 1.8Â°C by 2100 (range = 1.1-2.6Â°C), whereas the RCP 8.5 higher-emissions scenario has a projected increase of 3.7Â°C by 2100 (range = 2.6-4.8Â°C)."
-msgstr ""
+msgstr "Para climas futuros (es decir, de 2011 a 2100), seleccione también la vía de concentración relativa (RCP) asociada a diferentes niveles de gases de invernadero atmosféricos y de cambio climático. Según el AR5 del IPCC, el escenario de \"estabilización\" RCP 4.5 tiene un aumento proyectado de 1.8 °C en la temperatura media anual para 2100 (intervalo = 1.1 a 2.6 °C), mientras que el escenario con emisiones más altas RCP 8.5, tiene un aumento proyectado de 3.7 °C para 2100 (intervalo = 2.6 a 4.8 °C)."
 
 #. type: Plain text
 #: sections/04-climate.adoc:44
@@ -231,13 +231,13 @@ msgstr "El límite de transferencia indica a qué distancia climática se puede 
 
 #. type: Plain text
 #: sections/05-transfer.adoc:10
-msgid "The *Custom* and *Zone* approaches allow user-defined transfer limits for each climate variable selected in Step 6.  Transfer limits for the *Custom* approach may be selected based on the experience of the user including the best available science. They may also be adjusted based on the userâ&#128;&#153;s level of acceptable risk."
+msgid "The *Custom* and *Zone* approaches allow user-defined transfer limits for each climate variable selected in Step 6.  Transfer limits for the *Custom* approach may be selected based on the experience of the user including the best available science. They may also be adjusted based on the user's level of acceptable risk."
 msgstr "Los enfoques *Personalizado* y *de Zona* permiten al usuario definir límites de transferencia para cada variable climática seleccionada en el Paso 6.  Los límites de transferencia del enfoque *Personalizado* pueden seleccionarse según la experiencia del usuario, incluyendo los mejores conocimientos científicos a su alcance. También se pueden ajustar según el nivel de riesgo aceptable para el usuario."
 
 #. type: Plain text
 #: sections/05-transfer.adoc:20
 msgid "The SST suggests a transfer limit for the Zone approach based on the range of climates within the zone for the location of the planting site or seedlot chosen in Step 2. The idea is that the user would feel comfortable with that climatic difference given that we have been operationally moving populations within zones for 60 or more years. If you use the Zone method, the SST obtains the transfer limit (`TL`) for each climate variable using the selected zone: latexmath:[TL = \\frac{xmax-xmin}{2}], where `xmax` and `xmin` are the maximum and minimum climate values for the zone.  The assumption is that half the range of climates represents a \"typical\" past transfer. Because some zones show greater climatic variation than the typical zone, we also provide the average transfer limit for all zones in the selected zone set. This and other information will show up in a pop-up window in Step 6 if you hover over the \"eye\" icon to the right of the climate variable in the climate variable table. The transfer limit may be modified by the user."
-msgstr ""
+msgstr "La SST sugiere un límite de transferencia para la estrategia de Zona basada en el rango de climas dentro de la zona, para la ubicación del sitio de plantación del lote de semillas elegido en el Paso 2. La idea es que el usuario se sienta cómodo con esa diferencia climática, dado que hemos estado moviendo operativamente poblaciones dentro de las zonas desde hace 60 años o más. Si recurre al método de Zona, la SST calcula el límite de transferencia (‘TL’) de cada variable climática utilizando la zona seleccionada: latexmath:[TL = \\frac{xmax-xmin}{2}], donde ‘xmax’ y ‘xmin’ son los valores climáticos máximo y mínimo de la zona.  El supuesto es que la mitad del intervalo de climas representa una transferencia \"típica\" pasada. Puesto que algunas zonas exhiben mayor variación climática que la zona típica, también se proporciona el límite de transferencia promedio de todas las zonas del conjunto de zonas seleccionado. Esta información y otros datos, aparecerán en una ventana emergente en el Paso 6 al pasar el cursor del ratón sobre el icono \"ojo\" a la derecha de la variable climática, en la tabla de variables climáticas. El usuario puede modificar el límite de transferencia."
 
 #. type: Plain text
 #: sections/05-transfer.adoc:26
@@ -273,7 +273,7 @@ msgstr "Cuando el objetivo es encontrar lotes de semillas para un sitio de plant
 
 #. type: Plain text
 #: sections/05-transfer.adoc:48
-msgid "For the objective of finding planting sites for a seedlot, the *Zone* approach involves three steps. First, you need to specify the climatic center of the mapped output. If you have a seedlot from a specific known location, you will typically use the climate of that specific location. If you have a seedlot that represents an entire zone, or you are unsure from where within the zone the seedlot was collected, it is probably more appropriate to use the climatic center of your zone. After specifying the climatic center to be used for mapping, the next two steps are as above â&#128;&#147; select the species followed by selecting the zone of interest."
+msgid "For the objective of finding planting sites for a seedlot, the *Zone* approach involves three steps. First, you need to specify the climatic center of the mapped output. If you have a seedlot from a specific known location, you will typically use the climate of that specific location. If you have a seedlot that represents an entire zone, or you are unsure from where within the zone the seedlot was collected, it is probably more appropriate to use the climatic center of your zone. After specifying the climatic center to be used for mapping, the next two steps are as above -- select the species followed by selecting the zone of interest."
 msgstr "Cuando el objetivo es encontrar sitios de plantación para un lote de semillas, el enfoque *Zona* implica tres pasos. Primero, debe especificar el centro climático del resultado cartográfico proporcionado. Si tiene un lote de semillas de una ubicación específica conocida, normalmente utilizará el clima de dicha ubicación. Si tiene un lote de semillas que representa toda una zona, o no está seguro del sitio de donde se obtuvo el lote de semillas, podría ser mejor utilizar el centro climático de su zona. Una vez que especifique el centro climático que va a utilizar para la cartografía, los dos pasos siguientes son los mismos que se indicaron anteriormente para seleccionar primero la especie, y luego la zona de interés."
 
 #. type: Title ====

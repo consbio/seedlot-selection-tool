@@ -6,7 +6,7 @@ adaptation. The SST uses three alternative approaches to determine and map trans
 
 The *Custom* and *Zone* approaches allow user-defined transfer limits for each climate variable selected in Step 6.
 Transfer limits for the *Custom* approach may be selected based on the experience of the user including the best
-available science. They may also be adjusted based on the user’s level of acceptable risk.
+available science. They may also be adjusted based on the user's level of acceptable risk.
 
 The SST suggests a transfer limit for the Zone approach based on the range of climates within the zone for the location
 of the planting site or seedlot chosen in Step 2. The idea is that the user would feel comfortable with that climatic
@@ -43,7 +43,7 @@ For the objective of finding planting sites for a seedlot, the *Zone* approach i
 specify the climatic center of the mapped output. If you have a seedlot from a specific known location, you will
 typically use the climate of that specific location. If you have a seedlot that represents an entire zone, or you are
 unsure from where within the zone the seedlot was collected, it is probably more appropriate to use the climatic center
-of your zone. After specifying the climatic center to be used for mapping, the next two steps are as above – select the
+of your zone. After specifying the climatic center to be used for mapping, the next two steps are as above -- select the
 species followed by selecting the zone of interest.
 
 ==== Function method _(under construction February 2021)_

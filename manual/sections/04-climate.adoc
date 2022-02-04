@@ -20,9 +20,9 @@ trees must be adapted to the near-term in addition to being adapted to the long-
 too far into the future and one might see cold damage in the near-term for trees moved from warmer to cooler climates.
 
 The SST allows users to explore different scenarios of climate change by looking at different future time periods and
-assumed relative concentration pathways (RCPs). The SST also allows users to consider adaptation to past climates –
-that is, if climate change were ignored (1961 – 1990 before appreciable climate change) or considering recent changes
-in climate (1981 – 2010). Note that the current time period (2011-2040) represents modeled projections and not
+assumed relative concentration pathways (RCPs). The SST also allows users to consider adaptation to past
+climates--that is, if climate change were ignored (1961 - 1990 before appreciable climate change) or considering recent changes
+in climate (1981 - 2010). Note that the current time period (2011-2040) represents modeled projections and not
 observations.
 
 Use the drop-down menu to select either:
