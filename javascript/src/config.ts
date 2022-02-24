@@ -226,7 +226,7 @@ export default () => {
     layerCategories: [
       ...baseConfig.layerCategories,
       {
-        label: 'Constraints',
+        label: t`Constraints`,
         show: () => true,
         layers: speciesConstraints.map(([species]) => `constraint-${species}`),
       },

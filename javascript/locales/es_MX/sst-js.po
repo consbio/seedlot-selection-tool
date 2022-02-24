@@ -1,130 +1,131 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=utf-8\n"
-"Plural-Forms: nplurals = 2; plural = (n != 1);\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: es_MX\n"
-"mime-version: 1.0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals = 2; plural = (n != 1);\n"
+"mime-version: 1.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
-#: src/config.ts:34
-#: src/config.ts:190
-#: src/config.ts:234
+#: src/config.ts:26 src/config.ts:42
 msgid "Douglas-fir"
 msgstr "Douglas-fir"
 
-#: src/config.ts:38
+#: src/config.ts:46
 msgid "Lodgepole pine"
 msgstr "Lodgepole pine"
 
-#: src/config.ts:42
+#: src/config.ts:50
 msgid "Jack pine"
 msgstr "Jack pine"
 
-#: src/config.ts:46
+#: src/config.ts:54
 msgid "Ponderosa pine"
 msgstr "Ponderosa pine"
 
-#: src/config.ts:50
+#: src/config.ts:58
 msgid "Black spruce"
 msgstr "Black spruce"
 
-#: src/config.ts:54
+#: src/config.ts:62
 msgid "Western red cedar"
 msgstr "Western red cedar"
 
-#: src/config.ts:58
+#: src/config.ts:66
 msgid "Western white pine"
 msgstr "Western white pine"
 
-#: src/config.ts:62
+#: src/config.ts:70
 msgid "Pacific silver fir"
 msgstr "Pacific silver fir"
 
-#: src/config.ts:66
+#: src/config.ts:74
 msgid "White fir"
 msgstr "White fir"
 
-#: src/config.ts:70
+#: src/config.ts:78
 msgid "Grand fir"
 msgstr "Grand fir"
 
-#: src/config.ts:74
+#: src/config.ts:82
 msgid "Noble Fir"
 msgstr "Noble fir"
 
-#: src/config.ts:78
+#: src/config.ts:86
 msgid "Shasta red fir"
 msgstr "Shasta red fir"
 
-#: src/config.ts:82
+#: src/config.ts:90
 msgid "Red alder"
 msgstr "Red alder"
 
-#: src/config.ts:86
+#: src/config.ts:94
 msgid "Incense cedar"
 msgstr "Incense cedar"
 
-#: src/config.ts:90
+#: src/config.ts:98
 msgid "Port orford cedar"
 msgstr "Port orford cedar"
 
-#: src/config.ts:94
+#: src/config.ts:102
 msgid "Alaska yellow cedar"
 msgstr "Alaska yellow cedar"
 
-#: src/config.ts:98
+#: src/config.ts:106
 msgid "Western larch"
 msgstr "Western larch"
 
-#: src/config.ts:102
+#: src/config.ts:110
 msgid "Whitebark pine"
 msgstr "Whitebark pine"
 
-#: src/config.ts:106
+#: src/config.ts:114
 msgid "Engelmann spruce"
 msgstr "Engelmann spruce"
 
-#: src/config.ts:110
+#: src/config.ts:118
 msgid "Jeffrey pine"
 msgstr "Jeffrey pine"
 
-#: src/config.ts:114
+#: src/config.ts:122
 msgid "Sugar pine"
 msgstr "Sugar pine"
 
-#: src/config.ts:118
+#: src/config.ts:126
 msgid "Pacific yew"
 msgstr "Pacific yew"
 
-#: src/config.ts:122
+#: src/config.ts:130
 msgid "Western hemlock"
 msgstr "Western hemlock"
 
-#: src/config.ts:126
+#: src/config.ts:134
 msgid "Mountain hemlock"
 msgstr "Mountain hemlock"
 
-#: src/config.ts:172
-#: src/config.ts:224
+#: src/config.ts:24
 msgid "Lodgepole Pine"
 msgstr "Lodgepole pine"
 
-#: src/config.ts:181
-#: src/config.ts:229
+#: src/config.ts:25
 msgid "Sitka Spruce"
 msgstr "Sitka spruce"
 
-#: src/config.ts:199
-#: src/config.ts:239
+#: src/config.ts:27
 msgid "Ponderosa Pine"
 msgstr "Ponderosa pine"
 
-#: src/config.ts:208
-#: src/config.ts:244
+#: src/config.ts:28
 msgid "Engelmann Spruce"
 msgstr "Engelmann spruce"
 
-#: src/config.ts:219
+#: src/config.ts:204
 msgid "Species Range"
 msgstr "Gama de especies"
 
@@ -140,11 +141,18 @@ msgstr "Manos que sostienen una plántula de árbol"
 msgid ""
 "The Seedlot Selection Tool (SST) is a GIS mapping program designed to help "
 "forest managers match seedlots with\n"
-"planting sites based on climatic information. The climates of the planting "
-"sites can be chosen to represent\n"
-"current climates, or future climates based on selected climate change "
-"scenarios."
-msgstr "La Herramienta de selección de lotes de semillas (Seedlot Selection Tool, SST) es un programa de cartografía del Sistema de Información Geográfica (Geographical Information System, GIS), diseñado para ayudar a los administradores forestales a combinar lotes de semillas con \nsitios de plantación según la información climática. Los climas de los sitios de plantación pueden elegirse de modo que representen \nclimas actuales o futuros, según los escenarios de cambio climático seleccionados."
+"planting sites based on climatic information. The climates of the planting sites "
+"can be chosen to represent\n"
+"current climates, or future climates based on selected climate change scenarios."
+msgstr ""
+"La Herramienta de selección de lotes de semillas (Seedlot Selection Tool, SST) "
+"es un programa de cartografía del Sistema de Información Geográfica "
+"(Geographical Information System, GIS), diseñado para ayudar a los "
+"administradores forestales a combinar lotes de semillas con \n"
+"sitios de plantación según la información climática. Los climas de los sitios de "
+"plantación pueden elegirse de modo que representen \n"
+"climas actuales o futuros, según los escenarios de cambio climático "
+"seleccionados."
 
 #: src/components/About.tsx:24
 msgid "A bullseye"
@@ -156,9 +164,10 @@ msgstr "Seleccionar el objetivo"
 
 #: src/components/About.tsx:26
 msgid ""
-"You can find seedlots for your planting site or planting sites for your "
-"seedlot"
-msgstr "Puede encontrar lotes de semillas para el sitio de plantación, o sitios de plantación para su lote de semillas"
+"You can find seedlots for your planting site or planting sites for your seedlot"
+msgstr ""
+"Puede encontrar lotes de semillas para el sitio de plantación, o sitios de "
+"plantación para su lote de semillas"
 
 #: src/components/About.tsx:30
 msgid "Select Location"
@@ -166,13 +175,17 @@ msgstr "Seleccionar la ubicación"
 
 #: src/components/About.tsx:31
 msgid ""
-"You can click on the map or enter coordinates to locate your seedlot or "
-"planting site"
-msgstr "Puede hacer clic en el mapa o introducir las coordenadas para localizar su lote de semillas o sitio de plantación"
+"You can click on the map or enter coordinates to locate your seedlot or planting "
+"site"
+msgstr ""
+"Puede hacer clic en el mapa o introducir las coordenadas para localizar su lote "
+"de semillas o sitio de plantación"
 
 #: src/components/About.tsx:34
 msgid "A map of North America with the western United States highlighted in red"
-msgstr "Mapa de América del Norte con la región occidental de los Estados Unidos resaltada en rojo"
+msgstr ""
+"Mapa de América del Norte con la región occidental de los Estados Unidos "
+"resaltada en rojo"
 
 #: src/components/About.tsx:35
 msgid "Select Region"
@@ -180,9 +193,11 @@ msgstr "Seleccionar la región"
 
 #: src/components/About.tsx:36
 msgid ""
-"You can select the geographic region closest to your site or choose from a "
-"list of available regions"
-msgstr "Puede seleccionar la región geográfica más cercana a su sitio o elegir de una lista de regiones disponibles"
+"You can select the geographic region closest to your site or choose from a list "
+"of available regions"
+msgstr ""
+"Puede seleccionar la región geográfica más cercana a su sitio o elegir de una "
+"lista de regiones disponibles"
 
 #: src/components/About.tsx:39
 msgid "A calendar icon showing the year 2050"
@@ -196,7 +211,9 @@ msgstr "Seleccionar los escenarios climáticos"
 msgid ""
 "You can select historical, current, or future climates for your seedlots of "
 "planting sites"
-msgstr "Puede seleccionar climas históricos, actuales o futuros para los lotes de semillas de sus sitios de plantación"
+msgstr ""
+"Puede seleccionar climas históricos, actuales o futuros para los lotes de "
+"semillas de sus sitios de plantación"
 
 #: src/components/About.tsx:44
 msgid "A curved, blue arrow"
@@ -211,7 +228,11 @@ msgid ""
 "You can enter your own custom limit, use an existing zone to calculate a "
 "transfer limit, or use a function \n"
 "relating genetic variation to climate to calculate a transfer limit"
-msgstr "Puede introducir su propio límite personalizado, usar una zona existente para calcular un límite de transferencia o utilizar una función que \nrelacione la variación genética con el clima para calcular un límite de transferencia"
+msgstr ""
+"Puede introducir su propio límite personalizado, usar una zona existente para "
+"calcular un límite de transferencia o utilizar una función que \n"
+"relacione la variación genética con el clima para calcular un límite de "
+"transferencia"
 
 #: src/components/About.tsx:52
 msgid "A cloud with raindrops falling from the bottom, in front of the sun"
@@ -223,9 +244,11 @@ msgstr "Seleccionar variables climáticas"
 
 #: src/components/About.tsx:54
 msgid ""
-"You can use a variety of climate variables to match your seedlot and "
-"planting site"
-msgstr "Puede utilizar diversas variables climáticas que coincidan con el lote de semillas y el sitio de plantación"
+"You can use a variety of climate variables to match your seedlot and planting "
+"site"
+msgstr ""
+"Puede utilizar diversas variables climáticas que coincidan con el lote de "
+"semillas y el sitio de plantación"
 
 #: src/components/About.tsx:57
 msgid "An icon of the globe"
@@ -237,535 +260,817 @@ msgstr "Mapear sus resultados"
 
 #: src/components/About.tsx:59
 msgid "The map shows where to find appropriate seedlots or planting sites"
-msgstr "El mapa muestra en dónde encontrar lotes de semillas o sitios de plantación apropiados"
+msgstr ""
+"El mapa muestra en dónde encontrar lotes de semillas o sitios de plantación "
+"apropiados"
 
-#: src/components/Menu.tsx:41
-#: src/components/Menu.tsx:438
+#: src/components/Menu.tsx:47 src/components/Menu.tsx:445
 msgid "Background"
 msgstr "Antecedentes"
 
-#: src/components/Menu.tsx:46
+#: src/components/Menu.tsx:52
 msgid "Trees on a hillside enveloped in fog"
 msgstr "Árboles en una ladera envuelta en niebla"
 
-#: src/components/Menu.tsx:49
+#: src/components/Menu.tsx:55
 msgid ""
-"Populations of forest trees and other native plants are genetically "
-"different from one another and are\n"
+"Populations of forest trees and other native plants are genetically different "
+"from one another and are\n"
 "locally adapted owing to natural selection to different climatic pressures "
 "across the landscape (Leimu and\n"
-"Fischer 2008, Alberto et al. 2013, Baughman et al. 2019). As a result, "
-"local seed sources are usually\n"
+"Fischer 2008, Alberto et al. 2013, Baughman et al. 2019). As a result, local "
+"seed sources are usually\n"
 "recommended for reforestation and restoration. Typically, this has been "
 "accomplished using geographically\n"
 "defined zones or seed transfer rules that limit the geographic or climatic "
 "distance that populations may\n"
-"be moved. As climates change, however, the assumption of “local is best” "
-"and the use of local seed zones\n"
-"and guidelines may no longer apply. Because populations are genetically "
-"adapted to their local climates,\n"
+"be moved. As climates change, however, the assumption of “local is best” and the "
+"use of local seed zones\n"
+"and guidelines may no longer apply. Because populations are genetically adapted "
+"to their local climates,\n"
 "the health and productivity of native or newly established ecosystems using "
 "local seed sources will likely\n"
 "decline. We are already seeing increased mortality across many forest tree "
 "species in North America likely\n"
-"attributed to changes in climate (van Mantgem et al. 2009, Sáenz-Romero et "
-"al. 2020). And the problem will\n"
-"only get worse – the amount of climate change to date is small compared to "
-"what is projected by the mid-\n"
+"attributed to changes in climate (van Mantgem et al. 2009, Sáenz-Romero et al. "
+"2020). And the problem will\n"
+"only get worse – the amount of climate change to date is small compared to what "
+"is projected by the mid-\n"
 "to late-21st century."
-msgstr "Las poblaciones de árboles forestales y otras plantas nativas son genéticamente diferentes entre sí y están \nlocalmente adaptadas debido a la selección natural ante diferentes presiones climáticas en el paisaje (Leimu y \nFischer 2008, Alberto et al. 2013, Baughman et al. de 2019). Como resultado de eso, se recomienda en general el uso de\nfuentes de semillas locales para la reforestación y la restauración. Por lo general, esto se ha logrado utilizando zonas\ngeográficamente definidas o reglas de transferencia de semillas que limitan la distancia geográfica o climática a la que\nse pueden mover las poblaciones. Sin embargo, a medida que los climas cambian, la suposición de que “local es mejor” y el uso de directrices\ny zonas de origen de las semillas locales podrían ya no ser adecuados. Puesto que las poblaciones están genéticamente adaptadas a los climas locales, \nes probable que disminuya la salud y la productividad de los ecosistemas nativos o recién establecidos mediante el uso de\nfuentes de semillas locales. Ya estamos viendo un aumento de la mortalidad en muchas especies de árboles forestales en América del Norte, lo que podría\natribuirse a cambios en el clima (van Mantgem et al. 2009, Sáenz-Romero et al. de 2020). Y el problema\nno hará más que empeorar: el grado de cambio climático hasta la fecha es pequeño en comparación con lo que se prevé\npara mediados y fines del siglo XXI."
+msgstr ""
+"Las poblaciones de árboles forestales y otras plantas nativas son genéticamente "
+"diferentes entre sí y están \n"
+"localmente adaptadas debido a la selección natural ante diferentes presiones "
+"climáticas en el paisaje (Leimu y \n"
+"Fischer 2008, Alberto et al. 2013, Baughman et al. de 2019). Como resultado de "
+"eso, se recomienda en general el uso de\n"
+"fuentes de semillas locales para la reforestación y la restauración. Por lo "
+"general, esto se ha logrado utilizando zonas\n"
+"geográficamente definidas o reglas de transferencia de semillas que limitan la "
+"distancia geográfica o climática a la que\n"
+"se pueden mover las poblaciones. Sin embargo, a medida que los climas cambian, "
+"la suposición de que “local es mejor” y el uso de directrices\n"
+"y zonas de origen de las semillas locales podrían ya no ser adecuados. Puesto "
+"que las poblaciones están genéticamente adaptadas a los climas locales, \n"
+"es probable que disminuya la salud y la productividad de los ecosistemas nativos "
+"o recién establecidos mediante el uso de\n"
+"fuentes de semillas locales. Ya estamos viendo un aumento de la mortalidad en "
+"muchas especies de árboles forestales en América del Norte, lo que podría\n"
+"atribuirse a cambios en el clima (van Mantgem et al. 2009, Sáenz-Romero et al. "
+"de 2020). Y el problema\n"
+"no hará más que empeorar: el grado de cambio climático hasta la fecha es pequeño "
+"en comparación con lo que se prevé\n"
+"para mediados y fines del siglo XXI."
 
-#: src/components/Menu.tsx:63
+#: src/components/Menu.tsx:69
 msgid ""
-"Natural resource managers may respond to concerns of maladaptation and "
-"declines in ecosystem \n"
-"productivity by matching the climatic adaptability of their plant material "
-"to the climatic conditions of \n"
+"Natural resource managers may respond to concerns of maladaptation and declines "
+"in ecosystem \n"
+"productivity by matching the climatic adaptability of their plant material to "
+"the climatic conditions of \n"
 "their reforestation or restoration sites. Software applications are now "
 "available that can be used to\n"
-"characterize the local climates of seed sources and planting sites, "
-"including past climates and future\n"
-"climates given different climate change models. For the Seedlot Selection "
-"Tool (SST), we use ClimateNA\n"
-"v5.30 and a USGS DEM data a resolution of 15-arc seconds (~450 m) to "
-"determine the climate for each grid\n"
-"point on a map (Wang et al. 2016 – more information may be found by "
-"clicking on the ClimateNA tab).\n"
-"ClimateNA is a user-friendly application that locally downscales historical "
-"and future climate from\n"
-"various baseline gridded climate data into scale-free point estimates of "
-"climate values for the entire\n"
-"continent of North America. It also calculates a large number of "
-"biologically relevant climate variables.\n"
+"characterize the local climates of seed sources and planting sites, including "
+"past climates and future\n"
+"climates given different climate change models. For the Seedlot Selection Tool "
+"(SST), we use ClimateNA\n"
+"v5.30 and a USGS DEM data a resolution of 15-arc seconds (~450 m) to determine "
+"the climate for each grid\n"
+"point on a map (Wang et al. 2016 – more information may be found by clicking on "
+"the ClimateNA tab).\n"
+"ClimateNA is a user-friendly application that locally downscales historical and "
+"future climate from\n"
+"various baseline gridded climate data into scale-free point estimates of climate "
+"values for the entire\n"
+"continent of North America. It also calculates a large number of biologically "
+"relevant climate variables.\n"
 "The SST uses sixteen temperature- and precipitation-related variables as "
 "determined for two 30-year\n"
-"normals for past climates (1961 – 1990 and 1981-2010) and three 30-year "
-"normals for future climates (2011\n"
-"– 2040, 2041 – 2070, and 2071 – 2100). For the three future climates, the "
-"SST allows the user to make\n"
-"assumptions about future emission scenarios (relative concentration "
-"pathways) of RCP 4.5 or RCP 8.5. The\n"
-"climate projections are based on an ensemble of the average projections "
-"from fifteen climate models from\n"
-"the Coupled Model Intercomparison Project phase 5 (CMIP5) database of the "
-"5th IPCC Assessment Report."
-msgstr "Los administradores de recursos naturales pueden responder a las inquietudes de mala adaptación y a las declinaciones de la \nproductividad del ecosistema, haciendo coincidir la adaptabilidad climática de su material vegetal con las condiciones climáticas de \nlos sitios de reforestación o restauración. Ahora existen aplicaciones de software que pueden usarse para\ncaracterizar los climas de las fuentes de semillas locales y los sitios de plantación, incluyendo climas pasados y climas\nfuturos, dados diferentes modelos de cambio climático. Para la Herramienta de selección de lotes de semillas (SST), utilizamos el software ClimateNA,\nv5.30, y datos de modelos digitales de elevación (Digital Elevation Models, DEM) del Servicio Geológico de los Estados Unidos (United States Geological Survey, USGS), con resolución de 15 segundos-arco (~450 m), para determinar el clima de cada \npunto de la cuadrícula en un mapa (Wang et al. 2016; se puede encontrar más información haciendo clic en la pestaña ClimateNA). \nClimateNA es una aplicación fácil de usar que reduce de forma local el clima histórico y futuro, a partir de\ndiversos datos climáticos vertidos en la cuadrícula de referencia, para obtener estimaciones puntuales, sin escala alguna, de los valores climáticos para todo el\n continente de América del Norte. También calcula un gran número de variables climáticas biológicamente relevantes. \nLa SST recurre a dieciséis variables relacionadas con temperatura y precipitación, determinadas para valores \nnormales de los climas pasados en dos periodos de 30 años (1961-1990 y 1981-2010) y en los valores normales de tres periodos de 30 años para climas futuros (2011\n-2040, 2041-2070 y 2071-2100). En el caso de los tres climas futuros, la SST permite al usuario hacer\nsuposiciones sobre escenarios de emisión futuros (vías de concentración relativa [relative concentration pathways, RCP]) de RCP 4.5 o RCP 8.5. Las \nproyecciones climáticas se basan en un conjunto de las proyecciones promedio de quince modelos climáticos provenientes de\nla base de datos del Proyecto de intercomparación de modelos acoplados de fase 5 (Coupled Model Intercomparison Project phase 5, CMIP5) del 5.º Informe de evaluación del Grupo Intergubernamental de Expertos sobre el Cambio Climático (Intergovernmental Panel on Climate Change, IPCC)."
+"normals for past climates (1961 – 1990 and 1981-2010) and three 30-year normals "
+"for future climates (2011\n"
+"– 2040, 2041 – 2070, and 2071 – 2100). For the three future climates, the SST "
+"allows the user to make\n"
+"assumptions about future emission scenarios (relative concentration pathways) of "
+"RCP 4.5 or RCP 8.5. The\n"
+"climate projections are based on an ensemble of the average projections from "
+"fifteen climate models from\n"
+"the Coupled Model Intercomparison Project phase 5 (CMIP5) database of the 5th "
+"IPCC Assessment Report."
+msgstr ""
+"Los administradores de recursos naturales pueden responder a las inquietudes de "
+"mala adaptación y a las declinaciones de la \n"
+"productividad del ecosistema, haciendo coincidir la adaptabilidad climática de "
+"su material vegetal con las condiciones climáticas de \n"
+"los sitios de reforestación o restauración. Ahora existen aplicaciones de "
+"software que pueden usarse para\n"
+"caracterizar los climas de las fuentes de semillas locales y los sitios de "
+"plantación, incluyendo climas pasados y climas\n"
+"futuros, dados diferentes modelos de cambio climático. Para la Herramienta de "
+"selección de lotes de semillas (SST), utilizamos el software ClimateNA,\n"
+"v5.30, y datos de modelos digitales de elevación (Digital Elevation Models, DEM) "
+"del Servicio Geológico de los Estados Unidos (United States Geological Survey, "
+"USGS), con resolución de 15 segundos-arco (~450 m), para determinar el clima de "
+"cada \n"
+"punto de la cuadrícula en un mapa (Wang et al. 2016; se puede encontrar más "
+"información haciendo clic en la pestaña ClimateNA). \n"
+"ClimateNA es una aplicación fácil de usar que reduce de forma local el clima "
+"histórico y futuro, a partir de\n"
+"diversos datos climáticos vertidos en la cuadrícula de referencia, para obtener "
+"estimaciones puntuales, sin escala alguna, de los valores climáticos para todo "
+"el\n"
+" continente de América del Norte. También calcula un gran número de variables "
+"climáticas biológicamente relevantes. \n"
+"La SST recurre a dieciséis variables relacionadas con temperatura y "
+"precipitación, determinadas para valores \n"
+"normales de los climas pasados en dos periodos de 30 años (1961-1990 y "
+"1981-2010) y en los valores normales de tres periodos de 30 años para climas "
+"futuros (2011\n"
+"-2040, 2041-2070 y 2071-2100). En el caso de los tres climas futuros, la SST "
+"permite al usuario hacer\n"
+"suposiciones sobre escenarios de emisión futuros (vías de concentración relativa "
+"[relative concentration pathways, RCP]) de RCP 4.5 o RCP 8.5. Las \n"
+"proyecciones climáticas se basan en un conjunto de las proyecciones promedio de "
+"quince modelos climáticos provenientes de\n"
+"la base de datos del Proyecto de intercomparación de modelos acoplados de fase 5 "
+"(Coupled Model Intercomparison Project phase 5, CMIP5) del 5.º Informe de "
+"evaluación del Grupo Intergubernamental de Expertos sobre el Cambio Climático "
+"(Intergovernmental Panel on Climate Change, IPCC)."
 
-#: src/components/Menu.tsx:81
+#: src/components/Menu.tsx:87
 #, javascript-format
 msgid ""
-"Using the climate estimates for each grid point on a map, the SST "
-"determines the climatic distances\n"
-"between a focal point location and each grid point on a map. The area "
-"mapped is limited to the maximum\n"
-"climatic distance a user is willing to move as indicated by the transfer "
-"limit (${ tl }). The gridded data \n"
-"for each climate variable is rescaled as: ${ formula }, where ${ xmid } is "
-"the midpoint value, or climatic \n"
-"center, of the focal point. Then, the multivariate climatic distance (${ d "
-"}) from the focal point to each \n"
-"grid point is calculated as the Euclidean distance for ${ n } climate "
-"variables: ${ distanceFormula }. \n"
-"Finally, the climate match (${ m }) is calculated as ${ matchFormula }. "
-"Values of ${ mLessThan0 } are not \n"
+"Using the climate estimates for each grid point on a map, the SST determines the "
+"climatic distances\n"
+"between a focal point location and each grid point on a map. The area mapped is "
+"limited to the maximum\n"
+"climatic distance a user is willing to move as indicated by the transfer limit "
+"(${ tl }). The gridded data \n"
+"for each climate variable is rescaled as: ${ formula }, where ${ xmid } is the "
+"midpoint value, or climatic \n"
+"center, of the focal point. Then, the multivariate climatic distance (${ d }) "
+"from the focal point to each \n"
+"grid point is calculated as the Euclidean distance for ${ n } climate variables: "
+"${ distanceFormula }. \n"
+"Finally, the climate match (${ m }) is calculated as ${ matchFormula }. Values "
+"of ${ mLessThan0 } are not \n"
 "mapped, whereas values between 0 and 100 are mapped using the color scale "
 "ranging from light to dark \n"
 "orange."
-msgstr "Mediante el uso de las estimaciones climáticas de cada punto de la cuadrícula en un mapa, la SST determina las distancias climáticas\nentre una ubicación de punto focal y cada punto de la cuadrícula en un mapa. El área mapeada se limita a la distancia climática\nmáxima que un usuario está dispuesto a mover, según lo indicado por el límite de transferencia (${ tl }). Los datos vertidos en la cuadrícula \npara cada variable climática se reajustan a escala como: ${ formula }, donde ${ xmid } es el valor del punto medio, o \ncentro climático, del punto focal. A continuación, la distancia climática multivariable (${ d }) desde el punto focal hasta cada punto de la \ncuadrícula se calcula como la distancia euclidiana para ${ n } variables climáticas: ${ distanceFormula }. \nPor último, la coincidencia de clima (${ m }) se calcula como ${ matchFormula }. Los valores de ${ mLessThan0 } no se \nmapean, mientras que los valores entre 0 y 100 se mapean mediante una escala de color que va de color naranja claro al \noscuro."
+msgstr ""
+"Mediante el uso de las estimaciones climáticas de cada punto de la cuadrícula en "
+"un mapa, la SST determina las distancias climáticas\n"
+"entre una ubicación de punto focal y cada punto de la cuadrícula en un mapa. El "
+"área mapeada se limita a la distancia climática\n"
+"máxima que un usuario está dispuesto a mover, según lo indicado por el límite de "
+"transferencia (${ tl }). Los datos vertidos en la cuadrícula \n"
+"para cada variable climática se reajustan a escala como: ${ formula }, donde "
+"${ xmid } es el valor del punto medio, o \n"
+"centro climático, del punto focal. A continuación, la distancia climática "
+"multivariable (${ d }) desde el punto focal hasta cada punto de la \n"
+"cuadrícula se calcula como la distancia euclidiana para ${ n } variables "
+"climáticas: ${ distanceFormula }. \n"
+"Por último, la coincidencia de clima (${ m }) se calcula como ${ matchFormula }. "
+"Los valores de ${ mLessThan0 } no se \n"
+"mapean, mientras que los valores entre 0 y 100 se mapean mediante una escala de "
+"color que va de color naranja claro al \n"
+"oscuro."
 
-#: src/components/Menu.tsx:92
+#: src/components/Menu.tsx:98
 msgid ""
 "To match seedlots and planting sites, it is necessary to choose appropriate "
 "climate variables that reflect\n"
-"the adaptive capacity of seedlots. Evidence for adaptation comes from two "
-"types of genetic studies: (1)\n"
-"genecology studies and (2) reciprocal transplant studies (or provenance "
-"studies that approximate\n"
+"the adaptive capacity of seedlots. Evidence for adaptation comes from two types "
+"of genetic studies: (1)\n"
+"genecology studies and (2) reciprocal transplant studies (or provenance studies "
+"that approximate\n"
 "reciprocal transplants). Both types of studies use a common-garden approach "
 "which minimizes environmental\n"
-"variation such that genetic differences are more easily observed. "
-"Genecology studies relate differences\n"
+"variation such that genetic differences are more easily observed. Genecology "
+"studies relate differences\n"
 "among seedlings from different populations to the environment of the seed "
 "sources. Consistent correlations\n"
-"between traits and source climates are indicative of adaptation as a result "
-"of natural selection of the\n"
-"parents in those source climates. Reciprocal transplant studies test "
-"adaptation directly by relating\n"
-"survival and growth of different populations from different source climates "
-"to the climates in which they\n"
-"are growing. Populations that survive and grow best in test climates that "
-"are similar to their source\n"
-"climates are considered to be locally adapted. In both types of studies, "
-"those climate variables showing\n"
-"the strongest relationships to population differences may be considered "
-"most important for adaptation. In\n"
-"general, genetic studies indicate that temperate trees are most strongly "
-"related to climate variables that\n"
-"reflect adaptation to cold temperatures in the winter and aridity during "
-"the growing season (Aitken and\n"
+"between traits and source climates are indicative of adaptation as a result of "
+"natural selection of the\n"
+"parents in those source climates. Reciprocal transplant studies test adaptation "
+"directly by relating\n"
+"survival and growth of different populations from different source climates to "
+"the climates in which they\n"
+"are growing. Populations that survive and grow best in test climates that are "
+"similar to their source\n"
+"climates are considered to be locally adapted. In both types of studies, those "
+"climate variables showing\n"
+"the strongest relationships to population differences may be considered most "
+"important for adaptation. In\n"
+"general, genetic studies indicate that temperate trees are most strongly related "
+"to climate variables that\n"
+"reflect adaptation to cold temperatures in the winter and aridity during the "
+"growing season (Aitken and\n"
 "Bemmels 2015). Aridity is driven by both moisture availability and "
 "evapotranspiration, and is, thus, best\n"
 "reflected by climate variables that reflect both, such as climate moisture "
 "deficit and heat:moisture\n"
 "index, as well as related variables such as annual precipitation and summer "
 "temperatures."
-msgstr "Para hacer coincidir los lotes de semillas y los sitios de plantación, es necesario elegir variables climáticas adecuadas, que reflejen \nla capacidad adaptativa de los lotes de semillas. La evidencia de la adaptación proviene de dos tipos de estudios genéticos: (1) \nestudios genecológicos y (2) estudios de trasplante recíproco (o estudios de procedencia que se aproximan a los trasplantes \nrecíprocos). En ambos tipos de estudios se utiliza un enfoque de jardín común, lo que reduce al mínimo la \nvariación ambiental, de manera tal que las diferencias genéticas se observan más fácilmente. Los estudios de genecología relacionan las diferencias \nentre las plántulas de diferentes poblaciones con el entorno de las fuentes de semillas. Las correlaciones congruentes\nentre las características y los climas de origen son indicativas de adaptación como resultado de la selección natural de los\nprogenitores en esos climas de origen. Los estudios de trasplante recíproco evalúan directamente la adaptación al relacionar la\nsupervivencia y el crecimiento de diferentes poblaciones provenientes de diferentes climas de origen, con los climas en los que \nestán creciendo. Las poblaciones que sobreviven y crecen mejor en climas experimentales que son similares a sus\nclimas de origen, se consideran localmente adaptadas. En ambos tipos de estudios, las variables climáticas que exhiben\nlas relaciones más claras con las diferencias entre poblaciones, pueden considerarse las más importantes para la adaptación. En\ngeneral, los estudios genéticos indican que los árboles de climas templados están claramente relacionados con variables climáticas que \nindican adaptación a temperaturas frías en invierno y a condiciones de aridez durante la estación de crecimiento (Aitken y \nBemmels 2015). La aridez depende tanto de la disponibilidad de humedad como de la evapotranspiración y, por lo tanto, es\nreflejada mejor por las variables climáticas que reflejan ambas condiciones, como el déficit de humedad climática y el\níndice de calor-humedad, así como variables relacionadas como la precipitación anual y las temperaturas de verano."
+msgstr ""
+"Para hacer coincidir los lotes de semillas y los sitios de plantación, es "
+"necesario elegir variables climáticas adecuadas, que reflejen \n"
+"la capacidad adaptativa de los lotes de semillas. La evidencia de la adaptación "
+"proviene de dos tipos de estudios genéticos: (1) \n"
+"estudios genecológicos y (2) estudios de trasplante recíproco (o estudios de "
+"procedencia que se aproximan a los trasplantes \n"
+"recíprocos). En ambos tipos de estudios se utiliza un enfoque de jardín común, "
+"lo que reduce al mínimo la \n"
+"variación ambiental, de manera tal que las diferencias genéticas se observan más "
+"fácilmente. Los estudios de genecología relacionan las diferencias \n"
+"entre las plántulas de diferentes poblaciones con el entorno de las fuentes de "
+"semillas. Las correlaciones congruentes\n"
+"entre las características y los climas de origen son indicativas de adaptación "
+"como resultado de la selección natural de los\n"
+"progenitores en esos climas de origen. Los estudios de trasplante recíproco "
+"evalúan directamente la adaptación al relacionar la\n"
+"supervivencia y el crecimiento de diferentes poblaciones provenientes de "
+"diferentes climas de origen, con los climas en los que \n"
+"están creciendo. Las poblaciones que sobreviven y crecen mejor en climas "
+"experimentales que son similares a sus\n"
+"climas de origen, se consideran localmente adaptadas. En ambos tipos de "
+"estudios, las variables climáticas que exhiben\n"
+"las relaciones más claras con las diferencias entre poblaciones, pueden "
+"considerarse las más importantes para la adaptación. En\n"
+"general, los estudios genéticos indican que los árboles de climas templados "
+"están claramente relacionados con variables climáticas que \n"
+"indican adaptación a temperaturas frías en invierno y a condiciones de aridez "
+"durante la estación de crecimiento (Aitken y \n"
+"Bemmels 2015). La aridez depende tanto de la disponibilidad de humedad como de "
+"la evapotranspiración y, por lo tanto, es\n"
+"reflejada mejor por las variables climáticas que reflejan ambas condiciones, "
+"como el déficit de humedad climática y el\n"
+"índice de calor-humedad, así como variables relacionadas como la precipitación "
+"anual y las temperaturas de verano."
 
-#: src/components/Menu.tsx:113
+#: src/components/Menu.tsx:119
 msgid "A clear-cut hillside in the foreground, a wooded hillside in the background"
 msgstr "Una ladera desmontada en primer plano; una ladera boscosa al fondo"
 
-#: src/components/Menu.tsx:116
+#: src/components/Menu.tsx:122
 msgid ""
 "Once important climate variables are selected, it is necessary to decide on "
 "transfer limits – that is, how\n"
 "far can one move a population climatically before performance becomes "
 "unacceptable. This information is\n"
-"best obtained by measuring growth and survival in reciprocal transplant "
-"studies or provenance tests that\n"
+"best obtained by measuring growth and survival in reciprocal transplant studies "
+"or provenance tests that\n"
 "move populations across large climatic gradients. As populations are moved "
 "greater climatic distances\n"
-"between seed sources and planting sites, we can expect that growth and "
-"survival will decrease,\n"
-"particularly for growing environments showing strong local adaptation, as "
-"is frequently the case. Because\n"
-"the decrease in growth and survival is a gradient, deciding on a transfer "
-"limit that is acceptable depends\n"
+"between seed sources and planting sites, we can expect that growth and survival "
+"will decrease,\n"
+"particularly for growing environments showing strong local adaptation, as is "
+"frequently the case. Because\n"
+"the decrease in growth and survival is a gradient, deciding on a transfer limit "
+"that is acceptable depends\n"
 "on the risk tolerance of the manager."
-msgstr "Una vez seleccionadas las variables climáticas importantes, es necesario decidir los límites de transferencia, es decir, hasta qué\npunto es posible desplazar climáticamente una población antes de que su desempeño se vuelva inaceptable. La mejor manera de obtener esta información es\nmedir el crecimiento y la supervivencia en estudios de trasplante recíproco, o realizar pruebas de procedencia que\ndesplacen poblaciones a través de amplios gradientes climáticos. Puesto que las poblaciones se trasladan a mayores distancias climáticas\nentre las fuentes de semillas y los sitios de plantación, cabe esperar que su crecimiento y supervivencia disminuyan,\nsobre todo en entornos en crecimiento que muestran una marcada adaptación local, como suele suceder. Puesto que\nla disminución del crecimiento y la supervivencia es un gradiente, decidirse por un límite de transferencia que sea aceptable\ndepende de la tolerancia al riesgo del administrador."
+msgstr ""
+"Una vez seleccionadas las variables climáticas importantes, es necesario decidir "
+"los límites de transferencia, es decir, hasta qué\n"
+"punto es posible desplazar climáticamente una población antes de que su "
+"desempeño se vuelva inaceptable. La mejor manera de obtener esta información es\n"
+"medir el crecimiento y la supervivencia en estudios de trasplante recíproco, o "
+"realizar pruebas de procedencia que\n"
+"desplacen poblaciones a través de amplios gradientes climáticos. Puesto que las "
+"poblaciones se trasladan a mayores distancias climáticas\n"
+"entre las fuentes de semillas y los sitios de plantación, cabe esperar que su "
+"crecimiento y supervivencia disminuyan,\n"
+"sobre todo en entornos en crecimiento que muestran una marcada adaptación local, "
+"como suele suceder. Puesto que\n"
+"la disminución del crecimiento y la supervivencia es un gradiente, decidirse por "
+"un límite de transferencia que sea aceptable\n"
+"depende de la tolerancia al riesgo del administrador."
 
-#: src/components/Menu.tsx:126
+#: src/components/Menu.tsx:132
 msgid ""
-"Because long-term, well-designed studies are rare for many plant species, "
-"we must often rely on\n"
+"Because long-term, well-designed studies are rare for many plant species, we "
+"must often rely on\n"
 "generalizations from other species as well as practical experience for "
 "determining climate variables and\n"
 "transfer limits. For example, climatic variation in seed zones and breeding "
 "zones can be used to set\n"
-"transfer limits. Many of these zones have been used for decades—solving "
-"earlier problems with\n"
-"maladaptation resulting from excessive seed transfer. No matter what method "
-"is used, transfer limits\n"
-"should be adjusted to reflect the management practices and risk tolerance "
-"of the user. Agencies or\n"
+"transfer limits. Many of these zones have been used for decades—solving earlier "
+"problems with\n"
+"maladaptation resulting from excessive seed transfer. No matter what method is "
+"used, transfer limits\n"
+"should be adjusted to reflect the management practices and risk tolerance of the "
+"user. Agencies or\n"
 "organizations that are able to adjust management practices quickly (e.g., "
 "because of short rotations), or\n"
-"are more willing to accept risk, may choose a wider transfer limit than "
-"those that are risk-averse."
-msgstr "Debido a que existen muy pocos estudios a largo plazo bien diseñados para muchas especies vegetales, a menudo debemos confiar en\ngeneralizaciones tomadas de otras especies, así como en la experiencia práctica, para determinar las variables climáticas y los\nlímites de transferencia. Por ejemplo, se puede recurrir a la variación climática en las zonas de origen de las semillas y en las zonas de mejoramiento para establecer los\nlímites de transferencia. Muchas de estas zonas se han utilizado durante décadas para resolver problemas previos con la\nmala adaptación resultante de una transferencia de semillas excesiva. Con independencia del método utilizado, los límites de transferencia\ndeben ajustarse para reflejar las prácticas de manejo y la tolerancia al riesgo del usuario. Las agencias u\norganizaciones que sean capaces de ajustar rápidamente sus prácticas de manejo (p. ej., debido a rotaciones cortas) o\nque estén más dispuestas a aceptar riesgos, pueden elegir un límite de transferencia más amplio que aquellas con aversión al riesgo."
+"are more willing to accept risk, may choose a wider transfer limit than those "
+"that are risk-averse."
+msgstr ""
+"Debido a que existen muy pocos estudios a largo plazo bien diseñados para muchas "
+"especies vegetales, a menudo debemos confiar en\n"
+"generalizaciones tomadas de otras especies, así como en la experiencia práctica, "
+"para determinar las variables climáticas y los\n"
+"límites de transferencia. Por ejemplo, se puede recurrir a la variación "
+"climática en las zonas de origen de las semillas y en las zonas de mejoramiento "
+"para establecer los\n"
+"límites de transferencia. Muchas de estas zonas se han utilizado durante décadas "
+"para resolver problemas previos con la\n"
+"mala adaptación resultante de una transferencia de semillas excesiva. Con "
+"independencia del método utilizado, los límites de transferencia\n"
+"deben ajustarse para reflejar las prácticas de manejo y la tolerancia al riesgo "
+"del usuario. Las agencias u\n"
+"organizaciones que sean capaces de ajustar rápidamente sus prácticas de manejo "
+"(p. ej., debido a rotaciones cortas) o\n"
+"que estén más dispuestas a aceptar riesgos, pueden elegir un límite de "
+"transferencia más amplio que aquellas con aversión al riesgo."
 
-#: src/components/Menu.tsx:136
+#: src/components/Menu.tsx:142
 msgid ""
 "Once climate variables important for adaptation are determined and climatic "
 "transfer limits have been\n"
 "defined, natural resource managers can use the SST to explore options for "
 "responding to climate change\n"
-"through assisted migration. The output from the SST indicates the "
-"suitability of each point on the map to\n"
-"the focal point of interest. The difficulty arises, however, in that "
-"climate is a moving target – what is\n"
-"suitable in the near-term may not be suitable by mid- to late-century. For "
-"long-lived species such as\n"
-"forest trees, the best a natural resource manager can do is to aim as far "
-"into the future as possible to\n"
+"through assisted migration. The output from the SST indicates the suitability of "
+"each point on the map to\n"
+"the focal point of interest. The difficulty arises, however, in that climate is "
+"a moving target – what is\n"
+"suitable in the near-term may not be suitable by mid- to late-century. For long-"
+"lived species such as\n"
+"forest trees, the best a natural resource manager can do is to aim as far into "
+"the future as possible to\n"
 "find the best match – that is, a climatic transfer distance of zero – while "
 "still remaining with their\n"
 "specified transfer limit in the near-term. For the Pacific Northwest, for "
 "example, that generally implies\n"
-"looking for the best match for mid-century while still being within the "
-"transfer limits for the next few\n"
+"looking for the best match for mid-century while still being within the transfer "
+"limits for the next few\n"
 "decades. This is indicated on the mapped output by dark orange for the time "
 "period 2041-2070 (or a\n"
-"similarity index near 100 if you have mapped locations for comparison to "
-"the focal point) while still\n"
-"being within the light orange area by 2011-2040 (or a similarity index "
-"above zero). The goal is to\n"
-"minimize the climatic transfer distance for the future, but still remain "
-"within a transfer limit beyond\n"
-"which declines in health and productivity may be deemed unacceptable in the "
-"near-term. What is clear,\n"
+"similarity index near 100 if you have mapped locations for comparison to the "
+"focal point) while still\n"
+"being within the light orange area by 2011-2040 (or a similarity index above "
+"zero). The goal is to\n"
+"minimize the climatic transfer distance for the future, but still remain within "
+"a transfer limit beyond\n"
+"which declines in health and productivity may be deemed unacceptable in the near-"
+"term. What is clear,\n"
 "however, is that the difference between the climatic adaptation of local "
 "populations and future climates\n"
-"will likely be well beyond acceptable transfer limits by mid- to "
-"late-century for much of North America,\n"
-"leading to declines in forest health and productivity – unless forest "
-"managers work to match suitable seed\n"
+"will likely be well beyond acceptable transfer limits by mid- to late-century "
+"for much of North America,\n"
+"leading to declines in forest health and productivity – unless forest managers "
+"work to match suitable seed\n"
 "sources to projected future climates."
-msgstr "Una vez determinadas las variables climáticas importantes para la adaptación y\ndefinidos los límites de transferencia climática, los administradores de recursos naturales pueden recurrir a la SST para explorar opciones para responder al cambio climático\nmediante la migración asistida. El resultado proporcionado por la SST indica la idoneidad de cada punto en el mapa para\nel punto focal de interés. No obstante, surge la dificultad de que ese clima es un objetivo en movimiento: lo que es\nadecuado a corto plazo podría ser inadecuado a mediados y fines del siglo. En el caso de especies longevas como los\nárboles forestales, lo mejor que puede hacer un administrador de recursos naturales es apuntar lo más lejos que pueda en el futuro a fin de\nencontrar la mejor coincidencia, es decir, una distancia de transferencia climática de cero, al mismo tiempo que se mantiene dentro de\nsu límite de transferencia especificado en el corto plazo. En la Región Noroeste del Pacífico, por ejemplo, eso implica generalmente\nbuscar la mejor coincidencia para mediados de siglo, pero manteniéndose dentro de los límites de transferencia para las próximas\ndécadas. En el resultado cartográfico proporcionado, esto se indica en color naranja oscuro para el periodo 2041-2070 (o un\níndice de similitud cercano a 100 si se mapearon ubicaciones para comparación con el punto focal), mientras sigue\ndentro del área naranja claro en 2011-2040 (o un índice de similitud superior a cero). El objetivo es\nreducir al mínimo la distancia de transferencia climática para el futuro, pero permanecer dentro de un límite de transferencia más allá del\ncual, las declinaciones en la salud y la productividad podrían considerarse inaceptables a corto plazo. Sin\nembargo, lo que está claro es que la diferencia entre la adaptación climática de las poblaciones locales y los climas futuros\npodría estar mucho más allá de los límites de transferencia aceptables a mediados y fines del siglo en una gran parte de América del Norte,\nlo que disminuirá la salud y la productividad de los bosques, a menos que los administradores forestales trabajen para hacer coincidir las\nfuentes de semillas adecuadas con los climas futuros proyectados."
+msgstr ""
+"Una vez determinadas las variables climáticas importantes para la adaptación y\n"
+"definidos los límites de transferencia climática, los administradores de "
+"recursos naturales pueden recurrir a la SST para explorar opciones para "
+"responder al cambio climático\n"
+"mediante la migración asistida. El resultado proporcionado por la SST indica la "
+"idoneidad de cada punto en el mapa para\n"
+"el punto focal de interés. No obstante, surge la dificultad de que ese clima es "
+"un objetivo en movimiento: lo que es\n"
+"adecuado a corto plazo podría ser inadecuado a mediados y fines del siglo. En el "
+"caso de especies longevas como los\n"
+"árboles forestales, lo mejor que puede hacer un administrador de recursos "
+"naturales es apuntar lo más lejos que pueda en el futuro a fin de\n"
+"encontrar la mejor coincidencia, es decir, una distancia de transferencia "
+"climática de cero, al mismo tiempo que se mantiene dentro de\n"
+"su límite de transferencia especificado en el corto plazo. En la Región Noroeste "
+"del Pacífico, por ejemplo, eso implica generalmente\n"
+"buscar la mejor coincidencia para mediados de siglo, pero manteniéndose dentro "
+"de los límites de transferencia para las próximas\n"
+"décadas. En el resultado cartográfico proporcionado, esto se indica en color "
+"naranja oscuro para el periodo 2041-2070 (o un\n"
+"índice de similitud cercano a 100 si se mapearon ubicaciones para comparación "
+"con el punto focal), mientras sigue\n"
+"dentro del área naranja claro en 2011-2040 (o un índice de similitud superior a "
+"cero). El objetivo es\n"
+"reducir al mínimo la distancia de transferencia climática para el futuro, pero "
+"permanecer dentro de un límite de transferencia más allá del\n"
+"cual, las declinaciones en la salud y la productividad podrían considerarse "
+"inaceptables a corto plazo. Sin\n"
+"embargo, lo que está claro es que la diferencia entre la adaptación climática de "
+"las poblaciones locales y los climas futuros\n"
+"podría estar mucho más allá de los límites de transferencia aceptables a "
+"mediados y fines del siglo en una gran parte de América del Norte,\n"
+"lo que disminuirá la salud y la productividad de los bosques, a menos que los "
+"administradores forestales trabajen para hacer coincidir las\n"
+"fuentes de semillas adecuadas con los climas futuros proyectados."
 
-#: src/components/Menu.tsx:155
+#: src/components/Menu.tsx:161
 msgid "Literature Cited"
 msgstr "Referencias bibliográficas citadas"
 
-#: src/components/Menu.tsx:202
+#: src/components/Menu.tsx:208
 #, javascript-format
 msgid ""
-"ClimateNA is a software program written by ${ name } and others that "
-"extracts and downscales \n"
-"monthly climate data layers for the normal period of 1961-1990 from "
-"moderate spatial resolution \n"
+"ClimateNA is a software program written by ${ name } and others that extracts "
+"and downscales \n"
+"monthly climate data layers for the normal period of 1961-1990 from moderate "
+"spatial resolution \n"
 "(4 x 4 km) to scale-free point estimates for the entire continent of North "
 "America (Wang et al. \n"
 "2016). The downscaling is achieved through a combination of bilinear "
 "interpolation and dynamic \n"
-"local elevational adjustment. ClimateNA uses the derived data as a baseline "
-"to determine downscaled \n"
-"historical and future climate variables for individual years and periods "
-"between 1901 and 2100. \n"
-"ClimateNA also calculates a number of biologically relevant climate "
-"variables from the temperature \n"
+"local elevational adjustment. ClimateNA uses the derived data as a baseline to "
+"determine downscaled \n"
+"historical and future climate variables for individual years and periods between "
+"1901 and 2100. \n"
+"ClimateNA also calculates a number of biologically relevant climate variables "
+"from the temperature \n"
 "and precipitation data."
-msgstr "ClimateNA es un programa de software, escrito por ${ name } y otros, que extrae y reduce la escala de las \ncapas de datos climáticos mensuales durante el periodo normal de 1961-1990, a partir de una resolución espacial moderada \n(4 x 4 km), a estimaciones puntuales, sin escala alguna, para todo el continente de América del Norte (Wang et al. \n2016). La reducción de escala se logra mediante una combinación de interpolación bilineal con \najuste de elevación local dinámico. ClimateNA utiliza los datos derivados como referencia para determinar las variables climáticas \nhistóricas y futuras, a escala reducida, de años y periodos individuales entre 1901 y 2100. \nAdemás, ClimateNA calcula ciertas variables climáticas de relevancia biológica a partir de los datos de temperatura \ny precipitación."
+msgstr ""
+"ClimateNA es un programa de software, escrito por ${ name } y otros, que extrae "
+"y reduce la escala de las \n"
+"capas de datos climáticos mensuales durante el periodo normal de 1961-1990, a "
+"partir de una resolución espacial moderada \n"
+"(4 x 4 km), a estimaciones puntuales, sin escala alguna, para todo el continente "
+"de América del Norte (Wang et al. \n"
+"2016). La reducción de escala se logra mediante una combinación de interpolación "
+"bilineal con \n"
+"ajuste de elevación local dinámico. ClimateNA utiliza los datos derivados como "
+"referencia para determinar las variables climáticas \n"
+"históricas y futuras, a escala reducida, de años y periodos individuales entre "
+"1901 y 2100. \n"
+"Además, ClimateNA calcula ciertas variables climáticas de relevancia biológica a "
+"partir de los datos de temperatura \n"
+"y precipitación."
 
-#: src/components/Menu.tsx:213
+#: src/components/Menu.tsx:219
 msgid "Data sources"
 msgstr "Fuentes de datos"
 
-#: src/components/Menu.tsx:215
+#: src/components/Menu.tsx:221
 msgid "Baseline data"
 msgstr "Datos de referencia"
 
-#: src/components/Menu.tsx:218
+#: src/components/Menu.tsx:224
 msgid ""
-"The monthly baseline data for 1961-1990 normals were compiled from the "
-"following sources and unified \n"
+"The monthly baseline data for 1961-1990 normals were compiled from the following "
+"sources and unified \n"
 "at 4 x 4 km spatial resolution"
-msgstr "Los datos de referencia mensuales para estimar los valores normales de 1961-1990 se recopilaron de las siguientes fuentes y se unificaron \ncon una resolución espacial de 4 x 4 km"
+msgstr ""
+"Los datos de referencia mensuales para estimar los valores normales de 1961-1990 "
+"se recopilaron de las siguientes fuentes y se unificaron \n"
+"con una resolución espacial de 4 x 4 km"
 
-#: src/components/Menu.tsx:223
+#: src/components/Menu.tsx:229
 msgid ""
-"British Columbia: PRISM at 800 x 800 m from Pacific Climate Impact "
-"Consortium"
-msgstr "Columbia Británica: PRISM a 800 x 800 m del Consorcio de Impacto Climático del Pacífico (Pacific Climate Impact Consortium)"
+"British Columbia: PRISM at 800 x 800 m from Pacific Climate Impact Consortium"
+msgstr ""
+"Columbia Británica: PRISM a 800 x 800 m del Consorcio de Impacto Climático del "
+"Pacífico (Pacific Climate Impact Consortium)"
 
-#: src/components/Menu.tsx:231
+#: src/components/Menu.tsx:237
 #, javascript-format
 msgid "Prairie provinces: PRISM at 4 x 4 km from the ${ prismLink }"
 msgstr "Provincias de la Gran Pradera: PRISM a 4 x 4 km del ${ prismLink }"
 
-#: src/components/Menu.tsx:235
+#: src/components/Menu.tsx:241
 msgid ""
-"United States: PRISM at 800 x 800 m from the PRISM Climate Group (Daly et "
-"al. 2008)"
-msgstr "Estados Unidos: PRISM a 800 x 800 m del Grupo Climático PRISM (Daly et al. 2008)"
+"United States: PRISM at 800 x 800 m from the PRISM Climate Group (Daly et al. "
+"2008)"
+msgstr ""
+"Estados Unidos: PRISM a 800 x 800 m del Grupo Climático PRISM (Daly et al. 2008)"
 
-#: src/components/Menu.tsx:236
+#: src/components/Menu.tsx:242
 msgid "The rest: ANUSPLIN at 4 x 4 km"
 msgstr "El resto: ANUSPLIN a 4 x 4 km"
 
-#: src/components/Menu.tsx:237
+#: src/components/Menu.tsx:243
 msgid "The rest of North America: ANUSPLIN at 4 x 4 km"
 msgstr "El resto de América del Norte: ANUSPLIN a 4 x 4 km"
 
-#: src/components/Menu.tsx:240
+#: src/components/Menu.tsx:246
 msgid "Historical data"
 msgstr "Datos históricos"
 
-#: src/components/Menu.tsx:243
+#: src/components/Menu.tsx:249
 msgid ""
-"Historical monthly data were obtained from Climate Research Unit (CRU) "
-"(Harris et al 2014). The data\n"
+"Historical monthly data were obtained from Climate Research Unit (CRU) (Harris "
+"et al 2014). The data\n"
 "version is CRU TS 3.23. The spatial resolution is 0.5 x 0.5° and covers the "
 "period of 1901-2014. \n"
-"Anomalies were calculated for each year and period relative to the "
-"1961-1990 normals."
-msgstr "Los datos históricos mensuales se obtuvieron de la Unidad de Investigación Climática (Climate Research Unit, CRU) (Harris et al 2014). La \nversión de los datos es CRU TS 3.23. La resolución espacial es de 0.5 x 0.5° y abarca el periodo de 1901-2014. \nSe calcularon las anomalías de cada año y periodo en comparación con los valores normales de 1961-1990."
+"Anomalies were calculated for each year and period relative to the 1961-1990 "
+"normals."
+msgstr ""
+"Los datos históricos mensuales se obtuvieron de la Unidad de Investigación "
+"Climática (Climate Research Unit, CRU) (Harris et al 2014). La \n"
+"versión de los datos es CRU TS 3.23. La resolución espacial es de 0.5 x 0.5° y "
+"abarca el periodo de 1901-2014. \n"
+"Se calcularon las anomalías de cada año y periodo en comparación con los valores "
+"normales de 1961-1990."
 
-#: src/components/Menu.tsx:247
+#: src/components/Menu.tsx:253
 msgid "Future climate data"
 msgstr "Datos climáticos futuros"
 
-#: src/components/Menu.tsx:260
+#: src/components/Menu.tsx:266
 #, javascript-format
 msgid ""
 "The climate data for future periods, including 2020s (2010-2039), 2050s "
 "(2040-69) and 2080s \n"
-"(2070-2100), were from General Circulation Models (GCMs) of the Coupled "
-"Model Intercomparison Project \n"
-"(CMIP5) included in the IPCC Fifth Assessment Report (IPCC 2014). Fifteen "
-"GCMs were selected for two \n"
-"greenhouse gas emission scenarios (RCP 4.5 and RCP 8.5). When multiple "
-"ensembles are available for each \n"
-"GCM, an average was taken over the available (up to five) ensembles. "
-"Ensembles among the 15 GCMs are \n"
-"also available. The 15 AOGCMs are CanESM2, ACCESS1.0, IPSL-CM5A-MR, MIROC5, "
-"MPI-ESM-LR, CCSM4, \n"
-"HadGEM2-ES, CNRM-CM5, CSIRO Mk 3.6, GFDL-CM3, INM-CM4, MRI-CGCM3, "
-"MIROC-ESM, CESM1-CAM5, GISS-E2R and \n"
+"(2070-2100), were from General Circulation Models (GCMs) of the Coupled Model "
+"Intercomparison Project \n"
+"(CMIP5) included in the IPCC Fifth Assessment Report (IPCC 2014). Fifteen GCMs "
+"were selected for two \n"
+"greenhouse gas emission scenarios (RCP 4.5 and RCP 8.5). When multiple ensembles "
+"are available for each \n"
+"GCM, an average was taken over the available (up to five) ensembles. Ensembles "
+"among the 15 GCMs are \n"
+"also available. The 15 AOGCMs are CanESM2, ACCESS1.0, IPSL-CM5A-MR, MIROC5, MPI-"
+"ESM-LR, CCSM4, \n"
+"HadGEM2-ES, CNRM-CM5, CSIRO Mk 3.6, GFDL-CM3, INM-CM4, MRI-CGCM3, MIROC-ESM, "
+"CESM1-CAM5, GISS-E2R and \n"
 "were chosen to represent all major clusters of similar AOGCMs by ${ name }."
-msgstr "Los datos climáticos de periodos futuros, incluidos los de las décadas de 2020 (2010-2039), 2050 (2040-69) y 2080 \n(2070-2100), se tomaron de los modelos de circulación general (general circulation models, GCM) del Proyecto de intercomparación de modelos acoplados \n(CMIP5) que forma parte del Quinto Informe de Evaluación del IPCC (IPCC 2014). Se seleccionaron quince GCM para dos \nescenarios de emisión de gases con efecto de invernadero (RCP 4.5 y RCP 8.5). Cuando se dispone de varios conjuntos para cada \nGCM, se calcula el promedio de los conjuntos disponibles (hasta cinco). También hay conjuntos disponibles entre \nlos 15 GCM. Los 15 modelos de circulación general atmósfera-océano (Atmosphere-Ocean General Circulation Model, AOGCM) son: CanESM2, ACCESS1.0, IPSL-CM5A-MR, MIROC5, MPI-ESM-LR, CCSM4, \nHadGEM2-ES, CNRM-CM5, CSIRO Mk 3.6, GFDL-CM3, INM-CM4, MRI-CGCM3, MIROC-ESM, CESM1-CAM5 y GISS-E2R, y \nfueron elegidos por ${ name } para representar todos los grupos mayores de AOGCM similares."
+msgstr ""
+"Los datos climáticos de periodos futuros, incluidos los de las décadas de 2020 "
+"(2010-2039), 2050 (2040-69) y 2080 \n"
+"(2070-2100), se tomaron de los modelos de circulación general (general "
+"circulation models, GCM) del Proyecto de intercomparación de modelos acoplados \n"
+"(CMIP5) que forma parte del Quinto Informe de Evaluación del IPCC (IPCC 2014). "
+"Se seleccionaron quince GCM para dos \n"
+"escenarios de emisión de gases con efecto de invernadero (RCP 4.5 y RCP 8.5). "
+"Cuando se dispone de varios conjuntos para cada \n"
+"GCM, se calcula el promedio de los conjuntos disponibles (hasta cinco). También "
+"hay conjuntos disponibles entre \n"
+"los 15 GCM. Los 15 modelos de circulación general atmósfera-océano (Atmosphere-"
+"Ocean General Circulation Model, AOGCM) son: CanESM2, ACCESS1.0, IPSL-CM5A-MR, "
+"MIROC5, MPI-ESM-LR, CCSM4, \n"
+"HadGEM2-ES, CNRM-CM5, CSIRO Mk 3.6, GFDL-CM3, INM-CM4, MRI-CGCM3, MIROC-ESM, "
+"CESM1-CAM5 y GISS-E2R, y \n"
+"fueron elegidos por ${ name } para representar todos los grupos mayores de AOGCM "
+"similares."
 
-#: src/components/Menu.tsx:271
+#: src/components/Menu.tsx:277
 msgid "Climate variables used in Seedlot Select Tool"
-msgstr "Variables climáticas utilizadas en la Herramienta de selección de lotes de semillas"
+msgstr ""
+"Variables climáticas utilizadas en la Herramienta de selección de lotes de "
+"semillas"
 
-#: src/components/Menu.tsx:273
+#: src/components/Menu.tsx:279
 msgid "Annual variables"
 msgstr "Variables anuales"
 
-#: src/components/Menu.tsx:276
+#: src/components/Menu.tsx:282
 msgid "Directly calculated annual variables"
 msgstr "Variables anuales calculadas directamente"
 
-#: src/components/Menu.tsx:280
+#: src/components/Menu.tsx:286
 msgid "mean annual temperature (°C)"
 msgstr "Temperatura media anual (°C)"
 
-#: src/components/Menu.tsx:281
+#: src/components/Menu.tsx:287
 msgid "mean warmest month temperature (°C)"
 msgstr "Temperatura media del mes más cálido (°C)"
 
-#: src/components/Menu.tsx:282
+#: src/components/Menu.tsx:288
 msgid "mean coldest month temperature (°C)"
 msgstr "Temperatura media del mes más frío (°C)"
 
-#: src/components/Menu.tsx:283
+#: src/components/Menu.tsx:289
 msgid "temperature difference between MWMT and MCMT, or continentality (°C)"
-msgstr "Diferencia de temperatura entre la temperatura media del mes más caluroso (TMMC) y la temperatura media del mes más frío (TMMF), o continentalidad (°C)"
+msgstr ""
+"Diferencia de temperatura entre la temperatura media del mes más caluroso (TMMC) "
+"y la temperatura media del mes más frío (TMMF), o continentalidad (°C)"
 
-#: src/components/Menu.tsx:286
+#: src/components/Menu.tsx:292
 msgid "annual heat-moisture index"
 msgstr "Índice de calor-humedad anual"
 
-#: src/components/Menu.tsx:287
+#: src/components/Menu.tsx:293
 msgid "summer heat-moisture index"
 msgstr "Índice de calor-humedad en verano"
 
-#: src/components/Menu.tsx:292
+#: src/components/Menu.tsx:298
 msgid "Derived annual variables"
 msgstr "Variables anuales derivadas"
 
-#: src/components/Menu.tsx:296
+#: src/components/Menu.tsx:302
 msgid "degree-days below 0°C, chilling degree-days"
 msgstr "Grados/días por debajo de 0 °C, grados/días de heladas"
 
-#: src/components/Menu.tsx:297
+#: src/components/Menu.tsx:303
 msgid "degree-days above 5°C, growing degree-days"
 msgstr "Grados/días por encima de 5 °C, grados/días de crecimiento"
 
-#: src/components/Menu.tsx:298
+#: src/components/Menu.tsx:304
 msgid "frost-free period"
 msgstr "Periodo sin escarcha"
 
-#: src/components/Menu.tsx:304
+#: src/components/Menu.tsx:310
 msgid "extreme minimum temperature over 30 years"
 msgstr "Temperatura mínima extrema durante 30 años"
 
-#: src/components/Menu.tsx:305
+#: src/components/Menu.tsx:311
 msgid "extreme maximum temperature over 30 years"
 msgstr "Temperatura máxima extrema durante 30 años"
 
-#: src/components/Menu.tsx:311
+#: src/components/Menu.tsx:317
 msgid "References"
 msgstr "Referencias"
 
-#: src/components/Menu.tsx:338
-#: src/components/Menu.tsx:444
+#: src/components/Menu.tsx:344 src/components/Menu.tsx:451
 msgid "People"
 msgstr "Personas"
 
-#: src/components/Menu.tsx:341
+#: src/components/Menu.tsx:347
 msgid ""
-"The Seedlot Selection Tool is a collaboration between the US Forest "
-"Service, Oregon State University, \n"
+"The Seedlot Selection Tool is a collaboration between the US Forest Service, "
+"Oregon State University, \n"
 "and the Conservation Biology Institute. Initial conceptualization and "
 "development was done by Glenn Howe \n"
 "at Oregon State University College of Forestry and Brad St.Clair at the US "
 "Forest Service Pacific \n"
-"Northwest Research Station, with considerable input from Ron Beloin while "
-"he was working at Oregon State \n"
-"University. The Conservation Biology Institute was brought onboard to bring "
-"the project to fruition \n"
+"Northwest Research Station, with considerable input from Ron Beloin while he was "
+"working at Oregon State \n"
+"University. The Conservation Biology Institute was brought onboard to bring the "
+"project to fruition \n"
 "through their expertise in web site design and programming for spatial "
 "applications. Personnel at the \n"
 "Conservation Biology Institute included Nikolas Stevenson-Molnar (tool "
 "developer), Brendan Ward (project \n"
 "manager), and Dominique Bachelet (project co-PI)."
-msgstr "La Herramienta de selección de lotes de semillas es una colaboración entre el Forest Service de los Estados Unidos, la Oregon State University \ny el Conservation Biology Institute. La conceptualización y el desarrollo iniciales estuvieron a cargo de Glenn Howe, de la Facultad de Ciencias Forestales \nde la Oregon State University, y Brad St. Clair, de la Estación de Investigación de la Región \nNoroeste del Pacífico (Pacific Northwest Research Station) del Servicio Forestal de los Estados Unidos (United States Forest Service, USFS), con una destacada aportación de Ron Beloin, cuando trabajaba en la Oregon State \nUniversity. El Conservation Biology Institute se incorporó al proyecto para hacerlo realidad \ngracias a su experiencia en el diseño y programación de sitios web para aplicaciones espaciales. Entre el personal del \nConservation Biology Institute se encontraban: Nikolas Stevenson-Molnar (desarrollador de herramientas), Brendan Ward (gerente del \nproyecto) y Dominique Bachelet (coinvestigadora principal del proyecto)."
+msgstr ""
+"La Herramienta de selección de lotes de semillas es una colaboración entre el "
+"Forest Service de los Estados Unidos, la Oregon State University \n"
+"y el Conservation Biology Institute. La conceptualización y el desarrollo "
+"iniciales estuvieron a cargo de Glenn Howe, de la Facultad de Ciencias "
+"Forestales \n"
+"de la Oregon State University, y Brad St. Clair, de la Estación de Investigación "
+"de la Región \n"
+"Noroeste del Pacífico (Pacific Northwest Research Station) del Servicio Forestal "
+"de los Estados Unidos (United States Forest Service, USFS), con una destacada "
+"aportación de Ron Beloin, cuando trabajaba en la Oregon State \n"
+"University. El Conservation Biology Institute se incorporó al proyecto para "
+"hacerlo realidad \n"
+"gracias a su experiencia en el diseño y programación de sitios web para "
+"aplicaciones espaciales. Entre el personal del \n"
+"Conservation Biology Institute se encontraban: Nikolas Stevenson-Molnar "
+"(desarrollador de herramientas), Brendan Ward (gerente del \n"
+"proyecto) y Dominique Bachelet (coinvestigadora principal del proyecto)."
 
-#: src/components/Menu.tsx:351
+#: src/components/Menu.tsx:357
 msgid ""
-"Initial funding for the Seedlot Selection Tool came from the US Forest "
-"Service Washington Office.\n"
-"Subsequent funding came from the USFS Pacific Northwest Research Station, "
-"Oregon State University,\n"
+"Initial funding for the Seedlot Selection Tool came from the US Forest Service "
+"Washington Office.\n"
+"Subsequent funding came from the USFS Pacific Northwest Research Station, Oregon "
+"State University,\n"
 "Conservation Biology Institute, the USDA Northwest Climate Hub, Natural "
 "Resources Canada, \n"
 "USFS International Programs, and USFS State & Private"
-msgstr "El financiamiento inicial para la Herramienta de selección de lotes de semillas provino de la Oficina del Forest Service de los Estados Unidos en Washington.\nEl financiamiento posterior provino de la Estación de Investigación de la Región Noroeste del Pacífico del USFS, la Oregon State University,\nel Conservation Biology Institute, el Centro Climático del Noroeste (NW Climate Hub) del Departamento de Agricultura de Estados Unidos (United States Department of Agriculture, USDA), Natural Resources Canada, \nlos programas internacionales del USFS, y la Delegación del USFS estatal y de iniciativa privada"
+msgstr ""
+"El financiamiento inicial para la Herramienta de selección de lotes de semillas "
+"provino de la Oficina del Forest Service de los Estados Unidos en Washington.\n"
+"El financiamiento posterior provino de la Estación de Investigación de la Región "
+"Noroeste del Pacífico del USFS, la Oregon State University,\n"
+"el Conservation Biology Institute, el Centro Climático del Noroeste (NW Climate "
+"Hub) del Departamento de Agricultura de Estados Unidos (United States Department "
+"of Agriculture, USDA), Natural Resources Canada, \n"
+"los programas internacionales del USFS, y la Delegación del USFS estatal y de "
+"iniciativa privada"
 
-#: src/components/Menu.tsx:360
+#: src/components/Menu.tsx:366
 msgid "United States Forest Service"
 msgstr "United States Forest Service"
 
-#: src/components/Menu.tsx:365
+#: src/components/Menu.tsx:371
 msgid "Oregon State University"
 msgstr "Oregon State University"
 
-#: src/components/Menu.tsx:370
+#: src/components/Menu.tsx:376
 msgid "Conservation Biology Institute"
 msgstr "Conservation Biology Institute"
 
-#: src/components/Menu.tsx:375
+#: src/components/Menu.tsx:381
 msgid "NW Climate Hub"
 msgstr "NW Climate Hub"
 
-#: src/components/Menu.tsx:380
+#: src/components/Menu.tsx:386
 msgid "Contact Information"
 msgstr "Información de contacto"
 
-#: src/components/Menu.tsx:382
+#: src/components/Menu.tsx:388
 msgid "Co - Principal Investigator"
 msgstr "Coinvestigadora principal"
 
-#: src/components/Menu.tsx:384
+#: src/components/Menu.tsx:390
 msgid "Research Geneticist, Pacific Northwest Research Station"
-msgstr "Genetista Investigador, Estación de Investigación de la Región Noroeste del Pacífico"
+msgstr ""
+"Genetista Investigador, Estación de Investigación de la Región Noroeste del "
+"Pacífico"
 
-#: src/components/Menu.tsx:386
+#: src/components/Menu.tsx:392
 msgid "USDA Forest Service, Corvallis, Oregon, USA"
 msgstr "USDA Forest Service, Corvallis, Oregón, EE. UU."
 
-#: src/components/Menu.tsx:393
+#: src/components/Menu.tsx:399
 msgid "Software Engineer"
 msgstr "Ingeniero de software"
 
-#: src/components/Menu.tsx:395
+#: src/components/Menu.tsx:401
 msgid "Conservation Biology Institute, Corvallis, Oregon, USA"
 msgstr "Conservation Biology Institute, Corvallis, Oregón, EE. UU."
 
-#: src/components/Menu.tsx:404
-#: src/components/Menu.tsx:447
+#: src/components/Menu.tsx:410 src/components/Menu.tsx:454
 msgid "News & Updates"
 msgstr "Noticias y actualizaciones"
 
-#: src/components/Menu.tsx:407
+#: src/components/Menu.tsx:413
 msgid ""
-"Sign up for the SST newsletter. We will send you emails to inform you of "
-"major updates. We will not\n"
+"Sign up for the SST newsletter. We will send you emails to inform you of major "
+"updates. We will not\n"
 "share your email address with anyone else."
-msgstr "Suscríbase al boletín de la SST. Le enviaremos correos electrónicos para informarle sobre las actualizaciones importantes. No\ncompartiremos su dirección de correo electrónico con nadie."
+msgstr ""
+"Suscríbase al boletín de la SST. Le enviaremos correos electrónicos para "
+"informarle sobre las actualizaciones importantes. No\n"
+"compartiremos su dirección de correo electrónico con nadie."
 
-#: src/components/Menu.tsx:412
+#: src/components/Menu.tsx:418
 msgid "Sign up for our newsletter"
 msgstr "Suscríbase a nuestro boletín informativo"
 
-#: src/components/Menu.tsx:420
-#: src/components/Menu.tsx:429
-#: src/components/Menu.tsx:450
+#: src/components/Menu.tsx:426 src/components/Menu.tsx:435
+#: src/components/Menu.tsx:458
 msgid "Report an Issue"
 msgstr "Reporte de problemas"
 
-#: src/components/Menu.tsx:423
+#: src/components/Menu.tsx:429
 msgid ""
-"Issues are used to track to-dos, bugs, feature requests, and more. As "
-"issues are created, they'll\n"
+"Issues are used to track to-dos, bugs, feature requests, and more. As issues are "
+"created, they'll\n"
 "appear here in a searchable and filterable list. To get started, you should "
 "create an issue (you will \n"
 "need to sign up for a GitHub account)."
-msgstr "Los problemas se usan para dar seguimiento a tareas pendientes, errores, solicitudes de características y otras cosas más. A medida que vayan surgiendo, los\nproblemas aparecerán aquí, en una lista donde es posible hacer búsquedas y filtrar datos. Para comenzar, deberá crear un problema (tendrá \nque registrarse para obtener una cuenta de GitHub)."
+msgstr ""
+"Los problemas se usan para dar seguimiento a tareas pendientes, errores, "
+"solicitudes de características y otras cosas más. A medida que vayan surgiendo, "
+"los\n"
+"problemas aparecerán aquí, en una lista donde es posible hacer búsquedas y "
+"filtrar datos. Para comenzar, deberá crear un problema (tendrá \n"
+"que registrarse para obtener una cuenta de GitHub)."
 
-#: src/components/Menu.tsx:435
+#: src/components/Menu.tsx:441
 msgid "User Guide"
 msgstr "Guía del usuario"
 
-#: src/components/Menu.tsx:441
+#: src/components/Menu.tsx:448
 msgid "ClimateNA"
 msgstr "ClimateNA"
 
-#: src/components/Menu.tsx:228
+#: src/config.ts:140
+#, fuzzy
+msgid "Scaled Height"
+msgstr "Altura escalada"
+
+#: src/config.ts:150
+#, fuzzy
+msgid "Height"
+msgstr "Altura"
+
+#: src/config.ts:229
+#, fuzzy
+msgid "Constraints"
+msgstr "Restricciones"
+
+#: src/components/Menu.tsx:443
+msgid "About"
+msgstr "Acerca de"
+
+#: src/components/Menu.tsx:234
 msgctxt "This is the value of 'prismLink'"
 msgid "PRISM Climate Group"
 msgstr "Grupo climático PRISM"
 
-#: src/components/Menu.tsx:284
+#: src/components/Menu.tsx:290
 msgctxt "mm = millimeters"
 msgid "mean annual precipitation (mm)"
 msgstr "Precipitación media anual (mm)"
 
-#: src/components/Menu.tsx:285
+#: src/components/Menu.tsx:291
 msgctxt "mm = millimeters"
 msgid "mean annual summer (May to Sept.) precipitation (mm)"
 msgstr "Precipitación media en verano (mayo a septiembre) (mm)"
 
-#: src/components/Menu.tsx:301
+#: src/components/Menu.tsx:307
 msgctxt "mm = millimeters"
 msgid ""
-"precipitation as snow (mm) between August in previous year and July in "
-"current year"
-msgstr "Precipitación en forma de nieve (mm) entre agosto del año anterior y julio del año actual"
+"precipitation as snow (mm) between August in previous year and July in current "
+"year"
+msgstr ""
+"Precipitación en forma de nieve (mm) entre agosto del año anterior y julio del "
+"año actual"
 
-#: src/components/Menu.tsx:306
+#: src/components/Menu.tsx:312
 msgctxt "mm = millimeters"
 msgid "Hargreaves reference evaporation (mm)"
 msgstr "Evaporación de referencia de Hargreaves (mm)"
 
-#: src/components/Menu.tsx:307
+#: src/components/Menu.tsx:313
 msgctxt "mm = millimeters"
 msgid "Hargreaves climatic moisture deficit (mm)"
 msgstr "Déficit de humedad climática de Hargreaves (mm)"
 
-#: src/components/Menu.tsx:391
+#: src/components/Menu.tsx:397
 msgctxt "i.e., Lead Software Developer"
 msgid "Lead Developer"
 msgstr "Desarrollador principal"
