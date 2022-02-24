@@ -20,6 +20,14 @@ const serializeSpeciesConstraint = ({ climate }: { climate: any }, { species }: 
   }
 }
 
+const speciesConstraints = [
+  ['pico', t`Lodgepole Pine`],
+  ['pisi', t`Sitka Spruce`],
+  ['psme', t`Douglas-fir`],
+  ['pipo', t`Ponderosa Pine`],
+  ['pien', t`Engelmann Spruce`],
+]
+
 export default () => {
   updateConfig({
     languages: {
@@ -175,88 +183,53 @@ export default () => {
       },
     ],
     constraints: {
-      objects: Object.assign(baseConfig.constraints.objects, {
-        pico: {
-          component: SpeciesConstraint,
-          values: {
-            label: t`Lodgepole Pine`,
-            species: 'pico',
-          },
-          constraint: 'raster',
-          serialize: serializeSpeciesConstraint,
-        },
-        pisi: {
-          component: SpeciesConstraint,
-          values: {
-            label: t`Sitka Spruce`,
-            species: 'pisi',
-          },
-          constraint: 'raster',
-          serialize: serializeSpeciesConstraint,
-        },
-        psme: {
-          component: SpeciesConstraint,
-          values: {
-            label: t`Douglas-fir`,
-            species: 'psme',
-          },
-          constraint: 'raster',
-          serialize: serializeSpeciesConstraint,
-        },
-        pipo: {
-          component: SpeciesConstraint,
-          values: {
-            label: t`Ponderosa Pine`,
-            species: 'pipo',
-          },
-          constraint: 'raster',
-          serialize: serializeSpeciesConstraint,
-        },
-        pien: {
-          component: SpeciesConstraint,
-          values: {
-            label: t`Engelmann Spruce`,
-            species: 'pien',
-          },
-          constraint: 'raster',
-          serialize: serializeSpeciesConstraint,
-        },
-      }),
+      objects: {
+        ...baseConfig.constraints.objects,
+        ...Object.fromEntries(
+          speciesConstraints.map(([species, label]) => [
+            species,
+            {
+              component: SpeciesConstraint,
+              values: { label, species },
+              constraint: 'raster',
+              serialize: serializeSpeciesConstraint,
+            },
+          ]),
+        ),
+      },
       categories: [
         ...baseConfig.constraints.categories,
         {
           name: 'species',
           label: t`Species Range`,
           type: 'category',
-          items: [
-            {
-              name: 'pico',
-              label: t`Lodgepole Pine`,
-              type: 'constraint',
-            },
-            {
-              name: 'pisi',
-              label: t`Sitka Spruce`,
-              type: 'constraint',
-            },
-            {
-              name: 'psme',
-              label: t`Douglas-fir`,
-              type: 'constraint',
-            },
-            {
-              name: 'pipo',
-              label: t`Ponderosa Pine`,
-              type: 'constraint',
-            },
-            {
-              name: 'pien',
-              label: t`Engelmann Spruce`,
-              type: 'constraint',
-            },
-          ],
+          items: speciesConstraints.map(([name, label]) => ({ name, label, type: 'constraint' })),
         },
       ],
     },
+    layers: {
+      ...baseConfig.layers,
+      ...Object.fromEntries(
+        speciesConstraints.map(([species, label]) => [
+          `constraint-${species}`,
+          {
+            type: 'raster',
+            label,
+            show: () => true,
+            url: ({ runConfiguration: { climate } }: any) =>
+              `/tiles/${serializeSpeciesConstraint({ climate }, { species }).service}/{z}/{x}/{y}.png`,
+            zIndex: 2,
+          },
+        ]),
+      ),
+    },
+    layerCategories: [
+      ...baseConfig.layerCategories,
+      {
+        label: 'Constraints',
+        show: () => true,
+        layers: speciesConstraints.map(([species]) => `constraint-${species}`),
+      },
+    ],
   })
 }
