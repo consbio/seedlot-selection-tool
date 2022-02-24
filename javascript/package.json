@@ -7,7 +7,7 @@
     "build": "webpack --config webpack.config.babel.js --node-env production",
     "merge-regions": "mapshaper -i ../source/sst/static/geometry/*.json combine-files -o ../source/sst/static/geometry/regions.topojson",
     "extract-messages": "ttag update locales/es_MX/sst-js.po src",
-    "merge-messages": "msgcat --lang es_MX locales/es_MX/sst-js.po node_modules/seedsource-ui/locales/es_MX/seedsource-ui.po -o locales/es_MX/merged.po"
+    "merge-messages": "msgcat --lang es_MX locales/es_MX/sst-js.po node_modules/seedsource-ui/locales/es_MX/seedsource-ui.po -o locales/es_MX/merged.po && msgattrib -o locales/es_MX/merged.po --clear-fuzzy locales/es_MX/merged.po"
   },
   "author": "Conservation Biology Institute",
   "license": "BSD",
