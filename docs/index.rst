@@ -9,7 +9,7 @@ interested in mapping present or future climates defined by temperature and prec
 .. note::
     This documentation is intended for developers. For user documentation, please see the tool's website:
     https://seedlotselectiontool.org/sst/. To report an problem, please create an issue on the
-    `issue tracker <https://github.com/consbio/seedsource/issues>`_.
+    `issue tracker <https://github.com/consbio/seedlot-selection-tool/issues>`_.
 
 .. toctree::
     :maxdepth: 2
