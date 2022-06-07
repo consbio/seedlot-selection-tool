@@ -1898,6 +1898,13 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.3.tgz"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
+"@types/react-copy-to-clipboard@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@types/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.2.tgz#c29690b472a54edff35916f0d1c6c797ad0fd34b"
+  integrity sha512-O29AThfxrkUFRsZXjfSWR2yaWo0ppB1yLEnHA+Oh24oNetjBAwTDu1PmolIqdJKzsZiO4J1jn6R6TmO96uBvGg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^16.9.8":
   version "16.9.12"
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.9.12.tgz"
@@ -3361,6 +3368,13 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.npmjs.org/copy-descriptor/-/copy-descriptor-0.1.1.tgz"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
+
+copy-to-clipboard@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
+  integrity sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==
+  dependencies:
+    toggle-selection "^1.0.6"
 
 core-js-compat@^3.18.0, core-js-compat@^3.19.1, core-js-compat@^3.8.1, core-js-compat@^3.9.0:
   version "3.19.3"
@@ -7849,6 +7863,15 @@ prop-types@^15.6.2, prop-types@^15.7.2:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
+prop-types@^15.8.1:
+  version "15.8.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
+  integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.13.1"
+
 protocol-buffers-schema@^3.3.1:
   version "3.5.1"
   resolved "https://registry.npmjs.org/protocol-buffers-schema/-/protocol-buffers-schema-3.5.1.tgz"
@@ -7976,6 +7999,14 @@ raw-body@^2.2.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-copy-to-clipboard@^5.0.4:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.1.0.tgz#09aae5ec4c62750ccb2e6421a58725eabc41255c"
+  integrity sha512-k61RsNgAayIJNoy9yDsYzDe/yAZAzEbEgcz3DZMhF686LEyukcE1hzurxe85JandPUG+yTfGVFzuEw3xt8WP/A==
+  dependencies:
+    copy-to-clipboard "^3.3.1"
+    prop-types "^15.8.1"
+
 react-dom@16.9.0:
   version "16.9.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-16.9.0.tgz"
@@ -7986,7 +8017,7 @@ react-dom@16.9.0:
     prop-types "^15.6.2"
     scheduler "^0.15.0"
 
-react-is@^16.7.0, react-is@^16.8.1, react-is@^16.9.0:
+react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.9.0:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -8526,11 +8557,12 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
-seedsource-ui@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/seedsource-ui/-/seedsource-ui-1.7.0.tgz#ffdd32eff64d6b98d7b2fbf0c6d05920509a4d44"
-  integrity sha512-qZjkEzHdbd7yYn+M2btL7ow67LCilYwn1Gu8k4JIywvLw5Vn489+tAybtG+dk+y2gI3mF9KEqt11W/kFmt90YA==
+seedsource-ui@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/seedsource-ui/-/seedsource-ui-1.8.0.tgz#7a0f77bd60165e31cdd5f856842abc74f18e9e52"
+  integrity sha512-ud3oe993CKxcYk6WWv/Y4DSqE01HmvBP6MF9T2YfKRnv/kHGQ5aguZWTFec7feqcFyqAArAJfNI8IW82mPH4UA==
   dependencies:
+    "@types/react-copy-to-clipboard" "^5.0.2"
     bulma "^0.9.1"
     bulma-checkradio "^1.1.1"
     csv-parse "^4.15.3"
@@ -8546,6 +8578,7 @@ seedsource-ui@^1.7.0:
     leaflet.vectorgrid "^1.3.0"
     lethargy "^1.0.9"
     prop-types "^15.7.2"
+    react-copy-to-clipboard "^5.0.4"
     react-tooltip "^4.2.10"
     shpjs "^3.6.0"
     ttag "^1.7.23"
@@ -9457,6 +9490,11 @@ togeojson@0.13.0:
     concat-stream "~1.4.5"
     minimist "0.0.8"
     xmldom "~0.1.19"
+
+toggle-selection@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
 
 toidentifier@1.0.0:
   version "1.0.0"
