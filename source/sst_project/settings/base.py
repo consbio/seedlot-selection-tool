@@ -243,3 +243,6 @@ NC_SERVICE_DATA_ROOT = 'data/ncdjango/services/'
 DATASET_DOWNLOAD_DIR = Path('data/downloads')
 
 SEEDSOURCE_TITLE = _('Seedlot Selection Tool')
+
+# Prevents warnings created by the Django upgrade 2.2 -> 3.2
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
