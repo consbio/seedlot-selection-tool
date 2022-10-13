@@ -19,7 +19,7 @@ pyproj = "^3.0.0"
 djangorestframework-filters = { git = "https://github.com/philipn/django-rest-framework-filters.git", branch = "master"}
 sentry-sdk = "^0.19.5"
 enmerkar = "^0.7.1"
-ncdjango = "^1.2.3"
+ncdjango = "^1.3.6"
 
 [tool.poetry.dev-dependencies]
 
