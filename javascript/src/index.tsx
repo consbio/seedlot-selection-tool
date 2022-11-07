@@ -11,12 +11,14 @@ import legends from 'seedsource-ui/lib/async/legends'
 import point from 'seedsource-ui/lib/async/point'
 import popup from 'seedsource-ui/lib/async/popup'
 import traits from 'seedsource-ui/lib/async/traits'
+import customFunctions from 'seedsource-ui/lib/async/customFunctions'
 import Sidebar from 'seedsource-ui/lib/containers/Sidebar'
 import ObjectiveStep from 'seedsource-ui/lib/containers/ObjectiveStep'
 import LocationStep from 'seedsource-ui/lib/containers/LocationStep'
 import RegionStep from 'seedsource-ui/lib/containers/RegionStep'
 import ClimateStep from 'seedsource-ui/lib/containers/ClimateStep'
 import TraitStep from 'seedsource-ui/lib/components/TraitStep'
+import CustomFunctionStep from 'seedsource-ui/lib/containers/CustomFunctionStep'
 import TransferStep from 'seedsource-ui/lib/containers/TransferStep'
 import RunConfiguration from 'seedsource-ui/lib/containers/RunConfiguration'
 import VariableStep from 'seedsource-ui/lib/containers/VariableStep'
@@ -41,6 +43,7 @@ render(
           <TransferStep number={5} active />
           <VariableStep number={6} active />
           <TraitStep number={6} />
+          <CustomFunctionStep number={6} />
           <ConstraintStep number={7} />
           <RunStep number={8} />
         </RunConfiguration>
@@ -56,3 +59,4 @@ legends(store)
 point(store)
 popup(store)
 traits(store)
+customFunctions(store)
