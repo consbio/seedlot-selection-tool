@@ -54,7 +54,6 @@ INSTALLED_APPS = (
     'django_celery_results',
     'social_django',
     'webpack_loader',
-    'django_filters',
 
     'sst',
     'seedsource_core.django.seedsource',

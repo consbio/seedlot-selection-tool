@@ -16,7 +16,6 @@ psycopg2-binary = "~2.8.6"
 django-webpack-loader = "^1.1.0"
 celery = "^5.2.3"
 pyproj = "^3.0.0"
-djangorestframework-filters = { git = "https://github.com/philipn/django-rest-framework-filters.git", branch = "master"}
 sentry-sdk = "^0.19.5"
 enmerkar = "^0.7.1"
 ncdjango = "^1.3.6"
