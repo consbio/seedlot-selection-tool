@@ -8608,10 +8608,10 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
-seedsource-ui@^1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/seedsource-ui/-/seedsource-ui-1.9.0.tgz#037a2bceb08f4bf28872cd46b0f325d1ea631b39"
-  integrity sha512-RFspaoyd9OPnkZxyTaxkfbrzAdYKOzn4dMKrJWNi3PzkcC4+Yu9WNqUNItc/4Mvyx0hNNojRCQODmTFhMKKwxQ==
+seedsource-ui@^1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/seedsource-ui/-/seedsource-ui-1.9.1.tgz#2fe497b1cb9f1028447061f3a6265f6ad3a8f8ee"
+  integrity sha512-9JFHtQOf9ZNaU4A2H8RCJiHELIU4slwYqX1zIkrrjATrLqEoSohRXmRY06wHt2CZZeb6g1HCGTwcSEnhsUiq1g==
   dependencies:
     "@types/react-copy-to-clipboard" "^5.0.2"
     bulma "^0.9.1"

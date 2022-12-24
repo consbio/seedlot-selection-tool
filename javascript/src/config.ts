@@ -1,4 +1,4 @@
-import { t } from 'ttag'
+import { t, c } from 'ttag'
 import baseConfig, { updateConfig } from 'seedsource-ui/lib/config'
 import { get, urlEncode } from 'seedsource-ui/lib/io'
 import SpeciesConstraint from 'seedsource-ui/lib/containers/SpeciesConstraint'
@@ -222,6 +222,83 @@ export default () => {
           },
         ]),
       ),
+      littles94: {
+        type: 'vector',
+        label: t`White spruce`,
+        show: () => true,
+        url: 'https://seedlotselectiontool.org/services/littles_s94/tiles/{z}/{x}/{y}.pbf',
+        style: { littles_s94: { weight: 2, color: '#a6cee3', opacity: 0.6, fillOpacity: 0.3, fill: true } },
+      },
+      littles97: {
+        type: 'vector',
+        label: t`Red spruce`,
+        show: () => true,
+        url: 'https://seedlotselectiontool.org/services/littles_s97/tiles/{z}/{x}/{y}.pbf',
+        style: { littles_s97: { weight: 2, color: '#1f78b4', opacity: 0.6, fillOpacity: 0.3, fill: true } },
+      },
+      littles105: {
+        type: 'vector',
+        label: t`Jack pine`,
+        show: () => true,
+        url: 'https://seedlotselectiontool.org/services/littles_s105/tiles/{z}/{x}/{y}.pbf',
+        style: { littles_s105: { weight: 2, color: '#b2df8a', opacity: 0.6, fillOpacity: 0.3, fill: true } },
+      },
+      littles125: {
+        type: 'vector',
+        label: t`Red pine`,
+        show: () => true,
+        url: 'https://seedlotselectiontool.org/services/littles_s125/tiles/{z}/{x}/{y}.pbf',
+        style: { littles_s125: { weight: 2, color: '#33a02c', opacity: 0.6, fillOpacity: 0.3, fill: true } },
+      },
+      littles129: {
+        type: 'vector',
+        label: t`Eastern white pine`,
+        show: () => true,
+        url: 'https://seedlotselectiontool.org/services/littles_s129/tiles/{z}/{x}/{y}.pbf',
+        style: { littles_s129: { weight: 2, color: '#fb9a99', opacity: 0.6, fillOpacity: 0.3, fill: true } },
+      },
+      littles407: {
+        type: 'vector',
+        label: t`Shagbark hickory`,
+        show: () => true,
+        url: 'https://seedlotselectiontool.org/services/littles_s407/tiles/{z}/{x}/{y}.pbf',
+        style: { littles_s407: { weight: 2, color: '#e31a1c', opacity: 0.6, fillOpacity: 0.3, fill: true } },
+      },
+      littles602: {
+        type: 'vector',
+        label: t`Black walnut`,
+        show: () => true,
+        url: 'https://seedlotselectiontool.org/services/littles_s602/tiles/{z}/{x}/{y}.pbf',
+        style: { littles_s602: { weight: 2, color: '#fdbf6f', opacity: 0.6, fillOpacity: 0.3, fill: true } },
+      },
+      littles802: {
+        type: 'vector',
+        label: t`White oak`,
+        show: () => true,
+        url: 'https://seedlotselectiontool.org/services/littles_s802/tiles/{z}/{x}/{y}.pbf',
+        style: { littles_s802: { weight: 2, color: '#ff7f00', opacity: 0.6, fillOpacity: 0.3, fill: true } },
+      },
+      littles804: {
+        type: 'vector',
+        label: t`Swamp white oak`,
+        show: () => true,
+        url: 'https://seedlotselectiontool.org/services/littles_s804/tiles/{z}/{x}/{y}.pbf',
+        style: { littles_s804: { weight: 2, color: '#cab2d6', opacity: 0.6, fillOpacity: 0.3, fill: true } },
+      },
+      littles812: {
+        type: 'vector',
+        label: t`Southern red oak`,
+        show: () => true,
+        url: 'https://seedlotselectiontool.org/services/littles_s812/tiles/{z}/{x}/{y}.pbf',
+        style: { littles_s812: { weight: 2, color: '#6a3d9a', opacity: 0.6, fillOpacity: 0.3, fill: true } },
+      },
+      littles833: {
+        type: 'vector',
+        label: t`Northern red oak`,
+        show: () => true,
+        url: 'https://seedlotselectiontool.org/services/littles_s833/tiles/{z}/{x}/{y}.pbf',
+        style: { littles_s833: { weight: 2, color: '#b15928', opacity: 0.6, fillOpacity: 0.3, fill: true } },
+      },
     },
     layerCategories: [
       ...baseConfig.layerCategories,
@@ -229,6 +306,23 @@ export default () => {
         label: t`Constraints`,
         show: () => true,
         layers: speciesConstraints.map(([species]) => `constraint-${species}`),
+      },
+      {
+        label: c('"Little" is a proper noun').t`Little's Range Maps`,
+        show: () => true,
+        layers: [
+          'littles94',
+          'littles97',
+          'littles105',
+          'littles125',
+          'littles129',
+          'littles407',
+          'littles602',
+          'littles802',
+          'littles804',
+          'littles812',
+          'littles833',
+        ],
       },
     ],
   })
