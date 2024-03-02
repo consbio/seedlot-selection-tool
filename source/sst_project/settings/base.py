@@ -70,7 +70,8 @@ MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
-    'waffle.middleware.WaffleMiddleware'
+    'waffle.middleware.WaffleMiddleware',
+    'sst.middleware.AllowIframeMiddleware'
 )
 
 ROOT_URLCONF = 'sst_project.urls'
@@ -245,3 +246,5 @@ SEEDSOURCE_TITLE = _('Seedlot Selection Tool')
 
 # Prevents warnings created by the Django upgrade 2.2 -> 3.2
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+IFRAME_WHITELIST_DOMAINS = CONFIG.get('iframe_whitelist_domains', [])
