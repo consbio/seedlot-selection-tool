@@ -1,3 +1,5 @@
+:figure-caption!:
+
 === Layers
 
 The *Layers* tab allows the user to map different overlays onto the results. Options include gray-scaled values for
@@ -14,3 +16,13 @@ inputs. Once a saved run is loaded, you can recreate the map by clicking on the 
 Use the *Account* menu in the upper right corner of the web site to create or sign into an account. Use an email
 address and password to create an account. We will use this email address only if you lose your password. If you want
 to receive updates on the SST, sign up for our newsletter by clicking the `News & Updates` button in the menu.
+
+<<<
+
+=== Video Tutorial
+
+The following video tutorial demonstrates how to use the Seedlot Selection Tool. The tutorial was developed for silviculturists working in the Pacific Northwest region. It's also applicable to any region in the US where trees are being planted to be resilient to future climate.
+
+.Watch the tutorial at https://youtu.be/HYuOTY8WgEc
+[#img-sunset,link=https://youtu.be/HYuOTY8WgEc]
+image::../img/video-tutorial.png[]
