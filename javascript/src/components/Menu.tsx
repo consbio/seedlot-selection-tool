@@ -11,6 +11,7 @@ import CBILogo from '../../images/cbi_logo.png'
 import ClimateHubLogo from '../../images/nw_climate_hub_logo.png'
 import SSTInstructions from '../../documents/SST User Guide.pdf'
 import SSTInstructionsESMX from '../../documents/translations/es_MX/SST User Guide.pdf'
+import SSTSilviculturistsGuide from '../../documents/SST R6 Silviculturists Guide.pdf'
 
 class Menu extends React.Component {
   backgroundModal?: ModalCard
@@ -437,9 +438,14 @@ class Menu extends React.Component {
             </p>
           </ModalCard>
         </div>
-        <a className="navbar-item" href={manual} target="_blank" rel="noreferrer" key="instructions">
-          {t`User Guide`}
-        </a>
+        <NavItemDropdown title={t`User Guides`}>
+          <a className="navbar-item" href={manual} target="_blank" rel="noreferrer">
+            {t`Basic Guide`}
+          </a>
+          <a className="navbar-item" href={SSTSilviculturistsGuide} target="_blank" rel="noreferrer">
+            {t`Silviculturists Guide`}
+          </a>
+        </NavItemDropdown>
         <NavItemDropdown title={t`About`}>
           <a className="navbar-item" onClick={() => this.backgroundModal!.show()}>
             {t`Background`}
