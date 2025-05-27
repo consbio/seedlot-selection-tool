@@ -2,7 +2,7 @@ import { t, c } from 'ttag'
 import baseConfig, { updateConfig } from './seedsource-ui/config'
 import { get, urlEncode } from './seedsource-ui/io'
 import SpeciesConstraint from './seedsource-ui/containers/SpeciesConstraint'
-import Logo from '../images/logo.png'
+import Logo from '$images/logo.png'
 import { receiveTransfer } from './seedsource-ui/actions/variables'
 
 const serializeSpeciesConstraint = ({ climate }: { climate: any }, { species }: { species: string }) => {

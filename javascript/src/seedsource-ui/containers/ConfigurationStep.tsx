@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { selectStep } from '../actions/step'
 import { collapsibleSteps } from '../config'
-import MoreIcon from '../../images/icon-more.svg'
+import MoreIcon from '$images/icon-more.svg'
 
 type ExtraStepOption = {
   label: string

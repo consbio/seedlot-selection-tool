@@ -1,8 +1,8 @@
 import React from 'react'
 import { t } from 'ttag'
-import facebook from '../../images/facebook.png'
-import twitter from '../../images/twitter.png'
-import google from '../../images/google.png'
+import facebook from '$images/facebook.png'
+import twitter from '$images/twitter.png'
+import google from '$images/google.png'
 
 const SocialLogin = () => (
   <div>

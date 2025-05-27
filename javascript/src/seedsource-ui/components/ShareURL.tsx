@@ -7,8 +7,8 @@ import config from '../config'
 import { dumpConfiguration } from '../actions/saves'
 import { post } from '../io'
 import { setError } from '../actions/error'
-import LinkIcon from '../../images/icon-link.svg'
-import ClipboardIcon from '../../images/icon-clipboard.svg'
+import LinkIcon from '$images/icon-link.svg'
+import ClipboardIcon from '$images/icon-clipboard.svg'
 
 type ShareURLProps = {
   configuration: any

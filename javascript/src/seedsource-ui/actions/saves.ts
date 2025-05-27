@@ -1,4 +1,4 @@
-import { get, post, put, ioDelete } from 'seedsource-ui/src/io'
+import { get, post, put, ioDelete } from '../io'
 import { setError } from './error'
 import config, { saveVersion } from '../config'
 

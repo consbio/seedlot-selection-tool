@@ -1,5 +1,5 @@
 import { t } from 'ttag'
-import { post, executeGPTask } from 'seedsource-ui/src/io'
+import { post, executeGPTask } from '../io'
 import { setError } from './error'
 import { dumpConfiguration } from './saves'
 import config, { reports } from '../config'

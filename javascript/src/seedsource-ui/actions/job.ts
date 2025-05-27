@@ -1,5 +1,5 @@
 import config from '../config'
-import { executeGPTask } from 'seedsource-ui/src/io'
+import { executeGPTask } from '../io'
 import { setError } from './error'
 import { selectTab } from './tabs'
 import { UserSite } from '../reducers/runConfiguration'
