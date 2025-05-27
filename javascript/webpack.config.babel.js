@@ -13,7 +13,7 @@ const languages = [
   },
   {
     name: 'es-mx',
-    file: path.resolve('./locales/es_MX/merged.po'),
+    file: path.resolve('./locales/es_MX/sst-js.po'),
   },
 ]
 
