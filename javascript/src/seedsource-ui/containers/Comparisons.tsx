@@ -405,8 +405,6 @@ const Comparisons = ({
                                     new MouseEvent('click', { bubbles: true, cancelable: true, view: window }),
                                   )
                                   document.body.removeChild(node)
-                                } else {
-                                  window.navigator.msSaveBlob(blob, 'points.csv')
                                 }
                               })
                             }}

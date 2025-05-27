@@ -4,7 +4,7 @@ import ModalCard from './ModalCard'
 import { put } from '../io'
 
 type AccountSettingsModalProps = {
-  onChangeEmail: (email: string | null) => any
+  onChangeEmail: (email: string) => any
 }
 
 type AccountSettingsModalState = {
@@ -56,7 +56,7 @@ class AccountSettingsModal extends React.Component<AccountSettingsModalProps, Ac
     const { emailText } = this.state
     const { onChangeEmail } = this.props
 
-    if ((emailText || '').trim()) {
+    if (emailText && emailText.trim()) {
       put('/accounts/change-email/', { email: emailText })
         .then(response => {
           const { status } = response

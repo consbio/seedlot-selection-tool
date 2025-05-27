@@ -63,7 +63,7 @@ const ShareURL = ({ configuration, version }: ShareURLProps) => {
         onHide={() => !fetchingUrl && resetState()}
         title="Share URL"
         active={fetchingUrl || !!url}
-        footer={(
+        footer={
           <div style={{ textAlign: 'right', width: '100%' }}>
             <button
               type="button"
@@ -74,7 +74,7 @@ const ShareURL = ({ configuration, version }: ShareURLProps) => {
               {t`Done`}
             </button>
           </div>
-        )}
+        }
       >
         <p>
           {t`Share your saved run with others by sending them this link (your saved run will load when anyone visits 

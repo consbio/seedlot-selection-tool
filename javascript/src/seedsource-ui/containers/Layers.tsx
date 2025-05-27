@@ -132,7 +132,7 @@ const Layers = ({ layers, customLayers, state, onToggleLayer }: LayersProps) => 
                     layer={layer}
                     key={`${layer.id}`}
                     showColorPicker={showColorPicker === layer.id}
-                    toggleColorPicker={layerId => {
+                    toggleColorPicker={(layerId: string) => {
                       if (showColorPicker === layerId) {
                         return setShowColorPicker('')
                       }

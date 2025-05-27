@@ -79,7 +79,7 @@ class CustomFunctionModal extends Component<CustomFunctionModalProps, CustomFunc
     try {
       functionVariables = getNames(func)
     } catch (err) {
-      setParsedError(err.message)
+      setParsedError((err as Error).message)
       return false
     }
 
@@ -112,7 +112,7 @@ class CustomFunctionModal extends Component<CustomFunctionModalProps, CustomFunc
       })
       parser(func, context)
     } catch (err) {
-      setParsedError(err.message)
+      setParsedError((err as Error).message)
       return false
     }
 

@@ -5,7 +5,7 @@ import SocialLogin from './SocialLogin'
 import { post } from '../io'
 
 type LoginModalProps = {
-  onLogin: (email: string | null) => any
+  onLogin: (email: string) => any
   onResetPassword: () => any
 }
 

@@ -15,13 +15,11 @@ const connector = connect(
     onLogin: (email: string) => {
       dispatch(login(email))
     },
-
     onLogout: () => {
       get('/accounts/logout/').then(() => {
         dispatch(logout())
       })
     },
-
     checkLogin: () => {
       get('/accounts/user-info/')
         .then(response => {
@@ -37,7 +35,11 @@ const connector = connect(
   }),
 )
 
-class AccountMenu extends React.Component<ConnectedProps<typeof connector>> {
+type ReduxProps = ConnectedProps<typeof connector>
+
+class AccountMenu extends React.Component<
+  { isLoggedIn: boolean; onLogin: (email: string) => void } & Record<string, () => void>
+> {
   accountModal?: SignupModal | null
 
   loginModal?: LoginModal | null

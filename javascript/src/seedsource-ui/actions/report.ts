@@ -74,28 +74,6 @@ export const createReport = (name: string) => {
     }
 
     // Safari workaround
-    const supportsDownloadAttr = 'download' in document.createElement('a')
-    if (!supportsDownloadAttr && navigator.msSaveBlob === undefined) {
-      const form = document.createElement('form')
-      form.method = 'POST'
-      form.action = reportUrl
-
-      Object.entries(data).forEach(([key, value]) => {
-        const input = document.createElement('input')
-        input.type = 'hidden'
-        input.name = key as string
-        input.value = JSON.stringify(value)
-
-        form.appendChild(input)
-      })
-
-      form.submit()
-
-      // We don't know when the report is complete in this so wait a few seconds and dispatch the receive event
-      setTimeout(() => dispatch(receiveReport()), 5000)
-
-      return
-    }
 
     post(reportUrl, data)
       .then(response => {
@@ -112,20 +90,16 @@ export const createReport = (name: string) => {
         const filename = `SST Report ${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}.${
           getState().report.name
         }`
-        if (navigator.msSaveBlob !== undefined) {
-          navigator.msSaveBlob(blob, filename)
-        } else {
-          const reader = new FileReader()
-          reader.addEventListener('loadend', e => {
-            const node = document.createElement('a')
-            node.setAttribute('href', e.target?.result as string)
-            node.setAttribute('download', filename)
-            document.body.appendChild(node)
-            node.click()
-            document.body.removeChild(node)
-          })
-          reader.readAsDataURL(blob)
-        }
+        const reader = new FileReader()
+        reader.addEventListener('loadend', e => {
+          const node = document.createElement('a')
+          node.setAttribute('href', e.target?.result as string)
+          node.setAttribute('download', filename)
+          document.body.appendChild(node)
+          node.click()
+          document.body.removeChild(node)
+        })
+        reader.readAsDataURL(blob)
 
         dispatch(receiveReport())
       })

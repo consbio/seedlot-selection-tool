@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 @import '~bulma/bulma';
 @import '~bulma-checkradio';
 @import '~leaflet/dist/leaflet.css';
@@ -8,18 +8,14 @@
 @import '~leaflet-range/L.Control.Range';
 
 @mixin ios-mobile-portrait {
-  @media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: portrait) {
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
     @content;
   }
 }
 
-$image-path: '~seedsource-ui/images';
+$image-path: '$images';
 $header-height: 52px;
-$family-strong: "Arial Black", "Arial Bold", Gadget, sans-serif;
+$family-strong: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
 $tab-header-height: 58px;
 $tab-header-height-nopadding: 42px;
 $tab-content-height: calc(100vh - #{$header-height} - #{$tab-header-height});
@@ -115,7 +111,8 @@ button.is-link {
   align-items: center;
   font-weight: bold;
 
-  &::before, &::after {
+  &::before,
+  &::after {
     content: '';
     display: block;
     flex-grow: 1;
@@ -179,7 +176,7 @@ button.navbar-item {
     bottom: 0;
     width: 100%;
 
-    +.columns {
+    + .columns {
       display: none;
     }
 
@@ -197,7 +194,8 @@ button.navbar-item {
     }
   }
 
-  .navbar-item:hover, .navbar-link:hover {
+  .navbar-item:hover,
+  .navbar-link:hover {
     color: $navbar-item-color !important;
     background-color: $navbar-background-color !important;
   }
@@ -251,14 +249,10 @@ button.navbar-item {
 }
 
 .is-loading {
-  @extend .button.is-loading;
-
   color: inherit !important;
 }
 
 .is-loading::after {
-  @extend .is-loading::after;
-
   position: relative !important;
   left: 0;
   top: 0;
@@ -314,7 +308,7 @@ button.navbar-item {
   bottom: 0;
   width: $sidebar-width;
   height: $tab-content-height;
-  background-color: rgba(255, 255, 255, .92);
+  background-color: rgba(255, 255, 255, 0.92);
   z-index: 5;
   padding: 0px 20px;
 }
@@ -369,8 +363,9 @@ button.navbar-item {
         background: none;
         cursor: pointer;
 
-        &:hover, &.active {
-          opacity: .6;
+        &:hover,
+        &.active {
+          opacity: 0.6;
         }
 
         img {
@@ -407,41 +402,43 @@ button.navbar-item {
   width: 3px;
   background-color: rgba(0, 0, 0, 0);
   margin-right: 5px;
-  margin-left: -.5em;
-  transition: background-color .5s;
+  margin-left: -0.5em;
+  transition: background-color 0.5s;
 }
 
 .modify-status.modified {
   background-color: #f0ad4e;
-  transition: background-color .5s;
+  transition: background-color 0.5s;
 }
 
 .transfer-reset {
   display: inline-block;
-  color: #66F;
+  color: #66f;
   cursor: pointer;
-  font-size: .9em;
+  font-size: 0.9em;
   float: right;
   margin-right: 5px;
 }
 
 .visibility-toggle {
   cursor: pointer;
-  opacity: .6;
+  opacity: 0.6;
 }
 
-tr.visible .visibility-toggle, .visibility-toggle:hover {
+tr.visible .visibility-toggle,
+.visibility-toggle:hover {
   opacity: 1;
 }
 
 .variable-tooltip {
-  box-shadow: 5px 5px 10px rgba(153, 153, 153, .6);
+  box-shadow: 5px 5px 10px rgba(153, 153, 153, 0.6);
   font-size: 1.1em !important;
   max-width: 400px;
   white-space: normal;
 }
 
-.variable-tooltip strong, .variable-tooltip .title {
+.variable-tooltip strong,
+.variable-tooltip .title {
   color: #fff;
 }
 
@@ -476,15 +473,15 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
 
 .configuration-item {
   padding-left: 15px;
-  border-top: 1px solid #D8D8D8;
+  border-top: 1px solid #d8d8d8;
   height: 45px;
   cursor: pointer;
   overflow: hidden;
 
   &.focused {
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     height: 84px;
-    transition: height .5s;
+    transition: height 0.5s;
 
     .buttons {
       opacity: 1;
@@ -513,7 +510,7 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
 
     .button {
       text-align: left;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       cursor: pointer;
       font-size: 14px;
       font-weight: bold;
@@ -579,7 +576,7 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
     max-height: 60px;
     background-color: white;
     overflow: hidden;
-    transition: min-height .5s;
+    transition: min-height 0.5s;
 
     &.preview {
       min-height: 33%;
@@ -673,7 +670,7 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
   top: 20px;
   padding: 5px;
   border-radius: 5px;
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
   font-size: 1.3em;
   font-weight: bold;
@@ -733,11 +730,11 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
 }
 
 .leaflet-legend .title {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .leaflet-legend .legend-item:not(:first-child) {
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 .leaflet-legend td {
@@ -762,7 +759,7 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
 }
 
 .leaflet-default-icon-path {
-  background-image: url(~seedsource-ui/images/marker-icon.png);
+  background-image: url('$images/marker-icon.png');
 }
 
 .leaflet-container.crosshair {
@@ -777,7 +774,7 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
   background-color: $turquoise;
   border-radius: 50%;
   border: 2px solid black;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 
   &.active {
     background-color: $yellow;
@@ -789,8 +786,7 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
   .leaflet-control.basemaps,
   .leaflet-range-control,
   .leaflet-geonames-search,
-  .leaflet-zoom-box-control
-  {
+  .leaflet-zoom-box-control {
     display: none;
   }
 }
@@ -809,13 +805,13 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
   }
 
   .layer-list {
-    padding: .5rem 0;
+    padding: 0.5rem 0;
   }
 }
 
 .preview-map {
   width: $modal-content-width;
-  height: calc((2/3) * #{$modal-content-width});
+  height: calc((2 / 3) * #{$modal-content-width});
   margin: -20px;
 }
 
@@ -824,12 +820,12 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
 }
 
 @keyframes expandAnimation {
-    0% {
-        transform: scaleY(0)
-    }
-    100% {
-        transform: scaleY(1)
-     }
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }
 
 .color-picker {
@@ -855,7 +851,8 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
     }
   }
 
-  .color:hover, .color:focus {
+  .color:hover,
+  .color:focus {
     transform: scale(1.08);
     transition: transform 0.1s ease-in-out;
   }
@@ -866,7 +863,8 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
     line-height: 32px;
   }
 
-  input, textarea {
+  input,
+  textarea {
     display: block;
     padding: 5px;
     width: 100%;
@@ -892,5 +890,3 @@ tr.visible .visibility-toggle, .visibility-toggle:hover {
 .error {
   color: red;
 }
-
-
