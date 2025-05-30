@@ -1,0 +1,45 @@
+{% load i18n %}
+{% load static %}
+{% load render_bundle from webpack_loader %}
+{% load waffle_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ title }}</title>
+
+    {% render_bundle 'main' 'css' %}
+
+    <link rel="icon" href="./images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="./images/favicon-16x16.png" sizes="16x16" />
+
+    {% get_current_language as LANGUAGE_CODE %}
+
+    <script type="text/javascript">
+        window.SS_CONFIG = {
+            title: '{{ title|escapejs }}',
+            staticRoot: '{% static "/" %}',
+            mbtileserverRoot: '{{ mbtileserverRoot|default:"" }}',
+            languageCode: '{{ LANGUAGE_CODE }}'
+        }
+    </script>
+
+    <script>
+        {% wafflejs %}
+    </script>
+
+    {% include 'snippets/ga.html' with enable_ga=enable_ga ga_id=ga_id %}
+</head>
+<body>
+    <div id="SeedsourceApp"></div>
+
+    {% if LANGUAGE_CODE == 'es-mx' %}
+      {% render_bundle 'main.es-mx' 'js' %}
+    {% else %}
+      {% render_bundle 'main' 'js' %}
+    {% endif %}
+</body>
+</html>
