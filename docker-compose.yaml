@@ -1,0 +1,30 @@
+services:
+  rabbit:
+    image: 'rabbitmq'
+    ports:
+      - 5672:5672
+  database:
+    image: 'postgis/postgis'
+    environment:
+      - POSTGRES_USER=sst
+      - POSTGRES_DB=sst
+      - POSTGRES_PASSWORD=sst
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  server:
+    build:
+      dockerfile: services/server.dockerfile
+    volumes:
+      - ./:/project/app/
+    ports:
+      - 8000:8000
+  worker:
+    build:
+      dockerfile: services/worker.dockerfile
+    volumes:
+      - ./:/project/app/
+volumes:
+  pgdata:
+

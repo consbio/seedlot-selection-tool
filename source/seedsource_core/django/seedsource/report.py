@@ -16,7 +16,7 @@ from trefoil.utilities.color import Color
 from django.conf import settings
 from django.contrib.gis.geos import Point
 from django.template.loader import render_to_string
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from geopy.distance import vincenty
 from io import BytesIO
 from ncdjango.geoimage import world_to_image, image_to_world
