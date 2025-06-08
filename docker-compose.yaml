@@ -4,7 +4,7 @@ services:
     ports:
       - 5672:5672
   database:
-    image: 'postgis/postgis'
+    image: 'postgis/postgis:15-3.3'
     environment:
       - POSTGRES_USER=sst
       - POSTGRES_DB=sst
@@ -16,15 +16,17 @@ services:
   server:
     build:
       dockerfile: services/server.dockerfile
+    entrypoint: 'poetry run python manage.py runserver 0.0.0.0:8000'
     volumes:
-      - ./:/project/app/
+      - ./:/project/
     ports:
       - 8000:8000
   worker:
     build:
-      dockerfile: services/worker.dockerfile
+      dockerfile: services/server.dockerfile
+    entrypoint: 'poetry run celery -A sst_project worker -l info'
     volumes:
-      - ./:/project/app/
+      - ./:/project/
 volumes:
   pgdata:
 

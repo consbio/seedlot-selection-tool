@@ -1,5 +1,7 @@
 {
   "db_name": "sst",
   "db_user": "sst",
-  "db_password": "sst"
+  "db_password": "sst",
+  "db_host": "database",
+  "db_port": 5432
 }

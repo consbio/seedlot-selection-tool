@@ -109,6 +109,7 @@ DATABASES = {
         "USER": CONFIG.get("db_user", "seedsource"),
         "PASSWORD": CONFIG.get("db_password"),
         "HOST": CONFIG.get("db_host", "127.0.0.1"),
+        "POST": CONFIG.get("db_port", 5432),
     }
 }
 
