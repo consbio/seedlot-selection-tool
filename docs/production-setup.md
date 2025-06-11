@@ -29,7 +29,7 @@ Choose a location for the project directory (e.g., `/home/sst/apps/`).
 Navigate to the directory, and clone the repository:
 
 ``` text
-$ git checkout https://github.com/consbio/seedlot-selection-tool.git
+git checkout https://github.com/consbio/seedlot-selection-tool.git
 ```
 
 ### Install Dependencies
@@ -39,7 +39,7 @@ Install all infrastructure requirements first. Install
 Python environment and install dependencies:
 
 ``` text
-$ pipenv install
+pipenv install
 ```
 
 You may find that some packages fail to install, complaining about
@@ -48,18 +48,10 @@ install those libraries using your system's package manager, for example
 (for `psycopg2`):
 
 ``` text
-$ sudo apt-get install libpq-dev
+sudo apt-get install libpq-dev
 ```
 
-<div class="note">
-
-<div class="title">
-
-Note
-
-</div>
-
-It's recommended that you not use the root account to run your
+>It's recommended that you not use the root account to run your
 application or web server. Instead, use one account for nginx (if you
 install nginx through a package manager, this should be done
 automatically) and another account for the application itself (e.g.,
@@ -68,28 +60,16 @@ environment](https://virtualenv.pypa.io/en/stable/) as the application
 user and use it to install all Python dependencies and run all Python
 commands.
 
-</div>
-
-<div class="note">
-
-<div class="title">
-
-Note
-
-</div>
-
-`GDAL` will probably be the most challenging dependency to get
+>`GDAL` will probably be the most challenging dependency to get
 installed. You will likely need to have the GDAL development libraries
 for the version of GDAL required by the dependencies of this project
 (see <span class="title-ref">Pipfile.lock</span> entry for <span
 class="title-ref">gdal</span> to determine the required version).
-
-If you get stuck, search for installing the required version of GDAL
-Python for your platform.
-
-Once GDAL is installed, everything else should be easier.
-
-</div>
+>
+>If you get stuck, search for installing the required version of GDAL
+>Python for your platform.
+>
+>Once GDAL is installed, everything else should be easier.
 
 ## Setup & Configuration
 
@@ -154,23 +134,13 @@ ALLOWED_HOSTS = []  # Add your host name or names here. E.g., 'seedlotselectiont
 DATASET_DOWNLOAD_DIR = '/var/www/downloads/'
 ```
 
-<div class="note">
-
-<div class="title">
-
-Note
-
-</div>
-
-You can also add additional settings to `custom.py` or override settings
-specified in `production.py` and `base.py` as needed.
-
-</div>
+>You can also add additional settings to `custom.py` or override settings
+>specified in `production.py` and `base.py` as needed.
 
 From the root of the project, run the database migrations:
 
 ``` text
-$ python source/manage.py migrate
+python source/manage.py migrate
 ```
 
 ### Setup data folder
@@ -193,7 +163,7 @@ If you don't have a supervisor configuration file already, create one
 with:
 
 ``` text
-$ echo_supervisord_conf > /etc/supervisord.conf
+echo_supervisord_conf > /etc/supervisord.conf
 ```
 
 Edit `/etc/supervisord.conf` and add programs for gunicorn, celery, and
@@ -240,46 +210,27 @@ location /downloads/ {
 }
 ```
 
-<div class="note">
-
-<div class="title">
-
-Note
-
-</div>
-
-If you want to store the static files in another location, you will also
-need to override the `STATIC_ROOT` setting in `custom.py`.
-
-</div>
+>If you want to store the static files in another location, you will also
+>need to override the `STATIC_ROOT` setting in `custom.py`.
 
 Restart or reload nginx.
 
 ### Build & Deploy Static Content
 
 Navigate to the `javascript` directory in the root of this project,
-install the npm dependencies, and run the build script:
+install the node dependencies, and run the build script:
 
 ``` text
-$ npm install
-$ npm run-script webpack_production
-$ npm run-script merge-regions
-```
-
-If you are running a local development environment, instead of the
-above, run `npm start`:
-
-``` text
-$ npm install
-$ npm merge-regions
-$ npm start
+pnpm install
+pnpm webpack_production
+pnpm merge-regions
 ```
 
 One this completes, navigate to the `source` folder and run the
 `collectstatic` manage command (production only):
 
 ``` text
-$ python manage.py collectstatic
+python manage.py collectstatic
 ```
 
 You should now be able to access the tool at
