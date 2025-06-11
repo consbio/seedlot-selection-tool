@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.utils.timezone import now
 from django.views.generic.base import TemplateView
+from django_filters.rest_framework import DjangoFilterBackend
 from numpy.ma.core import is_masked
 from rest_framework import viewsets, mixins
 from rest_framework.decorators import action
@@ -58,7 +59,8 @@ class RunConfigurationViewset(viewsets.ModelViewSet):
 class SeedZoneViewset(viewsets.ReadOnlyModelViewSet):
     queryset = SeedZone.objects.all()
     serializer_class = SeedZoneSerializer
-    filter_fields = ("species",)
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ("species",)
     lookup_field = "zone_uid"
 
     def get_queryset(self):
