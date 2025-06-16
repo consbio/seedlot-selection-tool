@@ -96,7 +96,9 @@ class ZoneConfig:
 
                     info = self.config.get_zone_info(feature, file)
 
-                    if info is not None:
+                    if info == {}:
+                        continue
+                    elif info is not None:
                         yield polygon, info
 
                     else:
