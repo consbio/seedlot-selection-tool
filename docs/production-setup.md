@@ -51,7 +51,7 @@ install those libraries using your system's package manager, for example
 sudo apt-get install libpq-dev
 ```
 
->It's recommended that you not use the root account to run your
+Note: It's recommended that you not use the root account to run your
 application or web server. Instead, use one account for nginx (if you
 install nginx through a package manager, this should be done
 automatically) and another account for the application itself (e.g.,
@@ -65,11 +65,8 @@ installed. You will likely need to have the GDAL development libraries
 for the version of GDAL required by the dependencies of this project
 (see <span class="title-ref">Pipfile.lock</span> entry for <span
 class="title-ref">gdal</span> to determine the required version).
->
->If you get stuck, search for installing the required version of GDAL
->Python for your platform.
->
->Once GDAL is installed, everything else should be easier.
+
+Note: If you get stuck, search for installing the required version of GDAL Python for your platform. Once GDAL is installed, everything else should be easier.
 
 ## Setup & Configuration
 
@@ -134,8 +131,7 @@ ALLOWED_HOSTS = []  # Add your host name or names here. E.g., 'seedlotselectiont
 DATASET_DOWNLOAD_DIR = '/var/www/downloads/'
 ```
 
->You can also add additional settings to `custom.py` or override settings
->specified in `production.py` and `base.py` as needed.
+Note: You can also add additional settings to `custom.py` or override settings specified in `production.py` and `base.py` as needed.
 
 From the root of the project, run the database migrations:
 
@@ -210,8 +206,7 @@ location /downloads/ {
 }
 ```
 
->If you want to store the static files in another location, you will also
->need to override the `STATIC_ROOT` setting in `custom.py`.
+Note: If you want to store the static files in another location, you will also need to override the `STATIC_ROOT` setting in `custom.py`.
 
 Restart or reload nginx.
 

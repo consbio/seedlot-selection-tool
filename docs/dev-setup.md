@@ -69,8 +69,7 @@ ALLOWED_HOSTS = []  # Add your host name or names here. E.g., 'local.seedlotsele
 DATASET_DOWNLOAD_DIR = 'downloads/'
 ```
 
->You can also add additional settings to `custom.py` or override settings
->specified in `local.py` and `base.py` as needed.
+Note: You can also add additional settings to `custom.py` or override settings specified in `local.py` and `base.py` as needed.
 
 ### Setup data folder
 
