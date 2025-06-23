@@ -1,9 +1,9 @@
 import { t, c } from 'ttag'
-import baseConfig, { updateConfig } from 'seedsource-ui/lib/config'
-import { get, urlEncode } from 'seedsource-ui/lib/io'
-import SpeciesConstraint from 'seedsource-ui/lib/containers/SpeciesConstraint'
-import Logo from 'seedsource-ui/images/logo.png'
-import { receiveTransfer } from 'seedsource-ui/lib/actions/variables'
+import baseConfig, { updateConfig } from './seedsource-ui/config'
+import { get, urlEncode } from './seedsource-ui/io'
+import SpeciesConstraint from './seedsource-ui/containers/SpeciesConstraint'
+import Logo from '$images/logo.png'
+import { receiveTransfer } from './seedsource-ui/actions/variables'
 
 const serializeSpeciesConstraint = ({ climate }: { climate: any }, { species }: { species: string }) => {
   const { time, model } = climate.site

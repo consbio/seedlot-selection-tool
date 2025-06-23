@@ -17,5 +17,6 @@ https://seedlotselectiontool.org/sst/
 * [Ken Ferschweiler](https://github.com/kennino)
 
 # Documentation
-
-Develop documentation is available at https://seedlot-selection-tool.readthedocs.io
+- [Setup Production](docs/production-setup.md)
+- [Setup Dev](docs/dev-setup.md)
+- [Import Data](docs/import-data.md)

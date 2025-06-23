@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seedlot Selection Tool Preview</title>
+
+        <style type="text/css">
+            body {
+                background-color: #999;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 16px;
+                color: #333;
+                text-align: center;
+            }
+
+            a {
+                color: #4444FF;
+                text-decoration: none
+            }
+
+            a:hover {
+                color: #000033;
+            }
+
+            label {
+                font-weight: bold;
+            }
+            #MessageBox {
+                position: absolute;
+                text-align: left;
+                width: 500px;
+                background-color: #FFF;
+                padding: 0px;
+                border: 1px solid #857E6D;
+                top: 50%;
+                left: 50%;
+
+                border-radius: 5px;
+                -moz-border-radius: 5px;
+
+                box-shadow: 3px 3px 6px #777;
+                -moz-box-shadow: 3px 3px 6px #777;
+
+                -ms-transform: translateX(-50%) translateY(-50%);
+                -webkit-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
+            }
+
+            #MessageBoxInner {
+                padding: 2px 20px 10px 20px;
+            }
+
+            #MessageBox #Photo {
+                background: url('{% static 'preview/photo.jpg' %}');
+                height: 150px;
+                width: 500px;
+
+                border-top-left-radius: 4px;
+                -moz-border-radius-topleft-radius: 4px;
+                border-top-right-radius: 4px;
+                -mox-border-radius-topright-radius: 4px;
+            }
+
+            .info {
+                text-align: center;
+                margin-top: 10px;
+                font-size: .7em;
+                color: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="MessageBox">
+            <div id="Photo"></div>
+
+            <div id="MessageBoxInner">
+                <h4>Early Access Preview</h4>
+                <p>
+                    This is a preview version of the {{ title }}. If you have an early access code,
+                    please enter it below. Otherwise, please contact
+                    <a href="http://fes.forestry.oregonstate.edu/people?path=people/howe-glenn">Glenn Howe</a> at
+                    Oregon State University or use the current version of the tool
+                    <a href="https://seedlotselectiontool.org">here</a>.
+                </p>
+                <p>
+                    <a href="http://eepurl.com/cc1p1z">Sign up for our newsletter</a> for updates about the tool.
+                </p>
+                <p>
+                    This tool requires a recent version of Chrome or Firefox, Internet Explorer 10 or newer, or
+                    Microsoft Edge.
+                </p>
+
+                <form method="POST">
+                    <label>Password:</label>
+                    <input type="password" name="password" autofocus />
+                    <input type="submit" value="Go" />
+                </form>
+
+                <div>&nbsp;</div>
+
+                <div class="info">
+                    Photo credit: <a href="https://www.flickr.com/photos/jfeathersmith/22149026003/">jfeathersmith</a> via <a href="https://visualhunt.com">VisualHunt.com</a> / <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

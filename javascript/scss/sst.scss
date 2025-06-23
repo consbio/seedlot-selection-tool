@@ -1,4 +1,4 @@
-@import '~seedsource-ui/style/seedsource';
+@import 'seedsource';
 
 .about-hands {
   float: right;
@@ -7,12 +7,12 @@
 }
 
 .about-text {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .about-step {
-  border-bottom: 1px solid #CCC;
-  font-size: .9rem;
+  border-bottom: 1px solid #ccc;
+  font-size: 0.9rem;
 }
 
 .about-step .title.is-4 {

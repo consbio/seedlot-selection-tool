@@ -1,0 +1,32 @@
+services:
+  rabbit:
+    image: 'rabbitmq'
+    ports:
+      - 5672:5672
+  database:
+    image: 'postgis/postgis:15-3.3'
+    environment:
+      - POSTGRES_USER=sst
+      - POSTGRES_DB=sst
+      - POSTGRES_PASSWORD=sst
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  server:
+    build:
+      dockerfile: services/server.dockerfile
+    entrypoint: 'poetry run python manage.py runserver 0.0.0.0:8000'
+    volumes:
+      - ./:/project/
+    ports:
+      - 8000:8000
+  worker:
+    build:
+      dockerfile: services/server.dockerfile
+    entrypoint: 'poetry run celery -A sst_project worker -l info'
+    volumes:
+      - ./:/project/
+volumes:
+  pgdata:
+

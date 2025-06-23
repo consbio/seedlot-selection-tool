@@ -1,0 +1,376 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block style %}
+        <style type="text/css">
+            @page {
+                size: A4;
+                margin: 0.5in;
+            }
+
+            body {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                color: #333;
+            }
+
+            .north-arrow {
+                position: absolute;
+                margin-top: -50px;
+                margin-left: 5px;
+                padding: 1px;
+                background-color: rgba(255, 255, 255, .8);
+                border-radius: 2px;
+            }
+
+            .scale-bar {
+                position: absolute;
+                margin-top: -22px;
+                margin-left: 35px;
+                padding: 2px 3px 1px 3px;
+                background-color: rgba(255, 255, 255, .8);
+                border-radius: 2px;
+                font-size: 10px;
+                font-weight: bold;
+            }
+
+            .map-table {
+                width: 682px;
+                border-spacing: 0px;
+                border-collapse: collapse;
+            }
+
+            .map-table .west {
+                font-size: 10px;
+                border-left: 1px solid #000;
+                padding-left: 2px;
+            }
+
+            .map-table .north {
+                font-size: 10px;
+                border-top: 1px solid #000;
+                vertical-align: top;
+                max-width: 15px;
+                padding-top: 19px;
+            }
+
+            .map-table .north div {
+                white-space: nowrap;
+                transform: rotate(-90deg);
+                transform-origin: bottom right;
+            }
+
+            .map-table .image {
+                border: 1px solid #000;
+            }
+
+            .map-table .image .map-image {
+                margin-bottom: -4px;
+            }
+
+            .map-table .south {
+                font-size: 10px;
+                border-bottom: 1px solid #000;
+                vertical-align: bottom;
+                max-width: 15px;
+                padding-left: 2px;
+            }
+
+            .map-table .south div {
+                white-space: nowrap;
+                transform: rotate(-90deg);
+                transform-origin: top left;
+                margin-bottom: -8px;
+            }
+
+            .map-table .east {
+                font-size: 10px;
+                border-right: 1px solid #000;
+                text-align: right;
+                padding-top: 2px;
+                padding-right: 2px;
+            }
+
+            h2 {
+                text-align: center;
+            }
+
+            table.variables {
+                width: 100%;
+                border-spacing: 0px;
+            }
+
+            table.variables th {
+                color: #555;
+            }
+
+            table.variables td {
+                border-top: 1px solid #ddd;
+                padding: 8px;
+                max-width: 4in;
+            }
+
+            h3 {
+                margin-bottom: 5px;
+            }
+
+            img.legend {
+                transform: rotate(180deg);
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+    {% block title %}<h2>{{ title }} - {{ today|date:"m/d/Y" }}</h2>{% endblock %}
+
+    {% block map_image %}
+        <table class="map-table">
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td class="west">{{ west|safe }}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="north"><div>{{ north|safe }}</div></td>
+                    <td class="image">
+                        <img class="map-image" src="data:image/png;base64,{{ image_data }}" />
+                        <div class="north-arrow"><img src="data:image/png;base64,{{ north_image_data }}" /></div>
+                        <div class="scale-bar"><img src="data:image/png;base64,{{ scale_image_data }}" /> {{ scale }}</div>
+                    </td>
+                    <td class="south"><div>{{ south|safe }}</div></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="east">{{ east|safe }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    {% endblock %}
+
+    <div>&nbsp;</div>
+
+    {% block legend %}
+        <div style="float: right;">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">{% trans "Match" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            <img class="legend" src="data:image/png;base64,{{ legend_image_data.image_base64 }}" />
+                        </td>
+                        <td style="vertical-align: top;">{% trans "High" %}</td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: bottom;">{% trans "Low" %}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endblock %}
+
+    {% block objective %}<div><strong>{% trans "Objective:" %}</strong> {{ objective }}</div>{% endblock %}
+
+    <div>&nbsp;</div>
+
+    {% block location %}
+        <div>
+            <strong>{{ location_label }}</strong>
+            {% trans "Lat:" context "Abbreviation of 'Latitude'" %} {{ point.y }}&deg;,
+            {% trans "Lon:" context "Abbreviation of 'Longitude'" %} {{ point.x }}&deg;
+        </div>
+        <div>
+            <strong>{% trans "Elevation:" %}</strong>
+            {% blocktrans with elevation=elevation %}{{ elevation }} ft{% endblocktrans %}
+        </div>
+    {% endblock %}
+
+    {% block climate %}
+        <h3>{% trans "Climate scenarios" %}</h3>
+        <div><strong>{% trans "Seedlot climate:" %}</strong> {{ seedlot_year }}</div>
+        <div><strong>{% trans "Planting site climate:" %}</strong> {{ site_year }} {{ site_model|default:"" }}</div>
+    {% endblock %}
+
+    <div>&nbsp;</div>
+
+    {% block transfer %}
+        <div>
+            <strong>{% trans "Transfer limit method:" %}</strong>
+            {% if method == 'seedzone' %}
+                {% if center == 'zone' %}
+                    {% trans "Transfer limits and climatic center based on seed zone" %}
+                {% else %}
+                    {% trans "Transfer limits based on seed zone, climatic center based on the selected location" %}
+                {% endif %}
+            {% else %}
+                {% trans "Custom transfer limits, climatic center based on the selected location" %}
+            {% endif %}
+        </div>
+    {% endblock %}
+
+    {% if method == "seedzone" or method == "trait" %}
+        <div>&nbsp;</div>
+
+        {% block species %}<div><strong>{% trans "Species:" %}</strong> {{ species }}</div>{% endblock %}
+
+        <div>&nbsp;</div>
+
+        {% if method == "seedzone" %}
+            {% block seedzone %}
+                <div>
+                    <strong>{% trans "Seed zone:" %}</strong> {{ zone }}{% if band %}, {{ band.0 }}' - {{ band.1 }}'{% endif %}
+                </div>
+            {% endblock %}
+        {% endif %}
+    {% endif %}
+
+    {% if method == "trait" %}
+        {% block traits %}
+            <h3>{% trans "Traits" %}</h3>
+            <div>
+                <table class="variables">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Trait" %}</th>
+                            <th>{% trans "Center" %}</th>
+                            <th>{% trans "Transfer limit" %} (+/-)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for trait in traits %}
+                            <tr>
+                                <td>{{ trait.label }}</td>
+                                <td>{{ trait.value }} {{ trait.units|safe }}</td>
+                                <td>
+                                    {{ trait.limit }} {{ trait.units|safe }}
+                                    {% if trait.modified %}(modified{% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endblock %}
+    {% elif method == "function" %}
+        {% block function %}
+            <h3>{% trans "Custom Functions" %}</h3>
+            <div>
+                <table class="variables">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Name" %}</th>
+                            <th>{% trans "Function" %}</th>
+                            <th>{% trans "Center" %}</th>
+                            <th>{% trans "Transfer limit" %} (+/-)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for custom_function in custom_functions %}
+                            <tr>
+                                <td>{{ custom_function.name }}</td>
+                                <td>{{ custom_function.func }}</td>
+                                <td>{{ custom_function.value }}</td>
+                                <td>{{ custom_function.transfer }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endblock %}
+    {% else %}
+        {% block variables %}
+            <h3>{% trans "Climate variables" %}</h3>
+            <div>
+                <em>These results are based on custom climate values rather than the climate at a specific point.</em>
+            </div>
+            <br />
+            <div>
+                <table class="variables">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Variable" %}</th>
+                            <th>
+                                {% if custom_mode %}
+                                    {% trans "Custom Value" %}
+                                {% else %}
+                                    {% trans "Center" %}
+                                {% endif %}
+                            </th>
+                            <th>{% trans "Transfer limit" %} (+/-)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for variable in variables %}
+                            <tr>
+                                <td>{{ variable.label }}</td>
+                                <td>
+                                    {% if custom_mode %}
+                                        {{ variable.custom_center }}
+                                    {% else %}
+                                        {{ variable.value }}
+                                    {% endif %}
+                                    {{ variable.units|safe }}
+                                </td>
+                                <td>
+                                    {{ variable.limit }} {{ variable.units|safe }}
+                                    {% if variable.modified %}(modified){% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endblock %}
+    {% endif %}
+
+    {% if constraints %}
+        {% block constraints %}
+            <h3>Constraints</h3>
+            <div>
+                <table class="variables">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Constraint" %}</th>
+                            <th>{% trans "Center" %}</th>
+                            <th>{% trans "Range" %} (+/-)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for constraint in constraints %}
+                            {% if constraint.type == 'shapefile' %}
+                                <tr>
+                                    <td>{{ constraint.label }}</td>
+                                    <td colspan=2>{{ constraint.filename|safe }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td>{{ constraint.label }}</td>
+                                    <td>{{ constraint.value|safe }}</td>
+                                    <td>{{ constraint.range|safe }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endblock %}
+    {% endif %}
+
+    <div>&nbsp;</div>
+
+    {% block links %}
+        <div>
+            <strong>{% trans "Data URL:" %}</strong>
+            <a href="http://cfcg.forestry.ubc.ca/projects/climate-data/climatebcwna/#ClimateWNA">
+                http://cfcg.forestry.ubc.ca/projects/climate-data/climatebcwna/#ClimateWNA
+            </a>
+        </div>
+    {% endblock %}
+</body>
+</html>
