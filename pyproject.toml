@@ -18,7 +18,7 @@ celery = "^5.2.3"
 pyproj = "^3.6.1"
 sentry-sdk = "^0.19.5"
 enmerkar = "^0.7.1"
-ncdjango = { git = "https://github.com/consbio/ncdjango.git", branch = "upgrade-to-django-5.2" }
+ncdjango = { git = "https://github.com/consbio/ncdjango.git", branch = "main" }
 aiohttp = "^3.12.3"
 Django = "^5.2"
 djangorestframework = "~3.14"

@@ -1585,8 +1585,8 @@ trefoil = {git = "https://github.com/consbio/trefoil.git", branch = "main"}
 [package.source]
 type = "git"
 url = "https://github.com/consbio/ncdjango.git"
-reference = "upgrade-to-django-5.2"
-resolved_reference = "ce4894473bdee254aa1bef614360cd6aea586bd5"
+reference = "main"
+resolved_reference = "fa3b0410b05854bc0fef0ff8a10f3bd821e807d6"
 
 [[package]]
 name = "netcdf4"
@@ -2786,4 +2786,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.11"
-content-hash = "452f13a4b12ae6694b7954d4178bd124e8177ccf0574b03486df875e3a43ff0f"
+content-hash = "7a05e0945b4388d5ba4b24285b9517e1e0e4d3e50240b6e0411774c9392a93e1"
