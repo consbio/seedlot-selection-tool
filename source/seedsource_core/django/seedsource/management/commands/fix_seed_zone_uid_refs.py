@@ -1,4 +1,5 @@
 from django.core.management import BaseCommand
+from django.db.models import Q
 from seedsource_core.django.seedsource.models import RunConfiguration, ShareURL, SeedZone
 import json
 import re
@@ -43,14 +44,16 @@ class Command(BaseCommand):
                 r6_breeding_pattern = r'r6_breeding_zone(.*)'
                 def r6_repl(match: re.Match):
                     new_uid = "r6_breeding_zones" + match.group(1)
-                    seedzone_matches = SeedZone.objects.filter(zone_uid__contains=new_uid)
+                    start = Q(zone_uid__contains="r6_breeding_zones")
+                    end = Q(zone_uid__contains=match.group(1))
+                    seedzone_matches = SeedZone.objects.filter(start and end)
                     if (len(seedzone_matches)):
                         new_uid = seedzone_matches[0].zone_uid
                     return new_uid
 
                 ca_pattern = r'ca(.*)'
                 def ca_repl(match: re.Match):
-                    new_uid = "ca_seed_zones" + match.group(1)
+                    new_uid = "ca_seed_zones_generic" + match.group(1)
                     seedzone_matches = SeedZone.objects.filter(zone_uid__contains=new_uid)
                     if (len(seedzone_matches)):
                         new_uid = seedzone_matches[0].zone_uid
