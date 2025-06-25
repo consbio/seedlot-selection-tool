@@ -42,28 +42,24 @@ class AnnouncementModal extends React.Component<AnnouncementModalProps> {
           this.modal = input
         }}
         title={title}
-      >
-        {children}
-        <div className="field">
-          <div className="control">
-            <input
-              type="checkbox"
-              id="dontshow"
-              className="is-checkradio is-info"
-              ref={input => {
-                this.noShowCheckbox = input
-              }}
-            />
-            <label htmlFor="dontshow">{t`Don't show again`}</label>
-          </div>
-        </div>
-        <div className="field">
-          <div className="control">
-            <button type="button" className={`button is-primary`} onClick={this.accept}>
+        footer={
+          <div className="announcement-modal-footer">
+            <button type="button" className="button is-primary" onClick={this.accept}>
               {t`Ok`}
             </button>
           </div>
-        </div>
+        }
+      >
+        {children}
+        <input
+          type="checkbox"
+          id="dontshow"
+          className="is-checkradio is-info"
+          ref={input => {
+            this.noShowCheckbox = input
+          }}
+        />
+        <label htmlFor="dontshow">{t`Don't show again`}</label>
       </ModalCard>
     )
   }
