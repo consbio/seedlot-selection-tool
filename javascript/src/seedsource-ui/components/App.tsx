@@ -49,7 +49,6 @@ const App = ({
   }, [save, dispatch])
 
   let announcementModal: AnnouncementModal | null
-  const announcementID = 'new-future-data'
 
   useEffect(() => {
     if (announcementModal) {
@@ -66,7 +65,7 @@ const App = ({
           announcementModal = input
         }}
         title={t`New Future Data`}
-        announcementID={announcementID}
+        announcementID="new-future-data"
         onClose={() => {
           announcementModal?.hide()
         }}
