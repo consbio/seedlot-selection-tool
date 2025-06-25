@@ -114,12 +114,20 @@ export default () => {
         label: t`Engelmann spruce`,
       },
       {
+        name: 'pifl',
+        label: t`Limber pine`,
+      },
+      {
         name: 'pije',
         label: t`Jeffrey pine`,
       },
       {
         name: 'pila',
         label: t`Sugar pine`,
+      },
+      {
+        name: 'pipos',
+        label: t`Ponderosa pine var. scopulorum`,
       },
       {
         name: 'tabr2',
