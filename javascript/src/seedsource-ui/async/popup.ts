@@ -10,7 +10,6 @@ import {
 } from '../actions/popup'
 import { fetchValues } from './variables'
 import config from '../config'
-import { receiveAvailableSpecies } from '../actions/species'
 
 const popupSelect = ({ popup }: any) => {
   const { point } = popup
