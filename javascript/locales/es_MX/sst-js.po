@@ -1780,22 +1780,27 @@ msgid "Silviculturists Guide"
 msgstr "Guía de Silvicultores"
 
 #: src/seedsource-ui/components/AnnouncementModal.tsx:57
+#:, fuzzy
 msgid "Don't show again"
-msgstr ""
+msgstr "No volver a mostrar"
 
 #: src/seedsource-ui/components/AnnouncementModal.tsx:63
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/seedsource-ui/components/App.tsx:68
+#:, fuzzy
 msgid "New Future Data"
-msgstr ""
+msgstr "Nuevos Datos Futuros"
 
 #: src/seedsource-ui/components/App.tsx:75
+#:, fuzzy
 msgid ""
 "The Seedlot Selection Tool will soon incorporate new climate futures based on ClimateNA 7.50. The new futures\n"
 "will offer three emissions scenarios: SSP245, SSP370, and SSP585."
 msgstr ""
+"La Herramienta de Selección de Lotes de Semillas incorporará próximamente nuevos futuros climáticos\n"
+"basados ​​en ClimateNA 7.50. Estos nuevos futuros ofrecerán tres escenarios de emisiones: SSP245, SSP370 y SSP585."
 
 #: src/seedsource-ui/components/App.tsx:79
 msgid ""
@@ -1803,6 +1808,9 @@ msgid ""
 "longer be available after the data is updated. If you have any saved runs you'd like to preserve, please\n"
 "consider exporting those as PDF and/or GeoTIFF."
 msgstr ""
+"Los escenarios RCP actuales ya no estarán disponibles. Por lo tanto, las ejecuciones guardadas y los enlaces\n"
+"a ellas dejarán de estar disponibles una vez actualizados los datos. Si tiene ejecuciones guardadas que desea\n"
+"conservar, considere exportarlas como PDF o GeoTIFF."
 
 #: src/config.ts:311
 #, fuzzy
