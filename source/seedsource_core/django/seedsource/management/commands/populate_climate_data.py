@@ -9,35 +9,9 @@ from netCDF4 import Dataset
 from trefoil.geometry.bbox import BBox
 from trefoil.render.renderers.stretched import StretchedRenderer
 from trefoil.utilities.color import Color
-from ..constants import PERIODS
+from ..constants import PERIODS, VARIABLES
 
-VARS = (
-    "MAT",
-    "MWMT",
-    "MCMT",
-    "TD",
-    "MAP",
-    "MSP",
-    "AHM",
-    "SHM",
-    "DD_0",
-    "DD5",
-    "DD_18",
-    "bFFP",
-    "FFP",
-    "PAS",
-    "EMT",
-    "EXT",
-    "Eref",
-    "CMD",
-    "PPT_sm",
-    "eFFP",
-    "Tave_wt",
-    "Tave_sm",
-    "PPT_wt",
-    "Tmin_sp",
-)
-WGS84 = "+proj=latlong +datum=WGS84 +no_defs"
+WGS84 = "+proj=longlat +datum=WGS84 +no_defs +type=crs"
 
 
 class Command(BaseCommand):
@@ -105,17 +79,16 @@ class Command(BaseCommand):
         # Generate ClimateNA services
         with transaction.atomic():
             for year in PERIODS:
-
                 print("")
                 print(year)
                 print("---")
-                for var in VARS:
+                for var in VARIABLES:
                     print(var)
 
-                    service_name = "{}_{}Y_{}".format(name, year, var)
+                    service_name = "{}_{}SY_{}".format(name, year, var)
                     if not Service.objects.filter(name__iexact=service_name).exists():
                         data_path = (
-                            "regions/{name}/{year}Y/{name}_{year}Y_{var}.nc".format(
+                            "regions/{name}/{year}SY/{name}_{year}SY_{var}.nc".format(
                                 name=name, year=year, var=var
                             )
                         )
@@ -143,7 +116,7 @@ class Command(BaseCommand):
                             renderer = StretchedRenderer(
                                 [(v_min, Color(0, 0, 0)), (v_max, Color(255, 255, 255))]
                             )
-                            variable = Variable.objects.create(
+                            Variable.objects.create(
                                 service=service,
                                 index=0,
                                 variable=var,

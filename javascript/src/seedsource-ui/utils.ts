@@ -15,7 +15,7 @@ export const getServiceName = (variable: string, objective: string, climate: any
     serviceName += `${model}_${time}`
   }
 
-  return `${serviceName}Y_${variable}`
+  return `${serviceName}SY_${variable}`
 }
 
 export const getCookies = () => {
@@ -44,21 +44,16 @@ export const formatYear = (year: string) => {
   const labels: any = {
     '1961_1990': '1961 - 1990',
     '1981_2010': '1981 - 2010',
-    2025: '2011 - 2040',
-    2055: '2041 - 2070',
-    2085: '2071 - 2100',
+    '2011-2040': '2011 - 2040',
+    '2041-2070': '2041 - 2070',
+    '2071-2100': '2071 - 2100',
   }
 
   return labels[year]
 }
 
 export const formatModel = (model: string) => {
-  const labels: any = {
-    rcp45: 'RCP 4.5',
-    rcp85: 'RCP 8.5',
-  }
-
-  return labels[model]
+  return model.toUpperCase()
 }
 
 export const formatClimate = (year: string, model: string) => {
