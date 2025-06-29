@@ -55,6 +55,10 @@ export default languages.map(language => {
               index: true,
               publicPath: 'http://127.0.0.1:3000/assets/bundles/',
             },
+            allowedHosts: 'all',
+            client: {
+              webSocketURL: 'ws://0.0.0.0:3000/ws',
+            },
           },
         }),
     optimization: {
