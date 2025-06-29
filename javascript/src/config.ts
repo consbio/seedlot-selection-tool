@@ -38,34 +38,6 @@ export default () => {
     logo: Logo as string,
     species: [
       {
-        name: 'psme',
-        label: t`Douglas-fir`,
-      },
-      {
-        name: 'pico',
-        label: t`Lodgepole pine`,
-      },
-      {
-        name: 'piba',
-        label: t`Jack pine`,
-      },
-      {
-        name: 'pipo',
-        label: t`Ponderosa pine`,
-      },
-      {
-        name: 'pima',
-        label: t`Black spruce`,
-      },
-      {
-        name: 'thpl',
-        label: t`Western red cedar`,
-      },
-      {
-        name: 'pimo',
-        label: t`Western white pine`,
-      },
-      {
         name: 'abam',
         label: t`Pacific silver fir`,
       },
@@ -110,6 +82,14 @@ export default () => {
         label: t`Whitebark pine`,
       },
       {
+        name: 'piba',
+        label: t`Jack pine`,
+      },
+      {
+        name: 'pico',
+        label: t`Lodgepole pine`,
+      },
+      {
         name: 'pien',
         label: t`Engelmann spruce`,
       },
@@ -126,12 +106,32 @@ export default () => {
         label: t`Sugar pine`,
       },
       {
+        name: 'pima',
+        label: t`Black spruce`,
+      },
+      {
+        name: 'pimo',
+        label: t`Western white pine`,
+      },
+      {
+        name: 'pipo',
+        label: t`Ponderosa pine`,
+      },
+      {
         name: 'pipos',
         label: t`Ponderosa pine var. scopulorum`,
       },
       {
+        name: 'psme',
+        label: t`Douglas-fir`,
+      },
+      {
         name: 'tabr2',
         label: t`Pacific yew`,
+      },
+      {
+        name: 'thpl',
+        label: t`Western red cedar`,
       },
       {
         name: 'tshe',
