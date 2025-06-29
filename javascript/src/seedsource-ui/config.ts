@@ -136,7 +136,7 @@ const degreeDaysUnits = {
   },
 }
 
-const heatMoistureUnits = {
+const noUnits = {
   metric: {
     label: '',
     convert: (value: number) => value,
@@ -155,25 +155,25 @@ export const variables = [
   {
     name: 'MAT',
     label: t`Mean annual temperature`,
-    multiplier: 10,
+    multiplier: 1,
     units: celsiusUnits,
   },
   {
     name: 'MWMT',
     label: t`Mean warmest month temperature`,
-    multiplier: 10,
+    multiplier: 1,
     units: celsiusUnits,
   },
   {
     name: 'MCMT',
     label: t`Mean coldest month temperature`,
-    multiplier: 10,
+    multiplier: 1,
     units: celsiusUnits,
   },
   {
     name: 'TD',
     label: `Temperature difference between MWMT and MCMT, or continentality`,
-    multiplier: 10,
+    multiplier: 1,
     units: {
       metric: {
         label: `°${c("Abbreviation of 'Celsius'").t`C`}`,
@@ -204,14 +204,14 @@ export const variables = [
   {
     name: 'AHM',
     label: t`Annual heat-moisture index`,
-    multiplier: 10,
-    units: heatMoistureUnits,
+    multiplier: 1,
+    units: noUnits,
   },
   {
     name: 'SHM',
     label: t`Summer heat-moisture index`,
-    multiplier: 10,
-    units: heatMoistureUnits,
+    multiplier: 1,
+    units: noUnits,
   },
   {
     name: 'DD_0',
@@ -240,13 +240,13 @@ export const variables = [
   {
     name: 'EMT',
     label: t`Extreme minimum temperature over 30 years`,
-    multiplier: 10,
+    multiplier: 1,
     units: celsiusUnits,
   },
   {
     name: 'EXT',
     label: t`Extreme maximum temperature over 30 years`,
-    multiplier: 10,
+    multiplier: 1,
     units: celsiusUnits,
   },
   {
@@ -621,12 +621,15 @@ export const constraints = {
 export const timeLabels: { [name: string]: string } = {
   '1961_1990': '1961 - 1990',
   '1981_2010': '1981 - 2010',
-  '2025rcp45': '2025 RCP 4.5',
-  '2025rcp85': '2025 RCP 8.5',
-  '2055rcp45': '2055 RCP 4.5',
-  '2055rcp85': '2055 RCP 8.5',
-  '2085rcp45': '2085 RCP 4.5',
-  '2085rcp85': '2085 RCP 8.5',
+  '2011-2040ssp245': '2011-2040 SSP245',
+  '2011-2040ssp370': '2011-2040 SSP370',
+  '2011-2040ssp585': '2011-2040 SSP585',
+  '2041-2070ssp245': '2041-2070 SSP245',
+  '2041-2070ssp370': '2041-2070 SSP370',
+  '2041-2070ssp585': '2041-2070 SSP585',
+  '2071-2100ssp245': '2071-2100 SSP245',
+  '2071-2100ssp370': '2071-2100 SSP370',
+  '2071-2100ssp585': '2071-2100 SSP585',
 }
 
 export const regions = [

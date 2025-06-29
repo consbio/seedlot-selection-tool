@@ -49,8 +49,9 @@ const ClimateStep = ({ title, seedlotHelpText, siteHelpText, climate, number, ac
             onChange('model', e.target.value, 'site')
           }}
         >
-          <option value="rcp45">RCP4.5</option>
-          <option value="rcp85">RCP8.5</option>
+          <option value="ssp245">SSP245</option>
+          <option value="ssp370">SSP370</option>
+          <option value="ssp585">SSP585</option>
         </select>
       </div>
     )
@@ -89,9 +90,9 @@ const ClimateStep = ({ title, seedlotHelpText, siteHelpText, climate, number, ac
         >
           <option value="1961_1990">1961 - 1990</option>
           <option value="1981_2010">1981 - 2010</option>
-          <option value="2025">2011 - 2040</option>
-          <option value="2055">2041 - 2070</option>
-          <option value="2085">2071 - 2100</option>
+          <option value="2011-2040">2011 - 2040</option>
+          <option value="2041-2070">2041 - 2070</option>
+          <option value="2071-2100">2071 - 2100</option>
         </select>
       </div>
       <span> </span>
