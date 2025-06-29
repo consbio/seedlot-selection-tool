@@ -31,11 +31,7 @@ export default languages.map(language => {
     context: __dirname,
     devtool: 'source-map',
     entry: {
-      [language.name === 'default' ? 'main' : `main.${language.name}`]: [
-        ...(production ? [] : ['webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server']),
-        './src/index',
-        './scss/sst.scss',
-      ],
+      [language.name === 'default' ? 'main' : `main.${language.name}`]: ['./src/index', './scss/sst.scss'],
     },
     output: {
       path: path.resolve(__dirname, 'build'),
