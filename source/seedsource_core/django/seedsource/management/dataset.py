@@ -1,16 +1,12 @@
 from pathlib import Path
 
 from django.conf import settings
-from django.contrib.gis.geos import Polygon
-from django.contrib.gis.db.models.functions import Area, Intersection
 from ncdjango.models import Service
 from netCDF4 import Dataset
 from pyproj import Proj
 from trefoil.geometry.bbox import BBox
 from trefoil.netcdf.variable import SpatialCoordinateVariables
 from trefoil.utilities.window import Window
-
-from seedsource_core.django.seedsource.models import Region
 
 
 DATA_PATH = Path(settings.NC_SERVICE_DATA_ROOT)
@@ -44,7 +40,7 @@ class DatasetWrapper(object):
 
 
 class ElevationDataset(DatasetWrapper):
-    """ Lightweight wrapper around the elevation dataset, with a context manager
+    """Lightweight wrapper around the elevation dataset, with a context manager
     and region loader.
 
     Usage
@@ -112,8 +108,16 @@ class ElevationDataset(DatasetWrapper):
 
         # expand by 1px in all directions to make sure something isn't getting cut off
         # if bounds fall very close to pixel edges
-        x_slice = slice(max(x_slice.start - 1, 0), min(x_slice.stop + 1, len(self.coords.x)), x_slice.step)
-        y_slice = slice(max(y_slice.start - 1, 0), min(y_slice.stop + 1, len(self.coords.y)), y_slice.step)
+        x_slice = slice(
+            max(x_slice.start - 1, 0),
+            min(x_slice.stop + 1, len(self.coords.x)),
+            x_slice.step,
+        )
+        y_slice = slice(
+            max(y_slice.start - 1, 0),
+            min(y_slice.stop + 1, len(self.coords.y)),
+            y_slice.step,
+        )
 
         # get updated coords for the slices
         coords = self.coords.slice_by_window(Window(y_slice, x_slice))
@@ -153,7 +157,9 @@ class ClimateDataset(DatasetWrapper):
 
         self.close()
 
-        variable_service = Service.objects.get(name="{}_{}Y_{}".format(region_name, self.period, self.variable))
+        variable_service = Service.objects.get(
+            name="{}_{}SY_{}".format(region_name, self.period, self.variable)
+        )
 
         self.dataset = Dataset(DATA_PATH / variable_service.data_path)
         self.data = self.dataset.variables[self.variable]
