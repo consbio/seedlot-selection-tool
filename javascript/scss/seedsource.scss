@@ -890,3 +890,10 @@ tr.visible .visibility-toggle,
 .error {
   color: red;
 }
+
+.announcement-modal-footer {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  align-items: end;
+}

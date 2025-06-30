@@ -10,6 +10,8 @@ import { migrateConfiguration } from '../utils'
 import { get } from '../io'
 import config from '../config'
 import { setError } from '../actions/error'
+import AnnouncementModal from './AnnouncementModal'
+import { t } from 'ttag'
 
 const App = ({
   navContent,
@@ -46,10 +48,38 @@ const App = ({
     }
   }, [save, dispatch])
 
+  let announcementModal: AnnouncementModal | null
+
+  useEffect(() => {
+    if (announcementModal) {
+      announcementModal.show()
+    }
+  })
+
   return (
     <div className={`seedsource-app ${className}`}>
       <div id="modal-portal" />
       <ErrorModal />
+      <AnnouncementModal
+        ref={input => {
+          announcementModal = input
+        }}
+        title={t`New Future Data`}
+        announcementID="new-future-data"
+        onClose={() => {
+          announcementModal?.hide()
+        }}
+      >
+        <p>
+          {t`The Seedlot Selection Tool will soon incorporate new climate futures based on ClimateNA 7.50. The new futures
+          will offer three emissions scenarios: SSP245, SSP370, and SSP585.`}
+        </p>
+        <p>
+          {t`The current RCP scenarios will no longer be available. As such, any saved runs or links to saved runs will no
+          longer be available after the data is updated. If you have any saved runs you'd like to preserve, please
+          consider exporting those as PDF and/or GeoTIFF.`}
+        </p>
+      </AnnouncementModal>
       <Navbar>{navContent}</Navbar>
 
       <div className="columns is-gapless">
