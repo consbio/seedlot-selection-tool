@@ -4,6 +4,7 @@ phases:
   install:
     commands:
       - curl -fsSL https://get.pnpm.io/install.sh | sh -
+      - source ~/.bashrc
       - git clone https://github.com/consbio/seedlot-selection-tool.git sst-build
       - (cd sst-build/ && git checkout master && git submodule update --init)
       - (cd sst-build/javascript && pnpm install)
