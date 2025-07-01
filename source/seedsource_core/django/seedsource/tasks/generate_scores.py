@@ -135,7 +135,7 @@ class GenerateScores(NetCdfDatasetMixin, Task):
                     value = raster[idx]
                     value = value.item() if not is_masked(value) else 0
 
-                    if year in ("1961_1990", "1981_2010"):
+                    if year in ("1961_1990", "1981_2010", "1991_2020"):
                         delta = midpoint - value
                     else:
                         delta = value - midpoint

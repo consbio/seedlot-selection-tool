@@ -40,6 +40,7 @@ IMAGE_SIZE = (645, 430)
 YEAR_LABELS = {
     "1961_1990": "1961-1990",
     "1981_2010": "1981-2010",
+    "1991_2020": "1991-2020",
 }
 
 RESULTS_RENDERER = StretchedRenderer(
@@ -64,7 +65,7 @@ class Report(object):
         )
 
     def get_model(self, climate):
-        if climate["time"] in {"1961_1990", "1981_2010"}:
+        if climate["time"] in {"1961_1990", "1981_2010", "1991_2020"}:
             return None
         else:
             return climate["model"].upper()
