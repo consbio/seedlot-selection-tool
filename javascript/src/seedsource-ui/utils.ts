@@ -9,7 +9,7 @@ export const getServiceName = (variable: string, objective: string, climate: any
   const selectedClimate = objective === 'seedlots' ? climate.site : climate.seedlot
   const { time, model } = selectedClimate
 
-  if (time === '1961_1990' || time === '1981_2010') {
+  if (['1961_1990', '1981_2010', '1991_2020'].includes(time)) {
     serviceName += time
   } else {
     serviceName += `${model}_${time}`
@@ -44,6 +44,7 @@ export const formatYear = (year: string) => {
   const labels: any = {
     '1961_1990': '1961 - 1990',
     '1981_2010': '1981 - 2010',
+    '1991_2020': '1991 - 2020',
     '2011-2040': '2011 - 2040',
     '2041-2070': '2041 - 2070',
     '2071-2100': '2071 - 2100',
@@ -58,7 +59,7 @@ export const formatModel = (model: string) => {
 
 export const formatClimate = (year: string, model: string) => {
   let label = formatYear(year)
-  if (year !== '1961_1990' && year !== '1981_2010') {
+  if (!['1961_1990', '1981_2010', '1991_2020'].includes(year)) {
     label += ` ${formatModel(model)}`
   }
   return label

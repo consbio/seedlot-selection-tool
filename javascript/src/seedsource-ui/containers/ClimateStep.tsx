@@ -21,7 +21,7 @@ const ClimateStep = ({ title, seedlotHelpText, siteHelpText, climate, number, ac
 
   if (!active) {
     let siteKey = site.time
-    if (site.time !== '1961_1990' && site.time !== '1981_2010') {
+    if (!['1961_1990', '1981_2010', '1991_2020'].includes(site.time)) {
       siteKey += site.model
     }
 
@@ -39,7 +39,7 @@ const ClimateStep = ({ title, seedlotHelpText, siteHelpText, climate, number, ac
     )
   }
 
-  if (site.time !== '1961_1990' && site.time !== '1981_2010') {
+  if (!['1961_1990', '1981_2010', '1991_2020'].includes(site.time)) {
     modelSelect = (
       <div className="select is-inline-block">
         <select
@@ -73,6 +73,7 @@ const ClimateStep = ({ title, seedlotHelpText, siteHelpText, climate, number, ac
         >
           <option value="1961_1990">1961 - 1990</option>
           <option value="1981_2010">1981 - 2010</option>
+          <option value="1991_2020">1991 - 2020</option>
         </select>
       </div>
       <div style={{ height: '10px' }} />
@@ -90,6 +91,7 @@ const ClimateStep = ({ title, seedlotHelpText, siteHelpText, climate, number, ac
         >
           <option value="1961_1990">1961 - 1990</option>
           <option value="1981_2010">1981 - 2010</option>
+          <option value="1991_2020">1991 - 2020</option>
           <option value="2011-2040">2011 - 2040</option>
           <option value="2041-2070">2041 - 2070</option>
           <option value="2071-2100">2071 - 2100</option>
