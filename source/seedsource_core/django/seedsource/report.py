@@ -40,9 +40,7 @@ IMAGE_SIZE = (645, 430)
 YEAR_LABELS = {
     "1961_1990": "1961-1990",
     "1981_2010": "1981-2010",
-    "2025": "2011-2040",
-    "2055": "2041-2070",
-    "2085": "2071-2100",
+    "1991_2020": "1991-2020",
 }
 
 RESULTS_RENDERER = StretchedRenderer(
@@ -60,13 +58,17 @@ class Report(object):
         self.request = request
 
     def get_year(self, climate):
-        return YEAR_LABELS[climate["time"]]
+        return (
+            YEAR_LABELS[climate["time"]]
+            if climate["time"] in YEAR_LABELS
+            else climate["time"]
+        )
 
     def get_model(self, climate):
-        if climate["time"] in {"1961_1990", "1981_2010"}:
+        if climate["time"] in {"1961_1990", "1981_2010", "1991_2020"}:
             return None
         else:
-            return {"rcp45": "RCP4.5", "rcp85": "RCP8.5"}[climate["model"]]
+            return climate["model"].upper()
 
     def get_constraint_geometry(self):
         for constraint in self.configuration["constraints"]:
@@ -373,7 +375,7 @@ class MapImage(object):
                     center_point_px[0] - math.ceil(IMAGE_SIZE[0] / 2),
                     center_point_px[1] - math.ceil(IMAGE_SIZE[1] / 2),
                 ),
-                zoom
+                zoom,
             )
         )
 

@@ -1001,7 +1001,7 @@ class Map extends React.Component<MapProps> {
         const { time, model } = selectedClimate
         let labelKey = time
 
-        if (time !== '1961_1990' && time !== '1981_2010') {
+        if (!['1961_1990', '1981_2010', '1991_2020'].includes(time)) {
           labelKey += model
         }
 

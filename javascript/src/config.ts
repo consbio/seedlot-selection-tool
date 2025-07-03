@@ -9,7 +9,7 @@ const serializeSpeciesConstraint = ({ climate }: { climate: any }, { species }: 
   const { time, model } = climate.site
   let climateFragment
 
-  if (time === '1961_1990' || time === '1981_2010') {
+  if (['1961_1990', '1981_2010', '1991_2020'].includes(time)) {
     climateFragment = `p${time}_800m`
   } else {
     climateFragment = `15gcm_${model}_${time}`
@@ -146,8 +146,7 @@ export default () => {
       {
         name: 'HGT',
         label: t`Scaled Height`,
-        // Tmin_sp is multiplied by 10, so we divide by 10 here to get the real value
-        fn: 'math_e**(6.705 + (0.07443/10 * Tmin_sp))',
+        fn: 'math_e**(6.705 + (0.07443*Tmin_sp))',
         transfer: 66,
         units: '',
         customTransfer: false,
@@ -156,8 +155,7 @@ export default () => {
       {
         name: 'HT',
         label: t`Height`,
-        // Tmin_sp is multiplied by 10, so we divide by 10 here to get the real value
-        fn: '(2.80648/10 * Tmin_sp) + (0.03923*Eref) + (0.02529*PPT_sm) + 20.96417',
+        fn: '(2.80648*Tmin_sp) + (0.03923*Eref) + (0.02529*PPT_sm) + 20.96417',
         transfer: 5.2,
         units: '',
         customTransfer: false,
@@ -172,7 +170,8 @@ export default () => {
       {
         variable: 'SHM',
         getValue: (dispatch, point, region) => {
-          const url = `/arcgis/rest/services/${region}_1961_1990Y_SHM/MapServer/identify/?${urlEncode({
+          // This is supposed to use the 1961-1990 value regardless of time periods selected by the user
+          const url = `/arcgis/rest/services/${region}_1961_1990SY_SHM/MapServer/identify/?${urlEncode({
             f: 'json',
             tolerance: 2,
             imageDisplay: '1600,1031,96',

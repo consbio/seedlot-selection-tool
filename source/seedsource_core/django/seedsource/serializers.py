@@ -18,8 +18,8 @@ class RunConfigurationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RunConfiguration
-        fields = ('uuid', 'created', 'modified', 'title', 'version', 'configuration')
-        read_only_fields = ('uuid', 'created', 'modified')
+        fields = ("uuid", "created", "modified", "title", "version", "configuration")
+        read_only_fields = ("uuid", "created", "modified")
 
 
 class SeedZoneSerializer(serializers.ModelSerializer):
@@ -30,7 +30,14 @@ class SeedZoneSerializer(serializers.ModelSerializer):
     class Meta:
         model = SeedZone
         fields = (
-            'id', 'name', 'species', 'zone_id', 'zone_uid', 'elevation_at_point', 'elevation_band', 'elevation_service'
+            "id",
+            "name",
+            "species",
+            "zone_id",
+            "zone_uid",
+            "elevation_at_point",
+            "elevation_band",
+            "elevation_service",
         )
 
     def __init__(self, *args, **kwargs):
@@ -40,14 +47,15 @@ class SeedZoneSerializer(serializers.ModelSerializer):
 
     @property
     def _elevation_at_point(self):
+        print(f"self._elevation_at_point_mem {self._elevation_at_point_mem}")
         if self._elevation_at_point_mem is None:
-            request = self.context['request']
+            request = self.context["request"]
 
-            if not request.query_params.get('point'):
+            if not request.query_params.get("point"):
                 return None
             else:
                 try:
-                    x, y = [float(x) for x in request.query_params['point'].split(',')]
+                    x, y = [float(x) for x in request.query_params["point"].split(",")]
                 except ValueError:
                     raise ParseError()
 
@@ -60,9 +68,13 @@ class SeedZoneSerializer(serializers.ModelSerializer):
         if self._elevation_at_point is None:
             return None
 
-        elevation = self._elevation_at_point / 0.3048  # Elevation bands are stored in feet, elevation is in meters
+        elevation = (
+            self._elevation_at_point / 0.3048
+        )  # Elevation bands are stored in feet, elevation is in meters
 
-        return obj.transferlimit_set.filter(low__lt=elevation, high__gte=elevation).first()
+        return obj.transferlimit_set.filter(
+            low__lt=elevation, high__gte=elevation
+        ).first()
 
     def get_elevation_at_point(self, obj):
         return self._elevation_at_point
@@ -94,8 +106,16 @@ class TransferLimitSerializer(serializers.ModelSerializer):
     class Meta:
         model = TransferLimit
         fields = (
-            'variable', 'zone', 'transfer', 'avg_transfer', 'center', 'low', 'high', 'time_period', 'label',
-            'elevation_service'
+            "variable",
+            "zone",
+            "transfer",
+            "avg_transfer",
+            "center",
+            "low",
+            "high",
+            "time_period",
+            "label",
+            "elevation_service",
         )
 
     def get_elevation_service(self, obj: TransferLimit):
@@ -113,27 +133,27 @@ class GenerateReportSerializer(serializers.Serializer):
 class RegionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Region
-        fields = ('name',)
+        fields = ("name",)
 
 
 class ShareURLSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShareURL
-        fields = ('configuration', 'version', 'hash', 'created', 'accessed')
-        read_only_fields = ('hash', 'created', 'accessed')
+        fields = ("configuration", "version", "hash", "created", "accessed")
+        read_only_fields = ("hash", "created", "accessed")
 
     def create(self, validated_data):
-        configuration = validated_data['configuration']
-        version = validated_data['version']
+        configuration = validated_data["configuration"]
+        version = validated_data["version"]
         string_to_hash = configuration + str(version)
         hash_as_bytes = hashlib.sha256(string_to_hash.encode()).digest()
         hash_as_integer = int.from_bytes(hash_as_bytes, sys.byteorder)
-        hash_as_b62_truncated = ''
+        hash_as_b62_truncated = ""
         for i in range(8):
             hash_as_b62_truncated += B62_CHARS[hash_as_integer % 62]
             hash_as_integer //= 62
 
         return ShareURL.objects.get_or_create(
             hash=hash_as_b62_truncated,
-            defaults={'configuration': json.loads(configuration), 'version': version}
+            defaults={"configuration": json.loads(configuration), "version": version},
         )[0]
