@@ -31,11 +31,7 @@ export default languages.map(language => {
     context: __dirname,
     devtool: 'source-map',
     entry: {
-      [language.name === 'default' ? 'main' : `main.${language.name}`]: [
-        ...(production ? [] : ['webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server']),
-        './src/index',
-        './scss/sst.scss',
-      ],
+      [language.name === 'default' ? 'main' : `main.${language.name}`]: ['./src/index', './scss/sst.scss'],
     },
     output: {
       path: path.resolve(__dirname, 'build'),
@@ -54,6 +50,10 @@ export default languages.map(language => {
             devMiddleware: {
               index: true,
               publicPath: 'http://127.0.0.1:3000/assets/bundles/',
+            },
+            allowedHosts: 'all',
+            client: {
+              webSocketURL: 'ws://0.0.0.0:3000/ws',
             },
           },
         }),

@@ -14,4 +14,4 @@ manual/img/stem-*.svg
 manual/translations/
 merged.po
 *.mo
-
+/static
