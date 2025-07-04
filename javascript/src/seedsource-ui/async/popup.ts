@@ -85,7 +85,7 @@ export default (store: any) =>
             // Find seedzones at point
             const zonesUrl = `${config.apiRoot}seedzones/?${urlEncode({ point: `${point.x},${point.y}` })}`
 
-            io.get(zonesUrl, signal)
+            io.get(zonesUrl)
               .then(response => response.json())
               .then((json: any) =>
                 dispatch(
