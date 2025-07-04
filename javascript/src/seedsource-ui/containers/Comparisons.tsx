@@ -139,6 +139,7 @@ const Comparisons = ({
         <div className="expand-icons">
           {expandClasses.map((className, idx) => (
             <div
+              key={idx}
               className={`expand-icon ${className} ${expandLevel === idx ? 'active' : ''}`}
               onClick={e => {
                 e.stopPropagation()

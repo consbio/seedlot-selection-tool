@@ -28,15 +28,51 @@ class Menu extends React.Component {
     const cookies = getCookies()
     const manual = cookies.django_language === 'es-mx' ? SSTInstructionsESMX : SSTInstructions
 
-    const tl = <span className="pre">TL</span>
-    const formula = <span className="pre">y = |x – xmid|/TL</span>
-    const xmid = <span className="pre">xmid</span>
-    const d = <span className="pre">d</span>
-    const n = <span className="pre">n</span>
-    const distanceFormula = <span className="pre">dn = (y12 + y22 + ∙∙∙+ yn2)0.5</span>
-    const m = <span className="pre">m</span>
-    const matchFormula = <span className="pre">m = ‒(d-1)*100</span>
-    const mLessThan0 = <span className="pre">m &lt; 0</span>
+    const tl = (
+      <span className="pre" key="tl">
+        TL
+      </span>
+    )
+    const formula = (
+      <span className="pre" key="formula">
+        y = |x – xmid|/TL
+      </span>
+    )
+    const xmid = (
+      <span className="pre" key="xmid">
+        xmid
+      </span>
+    )
+    const d = (
+      <span className="pre" key="d">
+        d
+      </span>
+    )
+    const n = (
+      <span className="pre" key="n">
+        n
+      </span>
+    )
+    const distanceFormula = (
+      <span className="pre" key="dn">
+        dn = (y12 + y22 + ∙∙∙+ yn2)0.5
+      </span>
+    )
+    const m = (
+      <span className="pre" key="m">
+        m
+      </span>
+    )
+    const matchFormula = (
+      <span className="pre" key="matchFormula">
+        m = ‒(d-1)*100
+      </span>
+    )
+    const mLessThan0 = (
+      <span className="pre" key="mLessThan">
+        m &lt; 0
+      </span>
+    )
 
     return (
       <>
@@ -201,7 +237,12 @@ class Menu extends React.Component {
             <p>
               {(() => {
                 const name = (
-                  <a href="http://cfcg.forestry.ubc.ca/people/tongli-wang/" target="_blank" rel="noreferrer">
+                  <a
+                    key="dr-tongli"
+                    href="http://cfcg.forestry.ubc.ca/people/tongli-wang/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Dr Tongli Wang
                   </a>
                 )
@@ -231,7 +272,7 @@ class Menu extends React.Component {
               <li>
                 {(() => {
                   const prismLink = (
-                    <a href="http://www.prism.oregonstate.edu/" target="_blank" rel="noreferrer">
+                    <a key="prism" href="http://www.prism.oregonstate.edu/" target="_blank" rel="noreferrer">
                       {c("This is the value of 'prismLink'").t`PRISM Climate Group`}
                     </a>
                   )
@@ -257,6 +298,7 @@ class Menu extends React.Component {
               {(() => {
                 const name = (
                   <a
+                    key="knutti"
                     href="http://onlinelibrary.wiley.com/doi/10.1002/grl.50256/abstract"
                     target="_blank"
                     rel="noreferrer"
