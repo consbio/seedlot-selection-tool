@@ -67,6 +67,11 @@ export default (store: any) =>
 
                 dispatch(receivePopupElevation(value))
               })
+              .catch(e => {
+                if (e) {
+                  throw e
+                }
+              })
 
             // Set values at point
             const requests = fetchValues(store, state, io, dispatch, previousState, region)
@@ -80,7 +85,7 @@ export default (store: any) =>
             // Find seedzones at point
             const zonesUrl = `${config.apiRoot}seedzones/?${urlEncode({ point: `${point.x},${point.y}` })}`
 
-            io.get(zonesUrl)
+            io.get(zonesUrl, signal)
               .then(response => response.json())
               .then((json: any) =>
                 dispatch(
@@ -94,6 +99,16 @@ export default (store: any) =>
                   ),
                 ),
               )
+              .catch(e => {
+                if (e) {
+                  throw e
+                }
+              })
+          }
+        })
+        .catch(e => {
+          if (e) {
+            throw e
           }
         })
     }
