@@ -775,7 +775,6 @@ class Map extends React.Component<MapProps> {
                 <button
                   type="button"
                   className="button is-primary is-fullwidth"
-                  disabled={!elevation}
                   onClick={() => {
                     const { point: newPoint } = this.popup!
                     const { mode: newMode } = this.props
