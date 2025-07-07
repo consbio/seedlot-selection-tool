@@ -1,8 +1,10 @@
 import json
 import math
 import os
+from pathlib import Path
 
 import numpy
+from django.conf import settings
 from django.core.management import BaseCommand, CommandError
 from django.db.models import Avg
 from ncdjango.models import Service, SERVICE_DATA_ROOT, Variable
@@ -95,7 +97,7 @@ class Command(BaseCommand):
         if len(band) > 2:
             label = band[2]
 
-        tl = TransferLimit.objects.create(
+        TransferLimit.objects.create(
             variable=variable,
             time_period=time_period,
             zone=zone,
@@ -156,7 +158,7 @@ class Command(BaseCommand):
             name=elevation_service_name,
             description="Elevation for zone {}, {} - {}".format(zone.name, low, high),
             data_path=rel_path,
-            projection="epsg:4326",
+            projection="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
             full_extent=bbox,
             initial_extent=bbox,
         )
@@ -165,7 +167,7 @@ class Command(BaseCommand):
             service=service,
             index=0,
             variable="data",
-            projection="epsg:4326",
+            projection="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
             x_dimension="longitude",
             y_dimension="latitude",
             name="data",
@@ -174,6 +176,20 @@ class Command(BaseCommand):
         )
 
         return service
+
+    def _delete_transfer_limits(self, transfer_limits_qs):
+        for tl in transfer_limits_qs:
+            try:
+                if tl.elevation:
+                    elevation_file = (
+                        Path(settings.NC_SERVICE_DATA_ROOT) / tl.elevation.data_path
+                    )
+                    if elevation_file.exists():
+                        elevation_file.unlink()
+                    tl.elevation.delete()
+            except Service.DoesNotExist:
+                pass
+            tl.delete()
 
     def handle(self, zoneset, variables, clear, *args, **kwargs):
         if zoneset is None or zoneset.strip() == "":
@@ -209,7 +225,7 @@ class Command(BaseCommand):
             if input(message).lower() not in {"y", "yes"}:
                 return
 
-            TransferLimit.objects.all().delete()
+            self._delete_transfer_limits(TransferLimit.objects.all())
 
         elif existing_limits.exists():
             message = 'WARNING: This will replace "{}" transfer limits. Do you want to continue? [y/n]'.format(
@@ -218,7 +234,7 @@ class Command(BaseCommand):
             if input(message).lower() not in {"y", "yes"}:
                 return
 
-            existing_limits.delete()
+            self._delete_transfer_limits(existing_limits)
 
         for time_period in PERIODS:
             self.transfers_by_source = {}
