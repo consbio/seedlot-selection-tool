@@ -47,7 +47,6 @@ class SeedZoneSerializer(serializers.ModelSerializer):
 
     @property
     def _elevation_at_point(self):
-        print(f"self._elevation_at_point_mem {self._elevation_at_point_mem}")
         if self._elevation_at_point_mem is None:
             request = self.context["request"]
 
