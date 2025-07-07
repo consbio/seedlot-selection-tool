@@ -21,13 +21,25 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("region_name", nargs=1, type=str)
+        parser.add_argument(
+            "--clear",
+            dest="clear",
+            action="store_true",
+            default=False,
+            help="Clear any existing services for the region",
+        )
 
-    def handle(self, region_name, *args, **options):
+    def handle(self, region_name, clear=False, *args, **options):
         name = region_name[0]
 
         from django.conf import settings
 
         BASE_DIR = settings.NC_SERVICE_DATA_ROOT
+
+        if clear:
+            print(f"Deleting existing {name} services...")
+            Service.objects.filter(name__startswith=name).delete()
+            print("")
 
         # determine extent and lat/lon variable names from DEM
         dem_path = os.path.join(BASE_DIR, "regions", name, "{}_dem.nc".format(name))
