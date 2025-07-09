@@ -1,5 +1,5 @@
 import math
-import os
+from pathlib import Path
 
 import numpy
 from django.conf import settings
@@ -44,12 +44,14 @@ class GenerateScores(NetCdfDatasetMixin, Task):
 
     def load_variable_data(self, variable, region, year, model=None):
         if variable == "LAT":
-            with Dataset(
-                os.path.join(
-                    NC_SERVICE_DIR, "regions", region, "{}_dem.nc".format(region)
+            service = Service.objects.get(name=f"{region}_dem")
+            with Dataset(str(Path(NC_SERVICE_DIR) / service.data_path)) as ds:
+                variable = service.variable_set.all()[:1].get()
+                return create_latitude_data(
+                    SpatialCoordinateVariables.from_dataset(
+                        ds, x_name=variable.x_dimension, y_name=variable.y_dimension
+                    )
                 )
-            ) as ds:
-                return create_latitude_data(SpatialCoordinateVariables.from_dataset(ds))
 
         if model is not None:
             year = "{model}_{year}".format(model=model, year=year)
