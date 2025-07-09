@@ -78,7 +78,13 @@ export default (store: any) =>
             if (requests) {
               requests.forEach((request: any) => {
                 dispatch(requestPopupValue(request.item.name))
-                request.promise.then((json: any) => dispatch(receivePopupValue(request.item.name, json)))
+                request.promise
+                  .then((json: any) => dispatch(receivePopupValue(request.item.name, json)))
+                  .catch((e: Error | undefined) => {
+                    if (e) {
+                      throw e
+                    }
+                  })
               })
             }
 
