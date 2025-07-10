@@ -12,6 +12,7 @@ javascript/lib/
 docs/_build
 docs/html
 manual/img/stem-*.svg
+manual/img/stem-*.png
 manual/translations/
 merged.po
 *.mo
