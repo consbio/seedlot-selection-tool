@@ -1,7 +1,6 @@
 import os
 
 from django.conf import settings
-from ncdjango.geoprocessing.data import Raster
 from ncdjango.models import Service
 from netCDF4 import Dataset
 
@@ -16,22 +15,34 @@ def get_elevation_at_point(point):
 
     service = Service.objects.get(name="{}_dem".format(region.name))
     variable = service.variable_set.all().get()
+    extent = variable.full_extent
 
     with Dataset(os.path.join(settings.NC_SERVICE_DATA_ROOT, service.data_path)) as ds:
         data = ds.variables[variable.variable]
-        y_values = ds.variables[variable.y_dimension]
         x_dim = data.dimensions.index(variable.x_dimension)
         y_dim = data.dimensions.index(variable.y_dimension)
-        raster = Raster(
-            data,
-            variable.full_extent,
-            x_dim,
-            y_dim,
-            y_increasing=y_values[1] > y_values[0],
+
+        cell_size = (
+            extent.width / data.shape[x_dim],
+            extent.height / data.shape[y_dim],
+        )
+        cell_index = [
+            int(float(point.x - extent.xmin) / cell_size[0]),
+            int(float(point.y - extent.ymin) / cell_size[1]),
+        ]
+        y_increasing = (
+            ds.variables[variable.y_dimension][1]
+            > ds.variables[variable.y_dimension][0]
         )
 
+        if not y_increasing:
+            cell_index[1] = data.shape[y_dim] - cell_index[1] - 1
+
+        if x_dim != 0:
+            cell_index = cell_index[1], cell_index[0]
+
         try:
-            elevation = raster[raster.index(point.x, point.y)]
+            elevation = data[cell_index]
             return elevation
         except IndexError:
             return None
