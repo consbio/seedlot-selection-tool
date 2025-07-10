@@ -46,13 +46,12 @@ unsure from where within the zone the seedlot was collected, it is probably more
 of your zone. After specifying the climatic center to be used for mapping, the next two steps are as above -- select the
 species followed by selecting the zone of interest.
 
-==== Function method _(under construction February 2021)_
+==== Trait method
 
-For the *Function* approach, select the species using the drop-down menu. The values and transfer limits for the
-adaptive traits from genecology studies will be prepopulated in Step 6 for the locations chosen in Step 2. A limited
-number of species are currently available for the *Function* approach, but more species will be added from existing and
-ongoing common garden studies.
+For the *Trait* approach, select the species using the drop-down menu. The values and transfer limits for the
+adaptive traits from genecology studies will be prepopulated in Step 6 for the locations chosen in Step 2.
 
-[NOTE]
-_In the future, the Function approach will also offer an option of creating your own function that allows differential
-weighting of different climate variables as representative of adaptive variation._
+==== Function method
+
+The *Function* approach allows you to create your own function that allows differential
+weighting of different climate variables as representative of adaptive variation. Click the dropdown and choose "Add a custom function." Enter any mathematical equation referencing ClimateNA variablesfootnote:[https://climatena.ca/Help2#_var] using their short names. For example, latexmath:[-6.3 + (0.284*TD) + (0.007*PPT\_sm)] uses the TD (temperature difference between mean warmest and mean coldest months) and PPT_sm (summer precipitation) variables.
