@@ -11,42 +11,45 @@ first place your data in your `NC_SERVICE_DATA_ROOT` directory (see
 `setup-install`) under a directory named `regions`. The data should be
 in a directory matching the region the data are for. The DEM should be
 placed in the directory for the region and named `<region>_dem.nc`.
-Sub-directories should be created for each year / climate scenario. For
+Sub-directories should be created for each period / climate scenario. For
 example, the directory structure for the `west2` region should be:
 
 ``` text
 <NC_SERVICE_DATA_ROOT>
 +-- regions
 |   +-- west2
-|   |   +-- 1961_1990Y
-|   |   +-- 1991_2010Y
-|   |   +-- rcp45_2025Y
-|   |   +-- rcp45_2055Y
-|   |   +-- rcp45_2085Y
-|   |   +-- rcp85_2025Y
-|   |   +-- rcp85_2055Y
-|   |   +-- rcp85_2085Y
+|   |   +-- 1961_1990SY
+|   |   +-- 1981_2010SY
+|   |   +-- 1991_2020SY
+|   |   +-- ssp245_2011-2040SY
+|   |   +-- ssp245_2041-2070SY
+|   |   +-- ssp245_2071-2100SY
+|   |   +-- ssp370_2011-2040SY
+|   |   +-- ssp370_2041-2070SY
+|   |   +-- ssp370_2071-2100SY
+|   |   +-- ssp585_2011-2040SY
+|   |   +-- ssp585_2041-2070SY
+|   |   +-- ssp585_2071-2100SY
 |   |   +-- west2_dem.nc
 ```
 
-Inside each directory for a year/scenario, each climate variable dataset
-should be named according to region, RCP, year, and variable name in the
-following format: `<region>_<rcp45/rcp85>_<year>Y_<variable>.nc`. The
-current (1961_1990) and historic (1981_2010) years should not include an
-RCP. For example, the contents of the `1961_1990Y` and `rcp45_2025Y`
+Inside each directory for a period/scenario, each climate variable dataset
+should be named according to region, RCP, period, and variable name in the
+following format: `<region>_<ssp245/ssp370/ssp585>_<period>SY_<variable>.nc`. The
+current (1991_2020) and historic (1961_1990/1981_2010) periods should not include an
+RCP. For example, the contents of the `1961_1990SY` and `ssp245_2011-2040SY`
 directories for the `west2` region should be:
 
 ``` text
-.
-+-- 1961_1990Y
-|   +-- west2_1961_1990Y_AHM.nc
-|   +-- west2_1961_1990Y_bFFP.nc
-|   +-- west2_1961_1990Y_CMD.nc
++-- 1961_1990SY
+|   +-- west2_1961_1990SY_AHM.nc
+|   +-- west2_1961_1990SY_bFFP.nc
+|   +-- west2_1961_1990SY_CMD_at.nc
 |   +-- <...>
-+-- rcp45_2025Y
-|   +-- west2_rcp45_2025Y_AHM.nc
-|   +-- west2_rcp45_2025Y_bFFP.nc
-|   +-- west2_rcp45_2025Y_CMD.nc
++-- ssp245_2011-2040SY
+|   +-- west2_ssp245_2011-2040SY_AHM.nc
+|   +-- west2_ssp245_2011-2040SY_bFFP.nc
+|   +-- west2_ssp245_2011-2040SY_CMD_at.nc
 ```
 
 Run the following command to import the region elevation and all climate
@@ -56,13 +59,9 @@ variables:
 $ python source/manage.py populate_climate_data <region>
 ```
 
-The command will assume the variables:
-`'MAT', 'MWMT', 'MCMT', 'TD', 'MAP', 'MSP', 'AHM', 'SHM', 'DD_0', 'DD5', 'FFP', 'PAS', 'EMT', 'EXT', 'Eref', 'CMD'`
-and the years:
-`'1961_1990', '1981_2010', 'rcp45_2025', 'rcp45_2055', 'rcp45_2085', 'rcp85_2025', 'rcp85_2055', 'rcp85_2085'`.
-If you are using different variables and/or years, you will need to edit
-the script, which is located at
-`source/seedsource/management/commands/populate_climate_data.py`.
+The command will assume the variables and periods fround in
+`source/seedsource_core/django/seedsource/management/constants.py`.
+If you are using different variables and/or periods, you will need to edit that file.
 
 ## Region Boundary Data
 
@@ -72,6 +71,7 @@ tool. Next, import the region into the tool:
 ``` text
 $ python source/manage.py add_region <region> <path to shapefile>
 ```
+Note: the shapefile can be a zipfile
 
 You should also convert the region boundary to GeoJSON and, it to the
 directory `sst/static/geometry/<region>_boundary.json`, and re-run:
@@ -102,7 +102,7 @@ first). Running the command with no arguments will process all zone
 sets:
 
 ``` text
-$ python manage.py calculate_zone_transfers
+$ python manage.py calculate_zone_transfers --clear
 ```
 
 Running the command with a `source` argument will process only zones for
