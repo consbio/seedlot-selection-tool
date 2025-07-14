@@ -10,7 +10,6 @@ import {
 } from '../actions/popup'
 import { fetchValues } from './variables'
 import config from '../config'
-import { receiveAvailableSpecies } from '../actions/species'
 
 const popupSelect = ({ popup }: any) => {
   const { point } = popup
@@ -68,13 +67,24 @@ export default (store: any) =>
 
                 dispatch(receivePopupElevation(value))
               })
+              .catch(e => {
+                if (e) {
+                  throw e
+                }
+              })
 
             // Set values at point
             const requests = fetchValues(store, state, io, dispatch, previousState, region)
             if (requests) {
               requests.forEach((request: any) => {
                 dispatch(requestPopupValue(request.item.name))
-                request.promise.then((json: any) => dispatch(receivePopupValue(request.item.name, json)))
+                request.promise
+                  .then((json: any) => dispatch(receivePopupValue(request.item.name, json)))
+                  .catch((e: Error | undefined) => {
+                    if (e) {
+                      throw e
+                    }
+                  })
               })
             }
 
@@ -95,6 +105,16 @@ export default (store: any) =>
                   ),
                 ),
               )
+              .catch(e => {
+                if (e) {
+                  throw e
+                }
+              })
+          }
+        })
+        .catch(e => {
+          if (e) {
+            throw e
           }
         })
     }
