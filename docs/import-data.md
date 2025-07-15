@@ -117,5 +117,5 @@ Species range data can be imported into the tool from NetCDF files. To import th
 `data/constraints/`, then run:
 
 ``` text
-$ docker compose exec server poetry run python manage.py publish_netcdf --overwrite /project/data/constraints/*.nc
+$ python manage.py publish_netcdf --overwrite /project/data/constraints/*.nc
 ```
