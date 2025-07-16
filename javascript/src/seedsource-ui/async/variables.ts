@@ -1,6 +1,5 @@
 import resync from '../resync'
 import { requestTransfer, receiveTransfer, requestValue, receiveValue, setVariablesRegion } from '../actions/variables'
-import { requestPopupValue, receivePopupValue } from '../actions/popup'
 import { urlEncode } from '../io'
 import { getServiceName } from '../utils'
 import config, { DefaultVariable } from '../config'
@@ -48,24 +47,6 @@ const climateRegionObjectiveSelect = ({ runConfiguration }: any) => {
     climate,
     region,
     objective,
-  }
-}
-
-const popupSelect = ({ runConfiguration, popup }: any) => {
-  const { objective, climate, variables } = runConfiguration
-  let { point } = popup
-  const { region } = popup
-
-  if (point) {
-    point = { x: point.x, y: point.y }
-  }
-
-  return {
-    objective,
-    point,
-    climate,
-    variables: variables.map((item: any) => item.name),
-    region,
   }
 }
 
@@ -199,23 +180,5 @@ export default (store: any) => {
     const { region } = state || null
 
     dispatch(setVariablesRegion(region))
-  })
-
-  // Values at point (for popup)
-  resync(store, popupSelect, (state, io, dispatch, previousState) => {
-    if (previousState !== undefined) {
-      const { variables: current, region } = state
-      const { variables: old } = previousState
-
-      // Only need to refresh if the variables have changed
-      if (JSON.stringify(current) !== JSON.stringify(old)) {
-        const requests = fetchValues(store, state, io, dispatch, previousState, region)
-
-        requests.forEach((request: any) => {
-          dispatch(requestPopupValue(request.item.name))
-          request.promise.then((json: any) => dispatch(receivePopupValue(request.item.name, json)))
-        })
-      }
-    }
   })
 }

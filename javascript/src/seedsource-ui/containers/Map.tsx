@@ -4,9 +4,8 @@
  */
 
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { connect, ConnectedProps } from 'react-redux'
-import L, { LeafletMouseEvent, Popup } from 'leaflet'
+import L, { LeafletMouseEvent } from 'leaflet'
 import { topojson } from 'leaflet-omnivore'
 import { Lethargy } from 'lethargy'
 import 'leaflet-basemaps'
@@ -16,23 +15,17 @@ import 'leaflet-range/L.Control.Range'
 import { t, c } from 'ttag'
 
 import * as io from '../io'
-import { isClose, getZoneLabel } from '../utils'
+import { isClose } from '../utils'
 import config, { variables as allVariables, timeLabels, regions, regionsBoundariesUrl } from '../config'
 import { setMapOpacity, setBasemap, setZoom, setMapCenter, setMapMode } from '../actions/map'
 import { toggleLayer } from '../actions/layers'
-import { setPopupLocation, resetPopupLocation } from '../actions/popup'
 import { setPoint, addUserSite } from '../actions/point'
 import { LegendControl, ButtonControl } from '../leaflet-controls'
 
 import 'leaflet.vectorgrid'
 import { GeoJSON } from 'geojson'
 import { CustomLayer } from '../reducers/customLayers'
-
-type PopupInfo = {
-  popup: Popup
-  point: { x: number; y: number }
-  content: HTMLElement
-}
+import Popup from '../components/Popup'
 
 const iconRetinaUrl = require('leaflet/dist/images/marker-icon-2x.png')
 const iconUrl = require('leaflet/dist/images/marker-icon.png')
@@ -48,7 +41,7 @@ L.Icon.Default.mergeOptions({
 
 const connector = connect(
   (state: any) => {
-    const { runConfiguration, map, job, legends, popup, lastRun, layers, customLayers } = state
+    const { runConfiguration, map, job, legends, lastRun, layers, customLayers } = state
     const { opacity, center, zoom, mode } = map
     const {
       objective,
@@ -76,7 +69,6 @@ const connector = connect(
       opacity,
       job,
       legends,
-      popup,
       unit,
       method,
       geometry,
@@ -110,22 +102,13 @@ const connector = connect(
         dispatch(setMapOpacity(opacity))
       },
 
-      onMapClick: (lat: number, lon: number) => {
+      onSetPoint: (lat: number, lon: number) => {
         dispatch(setPoint(lat, lon))
       },
 
       onAddSite: (lat: number, lon: number, label: string) => {
         dispatch(addUserSite({ lat, lon }, label))
         dispatch(setMapMode('normal'))
-      },
-
-      onPopupLocation: (lat: number, lon: number) => {
-        dispatch(setPopupLocation(lat, lon))
-      },
-
-      onPopupClose: () => {
-        // Dispatching this event immediately causes state warnings
-        setTimeout(() => dispatch(resetPopupLocation()), 1)
       },
 
       onToggleVisibility: () => {
@@ -143,7 +126,7 @@ type MapProps = ConnectedProps<typeof connector> & {
   simple?: boolean
 }
 
-class Map extends React.Component<MapProps> {
+class Map extends React.Component<MapProps, { popupPoint: { x: number; y: number } | null }> {
   map: any
 
   mapNode: HTMLElement | null
@@ -173,8 +156,6 @@ class Map extends React.Component<MapProps> {
   visibilityButton: any
 
   boundaryName: any
-
-  popup: PopupInfo | null
 
   mapIsMoving: boolean
 
@@ -212,7 +193,6 @@ class Map extends React.Component<MapProps> {
     this.opacityControl = null
     this.visibilityButton = null
     this.boundaryName = null
-    this.popup = null
     this.mapIsMoving = false
     this.shpLayers = []
     this.shpData = []
@@ -220,6 +200,8 @@ class Map extends React.Component<MapProps> {
     this.displayedVectorLayers = []
     this.userSitesLayer = null
     this.simple = props.simple!
+
+    this.state = { popupPoint: null }
   }
 
   // Initial map setup
@@ -340,21 +322,14 @@ class Map extends React.Component<MapProps> {
     })
 
     if (!this.simple) {
-      this.map.on('popupclose', () => {
-        const { onPopupClose } = this.props
-        onPopupClose()
-      })
-
       this.map.on('click', (e: LeafletMouseEvent) => {
-        const { onPopupLocation } = this.props
-
         if (!e.latlng) {
           return
         }
 
         this.updateBoundaryPreview(e.latlng)
 
-        onPopupLocation(e.latlng.lat, e.latlng.lng)
+        this.setState({ popupPoint: { x: e.latlng.lng, y: e.latlng.lat } })
       })
     }
 
@@ -389,9 +364,8 @@ class Map extends React.Component<MapProps> {
 
   componentDidUpdate(prevProps: MapProps) {
     const { regionMethod, resultRegion } = this.props
-    if (regionMethod === 'auto' && prevProps.regionMethod !== 'auto' && this.popup) {
-      const { point } = this.popup
-      this.updateBoundaryPreview({ lng: point.x, lat: point.y })
+    if (regionMethod === 'auto' && prevProps.regionMethod !== 'auto' && this.state.popupPoint) {
+      this.updateBoundaryPreview({ lng: this.state.popupPoint.x, lat: this.state.popupPoint.y })
     }
 
     if (prevProps.resultRegion !== resultRegion) {
@@ -689,126 +663,6 @@ class Map extends React.Component<MapProps> {
     this.shpData = data
   }
 
-  updatePopup(popup: any, unit: any) {
-    const { mode } = this.props
-    const { point, elevation, values, zones } = popup
-
-    if (point !== null) {
-      if (this.popup === null) {
-        this.popup = {
-          popup: L.popup({ closeOnClick: false }).setLatLng([point.y, point.x]).addTo(this.map),
-          point,
-          content: document.createElement('div'),
-        }
-      }
-
-      setTimeout(() => {
-        if (this.popup) {
-          ReactDOM.render(
-            <>
-              <div className="map-info-popup">
-                <div className="columns is-mobile">
-                  <div className="column">
-                    <div>{t`Location`}</div>
-                    <div className="has-text-weight-bold">
-                      {point.y.toFixed(2)}, {point.x.toFixed(2)}
-                    </div>
-                  </div>
-                  <div className="column">
-                    <div>{t`Elevation`}</div>
-                    <div className="has-text-weight-bold">
-                      {`${Math.round(elevation / 0.3048)} ${c("Abbreviation of 'feet' (measurement)")
-                        .t`ft`} (${Math.round(elevation)} ${c("Abbreviation of 'meters'").t`m`})`}
-                    </div>
-                  </div>
-                </div>
-
-                {!!values.length && (
-                  <>
-                    <h6 className="title is-6">{t`Climate`}</h6>
-                    <table>
-                      <tbody>
-                        {values.map((item: any) => {
-                          const variableConfig = allVariables.find(variable => variable.name === item.name)
-                          const { multiplier, units }: { multiplier: number; units: any } = variableConfig!
-                          let value: string | number = c('i.e., Not Applicable').t`N/A`
-                          let unitLabel = units.metric.label
-
-                          if (item.value !== null) {
-                            value = item.value / multiplier
-
-                            let { precision } = units.metric
-                            if (unit === 'imperial') {
-                              precision = units.imperial.precision
-                              unitLabel = units.imperial.label
-                              value = units.imperial.convert(value)
-                            }
-
-                            value = (value as number).toFixed(precision)
-                          }
-
-                          return (
-                            <tr key={item.name}>
-                              <td>{item.name}</td>
-                              <td className="has-text-weight-bold">
-                                {value} {unitLabel}
-                              </td>
-                            </tr>
-                          )
-                        })}
-                      </tbody>
-                    </table>
-                  </>
-                )}
-
-                {!!zones.length && (
-                  <>
-                    <h6 className="title is-6">{t`Available Zones`}</h6>
-                    <ul className="popup-zones">
-                      {zones.map((item: any) => (
-                        <li key={item.id}>{getZoneLabel(item)}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-
-                <button
-                  type="button"
-                  className="button is-primary is-fullwidth"
-                  onClick={() => {
-                    const { point: newPoint } = this.popup!
-                    const { mode: newMode } = this.props
-
-                    this.cancelBoundaryPreview()
-                    this.map.closePopup(this.popup!.popup)
-
-                    if (newMode === 'add_sites') {
-                      const { onAddSite } = this.props
-                      onAddSite(newPoint.y, newPoint.x, '')
-                    } else {
-                      const { onMapClick } = this.props
-                      onMapClick(newPoint.y, newPoint.x)
-                    }
-                  }}
-                >
-                  {mode === 'add_sites' ? t`Add Location` : t`Set Point`}
-                </button>
-              </div>
-            </>,
-            this.popup!.content,
-          )
-          this.popup!.popup.setContent(this.popup!.content)
-        }
-      }, 1)
-
-      this.popup.popup.setLatLng([point.y, point.x])
-    } else if (this.popup) {
-      this.cancelBoundaryPreview()
-      this.map.closePopup(this.popup.popup)
-      this.popup = null
-    }
-  }
-
   updateMapCenter(center: [lat: number, lng: number]) {
     if (this.mapIsMoving) {
       return
@@ -957,7 +811,6 @@ class Map extends React.Component<MapProps> {
         climate,
         opacity,
         legends,
-        popup,
         unit,
         method,
         zone,
@@ -982,7 +835,6 @@ class Map extends React.Component<MapProps> {
       this.updateOpacity(opacity)
       this.updateLegends(legends, layers, unit, state)
       this.updateZoneLayer(method, zone, zoneConfig, geometry)
-      this.updatePopup(popup, unit)
       this.updateMapCenter(center)
       this.updateMapZoom(zoom)
       this.updateShapefileLayer(shapefileConstraints, customLayers)
@@ -1019,6 +871,27 @@ class Map extends React.Component<MapProps> {
 
     return (
       <div className="map-container">
+        {this.state.popupPoint && (
+          <Popup
+            mode={this.props.mode}
+            point={this.state.popupPoint}
+            map={this.map}
+            unit={this.props.unit}
+            onClose={() => {
+              this.cancelBoundaryPreview()
+              this.setState({ popupPoint: null })
+            }}
+            onSave={(x: number, y: number) => {
+              if (this.props.mode === 'add_sites') {
+                const { onAddSite } = this.props
+                onAddSite(y, x, '')
+              } else {
+                const { onSetPoint } = this.props
+                onSetPoint(y, x)
+              }
+            }}
+          />
+        )}
         <div
           ref={input => {
             this.mapNode = input
