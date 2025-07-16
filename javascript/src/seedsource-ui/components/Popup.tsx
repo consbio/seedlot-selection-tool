@@ -41,6 +41,8 @@ class Popup extends React.Component<PopupProps, PopupState> {
     const { point } = this.props
     const pointIsValid = point !== null && point.x && point.y
     if (pointIsValid) {
+      this.setState({ region: null, zones: [], elevation: 0 })
+
       // Update popup regions
       const regionUrl = `${config.apiRoot}regions/?${io.urlEncode({
         point: `${point.x},${point.y}`,
@@ -84,11 +86,6 @@ class Popup extends React.Component<PopupProps, PopupState> {
 
                 this.setState({ elevation: value })
               })
-              .catch(e => {
-                if (e) {
-                  throw e
-                }
-              })
 
             /* // Set values at point
             const requests = fetchValues(store, state, io, dispatch, previousState, region)
@@ -97,11 +94,6 @@ class Popup extends React.Component<PopupProps, PopupState> {
                 dispatch(requestPopupValue(request.item.name))
                 request.promise
                   .then((json: any) => this.setState({values: })dispatch(receivePopupValue(request.item.name, json)))
-                  .catch((e: Error | undefined) => {
-                    if (e) {
-                      throw e
-                    }
-                  })
               })
             } */
 
@@ -120,16 +112,6 @@ class Popup extends React.Component<PopupProps, PopupState> {
                   zones,
                 })
               })
-              .catch(e => {
-                if (e) {
-                  throw e
-                }
-              })
-          }
-        })
-        .catch(e => {
-          if (e) {
-            throw e
           }
         })
     }
