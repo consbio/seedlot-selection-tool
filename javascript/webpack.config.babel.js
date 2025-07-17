@@ -13,12 +13,12 @@ const languages = [
   },
   {
     name: 'es-mx',
-    file: path.resolve('./locales/es_MX/sst-js.po'),
+    file: path.resolve('./locales/es_MX/sst-js-merged.po'),
   },
 ]
 
 export default languages.map(language => {
-  const ttag = {}
+  const ttag = { allowFuzzy: true }
 
   if (language.name !== 'default') {
     ttag.resolve = { translations: language.file }
