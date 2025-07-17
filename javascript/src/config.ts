@@ -38,34 +38,6 @@ export default () => {
     logo: Logo as string,
     species: [
       {
-        name: 'psme',
-        label: t`Douglas-fir`,
-      },
-      {
-        name: 'pico',
-        label: t`Lodgepole pine`,
-      },
-      {
-        name: 'piba',
-        label: t`Jack pine`,
-      },
-      {
-        name: 'pipo',
-        label: t`Ponderosa pine`,
-      },
-      {
-        name: 'pima',
-        label: t`Black spruce`,
-      },
-      {
-        name: 'thpl',
-        label: t`Western red cedar`,
-      },
-      {
-        name: 'pimo',
-        label: t`Western white pine`,
-      },
-      {
         name: 'abam',
         label: t`Pacific silver fir`,
       },
@@ -90,6 +62,14 @@ export default () => {
         label: t`Red alder`,
       },
       {
+        name: 'artr',
+        label: 'Wyoming/Basin Big Sagebrush',
+      },
+      {
+        name: 'atva',
+        label: 'Mountain big sagebrush',
+      },
+      {
         name: 'cade27',
         label: t`Incense cedar`,
       },
@@ -110,6 +90,14 @@ export default () => {
         label: t`Whitebark pine`,
       },
       {
+        name: 'piba',
+        label: t`Jack pine`,
+      },
+      {
+        name: 'pico',
+        label: t`Lodgepole pine`,
+      },
+      {
         name: 'pien',
         label: t`Engelmann spruce`,
       },
@@ -126,12 +114,36 @@ export default () => {
         label: t`Sugar pine`,
       },
       {
+        name: 'pima',
+        label: t`Black spruce`,
+      },
+      {
+        name: 'pimo',
+        label: t`Western white pine`,
+      },
+      {
+        name: 'pipo',
+        label: t`Ponderosa pine`,
+      },
+      {
         name: 'pipos',
         label: t`Ponderosa pine var. scopulorum`,
       },
       {
+        name: 'psme',
+        label: t`Douglas-fir`,
+      },
+      {
+        name: 'pssp',
+        label: 'Bluebunch wheatgrass',
+      },
+      {
         name: 'tabr2',
         label: t`Pacific yew`,
+      },
+      {
+        name: 'thpl',
+        label: t`Western red cedar`,
       },
       {
         name: 'tshe',
@@ -143,6 +155,15 @@ export default () => {
       },
     ],
     functions: [
+      {
+        name: 'FD',
+        label: 'Flower Date',
+        fn: '381 + (-1.72*LAT) + (-0.011*DD_18)',
+        transfer: 10.4,
+        units: 'days',
+        customTransfer: false,
+        species: ['artr', 'atva'],
+      },
       {
         name: 'HGT',
         label: t`Scaled Height`,
@@ -161,11 +182,51 @@ export default () => {
         customTransfer: false,
         species: ['pien'],
       },
+      {
+        name: 'PC1',
+        label: 'PC1',
+        fn: '17.12 + 0.02*TD - 0.02*SHM + 0.47*EMT',
+        transfer: 11.53,
+        customTransfer: false,
+        species: ['pssp'],
+      },
+      {
+        name: 'PC2',
+        label: 'PC2',
+        fn: '3.37 + 0.02*TD - 0.007*SHM - 0.02*FFP',
+        transfer: 10.45,
+        customTransfer: false,
+        species: ['pssp'],
+      },
+      {
+        name: 'PC3',
+        label: 'PC3',
+        fn: '-2.07 - 0.004*PAS + 0.004*CMD',
+        transfer: 3.55,
+        customTransfer: false,
+        species: ['pssp'],
+      },
+      {
+        name: 'S',
+        label: 'Survival',
+        fn: '-6.3 + (0.284*TD) + (0.007*PPT_sm)',
+        transfer: 0.46,
+        customTransfer: false,
+        species: ['artr'],
+      },
+      {
+        name: 'S-atva',
+        label: 'Survival',
+        fn: '-5.074 + (0.216*TD)',
+        transfer: 0.292,
+        customTransfer: false,
+        species: ['atva'],
+      },
     ],
     defaultVariables: [
       {
         variable: 'MCMT',
-        getValue: dispatch => dispatch(receiveTransfer('MCMT', 20, null, null)),
+        getValue: dispatch => dispatch(receiveTransfer('MCMT', 2, null, null)),
       },
       {
         variable: 'SHM',
