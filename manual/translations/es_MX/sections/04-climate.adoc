@@ -1,0 +1,34 @@
+=== Paso 4. Seleccionar los escenarios climáticos
+
+==== ¿A qué clima están adaptados los lotes de semillas?
+
+El primer paso es seleccionar el período de tiempo (dado como un promedio de 30 años conocido como clima normal) que representa el clima al que se adaptan los lotes de semillas. Por lo general, se supone que es el clima que tiene la mayor influencia en los padres del lote de semillas. Para plantas más longevas (por ejemplo, árboles) se recomienda elegir 1961 -1990. Para las especies de vida más corta (por ejemplo, gramíneas y hierbas), un período de 1981-2010 o 1991-2020 puede ser más adecuado.
+
+Por medio del menú desplegable, seleccione:
+
+* 1961 - 1990
+* 1981 - 2010
+* 1991 - 2020
+
+==== ¿Cuándo conviene que las plantas estén mejor adaptadas al sitio de plantación?
+
+El siguiente paso es elegir un periodo que represente el clima al que los árboles plantados deberán adaptarse de forma óptima en su sitio de plantación. Esto puede ser un poco confuso para los administradores forestales, ya que los árboles longevos deben adaptarse a corto plazo, además de adaptarse a largo plazo. El clima es un objetivo en movimiento. Si se apunta demasiado lejos en el futuro, posiblemente se vean daños por frío a corto plazo en los árboles trasladados de climas más cálidos a climas fríos.
+
+La TSM permite a los usuarios explorar diferentes escenarios de cambio climático al observar diferentes períodos de tiempo futuros y trayectorias de concentración relativa (RCP) supuestas. La TSM también permite a los usuarios considerar la adaptación a climas pasados, es decir, si se ignoró el cambio climático (1961 - 1990 antes del cambio climático apreciable) o si se consideraron los cambios recientes en el clima (1981 - 2010 o 1991 - 2020). Tenga en cuenta que el período de tiempo actual (2011-2040) representa proyecciones modeladas y no observaciones.
+
+Use el menú desplegable para seleccionar:
+
+* 1961 - 1990
+* 1981 - 2010
+* 1991 - 2020
+* 2011 - 2040
+* 2041 - 2070
+* 2071 - 2100
+
+Para climas futuros (es decir, de 2011 a 2100), seleccione también la Trayectoria Socioeconómica Compartida (SSP), que está asociada con diferentes niveles de gases de efecto invernadero atmosféricos y cambio climático. De acuerdo con el IE6 del IPCC, el escenario de emisiones "intermedias" de SSP245 tiene un aumento proyectado en la temperatura media anual de 2,7 °C para 2100 (rango = 2,1-3,5 °C), el escenario SSP370 "alto" tiene un aumento proyectado de 3,6 °C (rango = 2,8 - 4,6 °C), y el escenario SSP585 "muy alto" tiene un aumento proyectado de 4,4 °C (rango = 3,3 - 5,7 °C).
+
+Use el menú desplegable para seleccionar:
+
+* SSP245
+* SSP370
+* SSP585

@@ -1,0 +1,3 @@
+=== Paso 7. Aplicar limitaciones
+
+La información cartográfica proporcionada de la SST se puede limitar aún más mediante el uso de límites geográficos o de una gama de especies. El uso de limitaciones excluirá la parte de la información climática proporcionada que esté más allá de los límites geográficos impuestos o de la gama de especies actual. Las limitaciones geográficas incluyen: latitud, longitud, elevación, distancia y fotoperiodo. Las limitaciones de la gama de especies se basan en modelos recientes de clima-nicho. También hay una opción para importar su propio archivo shapefile para usarlo como una limitación.

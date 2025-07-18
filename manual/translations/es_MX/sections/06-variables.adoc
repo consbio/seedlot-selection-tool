@@ -1,0 +1,9 @@
+=== Paso 6. Seleccionar variables climáticas
+
+Seleccione una o más variables climáticas para cartografiarlas. La información climática se deriva de una aplicación de reducción de escala climática llamada ClimateNA (consulte la pestaña para obtener más información). También tienes la opción de 'Elegir automáticamente', en cuyo caso, las variables climáticas elegidas serán la temperatura media del mes más frío (MCMT) y el índice calor:humedad del verano (SHM). Estas variables climáticas se eligen sobre la base de la suposición de que los árboles de los bosques templados (u otras plantas) se adaptan principalmente a las temperaturas frías en invierno y a la aridez en verano. Esta opción especifica un límite de transferencia para MCMT de '+/- 2,0 °C' y para SHM 'de +/-' la mitad del valor en la ubicación especificada en el paso 2. Estos límites de transferencia pueden ser modificados. Después de elegir las variables climáticas, la tabla resultante incluye:
+
+* *Name* -- el nombre abreviado de la variable ClimateNA
+* *Centro* -- el valor climático en el centro de la salida mapeada
+* *Límite de transferencia* -- el límite de transferencia utilizado para mostrar la extensión de la salida mapeada
+
+Se recomienda a los usuarios no seleccionar demasiadas variables climáticas, en especial variables no relacionadas con la adaptación. El uso de muchas variables climáticas podría dar lugar a coincidencias climáticas excesivamente conservadoras; cuantas más variables climáticas se incluyan, más pequeñas serán las áreas mapeadas. También es mejor evitar las variables que están muy correlacionadas.
