@@ -8,6 +8,10 @@
 
 .about-text {
   font-size: 0.9rem;
+
+  & + .about-text {
+    margin-top: 10px;
+  }
 }
 
 .about-step {

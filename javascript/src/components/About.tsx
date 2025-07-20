@@ -1,6 +1,6 @@
 import React from 'react'
 import { t } from 'ttag'
-import HandsImage from '../../images/hands.jpg'
+import SSTCollage from '../../images/sst-collage.png'
 import ObjectiveImage from '../../images/about_objective.gif'
 import LocationImage from '../../images/about_location.gif'
 import RegionImage from '../../images/about_region.gif'
@@ -11,12 +11,21 @@ import MapImage from '../../images/about_map.gif'
 
 const About = () => (
   <div>
-    <h4 className="title is-4">{t`Planting Healthy Forests`}</h4>
-    <img src={HandsImage} className="about-hands" alt={t`Hands holding a small tree seedling`} />
+    <h4 className="title is-4">{t`Planting for the future`}</h4>
+    <img
+      src={SSTCollage}
+      alt={t`Four images arranged in a square. Clockwise from top-left: a hand holding a bunch of small seeds; a 
+      clear-cut hillside; several flowering sagebrush; conifer trees in a mist.`}
+    />
     <p className="about-text">
-      {t`The Seedlot Selection Tool (SST) is a GIS mapping program designed to help forest managers match seedlots with
-        planting sites based on climatic information. The climates of the planting sites can be chosen to represent
-        current climates, or future climates based on selected climate change scenarios.`}
+      {t`Over a century of genetic research has shown that environment, in particularly climate, strongly affects plant 
+      genetic adaptation and the geography distance seed can be moved from its source location. The Seedlot Selection 
+      Tool (SST) is a GIS mapping program designed to provide information on seed collection and transfer of native 
+      plants and help forest managers match seedlots with planting sites based on climatic information.`}
+    </p>
+    <p className="about-text">
+      {t`The climates of the planting sites can be chosen to represent current climates, or future climates based on 
+      selected climate change scenarios.`}
     </p>
     <div>&nbsp;</div>
     <div>
