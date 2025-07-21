@@ -297,26 +297,11 @@ class Menu extends React.Component {
             <em>{t`Future climate data`}</em>
 
             <p>
-              {(() => {
-                const name = (
-                  <a
-                    key="knutti"
-                    href="http://onlinelibrary.wiley.com/doi/10.1002/grl.50256/abstract"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Knutti et al (2013)
-                  </a>
-                )
-                return jt`The climate data for future periods, including 2020s (2010-2039), 2050s (2040-69) and 2080s 
+              {t`The climate data for future periods, including 2020s (2010-2039), 2050s (2040-69) and 2080s 
                 (2070-2100), were from General Circulation Models (GCMs) of the Coupled Model Intercomparison Project 
-                (CMIP5) included in the IPCC Fifth Assessment Report (IPCC 2014). Fifteen GCMs were selected for two 
-                greenhouse gas emission scenarios (RCP 4.5 and RCP 8.5). When multiple ensembles are available for each 
-                GCM, an average was taken over the available (up to five) ensembles. Ensembles among the 15 GCMs are 
-                also available. The 15 AOGCMs are CanESM2, ACCESS1.0, IPSL-CM5A-MR, MIROC5, MPI-ESM-LR, CCSM4, 
-                HadGEM2-ES, CNRM-CM5, CSIRO Mk 3.6, GFDL-CM3, INM-CM4, MRI-CGCM3, MIROC-ESM, CESM1-CAM5, GISS-E2R and 
-                were chosen to represent all major clusters of similar AOGCMs by ${name}.`
-              })()}
+                (CMIP6) included in the IPCC sixth assessment report (AR6). Eight GCMs were selected for three 
+                greenhouse gas emission scenarios (SSP245, SSP370, and SSP585). The 8 GCMss are ACCESS-ESM1-5, 
+                CNRM-ESM2-1, EC-Earth3, GFDL-ESM4, GISS-E2-1-G, MIROC6, MPI-ESM1-2-HR, and MRI-ESM2-0.`}
             </p>
 
             <h4 className="title is-4">{t`Climate variables used in Seedlot Select Tool`}</h4>
