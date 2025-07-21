@@ -5,8 +5,10 @@ import NavItemDropdown from '../seedsource-ui/components/NavItemDropdown'
 import { getCookies } from '../seedsource-ui/utils'
 import Background1 from '../../images/background1.jpg'
 import Background2 from '../../images/background2.jpg'
-import FSLogo from '../../images/fs_logo.png'
+import FSLogo from '../../images/usfs_logo.png'
 import OSULogo from '../../images/osu_logo.png'
+import BLMLogo from '../../images/blm_logo.png'
+import GBNPPLogo from '../../images/gbnpp_logo.png'
 import CBILogo from '../../images/cbi_logo.png'
 import ClimateHubLogo from '../../images/nw_climate_hub_logo.png'
 import SSTInstructions from '../../documents/SST User Guide.pdf'
@@ -388,25 +390,31 @@ class Menu extends React.Component {
           >
             <p>
               {t`The Seedlot Selection Tool is a collaboration between the US Forest Service, Oregon State University, 
-              and the Conservation Biology Institute. Initial conceptualization and development was done by Glenn Howe 
-              at Oregon State University College of Forestry and Brad St.Clair at the US Forest Service Pacific 
-              Northwest Research Station, with considerable input from Ron Beloin while he was working at Oregon State 
-              University. The Conservation Biology Institute was brought onboard to bring the project to fruition 
-              through their expertise in web site design and programming for spatial applications. Personnel at the 
-              Conservation Biology Institute included Nikolas Stevenson-Molnar (tool developer), Brendan Ward (project 
-              manager), and Dominique Bachelet (project co-PI).`}
+              the Bureau of Land Management, and the Conservation Biology Institute. Initial conceptualization and 
+              development was done by Glenn Howe at Oregon State University College of Forestry and Brad St.Clair at the 
+              US Forest Service Pacific Northwest Research Station, with considerable input from Ron Beloin while he was 
+              working at Oregon State University. The Conservation Biology Institute was brought onboard to bring the 
+              project to fruition through their expertise in web site design and programming for spatial applications. 
+              Personnel at the Conservation Biology Institute included Nikolas Stevenson-Molnar (tool developer), 
+              Brendan Ward (project manager), and Dominique Bachelet (project co-PI).`}
             </p>
             <p>
               {t`Initial funding for the Seedlot Selection Tool came from the US Forest Service Washington Office.
                 Subsequent funding came from the USFS Pacific Northwest Research Station, Oregon State University,
-                Conservation Biology Institute, the USDA Northwest Climate Hub, Natural Resources Canada, 
-                USFS International Programs, and USFS State & Private`}
+                Conservation Biology Institute, the USDA Northwest Climate Hub, Natural Resources Canada, USFS 
+                International Programs, and USFS State & Private. Funding for additional functionality was provided 
+                by the Great Basin Native Plant Program.`}
             </p>
             <p>&nbsp;</p>
-            <div className="columns">
+            <div className="columns logos">
               <div className="column">
                 <a href="http://www.fs.fed.us/" target="_blank" rel="noreferrer">
                   <img src={FSLogo} alt={t`United States Forest Service`} />
+                </a>
+              </div>
+              <div className="column">
+                <a href="https://www.blm.gov/" target="_blank" rel="noreferrer">
+                  <img src={BLMLogo} alt="Conservation Biology Institute" style={{ maxHeight: '50px' }} />
                 </a>
               </div>
               <div className="column">
@@ -415,10 +423,17 @@ class Menu extends React.Component {
                 </a>
               </div>
               <div className="column">
+                <a href="http://www.greatbasinnpp.org/" target="_blank" rel="noreferrer">
+                  <img src={GBNPPLogo} alt="Great Basin Native Plant Project" style={{ maxHeight: '50px' }} />
+                </a>
+              </div>
+              <div className="column">
                 <a href="http://consbio.org" target="_blank" rel="noreferrer">
                   <img src={CBILogo} alt={t`Conservation Biology Institute`} />
                 </a>
               </div>
+            </div>
+            <div className="columns">
               <div className="column is-half">
                 <a href="https://www.climatehubs.oce.usda.gov/hubs/northwest" target="_blank" rel="noreferrer">
                   <img src={ClimateHubLogo} alt={t`NW Climate Hub`} />
@@ -435,6 +450,24 @@ class Menu extends React.Component {
               {t`USDA Forest Service, Corvallis, Oregon, USA`}
               <br />
               <a href="mailto:bstclair@fs.fed.us">bstclair@fs.fed.us</a>
+            </p>
+            <p>
+              Dr. Bryce Richardson – {t`Co-Principal Investigator`}
+              <br />
+              {t`Research Geneticist, Rocky Mountain Research Station`}
+              <br />
+              {t`USDA Forest Service, Moscow, Idaho, USA`}
+              <br />
+              <a href="mailto:bryce.richardson2@usda.gov">bryce.richardson2@usda.gov</a>
+            </p>
+            <p>
+              Dr. Francis Kilkenny – {t`Co-Principal Investigator`}
+              <br />
+              {t`Research Biologist, Rocky Mountain Research Station`}
+              <br />
+              {t`USDA Forest Service, Boise, Idaho, USA`}
+              <br />
+              <a href="mailto:francis.f.kilkenny@usda.gov">francis.f.kilkenny@usda.gov</a>
             </p>
             <p>
               Nikolas Stevenson-Molnar – {c('i.e., Lead Software Developer').t`Lead Developer`}
