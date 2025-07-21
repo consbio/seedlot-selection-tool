@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-07-17 11:50-0700\n"
+"POT-Creation-Date: 2025-07-21 08:55-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -783,10 +783,36 @@ msgid ""
 msgstr ""
 
 #. type: #img-sunset
-#: sections/appendix.adoc:54
+#: sections/appendix.adoc:55
 msgid ""
 "Richardson, B. A., & Chaney, L. (2018). Climate-based seed transfer of a "
 "widespread shrub: population shifts, restoration strategies, and the "
 "trailing edge. Ecological Applications, 44, "
 "367–10. http://doi.org/10.1002/eap.1804"
+msgstr ""
+
+#. type: Title ====
+#: sections/appendix.adoc:56
+#, no-wrap
+msgid "Engleman spruce traits"
+msgstr ""
+
+#. type: #img-sunset
+#: sections/appendix.adoc:59
+msgid ""
+"Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., & Hamilton Jr, "
+"D. A. (1999). Genetic responses to climate in Pinus contorta: niche breadth, "
+"climate change, and reforestation. Ecological Monographs, 69(3), "
+"375–407. "
+"https://doi.org/10.1890/0012-9615(1999)069%5B0375:GRTCIP%5D2.0.CO;2[https://doi.org/10.1890/0012-9615(1999)069$$[0375:GRTCIP]$$2.0.CO;2]"
+msgstr ""
+
+#. type: #img-sunset
+#: sections/appendix.adoc:60
+msgid ""
+"Rehfeldt, G. E. (2004). Interspecific and intraspecific variation in Picea "
+"engelmannii and its congeneric cohorts: biosystematics, genecology, and "
+"climate change. Gen. Tech. Rep. RMRS-GTR-134. Fort Collins, CO: "
+"U.S. Department of Agriculture, Forest Service, Rocky Mountain Research. 18 "
+"p., 134. https://doi.org/10.2737/rmrs-gtr-134"
 msgstr ""

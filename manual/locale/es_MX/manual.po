@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-07-17 11:50-0700\n"
-"PO-Revision-Date: 2025-07-18 12:18-0700\n"
+"POT-Creation-Date: 2025-07-21 08:55-0700\n"
+"PO-Revision-Date: 2025-07-21 08:55-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_MX\n"
@@ -992,7 +992,7 @@ msgstr ""
 "Global, 23(6), 2499–2508. http://doi.org/10.1111/gcb.13532"
 
 #. type: #img-sunset
-#: sections/appendix.adoc:54
+#: sections/appendix.adoc:55
 #, fuzzy
 msgid ""
 "Richardson, B. A., & Chaney, L. (2018). Climate-based seed transfer of a widespread shrub: "
@@ -1002,3 +1002,51 @@ msgstr ""
 "Richardson, B. A., & Chaney, L. (2018). Transferencia de semillas de un arbusto generalizado basada "
 "en el clima: cambios en la población, estrategias de restauración y el borde de salida. "
 "Aplicaciones Ecológicas, 44, 367–10. http://doi.org/10.1002/eap.1804"
+
+#. type: Title ====
+#: sections/appendix.adoc:56
+#, fuzzy, no-wrap
+msgid "Engleman spruce traits"
+msgstr "Rasgos del abeto Engleman"
+
+#. type: #img-sunset
+#: sections/appendix.adoc:59
+#, fuzzy
+msgid ""
+"Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., & Hamilton Jr, D. A. (1999). Genetic responses "
+"to climate in Pinus contorta: niche breadth, climate change, and reforestation. Ecological "
+"Monographs, 69(3), 375–407. https://doi.org/"
+"10.1890/0012-9615(1999)069%5B0375:GRTCIP%5D2.0.CO;2[https://doi.org/10.1890/0012-9615(1999)069$"
+"$[0375:GRTCIP]$$2.0.CO;2]"
+msgstr ""
+"Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., & Hamilton Jr, D. A. (1999). Respuestas "
+"genéticas al clima en Pinus contorta: amplitud de nicho, cambio climático y reforestación. "
+"Monografías Ecológicas, 69(3), 375–407. https://doi.org/"
+"10.1890/0012-9615(1999)069%5B0375:GRTCIP%5D2.0.CO;2[https://doi.org/10.1890/0012-9615(1999)069$"
+"$[0375:GRTCIP]$$2.0.CO;2]"
+
+#. type: #img-sunset
+#: sections/appendix.adoc:60
+#, fuzzy
+msgid ""
+"Rehfeldt, G. E. (2004). Interspecific and intraspecific variation in Picea engelmannii and its "
+"congeneric cohorts: biosystematics, genecology, and climate change. Gen. Tech. Rep. RMRS-GTR-134. "
+"Fort Collins, CO: U.S. Department of Agriculture, Forest Service, Rocky Mountain Research. 18 p., "
+"134. https://doi.org/10.2737/rmrs-gtr-134"
+msgstr ""
+"Rehfeldt, G. E. (2004). Variación interespecífica e intraespecífica en Picea engelmannii y sus "
+"cohortes congéneres: biosistemática, genecología y cambio climático. Rep. Técnico General RMRS-"
+"GTR-134. Fort Collins, CO: Departamento de Agricultura de EE. UU., Servicio Forestal, Investigación "
+"de las Montañas Rocosas. 18 págs., 134. https://doi.org/10.2737/rmrs-gtr-134"
+
+#, fuzzy
+#~ msgid ""
+#~ "Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., & Hamilton Jr, D. A. (1999). Genetic "
+#~ "responses to climate in Pinus contorta: niche breadth, climate change, and reforestation. "
+#~ "Ecological Monographs, 69(3), 375–407. https://doi.org/"
+#~ "10.1890/0012-9615(1999)069[0375:GRTCIP]2.0.CO;2"
+#~ msgstr ""
+#~ "Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., & Hamilton Jr, D. A. (1999). Respuestas "
+#~ "genéticas al clima en Pinus contorta: amplitud de nicho, cambio climático y reforestación. "
+#~ "Monografías Ecológicas, 69(3), 375–407. https://doi.org/"
+#~ "10.1890/0012-9615(1999)069[0375:GRTCIP]2.0.CO; 2"

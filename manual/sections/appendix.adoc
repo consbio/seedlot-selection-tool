@@ -52,3 +52,9 @@ Chaney, L., Richardson, B. A., & Germino, M. J. (2017). Climate drives adaptive 
 Richardson, B. A., Chaney, L., Shaw, N. L., & Still, S. M. (2017). Will phenotypic plasticity affecting flowering phenology keep pace with climate change? Global Change Biology, 23(6), 2499–2508. http://doi.org/10.1111/gcb.13532
 
 Richardson, B. A., & Chaney, L. (2018). Climate-based seed transfer of a widespread shrub: population shifts, restoration strategies, and the trailing edge. Ecological Applications, 44, 367–10. http://doi.org/10.1002/eap.1804
+
+==== Engleman spruce traits
+
+Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., &  Hamilton Jr, D. A. (1999). Genetic responses to climate in Pinus contorta: niche breadth, climate change, and reforestation. Ecological Monographs, 69(3), 375–407. https://doi.org/10.1890/0012-9615(1999)069%5B0375:GRTCIP%5D2.0.CO;2[https://doi.org/10.1890/0012-9615(1999)069$$[0375:GRTCIP]$$2.0.CO;2]
+
+Rehfeldt, G. E. (2004). Interspecific and intraspecific variation in Picea engelmannii and its congeneric cohorts: biosystematics, genecology, and climate change. Gen. Tech. Rep. RMRS-GTR-134. Fort Collins, CO: U.S. Department of Agriculture, Forest Service, Rocky Mountain Research. 18 p., 134. https://doi.org/10.2737/rmrs-gtr-134
