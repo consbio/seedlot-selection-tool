@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals = 2; plural = (n != 1);\n"
+"mime-version: 1.0\n"
+"X-Generator: Poedit 3.6\n"
+
+#, fuzzy
+msgid "Ponderosa pine var. scopulorum"
+msgstr "Pino ponderosa var. scopulorum"
+
+#, fuzzy
+msgid "Click for full height"
+msgstr "Haga clic para ver la altura completa"
+
+#, fuzzy
+msgid "Value:"
+msgstr "Valor:"
+
+#, fuzzy
+msgid "Please name your function"
+msgstr "Por favor, asigne un nombre a su función"
+
+#, fuzzy
+msgid "There was an error with your function."
+msgstr "Se ha producido un error en la función."
+
+#, fuzzy
+msgid "Error begins at the underlined character"
+msgstr "El error comienza en el carácter subrayado"
+
+#, fuzzy
+msgid "You need to include at least one variable in your function."
+msgstr "Debe incluir al menos una variable en su función."
+
+#, fuzzy
+msgid "is not a known variable"
+msgstr "no es una variable conocida"
+
+#, fuzzy
+msgid "are not known variables"
+msgstr "no son variables conocidas"
+
+#, fuzzy
+msgid "Cancel"
+msgstr "Cancelar"
+
+#, fuzzy
+msgid "Add Function"
+msgstr "Agregar función"
+
+#, fuzzy
+msgid "Select functions"
+msgstr "Seleccionar funciones"
+
+#, fuzzy
+msgid "Select"
+msgstr "Seleccionar"
+
+#, fuzzy
+msgid "Add a custom function..."
+msgstr "Agregue una función personalizada..."
+
+#, fuzzy
+msgid "Trait"
+msgstr "Rasgo"
+
+#, fuzzy
+msgid "Custom value:"
+msgstr "Valor personalizado:"
+
+#, fuzzy
+msgid "Custom climate values"
+msgstr "Valores climáticos personalizados"
+
+#, fuzzy
+msgid "Don't show again"
+msgstr "No volver a mostrar"
+
+#, fuzzy
+msgid "New Future Data"
+msgstr "Nuevos Datos Futuros"
+
+#, fuzzy
+msgid ""
+"The Seedlot Selection Tool will soon incorporate new climate futures based "
+"on ClimateNA 7.50. The new futures\n"
+"will offer three emissions scenarios: SSP245, SSP370, and SSP585."
+msgstr ""
+"La Herramienta de Selección de Lotes de Semillas incorporará próximamente "
+"nuevos futuros climáticos\n"
+"basados ​​en ClimateNA 7.50. Estos nuevos futuros ofrecerán tres escenarios de "
+"emisiones: SSP245, SSP370 y SSP585."
+
+#, fuzzy
+msgid ""
+"Share your saved run with others by sending them this link (your saved run "
+"will load when anyone visits \n"
+"this link). Click the clipboard to copy the link."
+msgstr ""
+"Comparta su carrera guardada con otras personas enviándoles este enlace (su "
+"carrera guardada se cargará cuando alguien la visite \n"
+"este enlace). Haga clic en el portapapeles para copiar el enlace."
+
+#, fuzzy
+msgid "Link icon"
+msgstr "Icono de enlace"
+
+#, fuzzy
+msgid "Loading Url..."
+msgstr "Cargando URL..."
+
+#, fuzzy
+msgid "Clipboard icon"
+msgstr "Icono del portapapeles"
+
+#, fuzzy
+msgid "Copied to clipboard"
+msgstr "Copiado en el portapapeles"
+
+#, fuzzy
+msgid "Get URL"
+msgstr "Obtener URL"
+
+#, fuzzy
+msgid "User Guides"
+msgstr "Guías de usuario"
+
+#, fuzzy
+msgid "Basic Guide"
+msgstr "Guía básica"
+
+#, fuzzy
+msgid "Silviculturists Guide"
+msgstr "Guía de Silvicultores"
+
+#, fuzzy
+msgctxt "\"Little\" is a proper noun"
+msgid "Little's Range Maps"
+msgstr "Mapas de distribución de Little"
