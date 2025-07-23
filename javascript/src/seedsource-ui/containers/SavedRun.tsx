@@ -35,7 +35,7 @@ const SavedRun = ({ active, save, onClick, onLoad, onDelete }: SavedRunProps) =>
   let className = 'configuration-item'
   let modal = null
   const { modified, title } = save
-  const [modalToShow, setModalToShow] = useState<string>('')
+  const [modalToShow, setModalToShow] = useState<'' | 'confirm' | 'messages'>('')
   const [messages, setMessages] = useState<string[]>([])
   const [migratedConfiguration, setMigratedConfiguration] = useState<any>({})
 
@@ -44,31 +44,36 @@ const SavedRun = ({ active, save, onClick, onLoad, onDelete }: SavedRunProps) =>
   }
 
   if (modalToShow === 'confirm') {
-    const footer = (
-      <div style={{ width: '100%' }}>
-        <button type="button" className="button" onClick={() => setModalToShow('')}>
-          {t`Cancel`}
-        </button>
-        <button
-          type="button"
-          className="button is-primary is-pulled-right"
-          onClick={() => {
-            const migration = migrateConfiguration(save.configuration, save.version)
-            setMessages(migration.messages)
-            setMigratedConfiguration(migration.migratedConfiguration)
-            setModalToShow('messages')
-          }}
-        >
-          {t`Confirm`}
-        </button>
-      </div>
-    )
+    const hideModal = () => setModalToShow('')
+
     modal = (
       <ModalCard
         title={t`Load configuration?`}
         active={modalToShow === 'confirm'}
-        onHide={() => setModalToShow('')}
-        footer={footer}
+        onHide={hideModal}
+        footer={(
+          <div style={{ width: '100%' }}>
+            <button type="button" className="button" onClick={hideModal}>
+              {t`Cancel`}
+            </button>
+            <button
+              type="button"
+              className="button is-primary is-pulled-right"
+              onClick={() => {
+                const migration = migrateConfiguration(save.configuration, save.version)
+                setMigratedConfiguration(migration.migratedConfiguration)
+                if (migration.messages?.length) {
+                  setMessages(migration.messages)
+                  setModalToShow('messages')
+                } else {
+                  hideModal()
+                }
+              }}
+            >
+              {t`Confirm`}
+            </button>
+          </div>
+        )}
       >
         {t`Loading this configuration will replace your current settings.`}
       </ModalCard>
@@ -81,13 +86,18 @@ const SavedRun = ({ active, save, onClick, onLoad, onDelete }: SavedRunProps) =>
       onLoad(migratedConfiguration, save)
       setModalToShow('')
     }
-    const footer = (
-      <div style={{ width: '100%' }}>
-        <button type="button" onClick={onHide} className="button is-primary is-pulled-right">{t`OK`}</button>
-      </div>
-    )
+
     modal = (
-      <ModalCard title={t`Notification`} active={modalToShow === 'messages'} onHide={onHide} footer={footer}>
+      <ModalCard
+        title={t`Notification`}
+        active={modalToShow === 'messages'}
+        onHide={onHide}
+        footer={(
+          <div style={{ width: '100%' }}>
+            <button type="button" onClick={onHide} className="button is-primary is-pulled-right">{t`OK`}</button>
+          </div>
+        )}
+      >
         <div>{t`The following issue(s) were encountered while loading your saved run.`}</div>
         <ul>{text}</ul>
       </ModalCard>
