@@ -666,13 +666,29 @@ export const regions = [
 
 export const regionsBoundariesUrl = '/static/geometry/regions.topojson'
 
-export const saveVersion = 2 // Next version should add +1 (must be a larger integer). When updating save version,
+export const saveVersion = 3 // Next version should add +1 (must be a larger integer). When updating save version,
 // also add to `migrations` below.
 
 // `version` is the version you are migrating *from*.
-export const migrations: { version: number; migrate: (configuration: any) => { configuration: any } }[] = [
+export const migrations: {
+  version: number
+  migrate: (configuration: any) => { configuration: any }
+  message: string
+}[] = [
   {
     version: 1,
     migrate: (configuration: any) => ({ ...configuration, customMode: false }),
+    message: '',
+  },
+  {
+    version: 2,
+    migrate: (configuration: any) => {
+      const defaultClimate = {
+        seedlot: { time: '1961_1990', model: null },
+        site: { time: '1961_1990', model: 'ssp245' },
+      }
+      return { ...configuration, climate: defaultClimate }
+    },
+    message: t`The climate model data in your save is outdated. To resolve this issue, please select a new climate scenario.`,
   },
 ]
