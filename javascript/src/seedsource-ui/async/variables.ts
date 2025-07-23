@@ -1,7 +1,7 @@
 import resync from '../resync'
 import { requestTransfer, receiveTransfer, requestValue, receiveValue, setVariablesRegion } from '../actions/variables'
 import { urlEncode } from '../io'
-import { getServiceName } from '../utils'
+import { fetchVariables } from '../utils'
 import config, { DefaultVariable } from '../config'
 
 const transferSelect = ({ runConfiguration }: any) => {
@@ -50,14 +50,7 @@ const climateRegionObjectiveSelect = ({ runConfiguration }: any) => {
   }
 }
 
-export const fetchValues = (
-  store: any,
-  state: any,
-  io: any,
-  dispatch: (action: any) => any,
-  previousState: any,
-  regionIn?: any,
-) => {
+export const fetchValues = (store: any, state: any, io: any, previousState: any, regionIn?: any) => {
   const { objective, point } = state
   const pointIsValid = point !== null && point.x && point.y
   const { runConfiguration } = store.getState()
@@ -78,21 +71,7 @@ export const fetchValues = (
     variables = variables.filter((item: any) => item.value === null)
   }
 
-  const requests = variables.map((item: any) => {
-    const serviceName = getServiceName(item.name, objective, climate, region)
-    const url = `/arcgis/rest/services/${serviceName}/MapServer/identify/?${urlEncode({
-      f: 'json',
-      tolerance: 2,
-      imageDisplay: '1600,1031,96',
-      geometryType: 'esriGeometryPoint',
-      mapExtent: '0,0,0,0',
-      geometry: JSON.stringify(point),
-    })}`
-
-    return { item, promise: io.get(url).then((response: any) => response.json()) }
-  })
-
-  return requests
+  return fetchVariables(variables, objective, climate, region, point, io)
 }
 
 export default (store: any) => {
@@ -167,7 +146,7 @@ export default (store: any) => {
     const { validRegions } = state
 
     if (validRegions.length) {
-      const requests = fetchValues(store, state, io, dispatch, previousState, validRegions[0])
+      const requests = fetchValues(store, state, io, previousState, validRegions[0])
 
       requests.forEach((request: any) => {
         dispatch(requestValue(request.item.name))

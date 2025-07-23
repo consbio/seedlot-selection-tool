@@ -1,25 +1,35 @@
 import React from 'react'
-import { getZoneLabel } from '../utils'
+import { fetchVariables, getZoneLabel } from '../utils'
 import L from 'leaflet'
 import { c, t } from 'ttag'
 import ReactDOM from 'react-dom'
 import config, { variables as allVariables } from '../config'
 import * as io from '../io'
+import runConfiguration from '../reducers/runConfiguration'
 
 type PopupProps = {
   mode: string
   point: { x: number; y: number }
   map: any
   unit: string
+  selectedVariables: any
+  objective: any
+  climate: any
+  region: any
   onSave: (x: number, y: number) => void
   onClose: () => void
+}
+
+type VariableData = {
+  name: string
+  value: number | null
 }
 
 type PopupState = {
   popup: null | L.Popup
   content: HTMLElement
   elevation: number
-  values: []
+  variables: VariableData[]
   zones: []
   region: any
 }
@@ -31,14 +41,30 @@ class Popup extends React.Component<PopupProps, PopupState> {
       popup: null,
       content: document.createElement('div'),
       elevation: 0,
-      values: [],
+      variables: [],
       zones: [],
       region: null,
     }
   }
 
+  updateValue = (name: string, value: number | null) => {
+    const { variables } = this.state
+    const index = variables.findIndex((item: any) => item.name === name)
+
+    let newVariables = [...variables]
+    if (index === -1) {
+      newVariables.push({ name, value })
+    } else {
+      newVariables = variables.slice(0, index).concat([{ name, value }, ...variables.slice(index + 1)])
+    }
+
+    this.setState({ variables: newVariables })
+
+    console.log({ variables, newVariables })
+  }
+
   updateData() {
-    const { point } = this.props
+    const { point, selectedVariables, objective, region, climate } = this.props
     const pointIsValid = point !== null && point.x && point.y
     if (pointIsValid) {
       this.setState({ region: null, zones: [], elevation: 0 })
@@ -58,10 +84,10 @@ class Popup extends React.Component<PopupProps, PopupState> {
           this.setState({ region })
           return region
         })
-        .then(region => {
-          if (region !== null) {
+        .then(regionName => {
+          if (regionName !== null) {
             // Set elevation at point
-            const url = `/arcgis/rest/services/${region}_dem/MapServer/identify/?${io.urlEncode({
+            const url = `/arcgis/rest/services/${regionName}_dem/MapServer/identify/?${io.urlEncode({
               f: 'json',
               tolerance: '2',
               imageDisplay: '1600,1031,96',
@@ -87,15 +113,14 @@ class Popup extends React.Component<PopupProps, PopupState> {
                 this.setState({ elevation: value })
               })
 
-            /* // Set values at point
-            const requests = fetchValues(store, state, io, dispatch, previousState, region)
+            const requests = fetchVariables(selectedVariables, objective, climate, region, point)
             if (requests) {
-              requests.forEach((request: any) => {
-                dispatch(requestPopupValue(request.item.name))
-                request.promise
-                  .then((json: any) => this.setState({values: })dispatch(receivePopupValue(request.item.name, json)))
+              requests.forEach(request => {
+                request.promise.then(json =>
+                  this.updateValue(request.item.name as string, json.results[0]['attributes']['Pixel value']),
+                )
               })
-            } */
+            }
 
             // Find seedzones at point
             const zonesUrl = `${config.apiRoot}seedzones/?${io.urlEncode({ point: `${point.x},${point.y}` })}`
@@ -142,7 +167,7 @@ class Popup extends React.Component<PopupProps, PopupState> {
     setTimeout(() => {
       if (this.state.popup) {
         const { point, unit, mode, onSave, onClose, map } = this.props
-        const { elevation, values, zones } = this.state
+        const { elevation, variables, zones } = this.state
         this.state.popup.setLatLng([point.y, point.x])
         ReactDOM.render(
           <>
@@ -163,12 +188,12 @@ class Popup extends React.Component<PopupProps, PopupState> {
                 </div>
               </div>
 
-              {!!values.length && (
+              {variables.length && (
                 <>
                   <h6 className="title is-6">{t`Climate`}</h6>
                   <table>
                     <tbody>
-                      {values.map((item: any) => {
+                      {variables.map(item => {
                         const variableConfig = allVariables.find(variable => variable.name === item.name)
                         const { multiplier, units }: { multiplier: number; units: any } = variableConfig!
                         let value: string | number = c('i.e., Not Applicable').t`N/A`

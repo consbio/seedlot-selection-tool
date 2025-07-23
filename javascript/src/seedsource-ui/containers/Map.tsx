@@ -55,6 +55,7 @@ const connector = connect(
       constraints,
       userSites,
       activeUserSite,
+      variables,
     } = runConfiguration
     const { geometry, selected: zone, matched } = zones
     const resultRegion = lastRun ? lastRun.region : null
@@ -86,6 +87,7 @@ const connector = connect(
       activeUserSite,
       mode,
       state,
+      variables,
     }
   },
   dispatch => {
@@ -877,6 +879,10 @@ class Map extends React.Component<MapProps, { popupPoint: { x: number; y: number
             point={this.state.popupPoint}
             map={this.map}
             unit={this.props.unit}
+            selectedVariables={this.props.variables}
+            objective={this.props.objective}
+            climate={this.props.climate}
+            region={this.props.region}
             onClose={() => {
               this.cancelBoundaryPreview()
               this.setState({ popupPoint: null })
