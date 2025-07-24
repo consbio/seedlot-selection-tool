@@ -64,23 +64,36 @@ class Popup extends React.Component<PopupProps, PopupState> {
     this.setState({ variables: newVariables })
   }
 
-  updateVariables = () => {
-    const { point, selectedVariables, objective, region, climate } = this.props
-    // Fetch Selected Variable Values at point
-    const requests = fetchVariables(selectedVariables, objective, climate, region, point)
-    if (requests) {
-      requests.forEach(request => {
-        this.setState({ variablesFetching: this.state.variablesFetching + 1 })
-        request.promise.then(json => {
-          this.updateValue(request.item.name as string, json.results[0]['attributes']['Pixel value'])
-          this.setState({ variablesFetching: this.state.variablesFetching - 1 })
+  updateVariables = (selectedVariables: any) => {
+    const { point, objective, region, climate } = this.props
+
+    if (region) {
+      // Fetch Selected Variable Values at point
+      const requests = fetchVariables(selectedVariables, objective, climate, region, point)
+      if (requests) {
+        requests.forEach(request => {
+          this.setState({ variablesFetching: this.state.variablesFetching + 1 })
+          request.promise
+            .then(json => {
+              this.updateValue(request.item.name as string, json.results[0]['attributes']['Pixel value'])
+            })
+            .catch(() => {})
+            .finally(() =>
+              this.setState({ variablesFetching: this.state.variablesFetching ? this.state.variablesFetching - 1 : 0 }),
+            )
         })
+      }
+    } else {
+      this.setState({
+        variables: selectedVariables.map((item: any) => {
+          return { name: item.name, value: null }
+        }),
       })
     }
   }
 
   updateData() {
-    const { point, selectedVariables, objective, region, climate } = this.props
+    const { point, selectedVariables } = this.props
     const pointIsValid = point !== null && point.x && point.y
     if (pointIsValid) {
       this.setState({ region: null, zones: [], elevation: 0 })
@@ -129,7 +142,7 @@ class Popup extends React.Component<PopupProps, PopupState> {
                 this.setState({ elevation: value })
               })
 
-            this.updateVariables()
+            this.updateVariables(selectedVariables)
 
             // Find seedzones at point
             const zonesUrl = `${config.apiRoot}seedzones/?${io.urlEncode({ point: `${point.x},${point.y}` })}`
@@ -145,9 +158,9 @@ class Popup extends React.Component<PopupProps, PopupState> {
                 }))
                 this.setState({
                   zones,
-                  zonesFetching: this.state.zonesFetching - 1,
                 })
               })
+              .finally(() => this.setState({ zonesFetching: this.state.zonesFetching - 1 }))
           }
         })
     }
@@ -167,7 +180,8 @@ class Popup extends React.Component<PopupProps, PopupState> {
     if (JSON.stringify(prevProps.point) !== JSON.stringify(this.props.point)) {
       this.updateData()
     } else if (JSON.stringify(prevProps.selectedVariables) !== JSON.stringify(this.props.selectedVariables)) {
-      this.updateVariables()
+      this.setState({ variables: [] })
+      this.updateVariables(this.props.selectedVariables)
     }
   }
 
