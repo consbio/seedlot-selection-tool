@@ -123,3 +123,19 @@ $ ./manage.py collectstatic
 You should now be able to access the tool at
 `http://<your-server>/sst/`. Of course, for it to be useful, you will
 need data. This is covered in the [import-data](import-data.md) document.
+
+### Setup data folder
+
+By default, data files are expected to be within
+`data/ncdjango/services/` relative to the project root.
+
+For local development, override the value of `NC_SERVICE_DATA_ROOT` in `custom.py`:
+
+```python
+NC_SERVICE_DATA_ROOT = '/project/data/ncdjango/services/'
+```
+
+(The `/project/` prefix is used by Docker)
+
+The folder structure of this directory is covered in the
+`import-data` document.

@@ -152,7 +152,7 @@ NC_SERVICE_DATA_ROOT = '/custom/data/directory'
 ```
 
 The folder structure of this directory is covered in the
-`setup-add-data` document.
+`import-data` document.
 
 
 If you don't have a supervisor configuration file already, create one

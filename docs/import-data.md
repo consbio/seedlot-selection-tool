@@ -73,7 +73,7 @@ tool. Next, import the region into the tool:
 $ python source/manage.py add_region <region> <path to shapefile>
 ```
 
-You should also convert the region boundary to GeoJSON and, it to the
+If it doesn't already exist, you should also convert the region boundary to GeoJSON and add it to the
 directory `sst/static/geometry/<region>_boundary.json`, and re-run:
 
 ``` text
@@ -105,9 +105,17 @@ sets:
 $ python manage.py calculate_zone_transfers
 ```
 
-Running the command with a `source` argument will process only zones for
+Running the command with a `--zones` argument will process only zones for
 a single set:
 
 ``` text
-$ python manage.py calculate_zone_transfers region9
+$ python manage.py calculate_zone_transfers --zones region9
+```
+
+## Species Range Constraints Data
+Species range data can be imported into the tool from NetCDF files. To import the data, place your files in
+`data/constraints/`, then run:
+
+``` text
+$ python manage.py publish_netcdf --overwrite /project/data/constraints/*.nc
 ```
