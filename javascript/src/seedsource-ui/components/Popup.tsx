@@ -5,7 +5,6 @@ import { c, t } from 'ttag'
 import ReactDOM from 'react-dom'
 import config, { variables as allVariables } from '../config'
 import * as io from '../io'
-import runConfiguration from '../reducers/runConfiguration'
 
 type PopupProps = {
   mode: string
@@ -30,7 +29,9 @@ type PopupState = {
   content: HTMLElement
   elevation: number
   variables: VariableData[]
+  variablesFetching: number
   zones: []
+  zonesFetching: number
   region: any
 }
 
@@ -44,6 +45,8 @@ class Popup extends React.Component<PopupProps, PopupState> {
       variables: [],
       zones: [],
       region: null,
+      variablesFetching: 0,
+      zonesFetching: 0,
     }
   }
 
@@ -59,8 +62,6 @@ class Popup extends React.Component<PopupProps, PopupState> {
     }
 
     this.setState({ variables: newVariables })
-
-    console.log({ variables, newVariables })
   }
 
   updateData() {
@@ -113,18 +114,23 @@ class Popup extends React.Component<PopupProps, PopupState> {
                 this.setState({ elevation: value })
               })
 
+            // Fetch Selected Variable Values at point
+
             const requests = fetchVariables(selectedVariables, objective, climate, region, point)
             if (requests) {
               requests.forEach(request => {
-                request.promise.then(json =>
-                  this.updateValue(request.item.name as string, json.results[0]['attributes']['Pixel value']),
-                )
+                this.setState({ variablesFetching: this.state.variablesFetching + 1 })
+                request.promise.then(json => {
+                  this.updateValue(request.item.name as string, json.results[0]['attributes']['Pixel value'])
+                  this.setState({ variablesFetching: this.state.variablesFetching - 1 })
+                })
               })
             }
 
             // Find seedzones at point
             const zonesUrl = `${config.apiRoot}seedzones/?${io.urlEncode({ point: `${point.x},${point.y}` })}`
 
+            this.setState({ zonesFetching: this.state.zonesFetching + 1 })
             io.get(zonesUrl)
               .then(response => response.json())
               .then((json: any) => {
@@ -135,6 +141,7 @@ class Popup extends React.Component<PopupProps, PopupState> {
                 }))
                 this.setState({
                   zones,
+                  zonesFetching: this.state.zonesFetching - 1,
                 })
               })
           }
@@ -167,7 +174,7 @@ class Popup extends React.Component<PopupProps, PopupState> {
     setTimeout(() => {
       if (this.state.popup) {
         const { point, unit, mode, onSave, onClose, map } = this.props
-        const { elevation, variables, zones } = this.state
+        const { elevation, variables, zones, variablesFetching, zonesFetching } = this.state
         this.state.popup.setLatLng([point.y, point.x])
         ReactDOM.render(
           <>
@@ -188,7 +195,7 @@ class Popup extends React.Component<PopupProps, PopupState> {
                 </div>
               </div>
 
-              {variables.length && (
+              {!!variables.length && !variablesFetching && (
                 <>
                   <h6 className="title is-6">{t`Climate`}</h6>
                   <table>
@@ -226,7 +233,7 @@ class Popup extends React.Component<PopupProps, PopupState> {
                 </>
               )}
 
-              {!!zones.length && (
+              {!!zones.length && !zonesFetching && (
                 <>
                   <h6 className="title is-6">{t`Available Zones`}</h6>
                   <ul className="popup-zones">
