@@ -9,7 +9,6 @@ import variables from './seedsource-ui/async/variables'
 import zones from './seedsource-ui/async/zones'
 import legends from './seedsource-ui/async/legends'
 import point from './seedsource-ui/async/point'
-import popup from './seedsource-ui/async/popup'
 import traits from './seedsource-ui/async/traits'
 import customFunctions from './seedsource-ui/async/customFunctions'
 import Sidebar from './seedsource-ui/containers/Sidebar'
@@ -57,6 +56,5 @@ variables(store)
 zones(store)
 legends(store)
 point(store)
-popup(store)
 traits(store)
 customFunctions(store)

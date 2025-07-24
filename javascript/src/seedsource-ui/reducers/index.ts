@@ -8,7 +8,6 @@ import job from './job'
 import saves from './saves'
 import legends from './legends'
 import error from './error'
-import popup from './popup'
 import layers from './layers'
 import customLayers from './customLayers'
 
@@ -25,7 +24,6 @@ export default combineReducers({
   reportIsFetching,
   report,
   error,
-  popup,
   layers,
-  customLayers
+  customLayers,
 })
