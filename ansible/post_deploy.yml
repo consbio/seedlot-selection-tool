@@ -1,0 +1,45 @@
+---
+- name: Run post-deploy actions
+  hosts: webservers
+  environment:
+    PATH: '/home/sst/.local/bin:/usr/local/bin:{{ lookup("env", "PATH") }}'
+    SEEDSOURCE_DEPLOY_PROFILE: production
+    LD_LIBRARY_PATH: '/usr/local/lib:/usr/local/lib64'
+    AWS_SECRETS_KEY: sst-production
+  tasks:
+    - name: Install Python dependencies
+      become: true
+      become_user: sst
+      ansible.builtin.shell: |
+        poetry env use python3.11 && \
+        poetry sync && \
+        poetry run pip install gdal==3.11.3 && \
+        poetry run pip install gunicorn
+      args:
+        chdir: /home/sst/apps/seedlot-selection-tool
+    - name: Apply database migrations
+      become: true
+      become_user: sst
+      ansible.builtin.shell: |
+        poetry env use python3.11 && \
+        poetry run python manage.py migrate --no-input
+      args:
+        chdir: /home/sst/apps/seedlot-selection-tool/source
+    - name: Collect static files
+      become: true
+      become_user: sst
+      ansible.builtin.shell: |
+        poetry env use python3.11 && \
+        poetry run python manage.py collectstatic --no-input
+      args:
+        chdir: /home/sst/apps/seedlot-selection-tool/source
+    - name: Reload gunicorn
+      become: true
+      ansible.builtin.systemd_service:
+        name: gunicorn
+        state: reloaded
+    - name: Restart celery
+      become: true
+      ansible.builtin.systemd_service:
+        name: celery
+        state: restarted

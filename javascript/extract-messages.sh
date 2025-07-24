@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 set -eo pipefail
 
 # Extract messages using ttag
@@ -11,7 +11,12 @@ rm  -f sst-js-untranslated.po && msgattrib sst-js.po --untranslated -o sst-js-un
 msgcat sst-js-mt.po sst-js-untranslated.po --use-first --force-po --no-location | \
   msgattrib - --set-obsolete --ignore-file=sst-js-untranslated.po --no-location | \
   msgattrib - --no-obsolete --no-location -o sst-js-mt.po
-sed -i '' '/^#-#-#-#/d' sst-js-mt.po
+
+if [ $(uname -s) = 'Darwin' ]; then
+  sed -i '' '/^#-#-#-#/d' sst-js-mt.po
+else
+  sed -i '/^#-#-#-#/d' sst-js-mt.po
+fi
 
 # Cleanup
 rm sst-js-untranslated.po
