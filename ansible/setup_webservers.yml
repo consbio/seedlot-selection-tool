@@ -1,0 +1,224 @@
+---
+- name: Install dependencies
+  hosts: webservers
+  tasks:
+    - name: Install development tools
+      become: true
+      ansible.builtin.dnf:
+        name: '@Development tools'
+        state: present
+    - name: Install cmake
+      become: true
+      ansible.builtin.dnf:
+        name: cmake
+        state: latest
+    - name: Install openssl dev libraries
+      become: true
+      ansible.builtin.dnf:
+        name: openssl-devel
+        state: latest
+    - name: Install sqlite dev libraries
+      become: true
+      ansible.builtin.dnf:
+       name: sqlite-devel
+       state: latest
+    - name: Install libtiff dev libraries
+      become: true
+      ansible.builtin.dnf:
+        name: libtiff-devel
+        state: latest
+    - name: Install libcurl dev libraries
+      become: true
+      ansible.builtin.dnf:
+        name: libcurl-devel
+        state: latest
+    - name: Install Python 3.11
+      become: true
+      ansible.builtin.dnf:
+        name: python3.11
+        state: latest
+    - name: Install nginx
+      become: true
+      ansible.builtin.dnf:
+        name: nginx
+        state: latest
+
+- name: Install PROJ
+  hosts: webservers
+  environment:
+    PATH: '/usr/local/bin:{{ lookup("env", "PATH") }}'
+  vars:
+    proj_version: '9.6.2'
+  tasks:
+    - name: Check PROJ version
+      ansible.builtin.shell: proj 2>&1 | grep -E '[0-9]+\.[0-9]+\.[0-9]+' -o || { echo '0'; }
+      register: current_proj_version
+      args:
+        executable: /bin/bash
+    - name: Build PROJ
+      when: proj_version is ansible.builtin.version(current_proj_version.stdout, '>')
+      block:
+        - name: Download sources
+          ansible.builtin.get_url:
+            url: 'https://download.osgeo.org/proj/proj-{{ proj_version }}.tar.gz'
+            dest: '/tmp/proj-{{ proj_version}}.tar.gz'
+          register: proj_source
+        - name: Unpack sources
+          ansible.builtin.unarchive:
+            copy: no
+            dest: /tmp/
+            src: '{{ proj_source.dest }}'
+          register: proj_source_unpacked
+        - name: Build and install
+          become: true
+          ansible.builtin.shell: |
+            mkdir -p build && cd build && \
+            cmake .. && \
+            cmake --build . && \
+            cmake --build . --target install
+          args:
+            chdir: '/tmp/proj-{{ proj_version }}'
+            executable: /bin/bash
+
+- name: Install HDF5
+  hosts: webservers
+  vars:
+    hdf5_version: '1.14.6'
+  environment:
+    PATH: '/usr/local/bin:/usr/local/HDF_Group/HDF5/{{ hdf5_version }}/bin:{{ lookup("env", "PATH") }}'
+  tasks:
+    - name: Check HDF5 version
+      ansible.builtin.shell: h5ls --version 2>&1 | grep -E '[0-9]+\.[0-9]+\.[0-9]+' -o || { echo '0'; }
+      register: current_hdf5_version
+      args:
+        executable: /bin/bash
+    - name: Build HDF5
+      when: hdf5_version is ansible.builtin.version(current_hdf5_version.stdout, '>')
+      block:
+        - name: Download sources
+          ansible.builtin.get_url:
+            url: 'https://github.com/HDFGroup/hdf5/releases/download/hdf5_{{ hdf5_version }}/hdf5-{{ hdf5_version }}.tar.gz'
+            dest: '/tmp/hdf5-{{ hdf5_version}}.tar.gz'
+          register: hdf5_source
+        - name: Unpack sources
+          ansible.builtin.unarchive:
+            copy: no
+            dest: /tmp/
+            src: '{{ hdf5_source.dest }}'
+          register: hdf5_source_unpacked
+        - name: Build and install
+          become: true
+          ansible.builtin.shell: |
+            mkdir -p build && cd build && \
+            cmake .. && \
+            cmake --build . && \
+            cmake --build . --target install
+          args:
+            chdir: '/tmp/hdf5-{{ hdf5_version }}'
+            executable: /bin/bash
+        - name: Delete downloaded source
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/hdf5-{{ hdf5_version }}.tar.gz'
+            state: absent
+        - name: Delete source directory
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/hdf5-{{ hdf5_version }}'
+            state: absent
+
+- name: Install NetCDF
+  hosts: webservers
+  environment:
+    PATH: '/usr/local/bin:/usr/local/HDF_Group/HDF5/{{ hdf5_version }}/bin:{{ lookup("env", "PATH") }}'
+  vars:
+    netcdf_version: '4.9.3'
+    hdf5_version: '1.14.6'
+  tasks:
+    - name: Check NetCDF version
+      ansible.builtin.shell: nc-config --version 2>&1 | grep -E '[0-9]+\.[0-9]+\.[0-9]+' -o || { echo '0'; }
+      register: current_netcdf_version
+      args:
+        executable: /bin/bash
+    - name: Build NetCDF
+      when: netcdf_version is ansible.builtin.version(current_netcdf_version.stdout, '>')
+      block:
+        - name: Download sources
+          ansible.builtin.get_url:
+            url: 'https://downloads.unidata.ucar.edu/netcdf-c/{{ netcdf_version }}/netcdf-c-{{ netcdf_version }}.tar.gz'
+            dest: '/tmp/netcdf-c-{{ netcdf_version}}.tar.gz'
+          register: netcdf_source
+        - name: Unpack sources
+          ansible.builtin.unarchive:
+            copy: no
+            dest: /tmp/
+            src: '{{ netcdf_source.dest }}'
+          register: netcdf_source_unpacked
+        - name: Build and install
+          become: true
+          ansible.builtin.shell: |
+            mkdir -p build && cd build && \
+            cmake .. && \
+            cmake --build . && \
+            cmake --build . --target install
+          args:
+            chdir: '/tmp/netcdf-c-{{ netcdf_version }}'
+            executable: /bin/bash
+        - name: Delete downloaded source
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/netcdf-c-{{ netcdf_version }}.tar.gz'
+            state: absent
+        - name: Delete source directory
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/netcdf-c-{{ netcdf_version }}'
+            state: absent
+
+- name: Install GDAL
+  hosts: webservers
+  environment:
+    PATH: '/usr/local/bin:/usr/local/HDF_Group/HDF5/{{ hdf5_version }}/bin:{{ lookup("env", "PATH") }}'
+  vars:
+    gdal_version: '3.11.3'
+    hdf5_version: '1.14.6'
+  tasks:
+    - name: Check GDAL version
+      ansible.builtin.shell: gdal-config --version 2>/dev/null || { echo '0'; }
+      register: current_gdal_version
+      args:
+        executable: /bin/bash
+    - name: Build GDAL
+      when: gdal_version is ansible.builtin.version(current_gdal_version.stdout, '>')
+      block:
+        - name: Download sources
+          ansible.builtin.get_url:
+            url: 'https://github.com/OSGeo/gdal/releases/download/v3.11.3/gdal-{{ gdal_version }}.tar.gz'
+            dest: '/tmp/gdal-{{ gdal_version }}.tar.gz'
+          register: gdal_source
+        - name: Unpack sources
+          ansible.builtin.unarchive:
+            copy: no
+            dest: /tmp/
+            src: '{{ gdal_source.dest }}'
+          register: gdal_source_unpacked
+        - name: Build and install
+          become: true
+          ansible.builtin.shell: |
+            mkdir -p build && cd build && \
+            cmake .. && \
+            cmake --build . && \
+            cmake --build . --target install
+          args:
+            chdir: '/tmp/gdal-{{ gdal_version }}'
+            executable: /bin/bash
+        - name: Delete downloaded source
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/gdal-{{ gdal_version }}.tar.gz'
+            state: absent
+        - name: Delete source directory
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/gdal-{{ gdal_version }}'
+            state: absent

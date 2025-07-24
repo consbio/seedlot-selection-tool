@@ -7,7 +7,7 @@ license = "BSD-3-Clause"
 package-mode = false
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.11"
+python = ">=3.10,<3.12"
 trefoil = { git = "https://github.com/consbio/trefoil.git", branch = "main" }
 rasterio = "^1.2a1"
 django-celery-results = "^2.0.0"
