@@ -64,6 +64,21 @@ class Popup extends React.Component<PopupProps, PopupState> {
     this.setState({ variables: newVariables })
   }
 
+  updateVariables = () => {
+    const { point, selectedVariables, objective, region, climate } = this.props
+    // Fetch Selected Variable Values at point
+    const requests = fetchVariables(selectedVariables, objective, climate, region, point)
+    if (requests) {
+      requests.forEach(request => {
+        this.setState({ variablesFetching: this.state.variablesFetching + 1 })
+        request.promise.then(json => {
+          this.updateValue(request.item.name as string, json.results[0]['attributes']['Pixel value'])
+          this.setState({ variablesFetching: this.state.variablesFetching - 1 })
+        })
+      })
+    }
+  }
+
   updateData() {
     const { point, selectedVariables, objective, region, climate } = this.props
     const pointIsValid = point !== null && point.x && point.y
@@ -114,18 +129,7 @@ class Popup extends React.Component<PopupProps, PopupState> {
                 this.setState({ elevation: value })
               })
 
-            // Fetch Selected Variable Values at point
-
-            const requests = fetchVariables(selectedVariables, objective, climate, region, point)
-            if (requests) {
-              requests.forEach(request => {
-                this.setState({ variablesFetching: this.state.variablesFetching + 1 })
-                request.promise.then(json => {
-                  this.updateValue(request.item.name as string, json.results[0]['attributes']['Pixel value'])
-                  this.setState({ variablesFetching: this.state.variablesFetching - 1 })
-                })
-              })
-            }
+            this.updateVariables()
 
             // Find seedzones at point
             const zonesUrl = `${config.apiRoot}seedzones/?${io.urlEncode({ point: `${point.x},${point.y}` })}`
@@ -160,8 +164,10 @@ class Popup extends React.Component<PopupProps, PopupState> {
   }
 
   componentDidUpdate(prevProps: Readonly<PopupProps>) {
-    if (this.props.point.x !== prevProps.point.x || this.props.point.y !== prevProps.point.y) {
+    if (JSON.stringify(prevProps.point) !== JSON.stringify(this.props.point)) {
       this.updateData()
+    } else if (JSON.stringify(prevProps.selectedVariables) !== JSON.stringify(this.props.selectedVariables)) {
+      this.updateVariables()
     }
   }
 
