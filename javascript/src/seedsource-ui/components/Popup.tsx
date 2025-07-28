@@ -25,28 +25,39 @@ type VariableData = {
 }
 
 type PopupState = {
-  popup: null | L.Popup
-  content: HTMLElement
   elevation: number
   variables: VariableData[]
-  variablesFetching: number
+  queryingVariables: boolean
   zones: []
-  zonesFetching: number
+  queryingZones: boolean
   region: any
 }
 
 class Popup extends React.Component<PopupProps, PopupState> {
+  popup: L.Popup
+  content: HTMLElement
+  runningZoneQueries: number
+  runningVariableQueries: number
+
   constructor(props: PopupProps) {
     super(props)
+
+    this.popup = L.popup({ closeOnClick: false })
+      .setLatLng([this.props.point.y, this.props.point.x])
+      .addTo(this.props.map)
+
+    this.content = document.createElement('div')
+
+    this.runningZoneQueries = 0
+    this.runningVariableQueries = 0
+
     this.state = {
-      popup: null,
-      content: document.createElement('div'),
       elevation: 0,
       variables: [],
       zones: [],
       region: null,
-      variablesFetching: 0,
-      zonesFetching: 0,
+      queryingVariables: false,
+      queryingZones: false,
     }
   }
 
@@ -72,15 +83,21 @@ class Popup extends React.Component<PopupProps, PopupState> {
       const requests = fetchVariables(selectedVariables, objective, climate, region, point)
       if (requests) {
         requests.forEach(request => {
-          this.setState({ variablesFetching: this.state.variablesFetching + 1 })
+          this.setState({ queryingVariables: true })
+          this.runningVariableQueries += 1
           request.promise
             .then(json => {
-              this.updateValue(request.item.name as string, json.results[0]['attributes']['Pixel value'])
+              if (JSON.stringify(point) === JSON.stringify(this.props.point)) {
+                this.updateValue(request.item.name as string, json.results[0]['attributes']['Pixel value'])
+              }
             })
             .catch(() => {})
-            .finally(() =>
-              this.setState({ variablesFetching: this.state.variablesFetching ? this.state.variablesFetching - 1 : 0 }),
-            )
+            .finally(() => {
+              this.runningVariableQueries -= 1
+              if (this.runningVariableQueries < 1) {
+                this.setState({ queryingVariables: false })
+              }
+            })
         })
       }
     } else {
@@ -110,7 +127,9 @@ class Popup extends React.Component<PopupProps, PopupState> {
           const validRegions = results.map((region: any) => region.name)
 
           const region = validRegions.length ? validRegions[0] : null
-          this.setState({ region })
+          if (JSON.stringify(point) === JSON.stringify(this.props.point)) {
+            this.setState({ region })
+          }
           return region
         })
         .then(regionName => {
@@ -138,8 +157,9 @@ class Popup extends React.Component<PopupProps, PopupState> {
                 if (Number.isNaN(value)) {
                   value = null
                 }
-
-                this.setState({ elevation: value })
+                if (JSON.stringify(point) === JSON.stringify(this.props.point)) {
+                  this.setState({ elevation: value })
+                }
               })
 
             this.updateVariables(selectedVariables)
@@ -147,7 +167,9 @@ class Popup extends React.Component<PopupProps, PopupState> {
             // Find seedzones at point
             const zonesUrl = `${config.apiRoot}seedzones/?${io.urlEncode({ point: `${point.x},${point.y}` })}`
 
-            this.setState({ zonesFetching: this.state.zonesFetching + 1 })
+            this.setState({ queryingZones: true })
+            this.runningZoneQueries += 1
+
             io.get(zonesUrl)
               .then(response => response.json())
               .then((json: any) => {
@@ -156,11 +178,18 @@ class Popup extends React.Component<PopupProps, PopupState> {
                   name: zone.name,
                   elevation_band: zone.elevation_band,
                 }))
-                this.setState({
-                  zones,
-                })
+                if (JSON.stringify(point) === JSON.stringify(this.props.point)) {
+                  this.setState({
+                    zones,
+                  })
+                }
               })
-              .finally(() => this.setState({ zonesFetching: this.state.zonesFetching - 1 }))
+              .finally(() => {
+                this.runningZoneQueries -= 1
+                if (this.runningZoneQueries < 1) {
+                  this.setState({ queryingZones: false })
+                }
+              })
           }
         })
     }
@@ -169,9 +198,6 @@ class Popup extends React.Component<PopupProps, PopupState> {
   componentDidMount() {
     this.props.map.on('popupclose', () => {
       this.props.onClose ? this.props.onClose() : ''
-    })
-    this.setState({
-      popup: L.popup({ closeOnClick: false }).setLatLng([this.props.point.y, this.props.point.x]).addTo(this.props.map),
     })
     this.updateData()
   }
@@ -186,100 +212,98 @@ class Popup extends React.Component<PopupProps, PopupState> {
   }
 
   componentWillUnmount() {
-    this.props.map.closePopup(this.state.popup)
-    this.setState({ popup: null })
+    this.props.map.closePopup(this.popup)
   }
 
   render() {
     setTimeout(() => {
-      if (this.state.popup) {
-        const { point, unit, mode, onSave, onClose, map } = this.props
-        const { elevation, variables, zones, variablesFetching, zonesFetching } = this.state
-        this.state.popup.setLatLng([point.y, point.x])
-        ReactDOM.render(
-          <>
-            <div className="map-info-popup">
-              <div className="columns is-mobile">
-                <div className="column">
-                  <div>{t`Location`}</div>
-                  <div className="has-text-weight-bold">
-                    {point.y.toFixed(2)}, {point.x.toFixed(2)}
-                  </div>
-                </div>
-                <div className="column">
-                  <div>{t`Elevation`}</div>
-                  <div className="has-text-weight-bold">
-                    {`${Math.round(elevation / 0.3048)} ${c("Abbreviation of 'feet' (measurement)")
-                      .t`ft`} (${Math.round(elevation)} ${c("Abbreviation of 'meters'").t`m`})`}
-                  </div>
+      const { point, unit, mode, onSave, onClose, map } = this.props
+      const { elevation, variables, zones, queryingVariables, queryingZones } = this.state
+      this.popup.setLatLng([point.y, point.x])
+      ReactDOM.render(
+        <>
+          <div className="map-info-popup">
+            <div className="columns is-mobile">
+              <div className="column">
+                <div>{t`Location`}</div>
+                <div className="has-text-weight-bold">
+                  {point.y.toFixed(2)}, {point.x.toFixed(2)}
                 </div>
               </div>
+              <div className="column">
+                <div>{t`Elevation`}</div>
+                <div className="has-text-weight-bold">
+                  {`${Math.round(elevation / 0.3048)} ${c("Abbreviation of 'feet' (measurement)").t`ft`} (${Math.round(
+                    elevation,
+                  )} ${c("Abbreviation of 'meters'").t`m`})`}
+                </div>
+              </div>
+            </div>
 
-              {!!variables.length && !variablesFetching && (
-                <>
-                  <h6 className="title is-6">{t`Climate`}</h6>
-                  <table>
-                    <tbody>
-                      {variables.map(item => {
-                        const variableConfig = allVariables.find(variable => variable.name === item.name)
-                        const { multiplier, units }: { multiplier: number; units: any } = variableConfig!
-                        let value: string | number = c('i.e., Not Applicable').t`N/A`
-                        let unitLabel = units.metric.label
+            {!!variables.length && !queryingVariables && (
+              <>
+                <h6 className="title is-6">{t`Climate`}</h6>
+                <table>
+                  <tbody>
+                    {variables.map(item => {
+                      const variableConfig = allVariables.find(variable => variable.name === item.name)
+                      const { multiplier, units }: { multiplier: number; units: any } = variableConfig!
+                      let value: string | number = c('i.e., Not Applicable').t`N/A`
+                      let unitLabel = units.metric.label
 
-                        if (item.value !== null) {
-                          value = item.value / multiplier
+                      if (item.value !== null) {
+                        value = item.value / multiplier
 
-                          let { precision } = units.metric
-                          if (unit === 'imperial') {
-                            precision = units.imperial.precision
-                            unitLabel = units.imperial.label
-                            value = units.imperial.convert(value)
-                          }
-
-                          value = (value as number).toFixed(precision)
+                        let { precision } = units.metric
+                        if (unit === 'imperial') {
+                          precision = units.imperial.precision
+                          unitLabel = units.imperial.label
+                          value = units.imperial.convert(value)
                         }
 
-                        return (
-                          <tr key={item.name}>
-                            <td>{item.name}</td>
-                            <td className="has-text-weight-bold">
-                              {value} {unitLabel}
-                            </td>
-                          </tr>
-                        )
-                      })}
-                    </tbody>
-                  </table>
-                </>
-              )}
+                        value = (value as number).toFixed(precision)
+                      }
 
-              {!!zones.length && !zonesFetching && (
-                <>
-                  <h6 className="title is-6">{t`Available Zones`}</h6>
-                  <ul className="popup-zones">
-                    {zones.map((item: any) => (
-                      <li key={item.id}>{getZoneLabel(item)}</li>
-                    ))}
-                  </ul>
-                </>
-              )}
+                      return (
+                        <tr key={item.name}>
+                          <td>{item.name}</td>
+                          <td className="has-text-weight-bold">
+                            {value} {unitLabel}
+                          </td>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
+              </>
+            )}
 
-              <button
-                type="button"
-                className="button is-primary is-fullwidth"
-                onClick={() => {
-                  onSave(point.x, point.y)
-                  onClose()
-                }}
-              >
-                {mode === 'add_sites' ? t`Add Location` : t`Set Point`}
-              </button>
-            </div>
-          </>,
-          this.state.content,
-        )
-        this.state.popup.setContent(this.state.content)
-      }
+            {!!zones.length && !queryingZones && (
+              <>
+                <h6 className="title is-6">{t`Available Zones`}</h6>
+                <ul className="popup-zones">
+                  {zones.map((item: any) => (
+                    <li key={item.id}>{getZoneLabel(item)}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            <button
+              type="button"
+              className="button is-primary is-fullwidth"
+              onClick={() => {
+                onSave(point.x, point.y)
+                onClose()
+              }}
+            >
+              {mode === 'add_sites' ? t`Add Location` : t`Set Point`}
+            </button>
+          </div>
+        </>,
+        this.content,
+      )
+      this.popup.setContent(this.content)
     }, 1)
 
     return <></>
