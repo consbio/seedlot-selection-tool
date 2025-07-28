@@ -83,15 +83,19 @@ export const getZoneLabel = (zone?: any) => {
 }
 
 export const migrateConfiguration = (configuration: any, version: number) => {
-  let updatedConfiguration = configuration
+  let migratedConfiguration = configuration
+  const messages: string[] = []
 
   for (let i = version; i < saveVersion; i += 1) {
     const migration = migrations.find(m => m.version === i)
     if (migration) {
-      updatedConfiguration = migration.migrate(updatedConfiguration)
+      migratedConfiguration = migration.migrate(migratedConfiguration)
+      if (migration.message) {
+        messages.push(migration.message)
+      }
     }
   }
-  return updatedConfiguration
+  return { migratedConfiguration, messages }
 }
 
 export const fetchVariables = (variables: any, objective: any, climate: any, region: any, point: any, io?: any) => {
