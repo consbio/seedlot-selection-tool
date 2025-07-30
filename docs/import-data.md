@@ -73,7 +73,7 @@ $ python source/manage.py add_region <region> <path to shapefile>
 ```
 Note: the shapefile can be a zipfile
 
-You should also convert the region boundary to GeoJSON and, it to the
+If it doesn't already exist, you should also convert the region boundary to GeoJSON and add it to the
 directory `sst/static/geometry/<region>_boundary.json`, and re-run:
 
 ``` text
@@ -105,14 +105,13 @@ sets:
 $ python manage.py calculate_zone_transfers --clear
 ```
 
-Running the command with a `source` argument will process only zones for
+Running the command with a `--zones` argument will process only zones for
 a single set:
 
 ``` text
-$ python manage.py calculate_zone_transfers region9
+$ python manage.py calculate_zone_transfers --zones region9
 ```
 
-## Constraints Data
 Constraints files should be named following the format:
 ```text
 <species-code>_15gcm_<climate-model>_<period>_pa.nc
@@ -130,3 +129,4 @@ Place your constraints data in `/data/constraints` and run:
 ```text
 python manage.py publish_netcdf --overwrite ../data/constraints/*.nc
 ```
+## Species Range Constraints Data
