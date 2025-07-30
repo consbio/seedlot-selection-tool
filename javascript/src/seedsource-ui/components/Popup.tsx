@@ -169,7 +169,6 @@ class Popup extends React.Component<PopupProps, PopupState> {
     if (JSON.stringify(prevProps.point) !== JSON.stringify(this.props.point)) {
       this.updateData()
     } else if (JSON.stringify(prevProps.selectedVariables) !== JSON.stringify(this.props.selectedVariables)) {
-      this.setState({ variables: [] })
       this.getUpdatedVariables(this.props.selectedVariables, []).then(variables => {
         if (this.mounted) this.setState({ variables })
       })
