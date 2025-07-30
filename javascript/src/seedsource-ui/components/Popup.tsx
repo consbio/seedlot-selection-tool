@@ -60,6 +60,10 @@ class Popup extends React.Component<PopupProps, PopupState> {
     }
   }
 
+  isPointStale(point: { x: number; y: number }) {
+    return JSON.stringify(point) !== JSON.stringify(this.props.point)
+  }
+
   async getUpdatedVariables(selectedVariables: any, variableData: VariableData[]) {
     const { point, objective, region, climate } = this.props
 
@@ -95,64 +99,81 @@ class Popup extends React.Component<PopupProps, PopupState> {
     const { variables } = this.state
     const pointIsValid = point !== null && point.x && point.y
     if (pointIsValid) {
-      this.setState({ region: null, zones: [], elevation: null, variables: [], queryingData: true })
+      this.setState({ region: null, zones: [], elevation: null, variables: [] })
 
-      try {
-        let region: string | null = null
-        let zones: any[] = []
-        let elevation: number | null = null
-        let newVariables = []
+      let region: string | null = null
+      let zones: any[] = []
+      let elevation: number | null = null
+      let newVariables = []
 
-        // Update popup regions
-        const regionUrl = `${config.apiRoot}regions/?${io.urlEncode({
-          point: `${point.x},${point.y}`,
+      // Update popup regions
+      const regionUrl = `${config.apiRoot}regions/?${io.urlEncode({
+        point: `${point.x},${point.y}`,
+      })}`
+
+      const regionResponse = await (await io.get(regionUrl)).json()
+
+      //If the point is stale stop processing stale data.
+      if (this.isPointStale(point)) {
+        return
+      }
+
+      const validRegions = regionResponse.results.map((region: any) => region.name)
+
+      region = validRegions.length ? validRegions[0] : null
+
+      if (region !== null) {
+        // Set elevation at point
+        const url = `/arcgis/rest/services/${region}_dem/MapServer/identify/?${io.urlEncode({
+          f: 'json',
+          tolerance: '2',
+          imageDisplay: '1600,1031,96',
+          geometryType: 'esriGeometryPoint',
+          mapExtent: '0,0,0,0',
+          geometry: JSON.stringify({ x: point.x, y: point.y }),
         })}`
 
-        const regionResponse = await (await io.get(regionUrl)).json()
-        const validRegions = regionResponse.results.map((region: any) => region.name)
+        const elevationReponse = await (await io.get(url)).json()
 
-        region = validRegions.length ? validRegions[0] : null
-
-        if (region !== null) {
-          // Set elevation at point
-          const url = `/arcgis/rest/services/${region}_dem/MapServer/identify/?${io.urlEncode({
-            f: 'json',
-            tolerance: '2',
-            imageDisplay: '1600,1031,96',
-            geometryType: 'esriGeometryPoint',
-            mapExtent: '0,0,0,0',
-            geometry: JSON.stringify({ x: point.x, y: point.y }),
-          })}`
-
-          const elevationReponse = await (await io.get(url)).json()
-
-          if (elevationReponse.results.length) {
-            elevation = elevationReponse.results[0].attributes['Pixel value']
-          }
-
-          if (Number.isNaN(elevation)) {
-            elevation = null
-          }
-
-          newVariables = await this.getUpdatedVariables(selectedVariables, variables)
-
-          // Find seedzones at point
-          const zonesUrl = `${config.apiRoot}seedzones/?${io.urlEncode({ point: `${point.x},${point.y}` })}`
-
-          const zoneResponse = await (await io.get(zonesUrl)).json()
-
-          zones = zoneResponse.results.map((zone: any) => ({
-            id: zone.zone_uid,
-            name: zone.name,
-            elevation_band: zone.elevation_band,
-          }))
+        //If the point is stale stop processing stale data.
+        if (this.isPointStale(point)) {
+          return
         }
 
-        if (JSON.stringify(point) === JSON.stringify(this.props.point) && this.mounted) {
-          this.setState({ region, elevation, zones, variables: newVariables })
+        if (elevationReponse.results.length) {
+          elevation = elevationReponse.results[0].attributes['Pixel value']
         }
-      } finally {
-        if (this.mounted) this.setState({ queryingData: false })
+
+        if (Number.isNaN(elevation)) {
+          elevation = null
+        }
+
+        newVariables = await this.getUpdatedVariables(selectedVariables, variables)
+
+        //If the point is stale stop processing stale data.
+        if (this.isPointStale(point)) {
+          return
+        }
+
+        // Find seedzones at point
+        const zonesUrl = `${config.apiRoot}seedzones/?${io.urlEncode({ point: `${point.x},${point.y}` })}`
+
+        const zoneResponse = await (await io.get(zonesUrl)).json()
+
+        //If the point is stale stop processing stale data.
+        if (this.isPointStale(point)) {
+          return
+        }
+
+        zones = zoneResponse.results.map((zone: any) => ({
+          id: zone.zone_uid,
+          name: zone.name,
+          elevation_band: zone.elevation_band,
+        }))
+      }
+
+      if (!this.isPointStale(point) && this.mounted) {
+        this.setState({ region, elevation, zones, variables: newVariables })
       }
     }
   }
@@ -162,12 +183,18 @@ class Popup extends React.Component<PopupProps, PopupState> {
       this.props.onClose ? this.props.onClose() : ''
     })
     this.mounted = true
-    this.updateData()
+    this.setState({ queryingData: true })
+    this.updateData().finally(() => {
+      if (this.mounted) this.setState({ queryingData: false })
+    })
   }
 
   componentDidUpdate(prevProps: Readonly<PopupProps>) {
     if (JSON.stringify(prevProps.point) !== JSON.stringify(this.props.point)) {
-      this.updateData()
+      this.setState({ queryingData: true })
+      this.updateData().finally(() => {
+        if (this.mounted) this.setState({ queryingData: false })
+      })
     } else if (JSON.stringify(prevProps.selectedVariables) !== JSON.stringify(this.props.selectedVariables)) {
       this.getUpdatedVariables(this.props.selectedVariables, []).then(variables => {
         if (this.mounted) this.setState({ variables })
