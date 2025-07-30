@@ -125,7 +125,7 @@ Constraints files should be named following the format:
 ```
 See `src/config.ts:serializeSpeciesConstraint` to update formatting.
 
-Place your constraints data in /data/constraints and run:
+Place your constraints data in `/data/constraints` and run:
 
 ```text
 python manage.py publish_netcdf --overwrite ../data/constraints/*.nc
