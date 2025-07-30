@@ -1,4 +1,5 @@
 import { saveVersion, migrations } from './config'
+import { get, urlEncode } from './io'
 
 declare const document: any
 
@@ -95,4 +96,38 @@ export const migrateConfiguration = (configuration: any, version: number) => {
     }
   }
   return { migratedConfiguration, messages }
+}
+
+export const fetchVariables = (variables: any, objective: any, climate: any, region: any, point: any, io?: any) => {
+  type APIType = {
+    results: {
+      layerId: any
+      layerName: any
+      value: any
+      displayFieldName: any
+      attributes: { 'Pixel value': number }
+    }[]
+  }
+  const requests: { item: any; promise: Promise<APIType> }[] = variables.map((item: any) => {
+    const serviceName = getServiceName(item.name, objective, climate, region)
+    const url = `/arcgis/rest/services/${serviceName}/MapServer/identify/?${urlEncode({
+      f: 'json',
+      tolerance: 2,
+      imageDisplay: '1600,1031,96',
+      geometryType: 'esriGeometryPoint',
+      mapExtent: '0,0,0,0',
+      geometry: JSON.stringify(point),
+    })}`
+
+    let promise: Promise<APIType>
+    if (io) {
+      promise = io.get(url).then((response: any) => response.json())
+    } else {
+      promise = get(url).then((response: any) => response.json())
+    }
+
+    return { item, promise }
+  })
+
+  return requests
 }
