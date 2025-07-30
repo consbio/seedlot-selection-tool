@@ -112,16 +112,22 @@ a single set:
 $ python manage.py calculate_zone_transfers --zones region9
 ```
 
+## Species Range Constraints Data
+
 Constraints files should be named following the format:
+
 ```text
 <species-code>_15gcm_<climate-model>_<period>_pa.nc
 # psme_15gcm_ssp370_2011_2040_pa.nc
 ```
+
 -or-
+
 ```text
 <species-code>_p<period>_800m_pa.nc
 # psme_p1981_2010_800m_pa.nc
 ```
+
 See `src/config.ts:serializeSpeciesConstraint` to update formatting.
 
 Place your constraints data in `/data/constraints` and run:
@@ -129,4 +135,3 @@ Place your constraints data in `/data/constraints` and run:
 ```text
 python manage.py publish_netcdf --overwrite ../data/constraints/*.nc
 ```
-## Species Range Constraints Data
