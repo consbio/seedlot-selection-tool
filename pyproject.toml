@@ -31,6 +31,7 @@ python-pptx = "^0.6.21"
 WeasyPrint = "^52.2"
 django-waffle = "^2.2"
 django-filter = "^25.1"
+boto3 = "^1.40.1"
 
 [poetry.group.dev.dependencies]
 

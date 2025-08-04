@@ -1,4 +1,3 @@
-import json
 import os
 
 import random
@@ -11,19 +10,14 @@ from django.utils.translation import gettext_lazy as _
 from trefoil.render.renderers.stretched import StretchedRenderer
 from trefoil.utilities.color import Color
 
+from .config import Config
 
 # Starting at this file, walk back up the directory tree to the project root
 BASE_DIR = os.path.abspath(__file__)
 for __ in range(4):
     BASE_DIR = os.path.dirname(BASE_DIR)
 
-CONFIG = {}
-config_file = os.environ.get("SEEDSOURCE_CONF_FILE") or os.path.join(
-    BASE_DIR, "config.json"
-)
-if config_file and os.path.isfile(config_file):
-    with open(config_file) as f:
-        CONFIG = json.loads(f.read())
+CONFIG = Config.get_instance()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = CONFIG.get(
