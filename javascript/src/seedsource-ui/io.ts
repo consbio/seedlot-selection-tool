@@ -13,12 +13,13 @@ export const urlEncode = (data: any) => {
   return items.join('&')
 }
 
-export const get = (url: string) => {
+export const get = (url: string, signal?: AbortSignal) => {
   return fetch(url, {
     credentials: 'same-origin',
     headers: {
       Accept: 'application/json, */*',
     },
+    signal,
   })
 }
 

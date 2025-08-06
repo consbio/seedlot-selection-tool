@@ -1,7 +1,7 @@
 import resync from '../resync'
 import { requestTransfer, receiveTransfer, requestValue, receiveValue, setVariablesRegion } from '../actions/variables'
 import { urlEncode } from '../io'
-import { fetchVariables } from '../utils'
+import { getServiceName } from '../utils'
 import config, { DefaultVariable } from '../config'
 
 const transferSelect = ({ runConfiguration }: any) => {
@@ -71,7 +71,18 @@ export const fetchValues = (store: any, state: any, io: any, previousState: any,
     variables = variables.filter((item: any) => item.value === null)
   }
 
-  return fetchVariables(variables, objective, climate, region, point, io)
+  return variables.map((item: any) => {
+    const serviceName = getServiceName(item.name, objective, climate, region)
+    const url = `/arcgis/rest/services/${serviceName}/MapServer/identify/?${urlEncode({
+      f: 'json',
+      tolerance: 2,
+      imageDisplay: '1600,1031,96',
+      geometryType: 'esriGeometryPoint',
+      mapExtent: '0,0,0,0',
+      geometry: JSON.stringify(point),
+    })}`
+    return { item, promise: io.get(url).then((response: any) => response.json()) }
+  })
 }
 
 export default (store: any) => {
