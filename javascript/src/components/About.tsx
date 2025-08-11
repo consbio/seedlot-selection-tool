@@ -8,6 +8,10 @@ import ClimateImage from '../../images/about_climate.gif'
 import MethodImage from '../../images/about_method.gif'
 import VariablesImage from '../../images/about_variables.gif'
 import MapImage from '../../images/about_map.gif'
+import FSLogo from '../../images/fs_logo.png'
+import OSULogo from '../../images/osu_logo.png'
+import CBILogo from '../../images/cbi_logo.png'
+import ClimateHubLogo from '../../images/nw_climate_hub_logo.png'
 
 const About = () => (
   <div>
@@ -57,6 +61,29 @@ const About = () => (
         <img src={MapImage} alt={t`An icon of the globe`} />
         <h4 className="title is-4">7. {t`Map your Results`}</h4>
         <p>{t`The map shows where to find appropriate seedlots or planting sites`}</p>
+      </div>
+    </div>
+    <hr />
+    <div className="columns">
+      <div className="column">
+        <a href="http://www.fs.fed.us/" target="_blank" rel="noreferrer">
+          <img src={FSLogo} alt={t`United States Forest Service`} />
+        </a>
+      </div>
+      <div className="column">
+        <a href="http://oregonstate.edu/" target="_blank" rel="noreferrer">
+          <img src={OSULogo} alt={t`Oregon State University`} />
+        </a>
+      </div>
+      <div className="column">
+        <a href="http://consbio.org" target="_blank" rel="noreferrer">
+          <img src={CBILogo} alt={t`Conservation Biology Institute`} />
+        </a>
+      </div>
+      <div className="column is-half">
+        <a href="https://www.climatehubs.oce.usda.gov/hubs/northwest" target="_blank" rel="noreferrer">
+          <img src={ClimateHubLogo} alt={t`NW Climate Hub`} />
+        </a>
       </div>
     </div>
   </div>

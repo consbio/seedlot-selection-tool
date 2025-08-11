@@ -5,10 +5,6 @@ import NavItemDropdown from '../seedsource-ui/components/NavItemDropdown'
 import { getCookies } from '../seedsource-ui/utils'
 import Background1 from '../../images/background1.jpg'
 import Background2 from '../../images/background2.jpg'
-import FSLogo from '../../images/fs_logo.png'
-import OSULogo from '../../images/osu_logo.png'
-import CBILogo from '../../images/cbi_logo.png'
-import ClimateHubLogo from '../../images/nw_climate_hub_logo.png'
 import SSTInstructions from '../../documents/SST User Guide.pdf'
 import SSTInstructionsESMX from '../../documents/translations/es_MX/SST User Guide.pdf'
 import SSTSilviculturistsGuide from '../../documents/SST R6 Silviculturists Guide.pdf'
@@ -402,29 +398,6 @@ class Menu extends React.Component {
                 Conservation Biology Institute, the USDA Northwest Climate Hub, Natural Resources Canada, 
                 USFS International Programs, and USFS State & Private`}
             </p>
-            <p>&nbsp;</p>
-            <div className="columns">
-              <div className="column">
-                <a href="http://www.fs.fed.us/" target="_blank" rel="noreferrer">
-                  <img src={FSLogo} alt={t`United States Forest Service`} />
-                </a>
-              </div>
-              <div className="column">
-                <a href="http://oregonstate.edu/" target="_blank" rel="noreferrer">
-                  <img src={OSULogo} alt={t`Oregon State University`} />
-                </a>
-              </div>
-              <div className="column">
-                <a href="http://consbio.org" target="_blank" rel="noreferrer">
-                  <img src={CBILogo} alt={t`Conservation Biology Institute`} />
-                </a>
-              </div>
-              <div className="column is-half">
-                <a href="https://www.climatehubs.oce.usda.gov/hubs/northwest" target="_blank" rel="noreferrer">
-                  <img src={ClimateHubLogo} alt={t`NW Climate Hub`} />
-                </a>
-              </div>
-            </div>
             <p>&nbsp;</p>
             <h4 className="title is-4">{t`Contact Information`}</h4>
             <p>
