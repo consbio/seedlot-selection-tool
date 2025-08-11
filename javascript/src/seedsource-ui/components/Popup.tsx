@@ -1,10 +1,11 @@
 import React from 'react'
-import { fetchVariables, getZoneLabel } from '../utils'
+import { getServiceName, getZoneLabel } from '../utils'
 import L from 'leaflet'
 import { c, t } from 'ttag'
 import ReactDOM from 'react-dom'
 import config, { variables as allVariables } from '../config'
 import * as io from '../io'
+import { get, urlEncode } from '../io'
 
 type PopupProps = {
   mode: string
@@ -25,11 +26,10 @@ type VariableData = {
 }
 
 type PopupState = {
-  elevation: number
+  elevation: number | null
   variables: VariableData[]
-  queryingVariables: boolean
-  zones: []
-  queryingZones: boolean
+  queryingData: boolean
+  zones: any[]
   region: any
 }
 
@@ -38,6 +38,8 @@ class Popup extends React.Component<PopupProps, PopupState> {
   content: HTMLElement
   runningZoneQueries: number
   runningVariableQueries: number
+  mounted: boolean = false
+  abortController: AbortController
 
   constructor(props: PopupProps) {
     super(props)
@@ -50,148 +52,163 @@ class Popup extends React.Component<PopupProps, PopupState> {
 
     this.runningZoneQueries = 0
     this.runningVariableQueries = 0
+    this.abortController = new AbortController()
 
     this.state = {
       elevation: 0,
       variables: [],
       zones: [],
       region: null,
-      queryingVariables: false,
-      queryingZones: false,
+      queryingData: false,
     }
   }
 
-  updateValue = (name: string, value: number | null) => {
-    const { variables } = this.state
-    const index = variables.findIndex((item: any) => item.name === name)
-
-    let newVariables = [...variables]
-    if (index === -1) {
-      newVariables.push({ name, value })
-    } else {
-      newVariables = variables.slice(0, index).concat([{ name, value }, ...variables.slice(index + 1)])
-    }
-
-    this.setState({ variables: newVariables })
+  isPointStale(point: { x: number; y: number }) {
+    return JSON.stringify(point) !== JSON.stringify(this.props.point)
   }
 
-  updateVariables = (selectedVariables: any) => {
-    const { point, objective, region, climate } = this.props
+  async getUpdatedVariables(selectedVariables: any, variableData: VariableData[], point: { x: number; y: number }) {
+    type APIType = {
+      results: {
+        layerId: any
+        layerName: any
+        value: any
+        displayFieldName: any
+        attributes: { 'Pixel value': number }
+      }[]
+    }
+
+    const { objective, region, climate } = this.props
 
     if (region) {
       // Fetch Selected Variable Values at point
-      const requests = fetchVariables(selectedVariables, objective, climate, region, point)
+      const requests: { item: any; promise: Promise<APIType> }[] = selectedVariables.map((item: any) => {
+        const serviceName = getServiceName(item.name, objective, climate, region)
+        const url = `/arcgis/rest/services/${serviceName}/MapServer/identify/?${urlEncode({
+          f: 'json',
+          tolerance: 2,
+          imageDisplay: '1600,1031,96',
+          geometryType: 'esriGeometryPoint',
+          mapExtent: '0,0,0,0',
+          geometry: JSON.stringify(point),
+        })}`
+
+        let promise: Promise<APIType>
+
+        promise = get(url, this.abortController.signal).then((response: any) => response.json())
+
+        return { item, promise }
+      })
+
       if (requests) {
-        requests.forEach(request => {
-          this.setState({ queryingVariables: true })
-          this.runningVariableQueries += 1
-          request.promise
-            .then(json => {
-              if (JSON.stringify(point) === JSON.stringify(this.props.point)) {
-                this.updateValue(request.item.name as string, json.results[0]['attributes']['Pixel value'])
-              }
-            })
-            .catch(() => {})
-            .finally(() => {
-              this.runningVariableQueries -= 1
-              if (this.runningVariableQueries < 1) {
-                this.setState({ queryingVariables: false })
-              }
-            })
-        })
+        const resolvedPromises = await Promise.all(requests.map(req => req.promise))
+
+        let newVariables = [...variableData]
+
+        for (let i = 0; i < resolvedPromises.length; i++) {
+          const name = requests[i].item.name
+          const value = resolvedPromises[i].results[0]['attributes']['Pixel value']
+          const index = newVariables.findIndex((item: any) => item.name === name)
+          if (index === -1) {
+            newVariables.push({ name, value })
+          } else {
+            newVariables = newVariables.slice(0, index).concat([{ name, value }, ...newVariables.slice(index + 1)])
+          }
+        }
+        return newVariables
       }
     } else {
-      this.setState({
-        variables: selectedVariables.map((item: any) => {
-          return { name: item.name, value: null }
-        }),
+      return selectedVariables.map((item: any) => {
+        return { name: item.name, value: null }
       })
     }
   }
 
-  updateData() {
+  async getElevation(region: string, point: { x: number; y: number }) {
+    let elevation: number | null = 0
+
+    // Set elevation at point
+    const url = `/arcgis/rest/services/${region}_dem/MapServer/identify/?${io.urlEncode({
+      f: 'json',
+      tolerance: '2',
+      imageDisplay: '1600,1031,96',
+      geometryType: 'esriGeometryPoint',
+      mapExtent: '0,0,0,0',
+      geometry: JSON.stringify({ x: point.x, y: point.y }),
+    })}`
+
+    const elevationReponse = await (await io.get(url, this.abortController.signal)).json()
+
+    if (elevationReponse.results.length) {
+      elevation = elevationReponse.results[0].attributes['Pixel value']
+    }
+
+    if (Number.isNaN(elevation)) {
+      elevation = null
+    }
+
+    return elevation
+  }
+
+  async getZones(point: { x: number; y: number }) {
+    // Find seedzones at point
+    const zonesUrl = `${config.apiRoot}seedzones/?${io.urlEncode({ point: `${point.x},${point.y}` })}`
+
+    const zoneResponse = await (await io.get(zonesUrl, this.abortController.signal)).json()
+
+    return zoneResponse.results.map((zone: any) => ({
+      id: zone.zone_uid,
+      name: zone.name,
+      elevation_band: zone.elevation_band,
+    }))
+  }
+
+  async updateData() {
     const { point, selectedVariables } = this.props
+    const { variables } = this.state
     const pointIsValid = point !== null && point.x && point.y
-    if (pointIsValid) {
-      this.setState({ region: null, zones: [], elevation: 0 })
 
-      // Update popup regions
-      const regionUrl = `${config.apiRoot}regions/?${io.urlEncode({
-        point: `${point.x},${point.y}`,
-      })}`
+    try {
+      if (pointIsValid) {
+        this.setState({ region: null, zones: [], elevation: null, variables: [] })
 
-      io.get(regionUrl)
-        .then(response => response.json())
-        .then(json => {
-          const { results } = json
-          const validRegions = results.map((region: any) => region.name)
+        let region: string | null = null
+        let zones: any[] = []
+        let elevation: number | null = null
+        let newVariables = []
 
-          const region = validRegions.length ? validRegions[0] : null
-          if (JSON.stringify(point) === JSON.stringify(this.props.point)) {
-            this.setState({ region })
+        // Update popup regions
+        const regionUrl = `${config.apiRoot}regions/?${io.urlEncode({
+          point: `${point.x},${point.y}`,
+        })}`
+
+        const regionResponse = await (await io.get(regionUrl, this.abortController.signal)).json()
+
+        //If the point is stale stop processing stale data.
+        if (this.isPointStale(point)) {
+          return
+        }
+
+        const validRegions = regionResponse.results.map((region: any) => region.name)
+
+        region = validRegions.length ? validRegions[0] : null
+
+        if (region !== null) {
+          const results = await Promise.all([
+            this.getElevation(region, point),
+            this.getUpdatedVariables(selectedVariables, variables, point),
+            this.getZones(point),
+          ])
+
+          if (!this.isPointStale(point) && this.mounted) {
+            this.setState({ region, elevation: results[0], variables: results[1], zones: results[2] })
           }
-          return region
-        })
-        .then(regionName => {
-          if (regionName !== null) {
-            // Set elevation at point
-            const url = `/arcgis/rest/services/${regionName}_dem/MapServer/identify/?${io.urlEncode({
-              f: 'json',
-              tolerance: '2',
-              imageDisplay: '1600,1031,96',
-              geometryType: 'esriGeometryPoint',
-              mapExtent: '0,0,0,0',
-              geometry: JSON.stringify({ x: point.x, y: point.y }),
-            })}`
-
-            io.get(url)
-              .then(response => response.json())
-              .then(json => {
-                const { results } = json
-                let value = null
-
-                if (results.length) {
-                  value = results[0].attributes['Pixel value']
-                }
-
-                if (Number.isNaN(value)) {
-                  value = null
-                }
-                if (JSON.stringify(point) === JSON.stringify(this.props.point)) {
-                  this.setState({ elevation: value })
-                }
-              })
-
-            this.updateVariables(selectedVariables)
-
-            // Find seedzones at point
-            const zonesUrl = `${config.apiRoot}seedzones/?${io.urlEncode({ point: `${point.x},${point.y}` })}`
-
-            this.setState({ queryingZones: true })
-            this.runningZoneQueries += 1
-
-            io.get(zonesUrl)
-              .then(response => response.json())
-              .then((json: any) => {
-                const zones = json.results.map((zone: any) => ({
-                  id: zone.zone_uid,
-                  name: zone.name,
-                  elevation_band: zone.elevation_band,
-                }))
-                if (JSON.stringify(point) === JSON.stringify(this.props.point)) {
-                  this.setState({
-                    zones,
-                  })
-                }
-              })
-              .finally(() => {
-                this.runningZoneQueries -= 1
-                if (this.runningZoneQueries < 1) {
-                  this.setState({ queryingZones: false })
-                }
-              })
-          }
-        })
+        }
+      }
+    } catch (e: any) {
+      if (e !== 'aborted') {
+        throw e
+      }
     }
   }
 
@@ -199,26 +216,38 @@ class Popup extends React.Component<PopupProps, PopupState> {
     this.props.map.on('popupclose', () => {
       this.props.onClose ? this.props.onClose() : ''
     })
-    this.updateData()
+    this.mounted = true
+    this.setState({ queryingData: true })
+    this.updateData().finally(() => {
+      if (this.mounted) this.setState({ queryingData: false })
+    })
   }
 
   componentDidUpdate(prevProps: Readonly<PopupProps>) {
     if (JSON.stringify(prevProps.point) !== JSON.stringify(this.props.point)) {
-      this.updateData()
+      this.setState({ queryingData: true })
+      this.abortController.abort('aborted')
+      this.abortController = new AbortController()
+      this.updateData().finally(() => {
+        if (this.mounted) this.setState({ queryingData: false })
+      })
     } else if (JSON.stringify(prevProps.selectedVariables) !== JSON.stringify(this.props.selectedVariables)) {
-      this.setState({ variables: [] })
-      this.updateVariables(this.props.selectedVariables)
+      this.getUpdatedVariables(this.props.selectedVariables, [], this.props.point).then(variables => {
+        if (this.mounted) this.setState({ variables })
+      })
     }
   }
 
   componentWillUnmount() {
+    this.abortController.abort('aborted')
+    this.mounted = false
     this.props.map.closePopup(this.popup)
   }
 
   render() {
     setTimeout(() => {
-      const { point, unit, mode, onSave, onClose, map } = this.props
-      const { elevation, variables, zones, queryingVariables, queryingZones } = this.state
+      const { point, unit, mode, onSave, onClose } = this.props
+      const { elevation, variables, zones, queryingData } = this.state
       this.popup.setLatLng([point.y, point.x])
       ReactDOM.render(
         <>
@@ -230,17 +259,24 @@ class Popup extends React.Component<PopupProps, PopupState> {
                   {point.y.toFixed(2)}, {point.x.toFixed(2)}
                 </div>
               </div>
-              <div className="column">
-                <div>{t`Elevation`}</div>
-                <div className="has-text-weight-bold">
-                  {`${Math.round(elevation / 0.3048)} ${c("Abbreviation of 'feet' (measurement)").t`ft`} (${Math.round(
-                    elevation,
-                  )} ${c("Abbreviation of 'meters'").t`m`})`}
+
+              {!queryingData && elevation ? (
+                <div className="column">
+                  <div>{t`Elevation`}</div>
+                  <div className="has-text-weight-bold">
+                    {elevation &&
+                      `${Math.round(elevation / 0.3048)} ${c("Abbreviation of 'feet' (measurement)")
+                        .t`ft`} (${Math.round(elevation)} ${c("Abbreviation of 'meters'").t`m`})`}
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="column" style={{ alignSelf: 'center' }}>
+                  Loading...
+                </div>
+              )}
             </div>
 
-            {!!variables.length && !queryingVariables && (
+            {!!variables.length && !queryingData && (
               <>
                 <h6 className="title is-6">{t`Climate`}</h6>
                 <table>
@@ -278,7 +314,7 @@ class Popup extends React.Component<PopupProps, PopupState> {
               </>
             )}
 
-            {!!zones.length && !queryingZones && (
+            {!!zones.length && !queryingData && (
               <>
                 <h6 className="title is-6">{t`Available Zones`}</h6>
                 <ul className="popup-zones">
