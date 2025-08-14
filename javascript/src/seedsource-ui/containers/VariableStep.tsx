@@ -31,6 +31,26 @@ type VariableStepProps = ConnectedProps<typeof connector> & {
   active: boolean
 }
 
+const helpTooltip = (
+  <>
+    <p>
+      {t`When using the Custom or Zone approach, select one or more of the 16 biologically relevant climate variables. 
+      Do not select too many climate variables, particularly variables that are correlated with each other. The use of 
+      more than three climate variables will probably result in overly conservative climate matches; the more climate 
+      variables that are included, the smaller the mapped areas will be.`}
+    </p>
+    <br />
+    <p>
+      {t`You also have the option to choose automatically, in which case, the climate variables chosen will be mean 
+      temperature of the coldest month (MCMT) and summer heat: moisture index (SHM). These climate variables are 
+      chosen based on the assumption that temperate forest trees (or other plants) are primarily adapted to cold 
+      temperatures in the winter and aridity in the summer. The automatic selection of climate variables will 
+      calculate default transfer limits of +/- 2.0⁰C for Mean Coldest Month Temperature (MCMT) and +/- half of value 
+      at the location of the planting site or seedlot for Summer Heat-Moisture Index (SHM).`}
+    </p>
+  </>
+)
+
 const VariableStep = ({
   number,
   active,
@@ -66,7 +86,13 @@ const VariableStep = ({
   }
 
   return (
-    <ConfigurationStep title={t`Select climate variables`} number={number} name="variables" active>
+    <ConfigurationStep
+      title={t`Select climate variables`}
+      number={number}
+      name="variables"
+      active
+      helpTooltip={helpTooltip}
+    >
       <div className="margin-bottom-10">
         <input
           className="is-checkradio is-info"

@@ -28,6 +28,42 @@ type TransferStepProps = ConnectedProps<typeof connector> & {
   active: boolean
 }
 
+const helpTooltip = (
+  <>
+    <p>
+      {t`The transfer limit method selected determines how far climatically a seedlot may be moved and still 
+      have an acceptable level of adaptation. `}
+    </p>
+    <br />
+    <p>{t`The SST uses four approaches to determine and map transfer limits: `}</p>
+    <br />
+    <p>
+      <strong>{t`Custom`}: </strong>
+      {t`Allows for user-defined transfer limits for each climate variable selected in Step 6 based on user knowledge 
+      and experience including the best available science.`}
+    </p>
+    <br />
+    <p>
+      <strong>{t`Zone`}: </strong>
+      {t`Suggests transfer limits based on the range of climate conditions within the zone of the planting site or 
+      seedlot; these values are based on operational resource management over the past half-century and allows users 
+      to customize climate variables in step 6 or chose them automatically.`}
+    </p>
+    <br />
+    <p>
+      <strong>{t`Trait`}: </strong>
+      {t`Suggests transfer limits based on a particular trait of a species.`}
+    </p>
+    <br />
+    <p>
+      <strong>{t`Function`}: </strong>
+      {t`Allows for species to be selected to determine transfer limits based on a function that is derived from 
+      genetic studies that relates population differences in adaptive traits grown in a common environment to the 
+      climates of seed sources. The function approach is available for select species.`}
+    </p>
+  </>
+)
+
 const TransferStep = ({ number, active, objective, method, center, onCenterChange }: TransferStepProps) => {
   if (!active) {
     let label
@@ -79,7 +115,13 @@ const TransferStep = ({ number, active, objective, method, center, onCenterChang
   const hasFunctions = !!config.functions && config.functions.length > 0
 
   return (
-    <ConfigurationStep title={t`Select transfer limit method`} number={number} name="transfer" active>
+    <ConfigurationStep
+      title={t`Select transfer limit method`}
+      number={number}
+      name="transfer"
+      active
+      helpTooltip={helpTooltip}
+    >
       <div className="tabs is-toggle is-small">
         <ul>
           <MethodButton name="custom">{t`Custom`}</MethodButton>
