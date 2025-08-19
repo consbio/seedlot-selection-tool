@@ -1,0 +1,9 @@
+=== Paso 1. Seleccionar el objetivo
+
+==== Buscar lotes de semillas para mi sitio de plantación
+
+Haga clic en el botón “Find seedlots” (Buscar lotes de semillas) si tiene un sitio de plantación para el cual desea encontrar lotes de semillas adaptados.
+
+==== Buscar sitios de plantación para mi lote de semillas
+
+Haga clic en el botón “Find planting sites” (Buscar sitios de plantación) si tiene un lote de semillas y quiere saber en dónde puede plantarlo.

@@ -1,33 +1,28 @@
 :figure-caption!:
 
-=== Layers
+=== Capas
 
-The *Layers* tab allows the user to map different overlays onto the results. Options include gray-scaled values for
-different climate variables, seed and breeding zone boundaries, U.S. Level III Ecoregion boundaries, and U.S. county
-boundaries. _(Under construction: some species ranges will be added as an option for layers.)_
+La pestaña *Layers* (Capas) permite al usuario mapear diferentes capas superpuestas a los resultados. Entre las opciones figuran valores de escala de grises para las diferentes variables climáticas, los límites de zonas de origen de las semillas y de mejoramiento, los límites de la Región Ecológica Nivel III de los Estados Unidos, y los límites de los condados de los Estados Unidos. _(En construcción: se añadirán algunas gamas de especies como opción para las capas.)_
 
-=== Saved Runs
+=== Ejecuciones guardadas
 
-The *Saved Runs* tab will list each of your saved runs. Click on the name of the saved run to `Load` or `Delete` the
-inputs. Once a saved run is loaded, you can recreate the map by clicking on the `Run Tool` button in the Tool tab.
+En la pestaña *Saved Runs* (Ejecuciones guardadas) verá una lista de todas las ejecuciones guardadas. Haga clic en el nombre de la ejecución guardada para “Cargar” o “Eliminar” las entradas. Una vez que cargue una ejecución guardada, puede volver a crear el mapa haciendo clic en el botón “Run Tool” (Ejecutar herramienta), en la pestaña “Tool” (Herramienta).
 
-=== Account
+=== Cuenta
 
-Use the *Account* menu in the upper right corner of the web site to create or sign into an account. Use an email
-address and password to create an account. We will use this email address only if you lose your password. If you want
-to receive updates on the SST, sign up for our newsletter by clicking the `News & Updates` button in the menu.
+Utilice el menú *Account* (Cuenta), ubicado en la esquina superior derecha del sitio web, para crear o iniciar sesión en una cuenta. Utilice una dirección de correo electrónico y una contraseña para crear la cuenta. Utilizaremos la dirección de correo electrónico que nos proporcione únicamente si pierde u olvida su contraseña. Si desea recibir actualizaciones sobre la SST, suscríbase a nuestro boletín haciendo clic en el botón “News & Updates” (Noticias y actualizaciones) del menú.
 
 <<<
 
-=== Video Tutorial
+=== Tutorial en vídeo
 
-The following video tutorial demonstrates how to use the Seedlot Selection Tool. The tutorial was developed for silviculturists working in the Pacific Northwest region. It's also applicable to any region in the US where trees are being planted to be resilient to future climate.
+En el siguiente tutorial de vídeo se muestra cómo utilizar la herramienta de selección de lotes de semillas. El tutorial fue desarrollado para silvicultores que trabajan en la región del noroeste del Pacífico. También es aplicable a cualquier región de los EE. UU. donde se estén plantando árboles para que sean resistentes al clima futuro.
 
-.Watch the tutorial at https://youtu.be/HYuOTY8WgEc
-[#img-sunset,link=https://youtu.be/HYuOTY8WgEc]
+.Mira el tutorial en https://youtu.be/HYuOTY8WgEc
+[#img-sunset, link=https://youtu.be/HYuOTY8WgEc]
 image::../img/video-tutorial.png[]
 
-=== References
+=== Referencias
 
 Aitken, S.N. and J.B. Bemmels. 2015. Time to get moving: assisted gene flow of forest trees. Evolutionary Applications 9(1): 271-290.
 
@@ -39,13 +34,13 @@ Leimu,R. and M. Fischer. 2008. A meta-analysis of local adaptation in plants. PL
 
 Sáenz-Romero, E. Mendoza-Mata, E. Gómez-Pineda, A. Blanco-Garcia, et al. 2020. Recent evidence of Mexican temperate forest decline and the need for ex situ conservation, assisted migration, and translocation of species ensembles as adaptive management to face projected climatic change impacts in a megadiverse country. Can. J. For Res. 50: 843-854.
 
-St.Clair, John Bradley, Bryce A. Richardson, Nikolas Stevenson-Molnar, Glenn T. Howe, Andrew D. Bower, Vicky J. Erickson, Brendan Ward, Dominique Bachelet, Francis F. Kilkenny, and Tongli Wang. 2022. Seedlot Selection Tool and Climate-Smart Restoration Tool: Web-Based Tools for Sourcing Seed Adapted to Future Climates. Ecosphere 13(5): e4089. https://doi.org/10.1002/ecs2.4089
+St. Clair, John Bradley, Bryce A. Richardson, Nikolas Stevenson-Molnar, Glenn T. Howe, Andrew D. Bower, Vicky J. Erickson, Brendan Ward, Dominique Bachelet, Francis F. Kilkenny y Tongli Wang. 2022. Herramienta de selección de lotes de semillas y herramienta de restauración climáticamente inteligente: herramientas basadas en la web para obtener semillas adaptadas a climas futuros. Ecosfera 13 (5): e4089. https://doi.org/10.1002/ecs2.4089
 
 Van Mantgem, N.l. Stephenson, J.C. Byrne, L.D. Daniels, J.F. Franklin, P.Z. Fulé, M.E. Harmon, A.J. Larson, J.M. Smith, A.H. Taylor, T.T. Veblen. 2009. Widespread increase of tree mortality rates in the Western United States. Science 323: 521-524.
 
 Wang, T., A. Hamann, D.L. Spittlehouse, and C. Carroll. 2016. Locally downscaled and spatially conceptualized climate data for historical and future periods for North America. PLoS ONE 11(6): e0156720.
 
-==== Trait functions
+==== Funciones de rasgos
 
 Still, S. M., & Richardson, B. A. (2015). Projections of Contemporary and Future Climate Niche for Wyoming Big Sagebrush (Artemisia tridentata subsp. wyomingensis): A Guide for Restoration. Natural Areas Journal, 35(1), 30–43. http://doi.org/10.3375/043.035.0106
 
@@ -55,7 +50,7 @@ Richardson, B. A., Chaney, L., Shaw, N. L., & Still, S. M. (2017). Will phenotyp
 
 Richardson, B. A., & Chaney, L. (2018). Climate-based seed transfer of a widespread shrub: population shifts, restoration strategies, and the trailing edge. Ecological Applications, 44, 367–10. http://doi.org/10.1002/eap.1804
 
-Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., &  Hamilton Jr, D. A. (1999). Genetic responses to climate in Pinus contorta: niche breadth, climate change, and reforestation. Ecological Monographs, 69(3), 375–407. https://doi.org/10.1890/0012-9615(1999)069%5B0375:GRTCIP%5D2.0.CO;2[https://doi.org/10.1890/0012-9615(1999)069$$[0375:GRTCIP]$$2.0.CO;2]
+Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., & Hamilton Jr, D. A. (1999). Respuestas genéticas al clima en Pinus contorta: amplitud de nicho, cambio climático y reforestación. Monografías Ecológicas, 69(3), 375–407. https://doi.org/10.1890/0012-9615(1999)069%5B0375:GRTCIP%5D2.0.CO; 2[https://doi.org/10.1890/0012-9615(1999)069$$[0375:GRTCIP]$$2.0.CO; 2]
 
 Rehfeldt, G. E. (2004). Interspecific and intraspecific variation in Picea engelmannii and its congeneric cohorts: biosystematics, genecology, and climate change. Gen. Tech. Rep. RMRS-GTR-134. Fort Collins, CO: U.S. Department of Agriculture, Forest Service, Rocky Mountain Research. 18 p., 134. https://doi.org/10.2737/rmrs-gtr-134
 

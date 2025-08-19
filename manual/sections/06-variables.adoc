@@ -5,7 +5,7 @@ application called ClimateNA (see tab for more information). You also have the o
 which case, the climate variables chosen will be mean temperature of the coldest month (MCMT) and summer heat:moisture
 index (SHM). These climate variables are chosen based on the assumption that temperate forest trees (or other plants)
 are primarily adapted to cold temperatures in the winter and aridity in the summer. This option specifies a transfer
-limit for MCMT of `+/- 2.0°C` and for SHM of `+/-` half the value at the location specified in Step 2. These transfer
+limit for MCMT of `+/- 2.0°C` and for SHM `of +/-` half the value at the location specified in Step 2. These transfer
 limits may be modified. After choosing climate variables, the resulting table includes:
 
 * *Name* -- the abbreviated name of the ClimateNA variable
