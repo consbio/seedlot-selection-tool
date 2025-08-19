@@ -1,9 +1,10 @@
 import React from 'react'
+import { createPortal } from 'react-dom'
 import { connect, ConnectedProps } from 'react-redux'
-import ReactTooltip from 'react-tooltip'
+import { Tooltip } from 'react-tooltip'
 import { t } from 'ttag'
 import EditableLabel from '../components/EditableLabel'
-import { modifyVariable, resetTransfer, removeVariable } from '../actions/variables'
+import { modifyVariable, removeVariable, resetTransfer } from '../actions/variables'
 import { toggleLayer } from '../actions/layers'
 import { variables as allVariables } from '../config'
 
@@ -187,7 +188,7 @@ const Variable = (props: ConnectedProps<typeof connector>) => {
   }
 
   return (
-    <tr className={active ? 'visible' : ''} data-tip data-for={`${name}_Tooltip`}>
+    <tr className={active ? 'visible' : ''} id={`${name}_Tooltip`}>
       <td>
         <a
           type="button"
@@ -229,29 +230,31 @@ const Variable = (props: ConnectedProps<typeof connector>) => {
             onToggle()
           }}
         />
-
-        <ReactTooltip id={`${name}_Tooltip`} className="variable-tooltip" place="right" effect="solid">
-          <h5 className="title is-5 margin-bottom-5">
-            {name}: {label}
-          </h5>
-          <div>
-            <span className="tooltip-label">{customMode ? t`Custom value:` : t`Value at point:`}</span>{' '}
-            <strong>{value}</strong>
-          </div>
-          <div>
-            <span className="tooltip-label">{t`Transfer limit (+/-):`}</span>
-            <strong>
-              {transfer} {units[unit].label} {transferIsModified ? `(${t`modified`})` : ''}
-            </strong>
-          </div>
-          <div>
-            <span className="tooltip-label">{t`Avg.transfer limit for zone set:`}</span>
-            <strong>
-              {avgTransfer} {units[unit].label}
-            </strong>
-          </div>
-          {climaticCenter}
-        </ReactTooltip>
+        {createPortal(
+          <Tooltip anchorSelect={`#${name}_Tooltip`} className="variable-tooltip" place="right" data-tooltip-float>
+            <h5 className="title is-5 margin-bottom-5">
+              {name}: {label}
+            </h5>
+            <div>
+              <span className="tooltip-label">{customMode ? t`Custom value:` : t`Value at point:`}</span>{' '}
+              <strong>{value}</strong>
+            </div>
+            <div>
+              <span className="tooltip-label">{t`Transfer limit (+/-):`}</span>
+              <strong>
+                {transfer} {units[unit].label} {transferIsModified ? `(${t`modified`})` : ''}
+              </strong>
+            </div>
+            <div>
+              <span className="tooltip-label">{t`Avg.transfer limit for zone set:`}</span>
+              <strong>
+                {avgTransfer} {units[unit].label}
+              </strong>
+            </div>
+            {climaticCenter}
+          </Tooltip>,
+          document.body,
+        )}
       </td>
     </tr>
   )

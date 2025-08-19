@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { ReactHTMLElement } from 'react'
+import { createPortal } from 'react-dom'
 import { connect } from 'react-redux'
+import { Tooltip } from 'react-tooltip'
+import { t } from 'ttag'
 import { selectStep } from '../actions/step'
 import { collapsibleSteps } from '../config'
+import InfoIcon from '$images/icon-info.svg'
 import MoreIcon from '$images/icon-more.svg'
 
 type ExtraStepOption = {
@@ -17,6 +21,7 @@ type ConfigurationStepProps = {
   className?: string
   children: any
   onClick: () => any
+  helpTooltip: string | ReactHTMLElement<any>
 }
 
 type ConfigurationStepState = {
@@ -71,7 +76,7 @@ class ConfigurationStep extends React.Component<ConfigurationStepProps, Configur
   }
 
   render() {
-    const { number, title, children, active, extraOptions, className, onClick } = this.props
+    const { number, title, children, active, extraOptions, className, onClick, helpTooltip } = this.props
     const { optionsMenuActive } = this.state
 
     if (collapsibleSteps) {
@@ -98,7 +103,28 @@ class ConfigurationStep extends React.Component<ConfigurationStepProps, Configur
       <div className={`configuration-step no-collapse ${className}`}>
         <h4>
           <div className="badge">{number}</div>
-          <div>{title}</div>
+          <div>
+            <span>{title}</span>
+            {helpTooltip && (
+              <>
+                <a id={`tooltip-configuration-step-${number}`}>
+                  <img src={InfoIcon} alt={t`Information icon`} className="info-icon" />
+                </a>
+                {createPortal(
+                  <Tooltip
+                    anchorSelect={`#tooltip-configuration-step-${number}`}
+                    place="right"
+                    data-tooltip-float
+                    className="configuration-tooltip"
+                  >
+                    <h5 className="title is-5 margin-bottom-5">{t`Information`}</h5>
+                    <div className="is-size-8">{helpTooltip}</div>
+                  </Tooltip>,
+                  document.body,
+                )}
+              </>
+            )}
+          </div>
           <div className="spacer" />
           {extraOptions && extraOptions.length > 0 && (
             <div className={`options dropdown is-right ${optionsMenuActive ? 'is-active' : ''}`} ref={this.optionsRef}>

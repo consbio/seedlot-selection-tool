@@ -15,6 +15,10 @@ type ClimateStepProps = {
   onChange: (type: string, value: string, climate: string) => any
 }
 
+const helpTooltip = (
+  <p>{t`You can select historical, current, or future climates for your seedlots or planting sites.`}</p>
+)
+
 const ClimateStep = ({ title, seedlotHelpText, siteHelpText, climate, number, active, onChange }: ClimateStepProps) => {
   const { seedlot, site } = climate
   let modelSelect = null
@@ -58,7 +62,7 @@ const ClimateStep = ({ title, seedlotHelpText, siteHelpText, climate, number, ac
   }
 
   return (
-    <ConfigurationStep title={title!} number={number} name="climate" active>
+    <ConfigurationStep title={title!} number={number} name="climate" active helpTooltip={helpTooltip}>
       <div className="is-size-7">
         <em>{seedlotHelpText}</em>
       </div>

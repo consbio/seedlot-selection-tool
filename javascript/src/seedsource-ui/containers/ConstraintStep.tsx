@@ -12,6 +12,17 @@ type ConstraintStepProps = {
   onChange: (selection: any) => any
 }
 
+const helpTooltip = (
+  <p>
+    {t`This is an optional step that applies constraints to limit the geographic extent of the mapped results. There 
+    are two choices for constraining the results: 1) Geographic constraints including latitude, longitude, elevation, 
+    distance, photoperiod, or 2) Species ranges that include a list of results from species distribution models for 
+    contemporary climates. Users also have the option to import their own geographic boundary to use as a constraint 
+    under the geographic constraints, by selecting a shapefile. Using constraints will exclude that part of the 
+    climatic output that is beyond the geographic limits imposed or beyond the species range.`}
+  </p>
+)
+
 const ConstraintStep = ({ number, constraints, onChange }: ConstraintStepProps) => {
   const { constraints: constraintsConfig } = config
   let table = null
@@ -44,6 +55,7 @@ const ConstraintStep = ({ number, constraints, onChange }: ConstraintStepProps) 
       name="constraints"
       active
       className="constraint-step"
+      helpTooltip={helpTooltip}
     >
       {table}
       <ConstraintChooser onAdd={onChange} />

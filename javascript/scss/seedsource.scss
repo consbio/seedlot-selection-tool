@@ -379,6 +379,27 @@ button.navbar-item {
   .step-content {
     margin: 10px 0px 0px 35px;
   }
+
+  .info-icon {
+    width: 18px;
+    height: auto;
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+}
+
+.configuration-tooltip {
+  box-shadow: 5px 5px 10px rgba(153, 153, 153, 0.6);
+  max-width: 600px;
+  white-space: normal;
+  color: #aaa;
+  // 5 is the lowest z-index above the navbar
+  z-index: 5;
+
+  strong,
+  .title {
+    color: #fff;
+  }
 }
 
 .constraint-arrow {
@@ -435,6 +456,8 @@ tr.visible .visibility-toggle,
   font-size: 1.1em !important;
   max-width: 400px;
   white-space: normal;
+  // 5 is the lowest z-index above the navbar
+  z-index: 5;
 }
 
 .variable-tooltip strong,
