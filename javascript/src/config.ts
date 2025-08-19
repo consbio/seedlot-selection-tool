@@ -20,12 +20,13 @@ const serializeSpeciesConstraint = ({ climate }: { climate: any }, { species }: 
   }
 }
 
-const speciesConstraints = [
-  ['pico', t`Lodgepole Pine`],
-  ['pisi', t`Sitka Spruce`],
-  ['psme', t`Douglas-fir`],
-  ['pipo', t`Ponderosa Pine`],
-  ['pien', t`Engelmann Spruce`],
+const speciesConstraints: [string, string][] = [
+  // TODO: Temporarily disabled pending updated data from USFS
+  // ['pico', t`Lodgepole Pine`],
+  // ['pisi', t`Sitka Spruce`],
+  // ['psme', t`Douglas-fir`],
+  // ['pipo', t`Ponderosa Pine`],
+  // ['pien', t`Engelmann Spruce`],
 ]
 
 export default () => {
@@ -267,12 +268,13 @@ export default () => {
       },
       categories: [
         ...baseConfig.constraints.categories,
-        {
-          name: 'species',
-          label: t`Species Range`,
-          type: 'category',
-          items: speciesConstraints.map(([name, label]) => ({ name, label, type: 'constraint' })),
-        },
+        // TODO: Temporarily disabled pending updated data from USFS
+        // {
+        //   name: 'species',
+        //   label: t`Species Range`,
+        //   type: 'category',
+        //   items: speciesConstraints.map(([name, label]) => ({ name, label, type: 'constraint' })),
+        // },
       ],
     },
     layers: {
@@ -370,11 +372,12 @@ export default () => {
     },
     layerCategories: [
       ...baseConfig.layerCategories,
-      {
-        label: t`Constraints`,
-        show: () => true,
-        layers: speciesConstraints.map(([species]) => `constraint-${species}`),
-      },
+      // TODO: Temporarily disabled pending updated data from USFS
+      // {
+      //   label: t`Constraints`,
+      //   show: () => true,
+      //   layers: speciesConstraints.map(([species]) => `constraint-${species}`),
+      // },
       {
         label: c('"Little" is a proper noun').t`Little's Range Maps`,
         show: () => true,

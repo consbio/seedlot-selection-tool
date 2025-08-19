@@ -1,0 +1,491 @@
+---
+- name: Install dependencies
+  hosts: webservers
+  tasks:
+    - name: Install development tools
+      become: true
+      ansible.builtin.dnf:
+        name: '@Development tools'
+        state: present
+    - name: Install other dependencies
+      become: true
+      ansible.builtin.dnf:
+        name:
+          - cmake
+          - logrotate
+          - openssl-devel
+          - sqlite-devel
+          - libtiff-devel
+          - libcurl-devel
+          - libpq-devel
+          - python3.11
+          - python3.11-devel
+          - python3.11-setuptools
+          - python3.11-wheel
+          - python3.11-pip
+          - nginx
+          - golang
+          - ruby
+          - ansible
+        state: latest
+    - name: Install erlang
+      become: true
+      ansible.builtin.dnf:
+        name: 'https://github.com/rabbitmq/erlang-rpm/releases/download/v26.2.5.3/erlang-26.2.5.3-1.amzn2023.aarch64.rpm'
+        state: present
+        disable_gpg_check: true
+    - name: Install rabbitmq
+      become: true
+      ansible.builtin.dnf:
+        name: 'https://github.com/rabbitmq/rabbitmq-server/releases/download/v4.1.2/rabbitmq-server-4.1.2-1.el8.noarch.rpm'
+        state: present
+        disable_gpg_check: true
+
+- name: Install codedeploy-agent
+  hosts: webservers
+  tasks:
+    - name: Check for codedeploy-agent
+      ansible.builtin.stat:
+        path: '/opt/codedeploy-agent/bin/codedeploy-agent'
+      register: codedeploy_agent
+    - name: Download installer
+      become: true
+      ansible.builtin.get_url:
+        url: 'https://aws-codedeploy-us-west-2.s3.us-west-2.amazonaws.com/latest/install'
+        dest: '/tmp/codedeploy-install'
+      when: not codedeploy_agent.stat.exists
+    - name: Install codedeploy-agent
+      become: true
+      ansible.builtin.shell: |
+        chmod +x codedeploy-install && \
+        ./codedeploy-install auto
+      args:
+        chdir: /tmp
+        executable: /bin/bash
+      when: not codedeploy_agent.stat.exists
+    - name: Cleanup
+      become: true
+      ansible.builtin.file:
+        path: '/tmp/codedeploy-install'
+        state: absent
+
+- name: Install PROJ
+  hosts: webservers
+  environment:
+    PATH: '/usr/local/bin:{{ lookup("env", "PATH") }}'
+  vars:
+    proj_version: '9.6.2'
+  tasks:
+    - name: Check PROJ version
+      ansible.builtin.shell: proj 2>&1 | grep -E '[0-9]+\.[0-9]+\.[0-9]+' -o || { echo '0'; }
+      register: current_proj_version
+      args:
+        executable: /bin/bash
+    - name: Build PROJ
+      when: proj_version is ansible.builtin.version(current_proj_version.stdout, '>')
+      block:
+        - name: Download sources
+          ansible.builtin.get_url:
+            url: 'https://download.osgeo.org/proj/proj-{{ proj_version }}.tar.gz'
+            dest: '/tmp/proj-{{ proj_version}}.tar.gz'
+          register: proj_source
+        - name: Unpack sources
+          ansible.builtin.unarchive:
+            copy: no
+            dest: /tmp/
+            src: '{{ proj_source.dest }}'
+          register: proj_source_unpacked
+        - name: Build and install
+          become: true
+          ansible.builtin.shell: |
+            mkdir -p build && cd build && \
+            cmake .. && \
+            cmake --build . && \
+            cmake --build . --target install
+          args:
+            chdir: '/tmp/proj-{{ proj_version }}'
+            executable: /bin/bash
+        - name: Delete downloaded source
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/proj-{{ proj_version }}.tar.gz'
+            state: absent
+        - name: Delete source directory
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/proj-{{ proj_version }}'
+            state: absent
+
+- name: Install HDF5
+  hosts: webservers
+  vars:
+    hdf5_version: '1.14.6'
+  environment:
+    PATH: '/usr/local/bin:/usr/local/HDF_Group/HDF5/{{ hdf5_version }}/bin:{{ lookup("env", "PATH") }}'
+  tasks:
+    - name: Check HDF5 version
+      ansible.builtin.shell: h5ls --version 2>&1 | grep -E '[0-9]+\.[0-9]+\.[0-9]+' -o || { echo '0'; }
+      register: current_hdf5_version
+      args:
+        executable: /bin/bash
+    - name: Build HDF5
+      when: hdf5_version is ansible.builtin.version(current_hdf5_version.stdout, '>')
+      block:
+        - name: Download sources
+          ansible.builtin.get_url:
+            url: 'https://github.com/HDFGroup/hdf5/releases/download/hdf5_{{ hdf5_version }}/hdf5-{{ hdf5_version }}.tar.gz'
+            dest: '/tmp/hdf5-{{ hdf5_version}}.tar.gz'
+          register: hdf5_source
+        - name: Unpack sources
+          ansible.builtin.unarchive:
+            copy: no
+            dest: /tmp/
+            src: '{{ hdf5_source.dest }}'
+          register: hdf5_source_unpacked
+        - name: Build and install
+          become: true
+          ansible.builtin.shell: |
+            mkdir -p build && cd build && \
+            cmake .. && \
+            cmake --build . && \
+            cmake --build . --target install && \
+            ln -s --force /usr/local/HDF_Group/HDF5/{{ hdf5_version }}/bin/* /usr/local/bin && \
+            ln -s --force /usr/local/HDF_Group/HDF5/{{ hdf5_version }}/lib/* /usr/local/lib
+          args:
+            chdir: '/tmp/hdf5-{{ hdf5_version }}'
+            executable: /bin/bash
+        - name: Delete downloaded source
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/hdf5-{{ hdf5_version }}.tar.gz'
+            state: absent
+        - name: Delete source directory
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/hdf5-{{ hdf5_version }}'
+            state: absent
+
+- name: Install NetCDF
+  hosts: webservers
+  environment:
+    PATH: '/usr/local/bin:/usr/local/HDF_Group/HDF5/{{ hdf5_version }}/bin:{{ lookup("env", "PATH") }}'
+  vars:
+    netcdf_version: '4.9.3'
+    hdf5_version: '1.14.6'
+  tasks:
+    - name: Check NetCDF version
+      ansible.builtin.shell: nc-config --version 2>&1 | grep -E '[0-9]+\.[0-9]+\.[0-9]+' -o || { echo '0'; }
+      register: current_netcdf_version
+      args:
+        executable: /bin/bash
+    - name: Build NetCDF
+      when: netcdf_version is ansible.builtin.version(current_netcdf_version.stdout, '>')
+      block:
+        - name: Download sources
+          ansible.builtin.get_url:
+            url: 'https://downloads.unidata.ucar.edu/netcdf-c/{{ netcdf_version }}/netcdf-c-{{ netcdf_version }}.tar.gz'
+            dest: '/tmp/netcdf-c-{{ netcdf_version}}.tar.gz'
+          register: netcdf_source
+        - name: Unpack sources
+          ansible.builtin.unarchive:
+            copy: no
+            dest: /tmp/
+            src: '{{ netcdf_source.dest }}'
+          register: netcdf_source_unpacked
+        - name: Build and install
+          become: true
+          ansible.builtin.shell: |
+            mkdir -p build && cd build && \
+            cmake .. && \
+            cmake --build . && \
+            cmake --build . --target install
+          args:
+            chdir: '/tmp/netcdf-c-{{ netcdf_version }}'
+            executable: /bin/bash
+        - name: Delete downloaded source
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/netcdf-c-{{ netcdf_version }}.tar.gz'
+            state: absent
+        - name: Delete source directory
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/netcdf-c-{{ netcdf_version }}'
+            state: absent
+
+- name: Install GDAL
+  hosts: webservers
+  environment:
+    PATH: '/usr/local/bin:/usr/local/HDF_Group/HDF5/{{ hdf5_version }}/bin:{{ lookup("env", "PATH") }}'
+  vars:
+    gdal_version: '3.11.3'
+    hdf5_version: '1.14.6'
+  tasks:
+    - name: Check GDAL version
+      ansible.builtin.shell: gdal-config --version 2>/dev/null || { echo '0'; }
+      register: current_gdal_version
+      args:
+        executable: /bin/bash
+    - name: Build GDAL
+      when: gdal_version is ansible.builtin.version(current_gdal_version.stdout, '>')
+      block:
+        - name: Download sources
+          ansible.builtin.get_url:
+            url: 'https://github.com/OSGeo/gdal/releases/download/v3.11.3/gdal-{{ gdal_version }}.tar.gz'
+            dest: '/tmp/gdal-{{ gdal_version }}.tar.gz'
+          register: gdal_source
+        - name: Unpack sources
+          ansible.builtin.unarchive:
+            copy: no
+            dest: /tmp/
+            src: '{{ gdal_source.dest }}'
+          register: gdal_source_unpacked
+        - name: Build and install
+          become: true
+          ansible.builtin.shell: |
+            pip3.11 install numpy && \
+            mkdir -p build && cd build && \
+            cmake .. && \
+            cmake --build . && \
+            cmake --build . --target install
+          args:
+            chdir: '/tmp/gdal-{{ gdal_version }}'
+            executable: /bin/bash
+        - name: Delete downloaded source
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/gdal-{{ gdal_version }}.tar.gz'
+            state: absent
+        - name: Delete source directory
+          become: true
+          ansible.builtin.file:
+            path: '/tmp/gdal-{{ gdal_version }}'
+            state: absent
+
+- name: Install GEOS
+  hosts: webservers
+  environment:
+    PATH: '/usr/local/bin:{{ lookup("env", "PATH") }}'
+  vars:
+    geos_version: '3.13.1'
+  tasks:
+    - name: Check GEOS version
+      ansible.builtin.shell: geos-config --version 2>/dev/null || { echo '0'; }
+      register: current_geos_version
+      args:
+        executable: /bin/bash
+    - name: Build GEOS
+      when: geos_version is ansible.builtin.version(current_geos_version.stdout, '>')
+      block:
+        - name: Download sources
+          ansible.builtin.get_url:
+            url: 'https://download.osgeo.org/geos/geos-{{ geos_version }}.tar.bz2'
+            dest: '/tmp/geos-{{ geos_version }}.tar.bz2'
+          register: geos_source
+        - name: Unpack sources
+          ansible.builtin.unarchive:
+            copy: no
+            dest: /tmp/
+            src: '{{ geos_source.dest }}'
+          register: geos_source_unpacked
+        - name: Build and install
+          become: true
+          ansible.builtin.shell: |
+            mkdir -p build && cd build && \
+            cmake \
+              -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_INSTALL_PREFIX=/usr/local \
+              .. && \
+            cmake --build .
+            cmake --build . --target install
+          args:
+            chdir: '/tmp/geos-{{ geos_version }}'
+            executable: /bin/bash
+    - name: Delete downloaded source
+      become: true
+      ansible.builtin.file:
+        path: '/tmp/geos-{{ geos_version }}.tar.gz'
+        state: absent
+    - name: Delete source directory
+      become: true
+      ansible.builtin.file:
+        path: '/tmp/geos-{{ geos_version }}'
+        state: absent
+
+- name: Configure Nginx
+  hosts: webservers
+  tasks:
+    - name: Create cache directory
+      become: true
+      ansible.builtin.file:
+        path: /var/nginx/cache
+        state: directory
+        owner: nginx
+        group: nginx
+    - name: Add Nginx config
+      become: true
+      ansible.builtin.copy:
+        src: resources/nginx.conf
+        dest: /etc/nginx/nginx.conf
+        owner: nginx
+        group: nginx
+        mode: '0600'
+        validate: 'nginx -tc "%s"'
+    - name: Reload nginx
+      become: true
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+        enabled: true
+
+- name: Setup SST user
+  hosts: webservers
+  tasks:
+    - name: Add SST user
+      become: true
+      ansible.builtin.user:
+        name: sst
+        create_home: yes
+    - name: Install Poetry
+      become: true
+      become_user: sst
+      ansible.builtin.shell: |
+        curl -sSL https://install.python-poetry.org | python3.11 -
+    - name: Install mbtileserver
+      become: true
+      become_user: sst
+      ansible.builtin.shell: |
+        go install github.com/consbio/mbtileserver@latest
+    - name: Create project directory
+      become: true
+      ansible.builtin.file:
+        path: /home/sst/apps/seedlot-selection-tool
+        state: directory
+        owner: sst
+        group: sst
+    - name: Create var directory
+      become: true
+      ansible.builtin.file:
+        path: /home/sst/var/run
+        state: directory
+        owner: sst
+        group: sst
+    - name: Create django log directory
+      become: true
+      ansible.builtin.file:
+        path: /home/sst/var/log/django
+        state: directory
+        owner: sst
+        group: sst
+    - name: Create celery log directory
+      become: true
+      ansible.builtin.file:
+        path: /home/sst/var/log/celery
+        state: directory
+        owner: sst
+        group: sst
+    - name: Create AWS config directory
+      become: true
+      ansible.builtin.file:
+        path: /home/sst/.aws
+        state: directory
+        owner: sst
+        group: sst
+        mode: '0700'
+    - name: Copy AWS credentials file
+      become: true
+      ansible.builtin.copy:
+        src: resources/aws_credentials
+        dest: /home/sst/.aws/credentials
+        owner: sst
+        group: sst
+        mode: '0600'
+    - name: Create static files directory
+      become: true
+      ansible.builtin.file:
+        path: /var/www/static
+        state: directory
+        owner: sst
+        group: nginx
+        mode: '0755'
+
+- name: Create services
+  hosts: webservers
+  tasks:
+    - name: Create gunicorn service
+      become: true
+      ansible.builtin.copy:
+        src: resources/gunicorn.service
+        dest: /etc/systemd/system/gunicorn.service
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Create gunicorn log directory
+      become: true
+      ansible.builtin.file:
+        path: /var/log/gunicorn
+        state: directory
+        owner: sst
+        group: sst
+        mode: '0755'
+    - name: Create celery service
+      become: true
+      ansible.builtin.copy:
+        src: resources/celery.service
+        dest: /etc/systemd/system/celery.service
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Create celery log directory
+      become: true
+      ansible.builtin.file:
+        path: /var/log/celery
+        state: directory
+        owner: sst
+        group: sst
+        mode: '0755'
+    - name: Create mbtileserver service
+      become: true
+      ansible.builtin.copy:
+        src: resources/mbtileserver.service
+        dest: /etc/systemd/system/mbtileserver.service
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Create tiles directory
+      become: true
+      ansible.builtin.file:
+        path: /mnt/data/tiles
+        state: directory
+        owner: sst
+        group: sst
+        mode: '0755'
+    - name: Enable codedeploy-agent
+      become: true
+      ansible.builtin.systemd_service:
+        name: codedeploy-agent
+        enabled: true
+    - name: Enable gunicorn
+      become: true
+      ansible.builtin.systemd_service:
+        daemon_reload: true
+        name: gunicorn
+        enabled: true
+    - name: Enable celery
+      become: true
+      ansible.builtin.systemd_service:
+        daemon_reload: true
+        name: celery
+        enabled: true
+    - name: Enable mbtileserver
+      become: true
+      ansible.builtin.systemd_service:
+        daemon_reload: true
+        name: mbtileserver
+        enabled: true
+    - name: Enable rabbitmq
+      become: true
+      ansible.builtin.systemd_service:
+        daemon_reload: true
+        name: rabbitmq-server
+        enabled: true

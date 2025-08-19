@@ -2,14 +2,15 @@ version: 0.0
 os: linux
 files:
   - source: .
-    destination: /home/sst/apps/seedlot-selection-tool
+    destination: /home/sst/build
 permissions:
   - object: .
     owner: sst
     group: sst
 hooks:
+  BeforeInstall:
+    - location: CodeDeploy/BeforeInstall.sh
+      runas: sst
   AfterInstall:
     - location: CodeDeploy/AfterInstall.sh
-      runas: sst
-    - location: CodeDeploy/AfterInstall-root.sh
       runas: root

@@ -36,7 +36,10 @@ export default languages.map(language => {
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: '[name].[chunkhash].bundle.js',
-      publicPath: production ? 'https://seedlotselectiontool.org/static/' : 'http://127.0.0.1:3000/assets/bundles/',
+      publicPath: production
+        ? // TODO change this back for production
+          'https://staging.seedlotselectiontool.org/static/'
+        : 'http://127.0.0.1:3000/assets/bundles/',
       crossOriginLoading: production ? false : 'anonymous',
     },
     ...(production || language.name !== 'default'
