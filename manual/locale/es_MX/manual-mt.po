@@ -1,0 +1,321 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2025-07-21 08:55-0700\n"
+"PO-Revision-Date: 2025-08-12 11:25-0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#. type: Plain text
+#: sections/04-climate.adoc:9
+#, fuzzy
+msgid ""
+"The first step is to select the time period (given as a 30-year average known as a climate normal) that represents the climate to which seedlots are adapted. It is typically assumed to be the climate having the greatest influence on the seedlot's parents. For longer-"
+"lived plants (e.g. trees) it is recommended to choose 1961 -1990. For shorter-lived species (e.g., grass and forbs) a 1981-2010 or 1991-2020 period may be more suitable."
+msgstr ""
+"El primer paso es seleccionar el período de tiempo (dado como un promedio de 30 años conocido como clima normal) que representa el clima al que se adaptan los lotes de semillas. Por lo general, se supone que es el clima que tiene la mayor influencia en los padres del "
+"lote de semillas. Para plantas más longevas (por ejemplo, árboles) se recomienda elegir 1961 -1990. Para las especies de vida más corta (por ejemplo, gramíneas y hierbas), un período de 1981-2010 o 1991-2020 puede ser más adecuado."
+
+#. type: Plain text
+#: sections/04-climate.adoc:28
+#, fuzzy
+msgid ""
+"The SST allows users to explore different scenarios of climate change by looking at different future time periods and assumed relative concentration pathways (RCPs). The SST also allows users to consider adaptation to past climates--that is, if climate change were "
+"ignored (1961 - 1990 before appreciable climate change) or considering recent changes in climate (1981 - 2010 or 1991 - 2020). Note that the current time period (2011-2040) represents modeled projections and not observations."
+msgstr ""
+"La TSM permite a los usuarios explorar diferentes escenarios de cambio climático al observar diferentes períodos de tiempo futuros y trayectorias de concentración relativa (RCP) supuestas. La TSM también permite a los usuarios considerar la adaptación a climas "
+"pasados, es decir, si se ignoró el cambio climático (1961 - 1990 antes del cambio climático apreciable) o si se consideraron los cambios recientes en el clima (1981 - 2010 o 1991 - 2020). Tenga en cuenta que el período de tiempo actual (2011-2040) representa "
+"proyecciones modeladas y no observaciones."
+
+#. type: Plain text
+#: sections/04-climate.adoc:39
+#, fuzzy
+msgid ""
+"For future climates (i.e., 2011 to 2100), also select the Shared Socioeconomic Pathway (SSP), which is associated with different levels of atmospheric greenhouse gases and climate change. According to IPCC AR6, the SSP245 \"intermediate\" emissions scenario has a "
+"projected increase in mean annual temperature of 2.7°C by 2100 (range = 2.1-3.5°C), the SSP370 \"high\" scenario has a projected increased of 3.6°C (range = 2.8 - 4.6°C), and the SSP585 \"very high\" scenario has a projected increase of 4.4°C (range = 3.3 - 5.7°C)."
+msgstr ""
+"Para climas futuros (es decir, de 2011 a 2100), seleccione también la Trayectoria Socioeconómica Compartida (SSP), que está asociada con diferentes niveles de gases de efecto invernadero atmosféricos y cambio climático. De acuerdo con el IE6 del IPCC, el escenario de "
+"emisiones \"intermedias\" de SSP245 tiene un aumento proyectado en la temperatura media anual de 2,7 °C para 2100 (rango = 2,1-3,5 °C), el escenario SSP370 \"alto\" tiene un aumento proyectado de 3,6 °C (rango = 2,8 - 4,6 °C), y el escenario SSP585 \"muy alto\" tiene "
+"un aumento proyectado de 4,4 °C (rango = 3,3 - 5,7 °C)."
+
+#. type: Plain text
+#: sections/05-transfer.adoc:4
+#, fuzzy
+msgid "The transfer limit indicates how far climatically a seedlot may be moved and still have an acceptable level of adaptation. The SST uses three alternative approaches to determine and map transfer limits: *Custom*, *Zone*, *Trait*, and *Function*."
+msgstr ""
+"El límite de transferencia indica qué tan lejos climáticamente se puede mover un lote de semillas y aún tener un nivel aceptable de adaptación. El SST utiliza tres enfoques alternativos para determinar y mapear los límites de transferencia: *Personalizado*, *Zona*, "
+"*Trait* y *Función*."
+
+#. type: Plain text
+#: sections/05-transfer.adoc:18
+#, fuzzy
+msgid ""
+"The SST suggests a transfer limit for the *Zone* approach based on the range of climates within the zone for the location of the planting site or seedlot chosen in Step 2. The idea is that the user would feel comfortable with that climatic difference given that we "
+"have been operationally moving populations within zones for 60 or more years. If you use the Zone method, the SST obtains the transfer limit (`TL`) for each climate variable using the selected zone: latexmath:[TL = \\frac{xmax-xmin}{2}], where `xmax` and `xmin` are "
+"the maximum and minimum climate values for the zone.  The assumption is that half the range of climates represents a \"typical\" past transfer. Because some zones show greater climatic variation than the typical zone, we also provide the average transfer limit for all "
+"zones in the selected zone set. This and other information will show up in a pop-up window in Step 6 if you hover over the \"eye\" icon to the right of the climate variable in the climate variable table. The transfer limit may be modified by the user."
+msgstr ""
+"La TSM sugiere un límite de transferencia para el enfoque de *Zona* basado en la gama de climas dentro de la zona para la ubicación del sitio de siembra o lote de siembra elegido en el Paso 2. La idea es que el usuario se sienta cómodo con esa diferencia climática "
+"dado que llevamos 60 años o más moviendo poblaciones operativamente dentro de las zonas. Si utiliza el método Zone, la SST obtiene el límite de transferencia ('TL') para cada variable climática utilizando la zona seleccionada: latexmath:[TL = \\frac{xmax-xmin}{2}], "
+"donde 'xmax' y 'xmin' son los valores climáticos máximo y mínimo para la zona.  La suposición es que la mitad de la gama de climas representa una transferencia pasada \"típica\". Debido a que algunas zonas muestran una mayor variación climática que la zona típica, "
+"también proporcionamos el límite de transferencia promedio para todas las zonas del conjunto de zonas seleccionado. Esta y otra información aparecerá en una ventana emergente en el paso 6 si pasa el cursor sobre el icono del \"ojo\" a la derecha de la variable "
+"climática en la tabla de variables climáticas. El límite de transferencia puede ser modificado por el usuario."
+
+#. type: Plain text
+#: sections/05-transfer.adoc:20
+#, fuzzy
+msgid ""
+"The *Trait* approach uses genecological functions to select an acceptable difference in one or more adaptive traits based on research from common-garden studies. Genecological functions are an association between the adaptive traits identified in a common-garden and "
+"the climate derived from seed-source locations. The trait usually represents a multivariate climate."
+msgstr ""
+"El enfoque de *Rasgo* utiliza funciones genecológicas para seleccionar una diferencia aceptable en uno o más rasgos adaptativos basándose en la investigación de estudios de jardines comunes. Las funciones genecológicas son una asociación entre los rasgos adaptativos "
+"identificados en un jardín común y el clima derivado de la ubicación de las fuentes de semillas. El rasgo suele representar un clima multivariante."
+
+#. type: Plain text
+#: sections/05-transfer.adoc:22
+#, fuzzy
+msgid "The *Function* approach is similar to *Trait*, except that it allows you to define your own genecological functions using mathematical expressions and climate variables."
+msgstr "El enfoque de *Función* es similar al *Trait*, excepto que le permite definir sus propias funciones genecológicas utilizando expresiones matemáticas y variables climáticas."
+
+#. type: Title ====
+#: sections/05-transfer.adoc:45
+#, fuzzy, no-wrap
+msgid "Trait method"
+msgstr "Método de rasgo"
+
+#. type: Plain text
+#: sections/05-transfer.adoc:49
+#, fuzzy
+msgid "For the *Trait* approach, select the species using the drop-down menu. The values and transfer limits for the adaptive traits from genecology studies will be prepopulated in Step 6 for the locations chosen in Step 2."
+msgstr "Para el enfoque de *Rasgo*, seleccione la especie usando el menú desplegable. Los valores y los límites de transferencia para los rasgos adaptativos de los estudios genetológicos se rellenarán previamente en el paso 6 para las ubicaciones elegidas en el paso 2."
+
+#. type: Title ====
+#: sections/05-transfer.adoc:50
+#, fuzzy, no-wrap
+msgid "Function method"
+msgstr "Método de función"
+
+#. type: Plain text
+#: sections/05-transfer.adoc:52
+#, fuzzy
+msgid ""
+"The *Function* approach allows you to create your own function that allows differential weighting of different climate variables as representative of adaptive variation. Click the dropdown and choose \"Add a custom function.\" Enter any mathematical equation "
+"referencing ClimateNA variablesfootnote:[https://climatena.ca/Help2#_var] using their short names. For example, latexmath:[-6.3 + (0.284*TD) + (0.007*PPT\\_sm)] uses the TD (temperature difference between mean warmest and mean coldest months) and PPT_sm (summer "
+"precipitation) variables."
+msgstr ""
+"El enfoque de *Función* le permite crear su propia función que permite la ponderación diferencial de diferentes variables climáticas como representativas de la variación adaptativa. Haz clic en el menú desplegable y elige \"Agregar una función personalizada\". Ingrese "
+"cualquier ecuación matemática que haga referencia a las variables de ClimateNA footnote:[https://climatena.ca/Help2#_var] usando sus nombres cortos. Por ejemplo, latexmath:[-6.3 + (0.284*TD) + (0.007*PPT\\_sm)] utiliza las variables TD (diferencia de temperatura entre "
+"los meses medio más cálidos y medio más fríos) y PPT_sm (precipitación de verano)."
+
+#. type: Plain text
+#: sections/06-variables.adoc:10
+#, fuzzy
+msgid ""
+"Select one or more climate variables to be mapped. The climate information is derived from a climate downscaling application called ClimateNA (see tab for more information). You also have the option to `Choose automatically`, in which case, the climate variables "
+"chosen will be mean temperature of the coldest month (MCMT) and summer heat:moisture index (SHM). These climate variables are chosen based on the assumption that temperate forest trees (or other plants)  are primarily adapted to cold temperatures in the winter and "
+"aridity in the summer. This option specifies a transfer limit for MCMT of `+/- 2.0°C` and for SHM `of +/-` half the value at the location specified in Step 2. These transfer limits may be modified. After choosing climate variables, the resulting table includes:"
+msgstr ""
+"Seleccione una o más variables climáticas para cartografiarlas. La información climática se deriva de una aplicación de reducción de escala climática llamada ClimateNA (consulte la pestaña para obtener más información). También tienes la opción de 'Elegir "
+"automáticamente', en cuyo caso, las variables climáticas elegidas serán la temperatura media del mes más frío (MCMT) y el índice calor:humedad del verano (SHM). Estas variables climáticas se eligen sobre la base de la suposición de que los árboles de los bosques "
+"templados (u otras plantas) se adaptan principalmente a las temperaturas frías en invierno y a la aridez en verano. Esta opción especifica un límite de transferencia para MCMT de '+/- 2,0 °C' y para SHM 'de +/-' la mitad del valor en la ubicación especificada en el "
+"paso 2. Estos límites de transferencia pueden ser modificados. Después de elegir las variables climáticas, la tabla resultante incluye:"
+
+#. type: Plain text
+#: sections/06-variables.adoc:12
+#, fuzzy
+msgid "*Name* -- the abbreviated name of the ClimateNA variable"
+msgstr "*Name* -- el nombre abreviado de la variable ClimateNA"
+
+#. type: Plain text
+#: sections/06-variables.adoc:13
+#, fuzzy
+msgid "*Center* -- the climatic value at the center of the mapped output"
+msgstr "*Centro* -- el valor climático en el centro de la salida mapeada"
+
+#. type: Plain text
+#: sections/06-variables.adoc:14
+#, fuzzy
+msgid "*Transfer limit* -- the transfer limit used in showing the extent of the mapped output"
+msgstr "*Límite de transferencia* -- el límite de transferencia utilizado para mostrar la extensión de la salida mapeada"
+
+#. type: Plain text
+#: sections/08-results.adoc:17
+#, fuzzy
+msgid ""
+"The process for determining the degree of match is, first, re-scaling the gridded data for each climate variable (or associated trait from a genecology function) as: latexmath:[y = \\frac{|x - xmid|}{TL}], where `xmid` is the midpoint value, or climatic center. "
+"Second, the multivariate climatic distance (`d`) from the climatic center to each grid point is calculated as the Euclidean distance for `n` climate variables: latexmath:[dn = ({y_1}^2 + {y_2}^2 + ... + {y_n}^2)0.5]. Finally, the climate match (`m`) (also called a "
+"similarity index in Step 2) is calculated as latexmath:[m = -(d-1)*100]. Values of latexmath:[m < 0] are not mapped, whereas values between `0` and `100` are mapped using the color scale ranging from light to dark orange."
+msgstr ""
+"El proceso para determinar el grado de coincidencia es, en primer lugar, reescalar los datos de la cuadrícula para cada variable climática (o rasgo asociado de una función de genecología) como: latexmath:[y = \\frac{|x - xmid|}{TL}], donde 'xmid' es el valor del punto "
+"medio o centro climático. En segundo lugar, la distancia climática multivariante ('d') desde el centro climático hasta cada punto de la cuadrícula se calcula como la distancia euclidiana para 'n' variables climáticas: latexmath:[dn = ({y_1}^2 + {y_2}^2 + ... + {y_n}"
+"^2)0.5]. Finalmente, la coincidencia climática ('m') (también llamada índice de similitud en el Paso 2) se calcula como latexmath:[m = -(d-1)*100]. Los valores de latexmath:[m < 0] no se asignan, mientras que los valores entre '0' y '100' se asignan utilizando la "
+"escala de colores que va del naranja claro al naranja oscuro."
+
+#. type: Title ===
+#: sections/appendix.adoc:22
+#, fuzzy, no-wrap
+msgid "Video Tutorial"
+msgstr "Tutorial en vídeo"
+
+#. type: Plain text
+#: sections/appendix.adoc:25
+#, fuzzy
+msgid ""
+"The following video tutorial demonstrates how to use the Seedlot Selection Tool. The tutorial was developed for silviculturists working in the Pacific Northwest region. It's also applicable to any region in the US where trees are being planted to be resilient to "
+"future climate."
+msgstr ""
+"En el siguiente tutorial de vídeo se muestra cómo utilizar la herramienta de selección de lotes de semillas. El tutorial fue desarrollado para silvicultores que trabajan en la región del noroeste del Pacífico. También es aplicable a cualquier región de los EE. UU. "
+"donde se estén plantando árboles para que sean resistentes al clima futuro."
+
+#. type: Block title
+#: sections/appendix.adoc:26
+#, fuzzy, no-wrap
+msgid "Watch the tutorial at https://youtu.be/HYuOTY8WgEc"
+msgstr "Mira el tutorial en https://youtu.be/HYuOTY8WgEc"
+
+#. type: Title ===
+#: sections/appendix.adoc:30
+#, fuzzy, no-wrap
+msgid "References"
+msgstr "Referencias"
+
+#. type: #img-sunset
+#: sections/appendix.adoc:33
+#, fuzzy
+msgid "Aitken, S.N. and J.B. Bemmels. 2015. Time to get moving: assisted gene flow of forest trees. Evolutionary Applications 9(1): 271-290."
+msgstr "Aitken, S.N. and J.B. Bemmels. 2015. Time to get moving: assisted gene flow of forest trees. Evolutionary Applications 9(1): 271-290."
+
+#. type: #img-sunset
+#: sections/appendix.adoc:35
+#, fuzzy
+msgid "Alberto, F., S.N. Aitken, R. Alia, SC. Gonzalez-Martinez, H. Hanninen, A. Kremer, F. Lefevre et al. 2013. Potential for evolutionary responses to climate change – evidence from tree populations. Global Change Biology 18: 1645-1661."
+msgstr "Alberto, F., S.N. Aitken, R. Alia, SC. Gonzalez-Martinez, H. Hanninen, A. Kremer, F. Lefevre et al. 2013. Potential for evolutionary responses to climate change – evidence from tree populations. Global Change Biology 18: 1645-1661."
+
+#. type: #img-sunset
+#: sections/appendix.adoc:37
+#, fuzzy
+msgid ""
+"Baughman, O.W., A.C. Agneray, M.L. Forister, F.F. Kilkenny, E.K. Espeland, R. Fiegener, M.E. Horning, R.C. Johnson, T.N. Kaye, J. Ott, J.B. St.Clair, E.A. Leger. 2019. Strong patterns of intraspecific variation and local adaptation in Great Basin plants revealed "
+"through a review of 75 years of experiments. Ecology and Evolution 2019-9: 6259-6275."
+msgstr ""
+"Baughman, O.W., A.C. Agneray, M.L. Forister, F.F. Kilkenny, E.K. Espeland, R. Fiegener, M.E. Horning, R.C. Johnson, T.N. Kaye, J. Ott, J.B. St.Clair, E.A. Leger. 2019. Strong patterns of intraspecific variation and local adaptation in Great Basin plants revealed "
+"through a review of 75 years of experiments. Ecology and Evolution 2019-9: 6259-6275."
+
+#. type: #img-sunset
+#: sections/appendix.adoc:39
+#, fuzzy
+msgid "Leimu,R. and M. Fischer. 2008. A meta-analysis of local adaptation in plants. PLoS ONE 3(12): e4010."
+msgstr "Leimu,R. and M. Fischer. 2008. A meta-analysis of local adaptation in plants. PLoS ONE 3(12): e4010."
+
+#. type: #img-sunset
+#: sections/appendix.adoc:41
+#, fuzzy
+msgid ""
+"Sáenz-Romero, E. Mendoza-Mata, E. Gómez-Pineda, A. Blanco-Garcia, et al. 2020. Recent evidence of Mexican temperate forest decline and the need for ex situ conservation, assisted migration, and translocation of species ensembles as adaptive management to face "
+"projected climatic change impacts in a megadiverse country. Can. J. For Res. 50: 843-854."
+msgstr ""
+"Sáenz-Romero, E. Mendoza-Mata, E. Gómez-Pineda, A. Blanco-Garcia, et al. 2020. Recent evidence of Mexican temperate forest decline and the need for ex situ conservation, assisted migration, and translocation of species ensembles as adaptive management to face "
+"projected climatic change impacts in a megadiverse country. Can. J. For Res. 50: 843-854."
+
+#. type: #img-sunset
+#: sections/appendix.adoc:43
+#, fuzzy
+msgid "Van Mantgem, N.l. Stephenson, J.C. Byrne, L.D. Daniels, J.F. Franklin, P.Z. Fulé, M.E. Harmon, A.J. Larson, J.M. Smith, A.H. Taylor, T.T. Veblen. 2009. Widespread increase of tree mortality rates in the Western United States. Science 323: 521-524."
+msgstr "Van Mantgem, N.l. Stephenson, J.C. Byrne, L.D. Daniels, J.F. Franklin, P.Z. Fulé, M.E. Harmon, A.J. Larson, J.M. Smith, A.H. Taylor, T.T. Veblen. 2009. Widespread increase of tree mortality rates in the Western United States. Science 323: 521-524."
+
+#. type: #img-sunset
+#: sections/appendix.adoc:45
+#, fuzzy
+msgid "Wang, T., A. Hamann, D.L. Spittlehouse, and C. Carroll. 2016. Locally downscaled and spatially conceptualized climate data for historical and future periods for North America. PLoS ONE 11(6): e0156720."
+msgstr "Wang, T., A. Hamann, D.L. Spittlehouse, and C. Carroll. 2016. Locally downscaled and spatially conceptualized climate data for historical and future periods for North America. PLoS ONE 11(6): e0156720."
+
+#. type: Title ====
+#: sections/appendix.adoc:46
+#, fuzzy, no-wrap
+msgid "Big Sagebrush"
+msgstr "Still, S. M., & Richardson, B. A. (2015). Projections of Contemporary and Future Climate Niche for Wyoming Big Sagebrush (Artemisia tridentata subsp. wyomingensis): A Guide for Restoration. Natural Areas Journal, 35(1), 30–43. http://doi.org/10.3375/043.035.0106"
+
+#. type: #img-sunset
+#: sections/appendix.adoc:49
+#, fuzzy
+msgid "Still, S. M., & Richardson, B. A. (2015). Projections of Contemporary and Future Climate Niche for Wyoming Big Sagebrush (Artemisia tridentata subsp. wyomingensis): A Guide for Restoration. Natural Areas Journal, 35(1), 30–43. http://doi.org/10.3375/043.035.0106"
+msgstr "Still, S. M., & Richardson, B. A. (2015). Projections of Contemporary and Future Climate Niche for Wyoming Big Sagebrush (Artemisia tridentata subsp. wyomingensis): A Guide for Restoration. Natural Areas Journal, 35(1), 30–43. http://doi.org/10.3375/043.035.0106"
+
+#. type: #img-sunset
+#: sections/appendix.adoc:51
+#, fuzzy
+msgid "Chaney, L., Richardson, B. A., & Germino, M. J. (2017). Climate drives adaptive genetic responses associated with survival in big sagebrush (Artemisia tridentata). Evolutionary Applications, 10(4), 313–322. http://doi.org/10.1111/eva.12440"
+msgstr "Chaney, L., Richardson, B. A., & Germino, M. J. (2017). Climate drives adaptive genetic responses associated with survival in big sagebrush (Artemisia tridentata). Evolutionary Applications, 10(4), 313–322. http://doi.org/10.1111/eva.12440"
+
+#. type: #img-sunset
+#: sections/appendix.adoc:53
+#, fuzzy
+msgid "Richardson, B. A., Chaney, L., Shaw, N. L., & Still, S. M. (2017). Will phenotypic plasticity affecting flowering phenology keep pace with climate change? Global Change Biology, 23(6), 2499–2508. http://doi.org/10.1111/gcb.13532"
+msgstr "Richardson, B. A., Chaney, L., Shaw, N. L., & Still, S. M. (2017). Will phenotypic plasticity affecting flowering phenology keep pace with climate change? Global Change Biology, 23(6), 2499–2508. http://doi.org/10.1111/gcb.13532"
+
+#. type: #img-sunset
+#: sections/appendix.adoc:55
+#, fuzzy
+msgid "Richardson, B. A., & Chaney, L. (2018). Climate-based seed transfer of a widespread shrub: population shifts, restoration strategies, and the trailing edge. Ecological Applications, 44, 367–10. http://doi.org/10.1002/eap.1804"
+msgstr "Richardson, B. A., & Chaney, L. (2018). Climate-based seed transfer of a widespread shrub: population shifts, restoration strategies, and the trailing edge. Ecological Applications, 44, 367–10. http://doi.org/10.1002/eap.1804"
+
+#. type: Title ====
+#: sections/appendix.adoc:56
+#, fuzzy, no-wrap
+msgid "Engleman spruce traits"
+msgstr "Rasgos del abeto Engleman"
+
+#. type: #img-sunset
+#: sections/appendix.adoc:59
+#, fuzzy
+msgid ""
+"Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., & Hamilton Jr, D. A. (1999). Genetic responses to climate in Pinus contorta: niche breadth, climate change, and reforestation. Ecological Monographs, 69(3), 375–407. https://doi.org/"
+"10.1890/0012-9615(1999)069%5B0375:GRTCIP%5D2.0.CO;2[https://doi.org/10.1890/0012-9615(1999)069$$[0375:GRTCIP]$$2.0.CO;2]"
+msgstr ""
+"Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., & Hamilton Jr, D. A. (1999). Respuestas genéticas al clima en Pinus contorta: amplitud de nicho, cambio climático y reforestación. Monografías Ecológicas, 69(3), 375–407. https://doi.org/"
+"10.1890/0012-9615(1999)069%5B0375:GRTCIP%5D2.0.CO; 2[https://doi.org/10.1890/0012-9615(1999)069$$[0375:GRTCIP]$$2.0.CO; 2]"
+
+#. type: #img-sunset
+#: sections/appendix.adoc:60
+#, fuzzy
+msgid ""
+"Rehfeldt, G. E. (2004). Interspecific and intraspecific variation in Picea engelmannii and its congeneric cohorts: biosystematics, genecology, and climate change. Gen. Tech. Rep. RMRS-GTR-134. Fort Collins, CO: U.S. Department of Agriculture, Forest Service, Rocky "
+"Mountain Research. 18 p., 134. https://doi.org/10.2737/rmrs-gtr-134"
+msgstr ""
+"Rehfeldt, G. E. (2004). Interspecific and intraspecific variation in Picea engelmannii and its congeneric cohorts: biosystematics, genecology, and climate change. Gen. Tech. Rep. RMRS-GTR-134. Fort Collins, CO: U.S. Department of Agriculture, Forest Service, Rocky "
+"Mountain Research. 18 p., 134. https://doi.org/10.2737/rmrs-gtr-134"
+
+#, fuzzy
+msgid ""
+"Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., & Hamilton Jr, D. A. (1999). Genetic responses to climate in Pinus contorta: niche breadth, climate change, and reforestation. Ecological Monographs, 69(3), 375–407. https://doi.org/"
+"10.1890/0012-9615(1999)069[0375:GRTCIP]2.0.CO;2"
+msgstr ""
+"Rehfeldt, G. E., Ying, C. C., Spittlehouse, D. L., & Hamilton Jr, D. A. (1999). Genetic responses to climate in Pinus contorta: niche breadth, climate change, and reforestation. Ecological Monographs, 69(3), 375–407. https://doi.org/"
+"10.1890/0012-9615(1999)069[0375:GRTCIP]2.0.CO;2"
+
+#. type: #img-sunset
+#: sections/appendix.adoc:43
+#, fuzzy
+msgid ""
+"St.Clair, John Bradley, Bryce A. Richardson, Nikolas Stevenson-Molnar, Glenn T. Howe, Andrew D. Bower, Vicky J. Erickson, Brendan Ward, Dominique Bachelet, Francis F. Kilkenny, and Tongli Wang. 2022. Seedlot Selection Tool and Climate-Smart Restoration Tool: Web-Based "
+"Tools for Sourcing Seed Adapted to Future Climates. Ecosphere 13(5): e4089. https://doi.org/10.1002/ecs2.4089"
+msgstr ""
+"St. Clair, John Bradley, Bryce A. Richardson, Nikolas Stevenson-Molnar, Glenn T. Howe, Andrew D. Bower, Vicky J. Erickson, Brendan Ward, Dominique Bachelet, Francis F. Kilkenny y Tongli Wang. 2022. Herramienta de selección de lotes de semillas y herramienta de "
+"restauración climáticamente inteligente: herramientas basadas en la web para obtener semillas adaptadas a climas futuros. Ecosfera 13 (5): e4089. https://doi.org/10.1002/ecs2.4089"
+
+#. type: Title ====
+#: sections/appendix.adoc:48
+#, fuzzy, no-wrap
+msgid "Trait functions"
+msgstr "Funciones de rasgos"

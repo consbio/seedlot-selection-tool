@@ -8,7 +8,7 @@ indicates the match that is at the edge of the transfer limit. Note that using a
 the best match but does result in a larger geographic area of suitability.
 
 The process for determining the degree of match is, first, re-scaling the gridded data for each climate variable (or
-associated trait from a genecology function) as: latexmath:[y = \frac{|x - xmid|}{TL}], where xmid is the midpoint
+associated trait from a genecology function) as: latexmath:[y = \frac{|x - xmid|}{TL}], where `xmid` is the midpoint
 value, or climatic center. Second, the multivariate climatic distance (`d`) from the climatic center to each grid point
 is calculated as the Euclidean distance for `n` climate variables:
 latexmath:[dn = ({y_1}^2 + {y_2}^2 + ... + {y_n}^2)0.5]. Finally, the climate match (`m`) (also called a similarity

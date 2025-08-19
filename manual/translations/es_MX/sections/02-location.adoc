@@ -1,0 +1,19 @@
+=== Paso 2. Seleccionar la ubicación
+
+Puede introducir las coordenadas o hacer clic en el mapa para indicar la ubicación del sitio de plantación o del lote de semillas. Si busca lotes de semillas para un sitio de plantación, indique la ubicación del sitio de plantación. Si busca sitios de plantación para un lote de semillas, indique la ubicación del lote de semillas. La ubicación de un lote de semillas representa la ubicación geográfica a la que está mejor adaptado, es decir, el centro de su espacio climático adaptativo.
+
+==== Introducir su ubicación como coordenadas
+
+Puede introducir la latitud y longitud de la ubicación en grados decimales. (Nota: Introduzca valores negativos para indicar la longitud en América del Norte).
+
+==== Usar el mapa para seleccionar su ubicación
+
+También puede utilizar las herramientas “Pan” (Desplazamiento horizontal) y “Zoom” (Acercamiento) para desplazarse hasta el área de interés y, a continuación, hacer clic en el mapa. Esta ventana emergente mostrará la latitud, la longitud y la elevación de la ubicación elegida, así como cualquier zona de origen de las semillas o de mejoramiento asociada a dicha ubicación. Si hace clic en el botón “Set Point” (Punto de ajuste), las coordenadas actuales y cualquier otra información de ubicación se configurarán automáticamente para que el programa las utilice. Si ya seleccionó las variables climáticas en el Paso 6, también verá sus valores.
+
+.Opcional
+[NOTE]
+====
+Puede mapear varios lotes de semillas para compararlos con un sitio de plantación, o varios sitios de plantación para compararlos con un lote de semillas, haciendo clic en el botón “Add Seedlots” (Agregar lotes de semillas) o en el botón “Add Planting Sites” (Agregar sitios de plantación), respectivamente. Después de hacer clic en el botón, puede introducir las coordenadas de cada ubicación o hacer clic en el mapa y seleccionar “Add Location” (Agregar ubicación) en la ventana emergente. Asegúrese de hacer clic en el botón “Add” (Añadir) cada vez que añada una ubicación, ya que de no hacerlo podría cambiar sin querer la ubicación inicial con la que está comparando los lotes de semillas o los sitios de plantación, al seleccionar Set Point (Punto de ajuste). Después de ejecutar la herramienta, se calcula un índice de similitud entre el sitio de plantación o el lote de semillas inicial, y las ubicaciones que se compararán con aquel (definido inicialmente como N/C [no corresponde] hasta que se ejecute la herramienta; consulte el Paso 8 para obtener más detalles).
+
+_(En construcción: (1) Cálculo de las distancias de transferencia climática para cada variable climática de cada ubicación; (2) capacidad para introducir un lote de ubicaciones; (3) capacidad para generar una tabla que muestre los resultados de todas las comparaciones.)_
+====

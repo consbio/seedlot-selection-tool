@@ -1,0 +1,11 @@
+=== Paso 3. Seleccionar la región
+
+América del Norte se ha dividido en regiones para reducir el tiempo de procesamiento. Puede dejar que la herramienta elija automáticamente la región que mejor se adapte a la ubicación que seleccionó (predeterminada) o utilizar la opción “Custom” (Personalizada) para seleccionar manualmente cualquier región disponible.
+
+==== Automático
+
+Haga clic en el botón “Automatic” (Automático) para que la herramienta seleccione la mejor región para su ubicación. Se seleccionará la región que contenga su ubicación y el punto central más cercano a esta. Antes de seleccionar una ubicación, puede hacer clic en el mapa para ver la región que se seleccionará.
+
+==== Personalizado
+
+Haga clic en el botón “Custom” (Personalizado) para seleccionar una región alternativa en la lista desplegable de regiones disponibles. Cuando elija una región en el menú desplegable, esta se delineará en el mapa. Puede elegir una región que no contenga su ubicación, en cuyo caso la herramienta mapeará los resultados de la región seleccionada.

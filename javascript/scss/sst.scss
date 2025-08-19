@@ -7,7 +7,11 @@
 }
 
 .about-text {
-  font-size: 0.9rem;
+  font-size: 1rem;
+
+  & + .about-text {
+    margin-top: 10px;
+  }
 }
 
 .about-step {
@@ -33,4 +37,8 @@
 .about-step p {
   margin-left: 64px;
   margin-bottom: 10px;
+}
+
+.logos.columns img {
+  max-height: 50px;
 }

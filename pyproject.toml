@@ -7,8 +7,8 @@ license = "BSD-3-Clause"
 package-mode = false
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.11"
-trefoil = { git = "https://github.com/consbio/trefoil.git", branch = "main" }
+python = ">=3.10,<3.12"
+trefoil = "^0.4.0"
 rasterio = "^1.2a1"
 django-celery-results = "^2.0.0"
 social-auth-app-django = "^5.0.0"
@@ -18,7 +18,7 @@ celery = "^5.2.3"
 pyproj = "^3.6.1"
 sentry-sdk = "^1.45.1"
 enmerkar = "^0.7.1"
-ncdjango = { git = "https://github.com/consbio/ncdjango.git", branch = "main" }
+ncdjango = {git = "https://github.com/consbio/ncdjango.git", branch = "main"}
 aiohttp = "^3.12.14"
 Django = "^5.2"
 djangorestframework = "~3.14"
@@ -31,6 +31,7 @@ python-pptx = "^0.6.21"
 WeasyPrint = "^52.2"
 django-waffle = "^2.2"
 django-filter = "^25.1"
+boto3 = "^1.40.1"
 
 [poetry.group.dev.dependencies]
 

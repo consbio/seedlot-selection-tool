@@ -20,3 +20,4 @@ https://seedlotselectiontool.org/sst/
 - [Setup Production](docs/production-setup.md)
 - [Setup Dev](docs/dev-setup.md)
 - [Import Data](docs/import-data.md)
+- [Server Setup & Deployment](ansible/README.md)

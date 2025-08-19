@@ -1,0 +1,21 @@
+[Unit]
+Description=celery daemon
+After=network.target
+
+[Service]
+PIDFile=/home/sst/var/run/celery.pid
+User=sst
+Group=sst
+Environment="LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64"
+Environment="AWS_SECRETS_KEY=sst-production"
+Environment="SEEDSOURCE_DEPLOY_PROFILE=production"
+WorkingDirectory=/home/sst/apps/seedlot-selection-tool/source
+ExecStart=/home/sst/.local/bin/poetry run celery -A sst_project worker --beat --loglevel=info --pidfile=/home/sst/var/run/celery.pid --logfile=/var/log/celery/celery.log
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

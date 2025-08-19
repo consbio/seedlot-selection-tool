@@ -9,7 +9,7 @@ const serializeSpeciesConstraint = ({ climate }: { climate: any }, { species }: 
   const { time, model } = climate.site
   let climateFragment
 
-  if (time === '1961_1990' || time === '1981_2010') {
+  if (['1961_1990', '1981_2010', '1991_2020'].includes(time)) {
     climateFragment = `p${time}_800m`
   } else {
     climateFragment = `15gcm_${model}_${time}`
@@ -20,12 +20,13 @@ const serializeSpeciesConstraint = ({ climate }: { climate: any }, { species }: 
   }
 }
 
-const speciesConstraints = [
-  ['pico', t`Lodgepole Pine`],
-  ['pisi', t`Sitka Spruce`],
-  ['psme', t`Douglas-fir`],
-  ['pipo', t`Ponderosa Pine`],
-  ['pien', t`Engelmann Spruce`],
+const speciesConstraints: [string, string][] = [
+  // TODO: Temporarily disabled pending updated data from USFS
+  // ['pico', t`Lodgepole Pine`],
+  // ['pisi', t`Sitka Spruce`],
+  // ['psme', t`Douglas-fir`],
+  // ['pipo', t`Ponderosa Pine`],
+  // ['pien', t`Engelmann Spruce`],
 ]
 
 export default () => {
@@ -37,34 +38,6 @@ export default () => {
     apiRoot: '/sst/',
     logo: Logo as string,
     species: [
-      {
-        name: 'psme',
-        label: t`Douglas-fir`,
-      },
-      {
-        name: 'pico',
-        label: t`Lodgepole pine`,
-      },
-      {
-        name: 'piba',
-        label: t`Jack pine`,
-      },
-      {
-        name: 'pipo',
-        label: t`Ponderosa pine`,
-      },
-      {
-        name: 'pima',
-        label: t`Black spruce`,
-      },
-      {
-        name: 'thpl',
-        label: t`Western red cedar`,
-      },
-      {
-        name: 'pimo',
-        label: t`Western white pine`,
-      },
       {
         name: 'abam',
         label: t`Pacific silver fir`,
@@ -90,6 +63,14 @@ export default () => {
         label: t`Red alder`,
       },
       {
+        name: 'artr',
+        label: 'Wyoming/Basin Big Sagebrush',
+      },
+      {
+        name: 'atva',
+        label: 'Mountain big sagebrush',
+      },
+      {
         name: 'cade27',
         label: t`Incense cedar`,
       },
@@ -110,6 +91,14 @@ export default () => {
         label: t`Whitebark pine`,
       },
       {
+        name: 'piba',
+        label: t`Jack pine`,
+      },
+      {
+        name: 'pico',
+        label: t`Lodgepole pine`,
+      },
+      {
         name: 'pien',
         label: t`Engelmann spruce`,
       },
@@ -126,12 +115,36 @@ export default () => {
         label: t`Sugar pine`,
       },
       {
+        name: 'pima',
+        label: t`Black spruce`,
+      },
+      {
+        name: 'pimo',
+        label: t`Western white pine`,
+      },
+      {
+        name: 'pipo',
+        label: t`Ponderosa pine`,
+      },
+      {
         name: 'pipos',
         label: t`Ponderosa pine var. scopulorum`,
       },
       {
+        name: 'psme',
+        label: t`Douglas-fir`,
+      },
+      {
+        name: 'pssp',
+        label: 'Bluebunch wheatgrass',
+      },
+      {
         name: 'tabr2',
         label: t`Pacific yew`,
+      },
+      {
+        name: 'thpl',
+        label: t`Western red cedar`,
       },
       {
         name: 'tshe',
@@ -144,10 +157,18 @@ export default () => {
     ],
     functions: [
       {
+        name: 'FD',
+        label: 'Flower Date',
+        fn: '381 + (-1.72*LAT) + (-0.011*DD_18)',
+        transfer: 10.4,
+        units: 'days',
+        customTransfer: false,
+        species: ['artr', 'atva'],
+      },
+      {
         name: 'HGT',
         label: t`Scaled Height`,
-        // Tmin_sp is multiplied by 10, so we divide by 10 here to get the real value
-        fn: 'math_e**(6.705 + (0.07443/10 * Tmin_sp))',
+        fn: 'math_e**(6.705 + (0.07443*Tmin_sp))',
         transfer: 66,
         units: '',
         customTransfer: false,
@@ -156,23 +177,63 @@ export default () => {
       {
         name: 'HT',
         label: t`Height`,
-        // Tmin_sp is multiplied by 10, so we divide by 10 here to get the real value
-        fn: '(2.80648/10 * Tmin_sp) + (0.03923*Eref) + (0.02529*PPT_sm) + 20.96417',
+        fn: '(2.80648*Tmin_sp) + (0.03923*Eref) + (0.02529*PPT_sm) + 20.96417',
         transfer: 5.2,
         units: '',
         customTransfer: false,
         species: ['pien'],
       },
+      {
+        name: 'PC1',
+        label: 'PC1',
+        fn: '17.12 + 0.02*TD - 0.02*SHM + 0.47*EMT',
+        transfer: 11.53,
+        customTransfer: false,
+        species: ['pssp'],
+      },
+      {
+        name: 'PC2',
+        label: 'PC2',
+        fn: '3.37 + 0.02*TD - 0.007*SHM - 0.02*FFP',
+        transfer: 10.45,
+        customTransfer: false,
+        species: ['pssp'],
+      },
+      {
+        name: 'PC3',
+        label: 'PC3',
+        fn: '-2.07 - 0.004*PAS + 0.004*CMD',
+        transfer: 3.55,
+        customTransfer: false,
+        species: ['pssp'],
+      },
+      {
+        name: 'S',
+        label: 'Survival',
+        fn: '-6.3 + (0.284*TD) + (0.007*PPT_sm)',
+        transfer: 0.46,
+        customTransfer: false,
+        species: ['artr'],
+      },
+      {
+        name: 'S-atva',
+        label: 'Survival',
+        fn: '-5.074 + (0.216*TD)',
+        transfer: 0.292,
+        customTransfer: false,
+        species: ['atva'],
+      },
     ],
     defaultVariables: [
       {
         variable: 'MCMT',
-        getValue: dispatch => dispatch(receiveTransfer('MCMT', 20, null, null)),
+        getValue: dispatch => dispatch(receiveTransfer('MCMT', 2, null, null)),
       },
       {
         variable: 'SHM',
         getValue: (dispatch, point, region) => {
-          const url = `/arcgis/rest/services/${region}_1961_1990Y_SHM/MapServer/identify/?${urlEncode({
+          // This is supposed to use the 1961-1990 value regardless of time periods selected by the user
+          const url = `/arcgis/rest/services/${region}_1961_1990SY_SHM/MapServer/identify/?${urlEncode({
             f: 'json',
             tolerance: 2,
             imageDisplay: '1600,1031,96',
@@ -207,12 +268,13 @@ export default () => {
       },
       categories: [
         ...baseConfig.constraints.categories,
-        {
-          name: 'species',
-          label: t`Species Range`,
-          type: 'category',
-          items: speciesConstraints.map(([name, label]) => ({ name, label, type: 'constraint' })),
-        },
+        // TODO: Temporarily disabled pending updated data from USFS
+        // {
+        //   name: 'species',
+        //   label: t`Species Range`,
+        //   type: 'category',
+        //   items: speciesConstraints.map(([name, label]) => ({ name, label, type: 'constraint' })),
+        // },
       ],
     },
     layers: {
@@ -310,11 +372,12 @@ export default () => {
     },
     layerCategories: [
       ...baseConfig.layerCategories,
-      {
-        label: t`Constraints`,
-        show: () => true,
-        layers: speciesConstraints.map(([species]) => `constraint-${species}`),
-      },
+      // TODO: Temporarily disabled pending updated data from USFS
+      // {
+      //   label: t`Constraints`,
+      //   show: () => true,
+      //   layers: speciesConstraints.map(([species]) => `constraint-${species}`),
+      // },
       {
         label: c('"Little" is a proper noun').t`Little's Range Maps`,
         show: () => true,

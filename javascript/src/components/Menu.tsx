@@ -5,10 +5,6 @@ import NavItemDropdown from '../seedsource-ui/components/NavItemDropdown'
 import { getCookies } from '../seedsource-ui/utils'
 import Background1 from '../../images/background1.jpg'
 import Background2 from '../../images/background2.jpg'
-import FSLogo from '../../images/fs_logo.png'
-import OSULogo from '../../images/osu_logo.png'
-import CBILogo from '../../images/cbi_logo.png'
-import ClimateHubLogo from '../../images/nw_climate_hub_logo.png'
 import SSTInstructions from '../../documents/SST User Guide.pdf'
 import SSTInstructionsESMX from '../../documents/translations/es_MX/SST User Guide.pdf'
 import SSTSilviculturistsGuide from '../../documents/SST R6 Silviculturists Guide.pdf'
@@ -219,6 +215,12 @@ class Menu extends React.Component {
               country. Can. J. For Res. 50: 843-854.
             </p>
             <p>
+              St.Clair, John Bradley, Bryce A. Richardson, Nikolas Stevenson-Molnar, Glenn T. Howe, Andrew D. Bower,
+              Vicky J. Erickson, Brendan Ward, Dominique Bachelet, Francis F. Kilkenny, and Tongli Wang. 2022. Seedlot
+              Selection Tool and Climate-Smart Restoration Tool: Web-Based Tools for Sourcing Seed Adapted to Future
+              Climates. Ecosphere 13(5): e4089. https://doi.org/10.1002/ecs2.4089
+            </p>
+            <p>
               Van Mantgem, N.l. Stephenson, J.C. Byrne, L.D. Daniels, J.F. Franklin, P.Z. Fulé, M.E. Harmon, A.J.
               Larson, J.M. Smith, A.H. Taylor, T.T. Veblen. 2009. Widespread increase of tree mortality rates in the
               Western United States. Science 323: 521-524.
@@ -295,26 +297,11 @@ class Menu extends React.Component {
             <em>{t`Future climate data`}</em>
 
             <p>
-              {(() => {
-                const name = (
-                  <a
-                    key="knutti"
-                    href="http://onlinelibrary.wiley.com/doi/10.1002/grl.50256/abstract"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Knutti et al (2013)
-                  </a>
-                )
-                return jt`The climate data for future periods, including 2020s (2010-2039), 2050s (2040-69) and 2080s 
+              {t`The climate data for future periods, including 2020s (2010-2039), 2050s (2040-69) and 2080s 
                 (2070-2100), were from General Circulation Models (GCMs) of the Coupled Model Intercomparison Project 
-                (CMIP5) included in the IPCC Fifth Assessment Report (IPCC 2014). Fifteen GCMs were selected for two 
-                greenhouse gas emission scenarios (RCP 4.5 and RCP 8.5). When multiple ensembles are available for each 
-                GCM, an average was taken over the available (up to five) ensembles. Ensembles among the 15 GCMs are 
-                also available. The 15 AOGCMs are CanESM2, ACCESS1.0, IPSL-CM5A-MR, MIROC5, MPI-ESM-LR, CCSM4, 
-                HadGEM2-ES, CNRM-CM5, CSIRO Mk 3.6, GFDL-CM3, INM-CM4, MRI-CGCM3, MIROC-ESM, CESM1-CAM5, GISS-E2R and 
-                were chosen to represent all major clusters of similar AOGCMs by ${name}.`
-              })()}
+                (CMIP6) included in the IPCC sixth assessment report (AR6). Eight GCMs were selected for three 
+                greenhouse gas emission scenarios (SSP245, SSP370, and SSP585). The 8 GCMss are ACCESS-ESM1-5, 
+                CNRM-ESM2-1, EC-Earth3, GFDL-ESM4, GISS-E2-1-G, MIROC6, MPI-ESM1-2-HR, and MRI-ESM2-0.`}
             </p>
 
             <h4 className="title is-4">{t`Climate variables used in Seedlot Select Tool`}</h4>
@@ -388,53 +375,49 @@ class Menu extends React.Component {
           >
             <p>
               {t`The Seedlot Selection Tool is a collaboration between the US Forest Service, Oregon State University, 
-              and the Conservation Biology Institute. Initial conceptualization and development was done by Glenn Howe 
-              at Oregon State University College of Forestry and Brad St.Clair at the US Forest Service Pacific 
-              Northwest Research Station, with considerable input from Ron Beloin while he was working at Oregon State 
-              University. The Conservation Biology Institute was brought onboard to bring the project to fruition 
-              through their expertise in web site design and programming for spatial applications. Personnel at the 
-              Conservation Biology Institute included Nikolas Stevenson-Molnar (tool developer), Brendan Ward (project 
-              manager), and Dominique Bachelet (project co-PI).`}
+              the Bureau of Land Management, and the Conservation Biology Institute. Initial conceptualization and 
+              development was done by Glenn Howe at Oregon State University College of Forestry and Brad St.Clair at the 
+              US Forest Service Pacific Northwest Research Station, with considerable input from Ron Beloin while he was 
+              working at Oregon State University. The Conservation Biology Institute was brought onboard to bring the 
+              project to fruition through their expertise in web site design and programming for spatial applications. 
+              Personnel at the Conservation Biology Institute included Nikolas Stevenson-Molnar (tool developer), 
+              Brendan Ward (project manager), and Dominique Bachelet (project co-PI).`}
             </p>
             <p>
               {t`Initial funding for the Seedlot Selection Tool came from the US Forest Service Washington Office.
                 Subsequent funding came from the USFS Pacific Northwest Research Station, Oregon State University,
-                Conservation Biology Institute, the USDA Northwest Climate Hub, Natural Resources Canada, 
-                USFS International Programs, and USFS State & Private`}
+                Conservation Biology Institute, the USDA Northwest Climate Hub, Natural Resources Canada, USFS 
+                International Programs, and USFS State & Private. Funding for additional functionality was provided 
+                by the Great Basin Native Plant Program.`}
             </p>
-            <p>&nbsp;</p>
-            <div className="columns">
-              <div className="column">
-                <a href="http://www.fs.fed.us/" target="_blank" rel="noreferrer">
-                  <img src={FSLogo} alt={t`United States Forest Service`} />
-                </a>
-              </div>
-              <div className="column">
-                <a href="http://oregonstate.edu/" target="_blank" rel="noreferrer">
-                  <img src={OSULogo} alt={t`Oregon State University`} />
-                </a>
-              </div>
-              <div className="column">
-                <a href="http://consbio.org" target="_blank" rel="noreferrer">
-                  <img src={CBILogo} alt={t`Conservation Biology Institute`} />
-                </a>
-              </div>
-              <div className="column is-half">
-                <a href="https://www.climatehubs.oce.usda.gov/hubs/northwest" target="_blank" rel="noreferrer">
-                  <img src={ClimateHubLogo} alt={t`NW Climate Hub`} />
-                </a>
-              </div>
-            </div>
             <p>&nbsp;</p>
             <h4 className="title is-4">{t`Contact Information`}</h4>
             <p>
-              Dr. Brad St.Clair – {t`Co - Principal Investigator`}
+              Dr. Beth Roskilly – {t`Co-Principal Investigator`}
               <br />
               {t`Research Geneticist, Pacific Northwest Research Station`}
               <br />
               {t`USDA Forest Service, Corvallis, Oregon, USA`}
               <br />
-              <a href="mailto:bstclair@fs.fed.us">bstclair@fs.fed.us</a>
+              <a href="mailto:Beth.Roskilly@usda.gov">Beth.Roskilly@usda.gov</a>
+            </p>
+            <p>
+              Dr. Bryce Richardson – {t`Co-Principal Investigator`}
+              <br />
+              {t`Research Geneticist, Rocky Mountain Research Station`}
+              <br />
+              {t`USDA Forest Service, Moscow, Idaho, USA`}
+              <br />
+              <a href="mailto:bryce.richardson2@usda.gov">bryce.richardson2@usda.gov</a>
+            </p>
+            <p>
+              Dr. Francis Kilkenny – {t`Co-Principal Investigator`}
+              <br />
+              {t`Research Biologist, Rocky Mountain Research Station`}
+              <br />
+              {t`USDA Forest Service, Boise, Idaho, USA`}
+              <br />
+              <a href="mailto:francis.f.kilkenny@usda.gov">francis.f.kilkenny@usda.gov</a>
             </p>
             <p>
               Nikolas Stevenson-Molnar – {c('i.e., Lead Software Developer').t`Lead Developer`}
