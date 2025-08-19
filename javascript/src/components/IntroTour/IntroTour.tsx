@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { t } from 'ttag'
 import Modal from '../../seedsource-ui/components/Modal'
-import StyledButton from './StyledButton'
 import './IntroTour.scss'
 
 function IntroHeader() {
@@ -251,8 +250,15 @@ class IntroTour extends Component<{}, IntroTourState> {
             <IntroHeader />
             <IntroText />
             <footer role="group">
-              <StyledButton color="primary" label={t`Start Tour`} onClick={this.startTour} classes="intro-button" />
-              <StyledButton color="neutral" label={t`Not Now`} onClick={this.notNow} classes="intro-button" />
+              <button type="button" className="button is-primary intro-button" onClick={this.startTour}>
+                {t`Start Tour`}
+              </button>
+              <button type="button" className="button intro-button" onClick={this.notNow}>
+                {t`Not Now`}
+              </button>
+
+              {/* <StyledButton color="primary" label={t`Start Tour`} onClick={this.startTour} classes="intro-button" /> */}
+              {/* <StyledButton color="neutral" label={t`Not Now`} onClick={this.notNow} classes="intro-button" /> */}
             </footer>
           </div>
         ) : (
@@ -271,8 +277,15 @@ class IntroTour extends Component<{}, IntroTourState> {
               </section>
               <footer className="modal-card-foot footer">
                 <div className="btn-container">
-                  <StyledButton color="neutral" label={t`Not Now`} onClick={this.notNow} classes="intro-button" />
-                  <StyledButton color="primary" label={t`Start Tour`} onClick={this.startTour} classes="intro-button" />
+                  <button type="button" className="button intro-button" onClick={this.notNow}>
+                    {t`Not Now`}
+                  </button>
+                  <button type="button" className="button is-primary intro-button" onClick={this.startTour}>
+                    {t`Start Tour`}
+                  </button>
+
+                  {/* <StyledButton color="neutral" label={t`Not Now`} onClick={this.notNow} classes="intro-button" />
+                  <StyledButton color="primary" label={t`Start Tour`} onClick={this.startTour} classes="intro-button" /> */}
                 </div>
               </footer>
             </div>
