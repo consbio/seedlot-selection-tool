@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
+import { t } from 'ttag'
 import ErrorModal from '../containers/ErrorModal'
 import Navbar from './Navbar'
 import Map from '../containers/Map'
@@ -11,9 +12,9 @@ import { get } from '../io'
 import config from '../config'
 import { setError } from '../actions/error'
 import AnnouncementModal from './AnnouncementModal'
-import { t } from 'ttag'
+import IntroTour from '../../components/IntroTour/IntroTour'
 
-const App = ({
+function App({
   navContent,
   children,
   className,
@@ -21,7 +22,7 @@ const App = ({
   navContent: ReactNode
   children?: ReactNode | null
   className?: string
-}) => {
+}) {
   const dispatch = useDispatch()
   const params = new URLSearchParams(window.location.search)
   const save = params.get('s')
@@ -89,6 +90,7 @@ const App = ({
           <Comparisons />
         </div>
       </div>
+      <IntroTour />
     </div>
   )
 }
