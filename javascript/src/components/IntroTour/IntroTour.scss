@@ -162,4 +162,5 @@
   border-top: $size solid transparent;
   border-bottom: $size solid transparent;
   border-right: $size * 1.732 solid var(--primary-main);
+  transition: top 0.3s ease-out;
 }

@@ -200,20 +200,57 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
       if (stepIndex >= 0 && stepIndex < configurationSteps.length) {
         const targetStep = configurationSteps[stepIndex] as HTMLElement
         const stepRect = targetStep.getBoundingClientRect()
-        const basePopupTop = stepRect.top + window.scrollY
-        const newPopupTop = basePopupTop - 20 // Subtract 20px to compensate for the arrow
+        const tourPopupRect = tourPopup.getBoundingClientRect()
+
+        // Calculate target step position
+        const targetStepTop = stepRect.top + window.scrollY
+        const popupHeight = tourPopupRect.height
+        const viewportHeight = window.innerHeight
+        const viewportPadding = 10 // 10px from viewport bottom
+        const maxPopupTop = viewportHeight + window.scrollY - popupHeight - viewportPadding
+
+        // Calculate popup position
+        const desiredPopupTop = targetStepTop - 20 // 20px offset for arrow
+        const newPopupTop = Math.min(desiredPopupTop, maxPopupTop)
+        const modalShift = desiredPopupTop - newPopupTop
+        const arrowOffset = 20 + modalShift
+        const maxArrowOffset = popupHeight - 40 // 40px from bottom of popup
+        const finalArrowOffset = Math.max(10, Math.min(arrowOffset, maxArrowOffset))
 
         tourPopup.style.top = `${newPopupTop}px`
         popupTop = newPopupTop
+
+        // Apply arrow positioning
+        const arrow = document.querySelector('.pointer-triangle') as HTMLElement
+        if (arrow) {
+          arrow.style.top = `${finalArrowOffset}px`
+        }
       } else {
         const fallbackIndex = stepIndex < 0 ? 0 : configurationSteps.length - 1
         const fallbackStep = configurationSteps[fallbackIndex] as HTMLElement
         const fallbackRect = fallbackStep.getBoundingClientRect()
-        const baseFallbackTop = fallbackRect.top + window.scrollY
-        const fallbackTop = baseFallbackTop - 20 // Subtract 20px to compensate for the arrow
+        const tourPopupRect = tourPopup.getBoundingClientRect()
+
+        const targetStepTop = fallbackRect.top + window.scrollY
+        const popupHeight = tourPopupRect.height
+        const viewportHeight = window.innerHeight
+        const viewportPadding = 10
+
+        const maxPopupTop = viewportHeight + window.scrollY - popupHeight - viewportPadding
+        const desiredPopupTop = targetStepTop - 20
+        const fallbackTop = Math.min(desiredPopupTop, maxPopupTop)
+
+        const modalShift = desiredPopupTop - fallbackTop
+        const arrowOffset = 20 + modalShift
+        const finalArrowOffset = Math.max(10, Math.min(arrowOffset, popupHeight - 40))
 
         tourPopup.style.top = `${fallbackTop}px`
         popupTop = fallbackTop
+
+        const arrow = document.querySelector('.pointer-triangle') as HTMLElement
+        if (arrow) {
+          arrow.style.top = `${finalArrowOffset}px`
+        }
       }
     }, 10)
   }
