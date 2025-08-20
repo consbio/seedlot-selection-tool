@@ -28,6 +28,9 @@ interface IntroTourState {
   isMobile: boolean
 }
 
+const initialPopupTop = 122
+let popupTop = initialPopupTop
+
 const connector = connect(null, (dispatch: (action: any) => any) => {
   return {
     onSelectTab: (tab: string) => {
@@ -134,6 +137,8 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
   }
 
   notNow = () => {
+    popupTop = initialPopupTop
+
     this.setState({
       showIntro: false,
       showPopup: false,
@@ -152,6 +157,8 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
   }
 
   endTour = () => {
+    popupTop = initialPopupTop
+
     this.setState({
       showIntro: false,
       showPopup: false,
@@ -177,54 +184,38 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
     const { mounted, isMobile, currentStepNumber } = this.state
     if (!mounted || isMobile) return
 
-    // Use timeout to ensure DOM has updated
     this.updatePositionTimeout = window.setTimeout(() => {
       const tourPopup = document.getElementById('tour-popup')
-      const tourPopupRect = tourPopup?.getBoundingClientRect()
-      const pointer = document.getElementById('popup-pointer')
-      const sidebar = document.getElementById('sidebar-elem')
-      const sidebarRect = sidebar?.getBoundingClientRect()
-      const target = document.getElementById(this.tourSteps[currentStepNumber].targetId)
-      const topPadding = 20
-      const bottomPadding = 40
+      const configurationSteps = document.getElementsByClassName('configuration-step')
 
-      let exceedsHeight = false
-      let pointerTop = 20
-
-      if (target && tourPopupRect && sidebarRect) {
-        if (target.offsetTop + tourPopupRect.height - topPadding > sidebarRect.height) {
-          exceedsHeight = true
-          pointerTop = target.offsetTop - (sidebarRect.height - tourPopupRect.height - bottomPadding)
-        }
+      if (!tourPopup) {
+        return
       }
 
-      // Make sure pointer stays within popup area
-      if (pointerTop < 10) {
-        pointerTop = 10
-      }
-      if (tourPopupRect && pointerTop > tourPopupRect.height - bottomPadding) {
-        pointerTop = tourPopupRect.height - bottomPadding
+      if (configurationSteps.length === 0) {
+        return
       }
 
-      if (exceedsHeight) {
-        // Position up from the bottom
-        if (tourPopup && sidebar && sidebarRect && tourPopupRect) {
-          const topPosition = sidebarRect.height - tourPopupRect.height - bottomPadding
-          tourPopup.style.top = `${topPosition}px`
-        }
-        if (pointer) {
-          pointer.style.top = `${pointerTop}px`
-        }
-      } else if (target) {
-        if (tourPopup) {
-          const topPosition = target.offsetTop - topPadding
-          tourPopup.style.top = `${topPosition}px`
-        }
-        if (pointer) {
-          pointer.style.top = `${pointerTop}px`
-        }
+      const stepIndex = currentStepNumber
+      if (stepIndex >= 0 && stepIndex < configurationSteps.length) {
+        const targetStep = configurationSteps[stepIndex] as HTMLElement
+        const stepRect = targetStep.getBoundingClientRect()
+        const basePopupTop = stepRect.top + window.scrollY
+        const newPopupTop = basePopupTop - 20 // Subtract 20px to compensate for the arrow
+
+        tourPopup.style.top = `${newPopupTop}px`
+        popupTop = newPopupTop
+      } else {
+        const fallbackIndex = stepIndex < 0 ? 0 : configurationSteps.length - 1
+        const fallbackStep = configurationSteps[fallbackIndex] as HTMLElement
+        const fallbackRect = fallbackStep.getBoundingClientRect()
+        const baseFallbackTop = fallbackRect.top + window.scrollY
+        const fallbackTop = baseFallbackTop - 20 // Subtract 20px to compensate for the arrow
+
+        tourPopup.style.top = `${fallbackTop}px`
+        popupTop = fallbackTop
       }
-    }, 0)
+    }, 10)
   }
 
   handlePopupWidthChange = (element: HTMLDivElement | null) => {
@@ -287,7 +278,7 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
         <div
           id="tour-popup"
           className={`tour-popup ${!showPopup ? 'hide' : ''} ${isMobile ? 'mobile' : ''}`}
-          style={{ '--popupWidth': `${popupWidth}px` } as React.CSSProperties}
+          style={{ '--popupWidth': `${popupWidth}px`, 'top': `${popupTop}px` } as React.CSSProperties}
         >
           <span className="pointer-triangle" />
           <div className="popup-inner" role="presentation" ref={this.handlePopupWidthChange}>

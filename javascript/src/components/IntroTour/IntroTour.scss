@@ -58,13 +58,13 @@
   width: 440px;
   position: absolute;
   top: 0px;
-  left: 400px;
+  left: 520px;
   z-index: 12;
   padding: var(--space) var(--space-md);
   line-height: normal;
   border-radius: 16px;
   background: var(--primary-main);
-  transition: top 1s;
+  transition: top 0.3s ease-out;
 
   &.hide {
     display: none;
