@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect, ConnectedProps } from 'react-redux'
 import { t } from 'ttag'
 import Modal from '../../seedsource-ui/components/Modal'
+import { selectTab } from '../../seedsource-ui/actions/tabs'
 import './IntroTour.scss'
 
 function IntroHeader() {
@@ -42,10 +44,20 @@ interface IntroTourState {
   isMobile: boolean
 }
 
-class IntroTour extends Component<{}, IntroTourState> {
+const connector = connect(null, (dispatch: (action: any) => any) => {
+  return {
+    onSelectTab: (tab: string) => {
+      dispatch(selectTab(tab))
+    },
+  }
+})
+
+type IntroTourProps = ConnectedProps<typeof connector>
+
+class IntroTour extends Component<IntroTourProps, IntroTourState> {
   private updatePositionTimeout?: number
 
-  constructor(props: {}) {
+  constructor(props: IntroTourProps) {
     super(props)
     this.state = {
       mounted: false,
@@ -69,7 +81,7 @@ class IntroTour extends Component<{}, IntroTourState> {
     }
   }
 
-  componentDidUpdate(prevState: IntroTourState) {
+  componentDidUpdate(prevProps: IntroTourProps, prevState: IntroTourState) {
     const { currentStepNumber, showPopup } = this.state
     if ((prevState.currentStepNumber !== currentStepNumber || prevState.showPopup !== showPopup) && showPopup) {
       this.updateTourPosition()
@@ -150,6 +162,7 @@ class IntroTour extends Component<{}, IntroTourState> {
       showIntro: false,
       showPopup: true,
     })
+    this.props.onSelectTab('tool')
   }
 
   endTour = () => {
@@ -349,4 +362,4 @@ class IntroTour extends Component<{}, IntroTourState> {
   }
 }
 
-export default IntroTour
+export default connector(IntroTour)
