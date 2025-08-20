@@ -3,36 +3,20 @@ import { connect, ConnectedProps } from 'react-redux'
 import { t } from 'ttag'
 import Modal from '../../seedsource-ui/components/Modal'
 import { selectTab } from '../../seedsource-ui/actions/tabs'
+import { tourStepsContent, introContent, TourStep } from './TourContent'
 import './IntroTour.scss'
 
 function IntroHeader() {
-  return <h4 className="title is-4">{t`Welcome to the Seedlot Selection Tool`}</h4>
+  return <h4 className="title is-4">{introContent.welcome}</h4>
 }
 
 function IntroText() {
   return (
     <div>
-      <p className="content">
-        {t`This tool will guide you through the process of selecting appropriate seedlots for your planting sites or finding suitable planting sites for your seedlots based on climatic information.`}
-      </p>
-      <p className="content">
-        {t`The tour will show you the main features and help you get started. You can always access this tour again from the User Guides menu.`}
-      </p>
+      <p className="content">{introContent.description}</p>
+      <p className="content">{introContent.getStarted}</p>
     </div>
   )
-}
-
-interface TourStep {
-  heading: string
-  text: string
-  mobileText?: string
-  mobileHeading?: string
-  targetId: string
-  buttons: Array<{
-    label: string
-    action: () => void
-    class?: string
-  }>
 }
 
 interface IntroTourState {
@@ -101,35 +85,21 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
   }
 
   get tourSteps(): TourStep[] {
-    // TODO: REPLACE WITH ACTUAL TEXT FOR SST
-    return [
-      {
-        heading: t`Step 1: Select Your Location`,
-        text: t`Start by clicking on the map or entering coordinates to specify your seedlot or planting site location.`,
-        mobileText: t`Tap on the map to select your location for seedlots or planting sites.`,
-        targetId: 'location-top',
-        buttons: [
-          { label: t`Skip Tour`, action: this.endTour },
-          { label: t`Next`, action: this.goNext, class: 'featured' },
-        ],
-      },
-      {
-        heading: t`Step 2: Choose Time Period`,
-        mobileHeading: t`Time Period`,
-        text: t`Select the time period for climate data - current, historical, or future scenarios.`,
-        targetId: 'time-period-top',
-        buttons: [
-          { label: t`Skip Tour`, action: this.endTour },
-          { label: t`Next`, action: this.goNext, class: 'featured' },
-        ],
-      },
-      {
-        heading: t`Step 3: Configure Settings`,
-        text: t`Use these controls to configure your analysis parameters and run the tool.`,
-        targetId: 'sidebar-btns',
-        buttons: [{ label: t`Complete Tour`, action: this.endTour, class: 'featured' }],
-      },
-    ]
+    return tourStepsContent.map((stepContent, index) => {
+      const isLastStep = index === tourStepsContent.length - 1
+
+      const buttons = isLastStep
+        ? [{ label: t`Complete Tour`, action: this.endTour, class: 'featured' }]
+        : [
+            { label: t`Skip Tour`, action: this.endTour },
+            { label: t`Next`, action: this.goNext, class: 'featured' },
+          ]
+
+      return {
+        ...stepContent,
+        buttons,
+      }
+    })
   }
 
   restartTour = () => {
