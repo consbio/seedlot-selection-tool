@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { t } from 'ttag'
 import ModalCard from './ModalCard'
 
@@ -6,49 +6,62 @@ type AnnouncementModalProps = {
   announcementID: string
   title: string
   onClose: () => void
+  children: ReactNode
 }
 
 class AnnouncementModal extends React.Component<AnnouncementModalProps> {
   modal?: ModalCard | null
+
   noShowCheckbox?: HTMLInputElement | null
 
-  show() {
-    if (!localStorage.getItem(this.props.announcementID)) {
-      this.modal?.show()
-    }
+  componentDidMount() {}
 
-    setTimeout(() => {
-      this.noShowCheckbox?.focus()
-    }, 1)
+  componentWillUnmount() {}
+
+  accept = () => {
+    if (this.noShowCheckbox?.checked) {
+      const { announcementID } = this.props
+      localStorage.setItem(announcementID, 'true')
+    }
+    this.props.onClose()
+    this.modal?.hide()
+    window.dispatchEvent(new CustomEvent('announcement-dismissed'))
+  }
+
+  show() {
+    const { announcementID } = this.props
+
+    if (!localStorage.getItem(announcementID)) {
+      this.modal?.show()
+      setTimeout(() => {
+        this.noShowCheckbox?.focus()
+      }, 1)
+    }
   }
 
   hide() {
     this.modal?.hide()
-  }
-
-  accept = () => {
-    if (this.noShowCheckbox?.checked) {
-      localStorage.setItem(this.props.announcementID, 'true')
-    }
-    this.props.onClose()
-    this.modal?.hide()
+    window.dispatchEvent(new CustomEvent('announcement-dismissed'))
   }
 
   render() {
     const { title, children } = this.props
+
+    const footer = (
+      <div className="announcement-modal-footer">
+        <button type="button" className="button is-primary" onClick={this.accept}>
+          {t`Ok`}
+        </button>
+      </div>
+    )
+
     return (
       <ModalCard
         ref={input => {
           this.modal = input
         }}
         title={title}
-        footer={
-          <div className="announcement-modal-footer">
-            <button type="button" className="button is-primary" onClick={this.accept}>
-              {t`Ok`}
-            </button>
-          </div>
-        }
+        footer={footer}
       >
         {children}
         <input

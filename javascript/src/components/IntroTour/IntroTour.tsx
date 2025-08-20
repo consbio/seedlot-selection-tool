@@ -74,10 +74,13 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
     this.checkMobile()
     window.addEventListener('resize', this.checkMobile)
     window.addEventListener('restart-intro-tour', this.restartTour)
+    window.addEventListener('announcement-dismissed', this.handleAnnouncementDismissed)
 
     // Check localStorage for tour preference
     if (typeof Storage !== 'undefined' && localStorage.getItem('show-intro-tour') === 'false') {
       this.setState({ showIntro: false })
+    } else {
+      this.checkIfAnnouncementWillShow()
     }
   }
 
@@ -91,6 +94,7 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
   componentWillUnmount() {
     window.removeEventListener('resize', this.checkMobile)
     window.removeEventListener('restart-intro-tour', this.restartTour)
+    window.removeEventListener('announcement-dismissed', this.handleAnnouncementDismissed)
     if (this.updatePositionTimeout) {
       clearTimeout(this.updatePositionTimeout)
     }
@@ -128,14 +132,12 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
     ]
   }
 
-  // Public method to restart the tour from external components
   restartTour = () => {
     this.setState({
       showIntro: true,
       showPopup: false,
       currentStepNumber: 0,
     })
-    // Clear the localStorage flag so the tour shows again
     if (typeof Storage !== 'undefined') {
       localStorage.removeItem('show-intro-tour')
     }
@@ -146,12 +148,26 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
     this.setState({ isMobile })
   }
 
+  checkIfAnnouncementWillShow = () => {
+    const announcementID = 'new-future-data'
+    const announcementWillShow = !localStorage.getItem(announcementID)
+
+    if (announcementWillShow) {
+      this.setState({ showIntro: false })
+    }
+  }
+
+  handleAnnouncementDismissed = () => {
+    if (typeof Storage !== 'undefined' && localStorage.getItem('show-intro-tour') !== 'false') {
+      this.setState({ showIntro: true })
+    }
+  }
+
   notNow = () => {
     this.setState({
       showIntro: false,
       showPopup: false,
     })
-    // Save preference to localStorage immediately
     if (typeof Storage !== 'undefined') {
       localStorage.setItem('show-intro-tour', 'false')
     }
@@ -170,7 +186,6 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
       showIntro: false,
       showPopup: false,
     })
-    // Save preference to localStorage immediately when tour is completed/skipped
     if (typeof Storage !== 'undefined') {
       localStorage.setItem('show-intro-tour', 'false')
     }
@@ -269,9 +284,6 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
               <button type="button" className="button intro-button" onClick={this.notNow}>
                 {t`Not Now`}
               </button>
-
-              {/* <StyledButton color="primary" label={t`Start Tour`} onClick={this.startTour} classes="intro-button" /> */}
-              {/* <StyledButton color="neutral" label={t`Not Now`} onClick={this.notNow} classes="intro-button" /> */}
             </footer>
           </div>
         ) : (
@@ -296,9 +308,6 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
                   <button type="button" className="button is-primary intro-button" onClick={this.startTour}>
                     {t`Start Tour`}
                   </button>
-
-                  {/* <StyledButton color="neutral" label={t`Not Now`} onClick={this.notNow} classes="intro-button" />
-                  <StyledButton color="primary" label={t`Start Tour`} onClick={this.startTour} classes="intro-button" /> */}
                 </div>
               </footer>
             </div>

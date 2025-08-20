@@ -493,7 +493,7 @@ class Menu extends React.Component {
               window.dispatchEvent(new CustomEvent('restart-intro-tour'))
             }}
           >
-            {t`Restart Tour`}
+            {t`Guided Tour`}
           </a>
         </NavItemDropdown>
         <NavItemDropdown title={t`About`}>
