@@ -91,7 +91,7 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
       const buttons = isLastStep
         ? [{ label: t`Complete Tour`, action: this.endTour, class: 'featured' }]
         : [
-            { label: t`Skip Tour`, action: this.endTour },
+            { label: t`Leave Tour`, action: this.endTour, class: 'basic' },
             { label: t`Next`, action: this.goNext, class: 'featured' },
           ]
 
