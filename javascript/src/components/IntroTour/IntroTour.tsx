@@ -199,57 +199,144 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
       const stepIndex = currentStepNumber
       if (stepIndex >= 0 && stepIndex < configurationSteps.length) {
         const targetStep = configurationSteps[stepIndex] as HTMLElement
+
+        // Check if scrolling is needed before deciding on timing
         const stepRect = targetStep.getBoundingClientRect()
-        const tourPopupRect = tourPopup.getBoundingClientRect()
-
-        // Calculate target step position
-        const targetStepTop = stepRect.top + window.scrollY
-        const popupHeight = tourPopupRect.height
         const viewportHeight = window.innerHeight
-        const viewportPadding = 10 // 10px from viewport bottom
-        const maxPopupTop = viewportHeight + window.scrollY - popupHeight - viewportPadding
+        const scrollPadding = 50
+        const stepTop = stepRect.top
+        const stepBottom = stepRect.bottom
+        const isStepVisible = stepTop >= scrollPadding && stepBottom <= viewportHeight - scrollPadding
 
-        // Calculate popup position
-        const desiredPopupTop = targetStepTop - 20 // 20px offset for arrow
-        const newPopupTop = Math.min(desiredPopupTop, maxPopupTop)
-        const modalShift = desiredPopupTop - newPopupTop
-        const arrowOffset = 20 + modalShift
-        const maxArrowOffset = popupHeight - 40 // 40px from bottom of popup
-        const finalArrowOffset = Math.max(10, Math.min(arrowOffset, maxArrowOffset))
+        if (isStepVisible) {
+          // Step is already visible - position modal immediately for quick response
+          const tourPopupRect = tourPopup.getBoundingClientRect()
+          const targetStepTop = stepRect.top + window.scrollY
+          const popupHeight = tourPopupRect.height
+          const viewportPadding = 10
+          const maxPopupTop = viewportHeight + window.scrollY - popupHeight - viewportPadding
 
-        tourPopup.style.top = `${newPopupTop}px`
-        popupTop = newPopupTop
+          const desiredPopupTop = targetStepTop - 20
+          const newPopupTop = Math.min(desiredPopupTop, maxPopupTop)
+          const modalShift = desiredPopupTop - newPopupTop
+          const arrowOffset = 20 + modalShift
+          const finalArrowOffset = Math.max(10, Math.min(arrowOffset, popupHeight - 40))
 
-        // Apply arrow positioning
-        const arrow = document.querySelector('.pointer-triangle') as HTMLElement
-        if (arrow) {
-          arrow.style.top = `${finalArrowOffset}px`
+          // Apply positioning immediately
+          tourPopup.style.top = `${newPopupTop}px`
+          popupTop = newPopupTop
+
+          const arrow = document.querySelector('.pointer-triangle') as HTMLElement
+          if (arrow) {
+            arrow.style.top = `${finalArrowOffset}px`
+          }
+        } else {
+          // Step needs scrolling - use scroll-first approach with delay
+          targetStep.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest',
+          })
+
+          // Wait for scroll to complete, then calculate and apply positioning
+          setTimeout(() => {
+            const updatedStepRect = targetStep.getBoundingClientRect()
+            const updatedTourPopupRect = tourPopup.getBoundingClientRect()
+
+            const updatedTargetStepTop = updatedStepRect.top + window.scrollY
+            const updatedPopupHeight = updatedTourPopupRect.height
+            const updatedViewportHeight = window.innerHeight
+            const updatedViewportPadding = 10
+            const updatedMaxPopupTop =
+              updatedViewportHeight + window.scrollY - updatedPopupHeight - updatedViewportPadding
+
+            const updatedDesiredPopupTop = updatedTargetStepTop - 20
+            const updatedNewPopupTop = Math.min(updatedDesiredPopupTop, updatedMaxPopupTop)
+            const updatedModalShift = updatedDesiredPopupTop - updatedNewPopupTop
+            const updatedArrowOffset = 20 + updatedModalShift
+            const updatedMaxArrowOffset = updatedPopupHeight - 40
+            const updatedFinalArrowOffset = Math.max(10, Math.min(updatedArrowOffset, updatedMaxArrowOffset))
+
+            // Apply final positioning after scroll
+            tourPopup.style.top = `${updatedNewPopupTop}px`
+            popupTop = updatedNewPopupTop
+
+            const arrow = document.querySelector('.pointer-triangle') as HTMLElement
+            if (arrow) {
+              arrow.style.top = `${updatedFinalArrowOffset}px`
+            }
+          }, 300) // Wait for scroll animation to complete
         }
       } else {
+        // Fallback - use first or last step
         const fallbackIndex = stepIndex < 0 ? 0 : configurationSteps.length - 1
         const fallbackStep = configurationSteps[fallbackIndex] as HTMLElement
+
+        // Check if fallback step needs scrolling
         const fallbackRect = fallbackStep.getBoundingClientRect()
-        const tourPopupRect = tourPopup.getBoundingClientRect()
-
-        const targetStepTop = fallbackRect.top + window.scrollY
-        const popupHeight = tourPopupRect.height
         const viewportHeight = window.innerHeight
-        const viewportPadding = 10
+        const scrollPadding = 50
+        const fallbackTop = fallbackRect.top
+        const fallbackBottom = fallbackRect.bottom
+        const isFallbackVisible = fallbackTop >= scrollPadding && fallbackBottom <= viewportHeight - scrollPadding
 
-        const maxPopupTop = viewportHeight + window.scrollY - popupHeight - viewportPadding
-        const desiredPopupTop = targetStepTop - 20
-        const fallbackTop = Math.min(desiredPopupTop, maxPopupTop)
+        if (isFallbackVisible) {
+          // Fallback step is visible - position immediately
+          const tourPopupRect = tourPopup.getBoundingClientRect()
+          const targetStepTop = fallbackRect.top + window.scrollY
+          const popupHeight = tourPopupRect.height
+          const viewportPadding = 10
+          const maxPopupTop = viewportHeight + window.scrollY - popupHeight - viewportPadding
 
-        const modalShift = desiredPopupTop - fallbackTop
-        const arrowOffset = 20 + modalShift
-        const finalArrowOffset = Math.max(10, Math.min(arrowOffset, popupHeight - 40))
+          const desiredPopupTop = targetStepTop - 20
+          const newFallbackTop = Math.min(desiredPopupTop, maxPopupTop)
+          const modalShift = desiredPopupTop - newFallbackTop
+          const arrowOffset = 20 + modalShift
+          const finalArrowOffset = Math.max(10, Math.min(arrowOffset, popupHeight - 40))
 
-        tourPopup.style.top = `${fallbackTop}px`
-        popupTop = fallbackTop
+          // Apply positioning immediately
+          tourPopup.style.top = `${newFallbackTop}px`
+          popupTop = newFallbackTop
 
-        const arrow = document.querySelector('.pointer-triangle') as HTMLElement
-        if (arrow) {
-          arrow.style.top = `${finalArrowOffset}px`
+          const arrow = document.querySelector('.pointer-triangle') as HTMLElement
+          if (arrow) {
+            arrow.style.top = `${finalArrowOffset}px`
+          }
+        } else {
+          // Fallback step needs scrolling - use scroll-first approach
+          fallbackStep.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest',
+          })
+
+          // Wait for scroll to complete, then calculate and apply positioning
+          setTimeout(() => {
+            const updatedFallbackRect = fallbackStep.getBoundingClientRect()
+            const updatedTourPopupRect = tourPopup.getBoundingClientRect()
+
+            const updatedTargetStepTop = updatedFallbackRect.top + window.scrollY
+            const updatedPopupHeight = updatedTourPopupRect.height
+            const updatedViewportHeight = window.innerHeight
+            const updatedViewportPadding = 10
+            const updatedMaxPopupTop =
+              updatedViewportHeight + window.scrollY - updatedPopupHeight - updatedViewportPadding
+
+            const updatedDesiredPopupTop = updatedTargetStepTop - 20
+            const updatedFallbackTop = Math.min(updatedDesiredPopupTop, updatedMaxPopupTop)
+            const updatedModalShift = updatedDesiredPopupTop - updatedFallbackTop
+            const updatedArrowOffset = 20 + updatedModalShift
+            const updatedFinalArrowOffset = Math.max(10, Math.min(updatedArrowOffset, updatedPopupHeight - 40))
+
+            // Apply final positioning after scroll
+            tourPopup.style.top = `${updatedFallbackTop}px`
+            popupTop = updatedFallbackTop
+
+            const arrow = document.querySelector('.pointer-triangle') as HTMLElement
+            if (arrow) {
+              arrow.style.top = `${updatedFinalArrowOffset}px`
+            }
+          }, 300) // Wait for scroll animation to complete
         }
       }
     }, 10)
