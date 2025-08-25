@@ -71,7 +71,7 @@ EMAIL_USE_TLS = True
 NC_SERVICE_DATA_ROOT = "/mnt/data/ncdjango/services/"
 MEDIA_ROOT = "/ncdjango/"
 NC_TEMPORARY_FILE_LOCATION = "tmp/"
-DATASET_DOWNLOAD_DIR = "/mnt/data/ncdjango/downloads/"
+DATASET_DOWNLOAD_DIR = Path("/mnt/data/ncdjango/downloads/")
 SEEDZONES_LOCATION = "/mnt/data/seedzones/"
 
 # Preview mode
