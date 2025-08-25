@@ -81,6 +81,14 @@ class Command(BaseCommand):
             help="If True, will automatically delete all transfer limits before calculating new ones",
         )
 
+        parser.add_argument(
+            "--ignore-missing-regions",
+            dest="ignore_missing_regions",
+            action="store_true",
+            default=False,
+            help="Will continue processing if a seedzone doesn't have any suitable regions.",
+        )
+
     def _write_limit(self, variable, time_period, zone, data, band, elevation_service):
         """Write the transfer limit to the database for this zone and elevation band.
 
@@ -207,7 +215,9 @@ class Command(BaseCommand):
                 pass
             tl.delete()
 
-    def handle(self, zoneset, variables, clear, *args, **kwargs):
+    def handle(
+        self, zoneset, variables, clear, ignore_missing_regions, *args, **kwargs
+    ):
         if zoneset is None or zoneset.strip() == "":
             sources = ZoneSource.objects.all().order_by("name")
             if len(sources) == 0:
@@ -274,11 +284,14 @@ class Command(BaseCommand):
                             try:
                                 region = regions.pop(0)
                             except IndexError:
-                                raise CommandError(
-                                    "The following seedzone has no suitable region: {}".format(
-                                        zone.zone_uid
-                                    )
+                                message = "The following seedzone has no suitable region: {}".format(
+                                    zone.zone_uid
                                 )
+                                if ignore_missing_regions:
+                                    self.stderr.write(message)
+                                    continue
+                                else:
+                                    raise CommandError(message)
 
                         while True:
                             elevation_ds.load_region(region.name)
