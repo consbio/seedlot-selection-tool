@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
-export PATH=/home/sst/.local/bin:/usr/local/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
+cd /home/sst/build/ansible
 
-cd $HOME/apps/seedlot-selection-tool
-poetry install
-cd source
-poetry run python manage.py migrate --noinput
-poetry run python manage.py collectstatic --noinput
-poetry run python manage.py compilemessages
+cat <<EOF > inventory.yml
+webservers:
+  hosts:
+    localhost:
+      ansible_host: 127.0.0.1
+      ansible_user: ec2-user
+EOF
+
+ansible-playbook deploy.yml --inventory=inventory.yml --connection=local
+ansible-playbook post_deploy.yml --inventory=inventory.yml --connection=local
+
+rm -Rf /home/sst/build

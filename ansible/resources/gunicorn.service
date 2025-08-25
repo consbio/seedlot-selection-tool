@@ -1,0 +1,19 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+PIDFile=/home/sst/var/run/gunicorn.pid
+User=sst
+Group=sst
+Environment="LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64"
+Environment="AWS_SECRETS_KEY=sst-production"
+Environment="SEEDSOURCE_DEPLOY_PROFILE=production"
+WorkingDirectory=/home/sst/apps/seedlot-selection-tool/source
+ExecStart=/home/sst/.local/bin/poetry run gunicorn --pid /home/sst/var/run/gunicorn.pid --bind 0.0.0.0:8000 --error-logfile=/var/log/gunicorn/error.log --capture-output --log-level=DEBUG sst_project.wsgi --access-logfile=/var/log/gunicorn/access.log --workers=4
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

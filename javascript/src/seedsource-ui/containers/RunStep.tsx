@@ -12,6 +12,8 @@ import { runJob } from '../actions/job'
 import { showSaveModal } from '../actions/saves'
 import { createReport, runTIFJob } from '../actions/report'
 import { reports } from '../config'
+import { get } from '../io'
+import { logout } from '../actions/auth'
 
 const configurationCanRun = ({
   point,
@@ -98,12 +100,26 @@ const connector = connect(
     },
 
     onSave: (isLoggedIn: boolean) => {
-      if (!isLoggedIn) {
+      const requestLogin = () => {
         dispatch(setError(t`Login required`, t`Please login to save your run.`))
+      }
+
+      if (!isLoggedIn) {
+        requestLogin()
         return
       }
 
-      dispatch(showSaveModal())
+      get('/accounts/user-info/')
+        .then(response => {
+          if (response.status < 200 || response.status >= 300) {
+            throw new Error()
+          }
+          dispatch(showSaveModal())
+        })
+        .catch(() => {
+          dispatch(logout())
+          requestLogin()
+        })
     },
 
     onExport: (name: string) => {

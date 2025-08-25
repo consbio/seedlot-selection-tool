@@ -8,7 +8,7 @@ const defaultState = {
 
   site: {
     time: '1961_1990',
-    model: 'rcp45',
+    model: 'ssp245',
   },
 }
 

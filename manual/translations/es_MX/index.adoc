@@ -1,0 +1,30 @@
+:doctype: book
+:source-highlighter: rouge
+:stem: latexmath
+:toc:
+:imagesdir: ./img
+:figure-caption!:
+
+= Herramienta de selección de lotes de semillas (Seedlot Selection Tool, SST): Guía del usuario
+
+== Introducción
+
+La Herramienta de selección de lotes de semillas (SST) es una aplicación de cartografía basada en la web, diseñada para ayudar a los administradores de recursos naturales a combinar lotes de semillas con sitios de plantación según la información climática. Debido a la selección natural en las diferentes condiciones climáticas de una ubicación, las poblaciones vegetales se diferencian genéticamente entre sí y, en general, están localmente adaptadas. Como resultado, las diferencias de clima entre los lotes de semillas reflejan diferencias en adaptación. La SST mapea ubicaciones donde un lote de semillas coincide con un sitio de plantación, suponiendo que el lote de semillas estaba localmente adaptado al clima del pasado. Los climas de los sitios de plantación pueden elegirse de tal modo que representen climas del pasado o del futuro según los escenarios de cambio climático seleccionados. La SST permite que el usuario controle muchos parámetros de entrada, lo que le permite explorar diferentes suposiciones sobre el cambio climático, la manera en que las poblaciones vegetales se adaptan al clima, y la tolerancia al riesgo del usuario. Los ocho pasos que se describen a continuación servirán de guía para adaptar la herramienta a sus necesidades específicas de reforestación o restauración.
+
+include::sections/01-objective.adoc[]
+
+include::sections/02-location.adoc[]
+
+include::sections/03-region.adoc[]
+
+include::sections/04-climate.adoc[]
+
+include::sections/05-transfer.adoc[]
+
+include::sections/06-variables.adoc[]
+
+include::sections/07-constraints.adoc[]
+
+include::sections/08-results.adoc[]
+
+include::sections/appendix.adoc[]

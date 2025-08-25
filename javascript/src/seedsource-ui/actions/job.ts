@@ -43,17 +43,8 @@ export const runJob = (configuration: any) => {
   const { functions, constraints: constraintsConfig } = config
 
   return (dispatch: (action: any) => any) => {
-    const {
-      variables,
-      traits,
-      objective,
-      climate,
-      region,
-      constraints,
-      userSites,
-      customMode,
-      customFunctions,
-    } = configuration
+    const { variables, traits, objective, climate, region, constraints, userSites, customMode, customFunctions } =
+      configuration
 
     /* Run the tool against the seedlot climate when looking for seedlots, otherwise run against the
      * planting site climate.
@@ -64,7 +55,7 @@ export const runJob = (configuration: any) => {
     const inputs = {
       region,
       year: selectedClimate.time,
-      model: year === '1961_1990' || year === '1981_2010' ? undefined : selectedClimate.model,
+      model: ['1961_1990', '1981_2010', '1991_2020'].includes(year) ? undefined : selectedClimate.model,
       variables: variables.map((item: any) => {
         const { name, transfer, customCenter } = item
         const value = customMode ? customCenter : item.value

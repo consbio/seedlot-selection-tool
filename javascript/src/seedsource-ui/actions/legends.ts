@@ -46,7 +46,7 @@ export const receiveLayersLegend = (json: any) => {
   })
 
   return {
-    type: REQUEST_LAYERS_LEGEND,
+    type: RECEIVE_LAYERS_LEGEND,
     legend,
     layerName,
   }

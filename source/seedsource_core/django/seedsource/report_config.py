@@ -69,7 +69,7 @@ def format_no_units(value, is_imperial):
 VARIABLE_CONFIG = {
     "MAT": Variable(
         _("Mean annual temperature"),
-        10,
+        1,
         format_temperature_value,
         format_temperature_transfer,
         "&deg;C",
@@ -77,7 +77,7 @@ VARIABLE_CONFIG = {
     ),
     "MWMT": Variable(
         _("Mean warmest month temperature"),
-        10,
+        1,
         format_temperature_value,
         format_temperature_transfer,
         "&deg;C",
@@ -85,7 +85,7 @@ VARIABLE_CONFIG = {
     ),
     "MCMT": Variable(
         _("Mean coldest month temperature"),
-        10,
+        1,
         format_temperature_value,
         format_temperature_transfer,
         "&deg;C",
@@ -93,7 +93,7 @@ VARIABLE_CONFIG = {
     ),
     "TD": Variable(
         _("Temperature difference between MWMT and MCMT, or continentality"),
-        10,
+        1,
         format_relative_temperature_value,
         format_temperature_transfer,
         "°C",
@@ -117,7 +117,7 @@ VARIABLE_CONFIG = {
     ),
     "AHM": Variable(
         _("Annual heat-moisture index"),
-        10,
+        1,
         format_whole_value,
         format_whole_value,
         "",
@@ -125,7 +125,7 @@ VARIABLE_CONFIG = {
     ),
     "SHM": Variable(
         _("Summer heat-moisture index"),
-        10,
+        1,
         format_whole_value,
         format_whole_value,
         "",
@@ -165,7 +165,7 @@ VARIABLE_CONFIG = {
     ),
     "EMT": Variable(
         _("Extreme minimum temperature over 30 years"),
-        10,
+        1,
         format_temperature_value,
         format_temperature_transfer,
         "&deg;C",
@@ -173,7 +173,7 @@ VARIABLE_CONFIG = {
     ),
     "EXT": Variable(
         _("Extreme maximum temperature over 30 years"),
-        10,
+        1,
         format_temperature_value,
         format_temperature_transfer,
         "&deg;C",

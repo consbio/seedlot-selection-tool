@@ -1,0 +1,16 @@
+[Unit]
+Description=mbtileserver daemon
+After=network.target
+
+[Service]
+PIDFile=/home/sst/var/run/mbtileserver.pid
+User=sst
+Group=sst
+WorkingDirectory=/home/sst
+ExecStart=/home/sst/go/bin/mbtileserver -d /mnt/data/tiles -p 8080
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

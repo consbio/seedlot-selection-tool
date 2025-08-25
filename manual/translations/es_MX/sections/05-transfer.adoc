@@ -1,0 +1,31 @@
+=== Paso 5. Seleccionar el método de límite de transferencia
+
+El límite de transferencia indica qué tan lejos climáticamente se puede mover un lote de semillas y aún tener un nivel aceptable de adaptación. El SST utiliza tres enfoques alternativos para determinar y mapear los límites de transferencia: *Personalizado*, *Zona*, *Trait* y *Función*.
+
+Los enfoques *Personalizado* y *de Zona* permiten al usuario definir límites de transferencia para cada variable climática seleccionada en el Paso 6. Los límites de transferencia del enfoque *Personalizado* pueden seleccionarse según la experiencia del usuario, incluyendo los mejores conocimientos científicos a su alcance. También se pueden ajustar según el nivel de riesgo aceptable para el usuario.
+
+La TSM sugiere un límite de transferencia para el enfoque de *Zona* basado en la gama de climas dentro de la zona para la ubicación del sitio de siembra o lote de siembra elegido en el Paso 2. La idea es que el usuario se sienta cómodo con esa diferencia climática dado que llevamos 60 años o más moviendo poblaciones operativamente dentro de las zonas. Si utiliza el método Zone, la SST obtiene el límite de transferencia ('TL') para cada variable climática utilizando la zona seleccionada: latexmath:[TL = \frac{xmax-xmin}{2}], donde 'xmax' y 'xmin' son los valores climáticos máximo y mínimo para la zona. La suposición es que la mitad de la gama de climas representa una transferencia pasada "típica". Debido a que algunas zonas muestran una mayor variación climática que la zona típica, también proporcionamos el límite de transferencia promedio para todas las zonas del conjunto de zonas seleccionado. Esta y otra información aparecerá en una ventana emergente en el paso 6 si pasa el cursor sobre el icono del "ojo" a la derecha de la variable climática en la tabla de variables climáticas. El límite de transferencia puede ser modificado por el usuario.
+
+El enfoque de *Rasgo* utiliza funciones genecológicas para seleccionar una diferencia aceptable en uno o más rasgos adaptativos basándose en la investigación de estudios de jardines comunes. Las funciones genecológicas son una asociación entre los rasgos adaptativos identificados en un jardín común y el clima derivado de la ubicación de las fuentes de semillas. El rasgo suele representar un clima multivariante.
+ 
+El enfoque de *Función* es similar al *Trait*, excepto que le permite definir sus propias funciones genecológicas utilizando expresiones matemáticas y variables climáticas.
+
+==== Método personalizado
+
+Haga clic en el botón “Custom” (Personalizado) para introducir sus propios límites de transferencia después de seleccionar una o más variables climáticas en el Paso 6.
+
+==== Método de Zona
+
+Haga clic en el botón “Zone” (Zona) si desea utilizar una zona existente para calcular los límites de transferencia de una o más variables climáticas.
+
+Cuando el objetivo es encontrar lotes de semillas para un sitio de plantación, el enfoque *de Zona* implica dos pasos. Primero, seleccione una especie. Segundo, seleccione una zona entre las opciones disponibles del menú desplegable. Si sabe que una especie tiene una zona específica y desea utilizarla, seleccione la zona en el menú desplegable de zonas disponibles específicas para la especie en dicha ubicación. De lo contrario, seleccione las zonas genéricas de esa ubicación que sean pertinentes a todas las especies. Tenga en cuenta que las zonas disponibles dependen de la ubicación específica seleccionada (p. ej., las zonas del Servicio Forestal de los Estados Unidos [United States Forest Service, USFS] solo pueden aplicarse a tierras del USFS).
+
+Cuando el objetivo es encontrar sitios de plantación para un lote de semillas, el enfoque *Zona* implica tres pasos. Primero, debe especificar el centro climático del resultado cartográfico proporcionado. Si tiene un lote de semillas de una ubicación específica conocida, normalmente utilizará el clima de dicha ubicación. Si tiene un lote de semillas que representa toda una zona, o no está seguro del sitio de donde se obtuvo el lote de semillas, podría ser mejor utilizar el centro climático de su zona. Una vez que especifique el centro climático que va a utilizar para la cartografía, los dos pasos siguientes son los mismos que se indicaron anteriormente para seleccionar primero la especie, y luego la zona de interés.
+
+==== Método de rasgo
+
+Para el enfoque de *Rasgo*, seleccione la especie usando el menú desplegable. Los valores y los límites de transferencia para los rasgos adaptativos de los estudios genetológicos se rellenarán previamente en el paso 6 para las ubicaciones elegidas en el paso 2.
+
+==== Método de función
+
+El enfoque de *Función* le permite crear su propia función que permite la ponderación diferencial de diferentes variables climáticas como representativas de la variación adaptativa. Haz clic en el menú desplegable y elige "Agregar una función personalizada". Ingrese cualquier ecuación matemática que haga referencia a las variables de ClimateNA footnote:[https://climatena.ca/Help2#_var] usando sus nombres cortos. Por ejemplo, latexmath:[-6.3 + (0.284*TD) + (0.007*PPT\_sm)] utiliza las variables TD (diferencia de temperatura entre los meses medio más cálidos y medio más fríos) y PPT_sm (precipitación de verano).

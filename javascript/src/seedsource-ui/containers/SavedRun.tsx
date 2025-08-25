@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { t, c } from 'ttag'
 import { loadConfiguration, resetConfiguration, deleteSave } from '../actions/saves'
 import { migrateConfiguration } from '../utils'
 import ShareURL from '../components/ShareURL'
+import ModalCard from '../components/ModalCard'
 
 const connector = connect(null, (dispatch: (event: any) => any, { onClick }: { onClick: () => any }) => {
   return {
@@ -11,10 +12,8 @@ const connector = connect(null, (dispatch: (event: any) => any, { onClick }: { o
       onClick()
     },
 
-    onLoad: (save: any) => {
+    onLoad: (migratedConfiguration: any, save: any) => {
       dispatch(resetConfiguration())
-      const migratedConfiguration = migrateConfiguration(save.configuration, save.version)
-
       /* In some cases where the loaded configuration is similar to the previous one, certain events aren't
        * fired if the event is dispatched in the same event cycle as the reset event
        */
@@ -34,49 +33,109 @@ type SavedRunProps = ConnectedProps<typeof connector> & {
 
 const SavedRun = ({ active, save, onClick, onLoad, onDelete }: SavedRunProps) => {
   let className = 'configuration-item'
+  let modal = null
   const { modified, title } = save
+  const [modalToShow, setModalToShow] = useState<'' | 'confirm' | 'messages'>('')
+  const [messages, setMessages] = useState<string[]>([])
+  const [migratedConfiguration, setMigratedConfiguration] = useState<any>({})
 
   if (active) {
     className += ' focused'
   }
 
-  return (
-    <div
-      className={className}
-      onClick={() => {
-        onClick()
-      }}
-    >
-      <div className="save-title">{title}</div>
-      <div className="save-date">
-        {t`Last modified:`} {modified.getMonth() + 1}/{modified.getDate()}/{modified.getYear()}
-      </div>
-      <div className="buttons">
-        <ShareURL configuration={save.configuration} version={save.version} />
+  if (modalToShow === 'confirm') {
+    const hideModal = () => setModalToShow('')
 
-        <div>
-          <button
-            type="button"
-            onClick={() => {
-              if (window.confirm(t`Load this saved configuration? This will replace your current settings.`)) {
-                onLoad(save)
-              }
-            }}
-            className="button is-primary"
-          >
-            <span className="icon-load-12" aria-hidden="true" /> &nbsp;{c('e.g., Load file').t`Load`}
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              if (window.confirm(t`Delete this saved configuration?`)) {
-                onDelete(save.uuid)
-              }
-            }}
-            className="button is-danger"
-          >
-            <span className="icon-trash-12" aria-hidden="true" /> &nbsp;{t`Delete`}
-          </button>
+    modal = (
+      <ModalCard
+        title={t`Load configuration?`}
+        active={modalToShow === 'confirm'}
+        onHide={hideModal}
+        footer={(
+          <div style={{ width: '100%' }}>
+            <button type="button" className="button" onClick={hideModal}>
+              {t`Cancel`}
+            </button>
+            <button
+              type="button"
+              className="button is-primary is-pulled-right"
+              onClick={() => {
+                const migration = migrateConfiguration(save.configuration, save.version)
+                setMigratedConfiguration(migration.migratedConfiguration)
+                if (migration.messages?.length) {
+                  setMessages(migration.messages)
+                  setModalToShow('messages')
+                } else {
+                  hideModal()
+                }
+              }}
+            >
+              {t`Confirm`}
+            </button>
+          </div>
+        )}
+      >
+        {t`Loading this configuration will replace your current settings.`}
+      </ModalCard>
+    )
+  }
+
+  if (modalToShow === 'messages') {
+    const text = messages.map(message => <li>{message}</li>)
+    const onHide = () => {
+      onLoad(migratedConfiguration, save)
+      setModalToShow('')
+    }
+
+    modal = (
+      <ModalCard
+        title={t`Notification`}
+        active={modalToShow === 'messages'}
+        onHide={onHide}
+        footer={(
+          <div style={{ width: '100%' }}>
+            <button type="button" onClick={onHide} className="button is-primary is-pulled-right">{t`OK`}</button>
+          </div>
+        )}
+      >
+        <div>{t`The following issue(s) were encountered while loading your saved run.`}</div>
+        <ul>{text}</ul>
+      </ModalCard>
+    )
+  }
+
+  return (
+    <div>
+      {modal}
+      <div
+        className={className}
+        onClick={() => {
+          onClick()
+        }}
+      >
+        <div className="save-title">{title}</div>
+        <div className="save-date">
+          {t`Last modified:`} {modified.getMonth() + 1}/{modified.getDate()}/{modified.getYear()}
+        </div>
+        <div className="buttons">
+          <ShareURL configuration={save.configuration} version={save.version} />
+
+          <div>
+            <button type="button" onClick={() => setModalToShow('confirm')} className="button is-primary">
+              <span className="icon-load-12" aria-hidden="true" /> &nbsp;{c('e.g., Load file').t`Load`}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (window.confirm(t`Delete this saved configuration?`)) {
+                  onDelete(save.uuid)
+                }
+              }}
+              className="button is-danger"
+            >
+              <span className="icon-trash-12" aria-hidden="true" /> &nbsp;{t`Delete`}
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
 import resync from '../resync'
 import { requestTransfer, receiveTransfer, requestValue, receiveValue, setVariablesRegion } from '../actions/variables'
-import { requestPopupValue, receivePopupValue } from '../actions/popup'
 import { urlEncode } from '../io'
 import { getServiceName } from '../utils'
 import config, { DefaultVariable } from '../config'
@@ -51,32 +50,7 @@ const climateRegionObjectiveSelect = ({ runConfiguration }: any) => {
   }
 }
 
-const popupSelect = ({ runConfiguration, popup }: any) => {
-  const { objective, climate, variables } = runConfiguration
-  let { point } = popup
-  const { region } = popup
-
-  if (point) {
-    point = { x: point.x, y: point.y }
-  }
-
-  return {
-    objective,
-    point,
-    climate,
-    variables: variables.map((item: any) => item.name),
-    region,
-  }
-}
-
-export const fetchValues = (
-  store: any,
-  state: any,
-  io: any,
-  dispatch: (action: any) => any,
-  previousState: any,
-  regionIn?: any,
-) => {
+export const fetchValues = (store: any, state: any, io: any, previousState: any, regionIn?: any) => {
   const { objective, point } = state
   const pointIsValid = point !== null && point.x && point.y
   const { runConfiguration } = store.getState()
@@ -97,7 +71,7 @@ export const fetchValues = (
     variables = variables.filter((item: any) => item.value === null)
   }
 
-  const requests = variables.map((item: any) => {
+  return variables.map((item: any) => {
     const serviceName = getServiceName(item.name, objective, climate, region)
     const url = `/arcgis/rest/services/${serviceName}/MapServer/identify/?${urlEncode({
       f: 'json',
@@ -107,11 +81,8 @@ export const fetchValues = (
       mapExtent: '0,0,0,0',
       geometry: JSON.stringify(point),
     })}`
-
     return { item, promise: io.get(url).then((response: any) => response.json()) }
   })
-
-  return requests
 }
 
 export default (store: any) => {
@@ -186,7 +157,7 @@ export default (store: any) => {
     const { validRegions } = state
 
     if (validRegions.length) {
-      const requests = fetchValues(store, state, io, dispatch, previousState, validRegions[0])
+      const requests = fetchValues(store, state, io, previousState, validRegions[0])
 
       requests.forEach((request: any) => {
         dispatch(requestValue(request.item.name))
@@ -199,23 +170,5 @@ export default (store: any) => {
     const { region } = state || null
 
     dispatch(setVariablesRegion(region))
-  })
-
-  // Values at point (for popup)
-  resync(store, popupSelect, (state, io, dispatch, previousState) => {
-    if (previousState !== undefined) {
-      const { variables: current, region } = state
-      const { variables: old } = previousState
-
-      // Only need to refresh if the variables have changed
-      if (JSON.stringify(current) !== JSON.stringify(old)) {
-        const requests = fetchValues(store, state, io, dispatch, previousState, region)
-
-        requests.forEach((request: any) => {
-          dispatch(requestPopupValue(request.item.name))
-          request.promise.then((json: any) => dispatch(receivePopupValue(request.item.name, json)))
-        })
-      }
-    }
   })
 }
