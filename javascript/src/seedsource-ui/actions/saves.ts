@@ -1,5 +1,6 @@
 import { get, post, put, ioDelete } from '../io'
 import { setError } from './error'
+import { logout } from './auth'
 import config, { saveVersion } from '../config'
 
 export const SHOW_SAVE_MODAL = 'SHOW_SAVE_MODAL'
@@ -113,6 +114,56 @@ export const fetchSaves = () => {
   }
 }
 
+const isAuthenticationError = async (response: Response): Promise<boolean> => {
+  if (response.status !== 403) {
+    return false
+  }
+
+  try {
+    const responseText = await response.text()
+    const responseData = JSON.parse(responseText)
+
+    // Common authentication error terms in response
+    // https://github.com/encode/django-rest-framework/blob/main/rest_framework/exceptions.py
+    // https://docs.djangoproject.com/en/5.2/ref/contrib/auth/#anonymoususer-object
+    const errorIndicators = [
+      'authentication',
+      'login',
+      'logged',
+      'credentials',
+      'permission',
+      'unauthorized',
+      'anonymoususer',
+    ]
+
+    const responseString = JSON.stringify(responseData).toLowerCase()
+    return errorIndicators.some(indicator => responseString.includes(indicator))
+  } catch {
+    return true
+  }
+}
+
+const handleAuthError = (dispatch: (event: any) => any, action: string, originalError: any, data: any) => {
+  dispatch(failSave())
+  dispatch(logout())
+  dispatch(
+    setError(
+      'Login required',
+      'Your session has expired. Please log in again to save your configuration.',
+      JSON.stringify(
+        {
+          action,
+          error: 'Authentication required - session expired',
+          originalError: originalError ? originalError.message : null,
+          data,
+        },
+        null,
+        2,
+      ),
+    ),
+  )
+}
+
 export const createSave = (configuration: any, title: string) => {
   return (dispatch: (event: any) => any) => {
     const data = {
@@ -124,11 +175,17 @@ export const createSave = (configuration: any, title: string) => {
     dispatch(requestSave())
 
     return post(`${config.apiRoot}run-configurations/`, data)
-      .then(response => {
+      .then(async response => {
         const { status } = response
 
         if (status >= 200 && status < 300) {
           return response.json()
+        }
+
+        if (status === 403 && (await isAuthenticationError(response.clone()))) {
+          const authError = new Error('Authentication required')
+          authError.name = 'AuthenticationError'
+          throw authError
         }
 
         throw new Error(`Bad status creating save: ${response.status}`)
@@ -138,6 +195,11 @@ export const createSave = (configuration: any, title: string) => {
         dispatch(fetchSaves())
       })
       .catch(err => {
+        if (err.name === 'AuthenticationError') {
+          handleAuthError(dispatch, 'createSave', err, data)
+          return
+        }
+
         dispatch(failSave())
         dispatch(
           setError(
@@ -171,20 +233,31 @@ export const updateSave = (configuration: any, lastSave: any) => {
     const url = `${config.apiRoot}run-configurations/${lastSave.saveId}/`
 
     return put(url, data)
-      .then(response => {
+      .then(async response => {
         const { status } = response
 
         if (status >= 200 && status < 300) {
           return response.json()
         }
 
-        throw new Error(`Bad status creating save: ${response.status}`)
+        if (status === 403 && (await isAuthenticationError(response.clone()))) {
+          const authError = new Error('Authentication required')
+          authError.name = 'AuthenticationError'
+          throw authError
+        }
+
+        throw new Error(`Bad status updating save: ${response.status}`)
       })
       .then(json => {
         dispatch(receiveSave(json))
         dispatch(fetchSaves())
       })
       .catch(err => {
+        if (err.name === 'AuthenticationError') {
+          handleAuthError(dispatch, 'updateSave', err, data)
+          return
+        }
+
         dispatch(failSave())
         dispatch(
           setError(
