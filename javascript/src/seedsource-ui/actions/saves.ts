@@ -138,8 +138,9 @@ const isAuthenticationError = async (response: Response): Promise<boolean> => {
 
     const responseString = JSON.stringify(responseData).toLowerCase()
     return errorIndicators.some(indicator => responseString.includes(indicator))
-  } catch {
-    return true
+  } catch (error) {
+    console.warn('Failed to parse response as JSON when checking for authentication error:', error)
+    return false
   }
 }
 
@@ -149,7 +150,7 @@ const handleAuthError = (dispatch: (event: any) => any, action: string, original
   dispatch(
     setError(
       'Login required',
-      'Your session has expired. Please log in again to save your configuration.',
+      'Your session has expired. Please login again to save your run.',
       JSON.stringify(
         {
           action,
@@ -182,7 +183,7 @@ export const createSave = (configuration: any, title: string) => {
           return response.json()
         }
 
-        if (status === 403 && (await isAuthenticationError(response.clone()))) {
+        if (await isAuthenticationError(response)) {
           const authError = new Error('Authentication required')
           authError.name = 'AuthenticationError'
           throw authError
@@ -204,7 +205,7 @@ export const createSave = (configuration: any, title: string) => {
         dispatch(
           setError(
             'Save error',
-            'Sorry, there was an error saving the configuration',
+            'Sorry, there was an error saving the run',
             JSON.stringify(
               {
                 action: 'createSave',
@@ -240,7 +241,7 @@ export const updateSave = (configuration: any, lastSave: any) => {
           return response.json()
         }
 
-        if (status === 403 && (await isAuthenticationError(response.clone()))) {
+        if (await isAuthenticationError(response)) {
           const authError = new Error('Authentication required')
           authError.name = 'AuthenticationError'
           throw authError
@@ -262,7 +263,7 @@ export const updateSave = (configuration: any, lastSave: any) => {
         dispatch(
           setError(
             'Save error',
-            'Sorry, there was an error saving the configuration',
+            'Sorry, there was an error saving the run',
             JSON.stringify(
               {
                 action: 'updateSave',
