@@ -296,14 +296,45 @@ export const deleteSave = (uuid: string) => {
   return (dispatch: (event: any) => any) => {
     const url = `${config.apiRoot}run-configurations/${uuid}/`
 
-    return ioDelete(url).then(response => {
-      const { status } = response
+    return ioDelete(url)
+      .then(async response => {
+        const { status } = response
 
-      if (status >= 200 && status < 300) {
-        dispatch(removeSave(uuid))
-      } else {
+        if (status >= 200 && status < 300) {
+          dispatch(removeSave(uuid))
+          return
+        }
+
+        if (await isAuthenticationError(response)) {
+          const authError = new Error('Authentication required')
+          authError.name = 'AuthenticationError'
+          throw authError
+        }
+
         throw new Error(`Bad status deleting save: ${response.status}`)
-      }
-    })
+      })
+      .catch(err => {
+        if (err.name === 'AuthenticationError') {
+          handleAuthError(dispatch, 'deleteSave', err, { uuid })
+          return
+        }
+
+        dispatch(failSave())
+        dispatch(
+          setError(
+            'Delete error',
+            'Sorry, there was an error deleting the run',
+            JSON.stringify(
+              {
+                action: 'deleteSave',
+                error: err ? err.message : null,
+                data: { uuid },
+              },
+              null,
+              2,
+            ),
+          ),
+        )
+      })
   }
 }
