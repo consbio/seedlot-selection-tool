@@ -15,5 +15,5 @@ manual/**/img/stem-*.svg
 manual/**/img/stem-*.png
 merged.po
 *.mo
-/static
+static/
 ansible/inventory.yml
