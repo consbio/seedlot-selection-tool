@@ -8,7 +8,7 @@ type RunConfigurationProps = {
   children?: ReactNode
 }
 
-const RunConfiguration = ({ job, children = null }: RunConfigurationProps) => {
+function RunConfiguration({ job, children = null }: RunConfigurationProps) {
   let overlay = null
 
   if (job.isRunning) {
@@ -42,7 +42,7 @@ const RunConfiguration = ({ job, children = null }: RunConfigurationProps) => {
       <div className="level mb-0">
         <div className="level-left" />
         <div className="level-right">
-          <strong>{t`Units:`} </strong>
+          <strong>{t`Units:`}&nbsp;</strong>
           <div className="tabs is-toggle is-inline-block is-small align-middle">
             <ul>
               <UnitButton name="metric">{t`Metric`}</UnitButton>
