@@ -22,6 +22,8 @@ DEBUG = False
 ALLOWED_HOSTS = [".seedlotselectiontool.org"]
 CSRF_COOKIE_DOMAIN = ".seedlotselectiontool.org"
 
+CSRF_TRUSTED_ORIGINS = ["https://seedlotselectiontool.org"]
+
 BROKER_URL = "amqp://{}:{}@localhost:5672".format(
     CONFIG.get("amqp_username", ""), CONFIG.get("amqp_password", "")
 )
