@@ -8,6 +8,7 @@ import { addUserSite, addUserSites, removeUserSite, setUserSiteLabel, setActiveU
 import { setMapMode } from '../actions/map'
 import ModalCard from '../components/ModalCard'
 import { variables } from '../config'
+import fetchElevation from '../utils/elevation'
 
 type State = {
   runConfiguration: {
@@ -27,11 +28,27 @@ const connector = connect(
   }),
   dispatch => ({
     removeSite: (index: number) => dispatch(removeUserSite(index)),
-    onAddUserSite: (lat: number, lon: number, label: string) => {
-      dispatch(addUserSite({ lat, lon }, label))
+    onAddUserSite: async (lat: number, lon: number, label: string) => {
+      const elevation = await fetchElevation(lat, lon)
+      dispatch(addUserSite({ lat, lon, elevation }, label))
       dispatch(setMapMode('normal'))
     },
-    onAddUserSites: (sites: { latlon: { lat: number; lon: number }; label: string }[]) => dispatch(addUserSites(sites)),
+    onAddUserSites: async (sites: { latlon: { lat: number; lon: number; elevation?: number }; label: string }[]) => {
+      const sitesWithElevation = await Promise.all(
+        sites.map(async site => {
+          if (site.latlon.elevation === undefined) {
+            const elevation = await fetchElevation(site.latlon.lat, site.latlon.lon)
+            return {
+              ...site,
+              latlon: { ...site.latlon, elevation },
+            }
+          }
+          return site
+        }),
+      )
+
+      dispatch(addUserSites(sitesWithElevation))
+    },
     onSetUserSiteLabel: (label: string, index: number) => dispatch(setUserSiteLabel(label, index)),
     onMouseOverSite: (index: number | null) => dispatch(setActiveUserSite(index)),
     onSetMapMode: (mode: string) => dispatch(setMapMode(mode)),
@@ -40,7 +57,7 @@ const connector = connect(
 
 type ComparisonsProps = ConnectedProps<typeof connector>
 
-const Comparisons = ({
+function Comparisons({
   objective,
   userSites,
   mode,
@@ -50,7 +67,7 @@ const Comparisons = ({
   onSetUserSiteLabel,
   onMouseOverSite,
   onSetMapMode,
-}: ComparisonsProps) => {
+}: ComparisonsProps) {
   const [expandLevel, setExpandLevel] = React.useState(0)
   const expandClasses = ['', 'preview', 'full-height']
   const expandMessages = [t`Click to show`, t`Click for full height`, t`Click to hide`]
@@ -99,6 +116,9 @@ const Comparisons = ({
                     const yCol = columns.find(name =>
                       ['y', 'lat', 'latitude', 'latitud'].includes(name.toLowerCase().trim()),
                     )
+                    const elevationCol = columns.find(name =>
+                      ['elevation', 'elev', 'altitude', 'alt'].includes(name.toLowerCase().trim()),
+                    )
                     const labelCol = columns.find(name => ['name', 'label'].includes(name.toLowerCase().trim()))
 
                     if (!(xCol && yCol)) {
@@ -113,7 +133,11 @@ const Comparisons = ({
                           lat: Number.parseFloat(row[yCol]),
                           lon: Number.parseFloat(row[xCol]),
                         },
-                      } as { latlon: { lat: number; lon: number }; label: string }
+                      } as { latlon: { lat: number; lon: number; elevation?: number }; label: string }
+
+                      if (elevationCol && row[elevationCol]) {
+                        site.latlon.elevation = Number.parseFloat(row[elevationCol])
+                      }
 
                       if (labelCol) {
                         site.label = row[labelCol]
@@ -156,6 +180,7 @@ const Comparisons = ({
               <tr>
                 <th> </th>
                 <th>{t`Location`}</th>
+                <th>{t`Elevation`}</th>
                 <th style={{ minWidth: '200px' }}>{t`Name`}</th>
                 <th>{t`Match`}</th>
                 {siteVariables.map(variable => (
@@ -184,6 +209,7 @@ const Comparisons = ({
                     />
                   </td>
                   <td>{`${site.lat.toFixed(2)}, ${site.lon.toFixed(2)}`}</td>
+                  <td>{site.elevation ? `${site.elevation}m` : c('Not Applicable').t`N/A`}</td>
                   <td>
                     {editRow && (
                       <form
@@ -255,7 +281,7 @@ const Comparisons = ({
               )
             })}
             <tr className="add-site">
-              <td colSpan={4 + siteVariables.length}>
+              <td colSpan={5 + siteVariables.length}>
                 <div className="columns">
                   <div className="column" />
                   <div className="column is-narrow">
@@ -297,7 +323,7 @@ const Comparisons = ({
                             {/* eslint-enable */}
                           </label>
                           <label className="column">
-                            <div>{c("abbreviation of 'Longitud''").t`Lon`}</div>
+                            <div>{c("abbreviation of 'Longitude''").t`Lon`}</div>
                             <input
                               className="input is-inline is-small"
                               style={{ width: '80px', textAlign: 'right' }}
@@ -366,13 +392,15 @@ const Comparisons = ({
                                 [
                                   t`Latitude`,
                                   t`Longitude`,
+                                  t`Elevation`,
                                   t`Label`,
                                   `${t`Climate Match`} %`,
                                   ...deltaKeys.map(k => `(${t`delta`}) ${k}`),
                                 ],
-                                ...userSites.map(({ lat, lon, label, score, deltas }) => [
+                                ...userSites.map(({ lat, lon, elevation, label, score, deltas }) => [
                                   lat,
                                   lon,
+                                  elevation || c('Not Applicable').t`N/A`,
                                   label,
                                   score,
                                   ...deltaKeys.map(k => {
@@ -425,37 +453,35 @@ const Comparisons = ({
       </div>
 
       {(processingCSV || csvError) && (
-        <>
-          <ModalCard
-            title={t`Uploading CSV`}
-            active
-            footer={
-              csvError && (
-                <div style={{ textAlign: 'right', width: '100%' }}>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setCSVError(null)
-                      setProcessingCSV(false)
-                    }}
-                    className="button is-primary is-pulled-right"
-                  >
-                    {t`Done`}
-                  </button>
-                </div>
-              )
-            }
-          >
-            {csvError ? (
-              <div>{csvError}</div>
-            ) : (
-              <>
-                <div>{t`Uploading CSV data...`}</div>
-                <progress />
-              </>
-            )}
-          </ModalCard>
-        </>
+        <ModalCard
+          title={t`Uploading CSV`}
+          active
+          footer={
+            csvError && (
+              <div style={{ textAlign: 'right', width: '100%' }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCSVError(null)
+                    setProcessingCSV(false)
+                  }}
+                  className="button is-primary is-pulled-right"
+                >
+                  {t`Done`}
+                </button>
+              </div>
+            )
+          }
+        >
+          {csvError ? (
+            <div>{csvError}</div>
+          ) : (
+            <>
+              <div>{t`Uploading CSV data...`}</div>
+              <progress />
+            </>
+          )}
+        </ModalCard>
       )}
     </div>
   )

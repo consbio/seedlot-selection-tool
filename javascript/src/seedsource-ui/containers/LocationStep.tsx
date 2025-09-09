@@ -5,6 +5,7 @@ import ConfigurationStep from './ConfigurationStep'
 import PointChooser from './PointChooser'
 import { setMapMode } from '../actions/map'
 import { addUserSite } from '../actions/point'
+import fetchElevation from '../utils/elevation'
 
 type LocationStepProps = {
   objective: string
@@ -12,7 +13,7 @@ type LocationStepProps = {
   elevation?: any
 }
 
-const LocationStep = ({ objective, number, elevation }: LocationStepProps) => {
+function LocationStep({ objective, number, elevation }: LocationStepProps) {
   const elevationNode =
     elevation !== null ? (
       <div>
@@ -72,8 +73,9 @@ export default connect(
   },
   dispatch => ({
     onSetMapMode: (mode: string) => dispatch(setMapMode(mode)),
-    onAddUserSite: (lat: number, lon: number, label: string) => {
-      dispatch(addUserSite({ lat, lon }, label))
+    onAddUserSite: async (lat: number, lon: number, label: string) => {
+      const elevation = await fetchElevation(lat, lon)
+      dispatch(addUserSite({ lat, lon, elevation }, label))
       dispatch(setMapMode('normal'))
     },
   }),
