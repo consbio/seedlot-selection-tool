@@ -37,14 +37,15 @@ export const setElevation = (elevation: number | null) => {
   }
 }
 
-export const addUserSites = (sites: { latlon: { lat: number; lon: number }; label: string }[]) => {
+export const addUserSites = (sites: { latlon: { lat: number; lon: number; elevation?: number }; label: string }[]) => {
   return {
     type: ADD_USER_SITES,
     sites,
   }
 }
 
-export const addUserSite = (latlon: { lat: number; lon: number }, label: string) => addUserSites([{ latlon, label }])
+export const addUserSite = (latlon: { lat: number; lon: number; elevation?: number }, label: string) =>
+  addUserSites([{ latlon, label }])
 
 export const removeUserSite = (index: number) => {
   return {

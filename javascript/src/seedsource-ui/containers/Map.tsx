@@ -21,6 +21,7 @@ import { setMapOpacity, setBasemap, setZoom, setMapCenter, setMapMode } from '..
 import { toggleLayer } from '../actions/layers'
 import { setPoint, addUserSite } from '../actions/point'
 import { LegendControl, ButtonControl } from '../leaflet-controls'
+import fetchElevation from '../utils/elevation'
 
 import 'leaflet.vectorgrid'
 import { GeoJSON } from 'geojson'
@@ -108,8 +109,9 @@ const connector = connect(
         dispatch(setPoint(lat, lon))
       },
 
-      onAddSite: (lat: number, lon: number, label: string) => {
-        dispatch(addUserSite({ lat, lon }, label))
+      onAddSite: async (lat: number, lon: number, label: string) => {
+        const elevation = await fetchElevation(lat, lon)
+        dispatch(addUserSite({ lat, lon, elevation }, label))
         dispatch(setMapMode('normal'))
       },
 

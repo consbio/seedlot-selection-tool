@@ -37,6 +37,7 @@ import { SELECT_REGION_METHOD, SET_REGION, RECEIVE_REGIONS } from '../actions/re
 export type UserSite = {
   lat: number
   lon: number
+  elevation?: number
   score?: number
   label?: string
   deltas?: { [variable: string]: number }
@@ -135,11 +136,14 @@ export default (state: any = defaultConfiguration, action: any) => {
           ...state,
           userSites: [
             ...state.userSites,
-            ...(action.sites.map(({ latlon, label }: { latlon: { lat: number; lon: number }; label: string }) => ({
-              lat: latlon.lat,
-              lon: latlon.lon,
-              label,
-            })) as UserSite[]),
+            ...(action.sites.map(
+              ({ latlon, label }: { latlon: { lat: number; lon: number; elevation?: number }; label: string }) => ({
+                lat: latlon.lat,
+                lon: latlon.lon,
+                elevation: latlon.elevation,
+                label,
+              }),
+            ) as UserSite[]),
           ],
         }
 
