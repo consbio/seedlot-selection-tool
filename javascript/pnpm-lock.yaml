@@ -192,9 +192,6 @@ importers:
       file-loader:
         specifier: ^6.2.0
         version: 6.2.0(webpack@5.101.3)
-      file-system:
-        specifier: ^2.2.2
-        version: 2.2.2
       jison:
         specifier: ^0.4.18
         version: 0.4.18
@@ -2675,12 +2672,6 @@ packages:
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
-
-  file-match@1.0.2:
-    resolution: {integrity: sha512-g9p6bZV3HlSUM35QPvFWiP/PckDVe5jLPDhx6PfMuy06o+htesJTyDu7zRdXnOm3BY8pXmxb+QY5qIcsoWMGNg==}
-
-  file-system@2.2.2:
-    resolution: {integrity: sha512-YgbXEVCu21CfmoeJ1rFLVLPGhW9o7iCzVFqk7ydy2TxF7rXH2YB68CFgDXLOvTD2pMLtg8paVqurzVjxGRdYmw==}
 
   fill-range@4.0.0:
     resolution: {integrity: sha512-VcpLTWqWDiTerugjj8e3+esbg+skS3M9e54UuR3iCeIDMXCLTsAH8hTSzDQU/X6/6t3eYkOKoZSef2PlU6U1XQ==}
@@ -5691,9 +5682,6 @@ packages:
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
-
-  utils-extend@1.0.8:
-    resolution: {integrity: sha512-+VzQieEAijyCFGqnGAWIy7Em1dFGdgf1w+orKwmTWHyaGL19aw9Oq5e5ZZaxgcS777AkPYEsbgWqpz5E6KniPg==}
 
   utils-merge@1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
@@ -8921,15 +8909,6 @@ snapshots:
       schema-utils: 3.3.0
       webpack: 5.101.3(webpack-cli@6.0.1)
 
-  file-match@1.0.2:
-    dependencies:
-      utils-extend: 1.0.8
-
-  file-system@2.2.2:
-    dependencies:
-      file-match: 1.0.2
-      utils-extend: 1.0.8
-
   fill-range@4.0.0:
     dependencies:
       extend-shallow: 2.0.1
@@ -9203,7 +9182,7 @@ snapshots:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.0.8
+      minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
     optional: true
@@ -12374,8 +12353,6 @@ snapshots:
   user-home@1.1.1: {}
 
   util-deprecate@1.0.2: {}
-
-  utils-extend@1.0.8: {}
 
   utils-merge@1.0.1: {}
 
