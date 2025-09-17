@@ -30,6 +30,7 @@
     "@types/react-dom": "^16.9.25",
     "@types/react-redux": "^7.1.34",
     "@types/shpjs": "^3.4.7",
+    "@types/topojson-client": "^3.1.5",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
@@ -71,11 +72,9 @@
     "bulma-checkradio": "^1.1.1",
     "csv-parse": "^4.16.3",
     "csv-stringify": "^5.6.5",
-    "isomorphic-fetch": "^2.2.1",
     "leaflet": "^1.9.4",
     "leaflet-basemaps": "^0.3.4",
     "leaflet-geonames": "^0.4.9",
-    "leaflet-omnivore": "^0.3.4",
     "leaflet-range": "^0.1.6",
     "leaflet-zoombox": "^0.5.2",
     "leaflet.vectorgrid": "^1.3.0",
@@ -91,6 +90,7 @@
     "redux-thunk": "2.3.0",
     "shpjs": "^3.6.3",
     "stream-browserify": "^3.0.0",
+    "topojson-client": "^3.1.0",
     "ttag": "1.7.24",
     "uuid": "^8.3.2"
   }
