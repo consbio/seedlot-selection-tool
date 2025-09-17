@@ -1612,35 +1612,31 @@ typing-extensions = {version = ">=4.1.0", markers = "python_version < \"3.11\""}
 
 [[package]]
 name = "ncdjango"
-version = "1.3.7"
+version = "1.4.0"
 description = "A NetCDF mapserver app for Django"
 optional = false
-python-versions = ">=3.10,<3.12"
+python-versions = "<3.12,>=3.10"
 groups = ["main"]
-files = []
-develop = false
+files = [
+    {file = "ncdjango-1.4.0-py3-none-any.whl", hash = "sha256:1589396bb6775bb9a29af334d1f250f5e2b3d3fed01de6eab1a1ddf2960a8fce"},
+    {file = "ncdjango-1.4.0.tar.gz", hash = "sha256:2c9879e69ac7c71cc7095bb5d2e3efcd02afbaf306d878df51ce69b98c48e2f3"},
+]
 
 [package.dependencies]
-celery = "^5.2.3"
+celery = ">=5.2.3,<6.0.0"
 Django = ">=5.2.0"
-django-tastypie = "^0.14.0"
+django-tastypie = ">=0.14.0,<0.15.0"
 djangorestframework = "*"
 Fiona = "*"
 netCDF4 = ">=1.5.3"
-numpy = "^1.24"
-Pillow = "^9.0.1"
+numpy = ">=1.24,<2.0"
+Pillow = ">=9.0.1,<11.0.0"
 ply = "*"
 pyproj = "*"
 rasterio = "*"
 requests = "*"
 Shapely = ">=1.7.0"
-trefoil = "0.4.0"
-
-[package.source]
-type = "git"
-url = "https://github.com/consbio/ncdjango.git"
-reference = "main"
-resolved_reference = "44ca5a870f21889effdffaf0bf7ec5278d83505a"
+trefoil = ">=0.4.1,<0.5.0"
 
 [[package]]
 name = "netcdf4"
@@ -2587,14 +2583,14 @@ test = ["pytest", "ruff"]
 
 [[package]]
 name = "trefoil"
-version = "0.4.0"
+version = "0.4.1"
 description = "Geospatial operations with NetCDF files and numpy arrays."
 optional = false
 python-versions = "<3.12,>=3.9"
 groups = ["main"]
 files = [
-    {file = "trefoil-0.4.0-py3-none-any.whl", hash = "sha256:cecedf8746911ee5efc48838c572c5dbfa5c5ec0349b0e1016cebb2b0d3bcd1d"},
-    {file = "trefoil-0.4.0.tar.gz", hash = "sha256:19eca8984eabb1d126bb3b8aa2c3432c2ebe6d3c4fec5bf3d5b48e4456c5d227"},
+    {file = "trefoil-0.4.1-py3-none-any.whl", hash = "sha256:ed3ff9be4aa2f37bd71888cb49b63d062a50c8c6c955572430cf0438f4a0d909"},
+    {file = "trefoil-0.4.1.tar.gz", hash = "sha256:ced50d6d30469939bdd9a0e4684ec140da234d9ac3ca9dc1352ce2985e847154"},
 ]
 
 [package.dependencies]
@@ -2605,7 +2601,7 @@ jinja2 = "*"
 netcdf4 = ">=1.1.1"
 numpy = "*"
 palettable = "*"
-pillow = ">=9.0.1,<10.0.0"
+pillow = ">=9.0.1,<11.0.0"
 pyproj = "*"
 pytz = "*"
 rasterio = ">=1.4.3,<2.0.0"
@@ -2850,4 +2846,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.12"
-content-hash = "eee06a2a09fc39e97643746f70dfdf3d0803e0bee846a5b5c1c1b741a16ee297"
+content-hash = "fd8699e5615734bb5d86be8aee96f63cba5e7930ac02d94fe258ddef20494f90"
