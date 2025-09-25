@@ -73,10 +73,16 @@ export default connect(
   },
   dispatch => ({
     onSetMapMode: (mode: string) => dispatch(setMapMode(mode)),
-    onAddUserSite: async (lat: number, lon: number, label: string) => {
-      const elevation = await fetchElevation(lat, lon)
-      dispatch(addUserSite({ lat, lon, elevation }, label))
-      dispatch(setMapMode('normal'))
+    onAddUserSite: (lat: number, lon: number, label: string, elevation?: number) => {
+      if (elevation !== undefined) {
+        dispatch(addUserSite({ lat, lon, elevation }, label))
+        dispatch(setMapMode('normal'))
+      } else {
+        fetchElevation(lat, lon).then(fetchedElevation => {
+          dispatch(addUserSite({ lat, lon, elevation: fetchedElevation }, label))
+          dispatch(setMapMode('normal'))
+        })
+      }
     },
   }),
 )(LocationStep)

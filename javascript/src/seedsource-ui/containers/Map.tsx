@@ -109,10 +109,16 @@ const connector = connect(
         dispatch(setPoint(lat, lon))
       },
 
-      onAddSite: async (lat: number, lon: number, label: string) => {
-        const elevation = await fetchElevation(lat, lon)
-        dispatch(addUserSite({ lat, lon, elevation }, label))
-        dispatch(setMapMode('normal'))
+      onAddSite: (lat: number, lon: number, label: string, elevation?: number) => {
+        if (elevation !== undefined) {
+          dispatch(addUserSite({ lat, lon, elevation }, label))
+          dispatch(setMapMode('normal'))
+        } else {
+          fetchElevation(lat, lon).then(fetchedElevation => {
+            dispatch(addUserSite({ lat, lon, elevation: fetchedElevation }, label))
+            dispatch(setMapMode('normal'))
+          })
+        }
       },
 
       onToggleVisibility: () => {
@@ -889,10 +895,10 @@ class Map extends React.Component<MapProps, { popupPoint: { x: number; y: number
               this.cancelBoundaryPreview()
               this.setState({ popupPoint: null })
             }}
-            onSave={(x: number, y: number) => {
+            onSave={(x: number, y: number, elevation?: number) => {
               if (this.props.mode === 'add_sites') {
                 const { onAddSite } = this.props
-                onAddSite(y, x, '')
+                onAddSite(y, x, '', elevation)
               } else {
                 const { onSetPoint } = this.props
                 onSetPoint(y, x)
