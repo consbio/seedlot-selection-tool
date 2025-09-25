@@ -4,7 +4,14 @@ import stringify from 'csv-stringify'
 import { t, c } from 'ttag'
 import parse from 'csv-parse'
 import { UserSite } from '../reducers/runConfiguration'
-import { addUserSite, addUserSites, removeUserSite, setUserSiteLabel, setActiveUserSite } from '../actions/point'
+import {
+  addUserSite,
+  addUserSites,
+  removeUserSite,
+  setUserSiteLabel,
+  setUserSiteElevation,
+  setActiveUserSite,
+} from '../actions/point'
 import { setMapMode } from '../actions/map'
 import ModalCard from '../components/ModalCard'
 import { variables } from '../config'
@@ -25,6 +32,7 @@ const connector = connect(
     objective,
     userSites,
     mode,
+    userSitesCount: userSites.length,
   }),
   dispatch => ({
     removeSite: (index: number) => dispatch(removeUserSite(index)),
@@ -33,21 +41,29 @@ const connector = connect(
       dispatch(addUserSite({ lat, lon, elevation }, label))
       dispatch(setMapMode('normal'))
     },
-    onAddUserSites: async (sites: { latlon: { lat: number; lon: number; elevation?: number }; label: string }[]) => {
-      const sitesWithElevation = await Promise.all(
-        sites.map(async site => {
-          if (site.latlon.elevation === undefined) {
-            const elevation = await fetchElevation(site.latlon.lat, site.latlon.lon)
-            return {
-              ...site,
-              latlon: { ...site.latlon, elevation },
-            }
-          }
-          return site
-        }),
-      )
+    onAddUserSites: (
+      sites: { latlon: { lat: number; lon: number; elevation?: number }; label: string }[],
+      currentUserSitesCount: number,
+    ) => {
+      dispatch(addUserSites(sites))
 
-      dispatch(addUserSites(sitesWithElevation))
+      const sitesNeedingElevation = sites.filter(site => site.latlon.elevation === undefined)
+
+      if (sitesNeedingElevation.length > 0) {
+        sitesNeedingElevation.forEach(async site => {
+          try {
+            const elevation = await fetchElevation(site.latlon.lat, site.latlon.lon)
+            if (elevation !== undefined) {
+              const siteIndex =
+                currentUserSitesCount +
+                sites.findIndex(s => s.latlon.lat === site.latlon.lat && s.latlon.lon === site.latlon.lon)
+              dispatch(setUserSiteElevation(siteIndex, elevation))
+            }
+          } catch {
+            // Elevation undefined
+          }
+        })
+      }
     },
     onSetUserSiteLabel: (label: string, index: number) => dispatch(setUserSiteLabel(label, index)),
     onMouseOverSite: (index: number | null) => dispatch(setActiveUserSite(index)),
@@ -61,6 +77,7 @@ function Comparisons({
   objective,
   userSites,
   mode,
+  userSitesCount,
   removeSite,
   onAddUserSite,
   onAddUserSites,
@@ -146,7 +163,7 @@ function Comparisons({
                       return site
                     })
 
-                    onAddUserSites(sites)
+                    onAddUserSites(sites, userSitesCount)
                     setProcessingCSV(false)
                   }
                 })

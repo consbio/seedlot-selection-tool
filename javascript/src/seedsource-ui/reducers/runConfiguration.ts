@@ -17,6 +17,7 @@ import {
   REMOVE_USER_SITE,
   SET_USER_SITE_SCORE,
   SET_USER_SITE_LABEL,
+  SET_USER_SITE_ELEVATION,
   SET_ACTIVE_USER_SITE,
 } from '../actions/point'
 import { SELECT_SPECIES, RECEIVE_AVAILABLE_SPECIES } from '../actions/species'
@@ -173,6 +174,16 @@ export default (state: any = defaultConfiguration, action: any) => {
           userSites: [
             ...state.userSites.slice(0, action.index),
             { ...state.userSites[action.index], ...{ label: action.label } },
+            ...state.userSites.slice(action.index + 1),
+          ],
+        }
+
+      case SET_USER_SITE_ELEVATION:
+        return {
+          ...state,
+          userSites: [
+            ...state.userSites.slice(0, action.index),
+            { ...state.userSites[action.index], elevation: action.elevation },
             ...state.userSites.slice(action.index + 1),
           ],
         }
