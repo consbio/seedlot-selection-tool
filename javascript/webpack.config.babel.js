@@ -5,7 +5,7 @@ import BundleTracker from 'webpack-bundle-tracker'
 
 const mode = process.env.NODE_ENV || 'development'
 const production = mode === 'production'
-const bundleTracker = new BundleTracker({ filename: '../webpack-stats.json' })
+const bundleTracker = new BundleTracker({ path: '..', filename: 'webpack-stats.json' })
 
 const languages = [
   {
@@ -115,7 +115,7 @@ export default languages.map(language => {
         },
         {
           test: /\.jison$/,
-          loader: path.resolve('./loaders/jison-loader.js'),
+          loader: path.resolve('./loaders/jison-loader.mjs'),
         },
       ],
     },

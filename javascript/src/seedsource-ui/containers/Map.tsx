@@ -5,26 +5,26 @@
 
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
-import L, { LeafletMouseEvent } from 'leaflet'
-import { topojson } from 'leaflet-omnivore'
+import L, { GeoJSON as GeoJSONLayer, LeafletMouseEvent } from 'leaflet'
 import { Lethargy } from 'lethargy'
 import 'leaflet-basemaps'
 import 'leaflet-geonames/L.Control.Geonames'
 import 'leaflet-zoombox/L.Control.ZoomBox'
 import 'leaflet-range/L.Control.Range'
-import { t, c } from 'ttag'
+import { c, t } from 'ttag'
 
+import { feature } from 'topojson-client'
+import type { GeoJSON } from 'geojson'
 import * as io from '../io'
 import { isClose } from '../utils'
-import config, { variables as allVariables, timeLabels, regions, regionsBoundariesUrl } from '../config'
-import { setMapOpacity, setBasemap, setZoom, setMapCenter, setMapMode } from '../actions/map'
+import config, { regions, regionsBoundariesUrl, timeLabels, variables as allVariables } from '../config'
+import { setBasemap, setMapCenter, setMapMode, setMapOpacity, setZoom } from '../actions/map'
 import { toggleLayer } from '../actions/layers'
 import { setPoint, addUserSite } from '../actions/point'
 import { LegendControl, ButtonControl } from '../leaflet-controls'
 import fetchElevation from '../utils/elevation'
 
 import 'leaflet.vectorgrid'
-import { GeoJSON } from 'geojson'
 import { CustomLayer } from '../reducers/customLayers'
 import Popup from '../components/Popup'
 
@@ -141,7 +141,9 @@ class Map extends React.Component<MapProps, { popupPoint: { x: number; y: number
 
   mapNode: HTMLElement | null
 
-  regionsBoundaries: any
+  regionsTopo: any
+
+  regionLayers: { [name: string]: GeoJSONLayer }
 
   clickedRegion: any
 
@@ -190,7 +192,8 @@ class Map extends React.Component<MapProps, { popupPoint: { x: number; y: number
 
     this.map = null
     this.mapNode = null
-    this.regionsBoundaries = null
+    this.regionsTopo = null
+    this.regionLayers = {}
     this.clickedRegion = null
     this.showPreview = false
     this.resultRegion = props.resultRegion
@@ -348,18 +351,13 @@ class Map extends React.Component<MapProps, { popupPoint: { x: number; y: number
       onZoomChange(this.map.getZoom())
     })
 
-    this.regionsBoundaries = topojson(
-      regionsBoundariesUrl,
-      null,
-      (L as any).geoJson(null, {
-        style: {
-          fillColor: 'transparent',
-          opacity: 0,
-        },
-      }),
-    )
-
-    this.map.addLayer(this.regionsBoundaries)
+    fetch(regionsBoundariesUrl)
+      .then(response => {
+        return response.json()
+      })
+      .then(json => {
+        this.regionsTopo = json
+      })
 
     if (this.simple) {
       const { zoom, center } = this.props
@@ -405,17 +403,22 @@ class Map extends React.Component<MapProps, { popupPoint: { x: number; y: number
 
   addBoundaryToMap(region: string, color: string, showFill = true) {
     const fillOpacity = showFill ? 0.3 : 0
-    this.regionsBoundaries.setStyle((f: any) =>
-      f.properties.region === region ? { opacity: 1, fillColor: color, fillOpacity, color, weight: 2 } : {},
-    )
+    if (region in this.regionLayers) {
+      this.regionLayers[region].setStyle({ opacity: 1, fillColor: color, fillOpacity, color, weight: 2 })
+    } else if (this.regionsTopo) {
+      this.regionLayers[region] = L.geoJSON(feature(this.regionsTopo, `${region}_boundary`), {
+        style: { opacity: 1, fillColor: color, fillOpacity, color, weight: 2 },
+      }).addTo(this.map)
+    }
   }
 
   removeBoundaryFromMap(region: any = null) {
-    const style = { opacity: 0, fillColor: 'transparent', fillOpacity: 0 }
-    if (region) {
-      this.regionsBoundaries.setStyle((f: any) => (f.properties.region === region ? style : {}))
-    } else {
-      this.regionsBoundaries.setStyle(style)
+    if (region && region in this.regionLayers) {
+      this.regionLayers[region].remove()
+      delete this.regionLayers[region]
+    } else if (!region) {
+      Object.values(this.regionLayers).forEach(layer => layer.remove())
+      this.regionLayers = {}
     }
   }
 
