@@ -6,6 +6,7 @@ export const ADD_USER_SITES = 'ADD_USER_SITE'
 export const REMOVE_USER_SITE = 'REMOVE_USER_SITE'
 export const SET_USER_SITE_SCORE = 'SET_USER_SITE_SCORE'
 export const SET_USER_SITE_LABEL = 'SET_USER_SITE_LABEL'
+export const SET_USER_SITE_ELEVATION = 'SET_USER_SITE_ELEVATION'
 export const SET_ACTIVE_USER_SITE = 'SET_ACTIVE_USER_SITE'
 
 export const setLatitude = (value: number) => {
@@ -37,14 +38,15 @@ export const setElevation = (elevation: number | null) => {
   }
 }
 
-export const addUserSites = (sites: { latlon: { lat: number; lon: number }; label: string }[]) => {
+export const addUserSites = (sites: { latlon: { lat: number; lon: number; elevation?: number }; label: string }[]) => {
   return {
     type: ADD_USER_SITES,
     sites,
   }
 }
 
-export const addUserSite = (latlon: { lat: number; lon: number }, label: string) => addUserSites([{ latlon, label }])
+export const addUserSite = (latlon: { lat: number; lon: number; elevation?: number }, label: string) =>
+  addUserSites([{ latlon, label }])
 
 export const removeUserSite = (index: number) => {
   return {
@@ -67,6 +69,14 @@ export const setUserSiteLabel = (label: string, index: number) => {
     type: SET_USER_SITE_LABEL,
     label,
     index,
+  }
+}
+
+export const setUserSiteElevation = (index: number, elevation: number) => {
+  return {
+    type: SET_USER_SITE_ELEVATION,
+    index,
+    elevation,
   }
 }
 

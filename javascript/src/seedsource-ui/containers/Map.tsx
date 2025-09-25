@@ -20,8 +20,9 @@ import { isClose } from '../utils'
 import config, { regions, regionsBoundariesUrl, timeLabels, variables as allVariables } from '../config'
 import { setBasemap, setMapCenter, setMapMode, setMapOpacity, setZoom } from '../actions/map'
 import { toggleLayer } from '../actions/layers'
-import { addUserSite, setPoint } from '../actions/point'
-import { ButtonControl, LegendControl } from '../leaflet-controls'
+import { setPoint, addUserSite } from '../actions/point'
+import { LegendControl, ButtonControl } from '../leaflet-controls'
+import fetchElevation from '../utils/elevation'
 
 import 'leaflet.vectorgrid'
 import { CustomLayer } from '../reducers/customLayers'
@@ -108,9 +109,16 @@ const connector = connect(
         dispatch(setPoint(lat, lon))
       },
 
-      onAddSite: (lat: number, lon: number, label: string) => {
-        dispatch(addUserSite({ lat, lon }, label))
-        dispatch(setMapMode('normal'))
+      onAddSite: (lat: number, lon: number, label: string, elevation?: number) => {
+        if (elevation !== undefined) {
+          dispatch(addUserSite({ lat, lon, elevation }, label))
+          dispatch(setMapMode('normal'))
+        } else {
+          fetchElevation(lat, lon).then(fetchedElevation => {
+            dispatch(addUserSite({ lat, lon, elevation: fetchedElevation }, label))
+            dispatch(setMapMode('normal'))
+          })
+        }
       },
 
       onToggleVisibility: () => {
@@ -890,10 +898,10 @@ class Map extends React.Component<MapProps, { popupPoint: { x: number; y: number
               this.cancelBoundaryPreview()
               this.setState({ popupPoint: null })
             }}
-            onSave={(x: number, y: number) => {
+            onSave={(x: number, y: number, elevation?: number) => {
               if (this.props.mode === 'add_sites') {
                 const { onAddSite } = this.props
-                onAddSite(y, x, '')
+                onAddSite(y, x, '', elevation)
               } else {
                 const { onSetPoint } = this.props
                 onSetPoint(y, x)
