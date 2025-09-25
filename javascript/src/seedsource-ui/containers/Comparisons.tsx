@@ -232,7 +232,11 @@ function Comparisons({
                     />
                   </td>
                   <td>{`${site.lat.toFixed(2)}, ${site.lon.toFixed(2)}`}</td>
-                  <td>{site.elevation ? `${site.elevation}m` : c('Not Applicable').t`N/A`}</td>
+                  <td>
+                    {site.elevation
+                      ? `${Math.round(site.elevation / 0.3048)} ${c("Abbreviation of 'feet' (measurement)").t`ft`} (${Math.round(site.elevation)} ${c("Abbreviation of 'meters'").t`m`})`
+                      : c('Not Applicable').t`N/A`}
+                  </td>
                   <td>
                     {editRow && (
                       <form
