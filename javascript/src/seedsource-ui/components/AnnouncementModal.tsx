@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { type ReactNode } from 'react'
 import { t } from 'ttag'
 import ModalCard from './ModalCard'
 
@@ -13,10 +13,6 @@ class AnnouncementModal extends React.Component<AnnouncementModalProps> {
   modal?: ModalCard | null
 
   noShowCheckbox?: HTMLInputElement | null
-
-  componentDidMount() {}
-
-  componentWillUnmount() {}
 
   accept = () => {
     if (this.noShowCheckbox?.checked) {

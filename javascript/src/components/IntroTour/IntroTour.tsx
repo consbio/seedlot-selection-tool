@@ -375,9 +375,9 @@ class IntroTour extends Component<IntroTourProps, IntroTourState> {
           <Modal active={showIntro} onHide={this.notNow}>
             <div className="modal-card intro-modal">
               <header className="modal-card-head">
-                <p className="modal-card-title">
+                <span className="modal-card-title">
                   <IntroHeader />
-                </p>
+                </span>
                 <button type="button" className="delete" aria-label={t`close`} onClick={this.notNow} />
               </header>
               <section className="modal-card-body">

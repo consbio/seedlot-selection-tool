@@ -1,7 +1,6 @@
 import React, { ReactNode, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
-import { t } from 'ttag'
 import ErrorModal from '../containers/ErrorModal'
 import Navbar from './Navbar'
 import Map from '../containers/Map'
@@ -11,7 +10,6 @@ import { migrateConfiguration } from '../utils'
 import { get } from '../io'
 import config from '../config'
 import { setError } from '../actions/error'
-import AnnouncementModal from './AnnouncementModal'
 import IntroTour from '../../components/IntroTour/IntroTour'
 
 function App({
