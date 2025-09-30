@@ -20,7 +20,6 @@ from trefoil.render.renderers.stretched import StretchedRenderer
 from trefoil.utilities.color import Color
 from trefoil.utilities.window import Window
 
-from ..constants import VARIABLES
 from ..utils import (
     get_regions_for_zone,
 )
@@ -30,7 +29,24 @@ from ..dataset import (
 )
 from ..zoneconfig import ZoneConfig
 
-
+VARIABLES = (
+    "MAT",
+    "MWMT",
+    "MCMT",
+    "TD",
+    "MAP",
+    "MSP",
+    "AHM",
+    "SHM",
+    "DD_0",
+    "DD5",
+    "FFP",
+    "PAS",
+    "EMT",
+    "EXT",
+    "Eref",
+    "CMD",
+)
 PERIODS = ("1961_1990", "1981_2010", "1991_2020")
 
 
