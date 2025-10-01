@@ -1,12 +1,11 @@
 import React, { ReactHTMLElement } from 'react'
-import { createPortal } from 'react-dom'
 import { connect } from 'react-redux'
-import { Tooltip } from 'react-tooltip'
 import { t } from 'ttag'
 import { selectStep } from '../actions/step'
 import { collapsibleSteps } from '../config'
 import InfoIcon from '$images/icon-info.svg'
 import MoreIcon from '$images/icon-more.svg'
+import ModalCard from '../components/ModalCard'
 
 type ExtraStepOption = {
   label: string
@@ -35,6 +34,7 @@ class ConfigurationStep extends React.Component<ConfigurationStepProps, Configur
   }
 
   optionsRef: React.RefObject<HTMLDivElement>
+  infoModaCardRef?: ModalCard
 
   constructor(props: ConfigurationStepProps) {
     super(props)
@@ -107,21 +107,24 @@ class ConfigurationStep extends React.Component<ConfigurationStepProps, Configur
             <span>{title}</span>
             {helpTooltip && (
               <>
-                <a id={`tooltip-configuration-step-${number}`}>
-                  <img src={InfoIcon} alt={t`Information icon`} className="info-icon" />
-                </a>
-                {createPortal(
-                  <Tooltip
-                    anchorSelect={`#tooltip-configuration-step-${number}`}
-                    place="right"
-                    data-tooltip-float
-                    className="configuration-tooltip"
-                  >
-                    <h5 className="title is-5 margin-bottom-5">{t`Information`}</h5>
-                    <div className="is-size-8">{helpTooltip}</div>
-                  </Tooltip>,
-                  document.body,
-                )}
+                <button
+                  id={`tooltip-configuration-step-${number}`}
+                  className="info-button"
+                  onClick={() => {
+                    this.infoModaCardRef?.show()
+                  }}
+                >
+                  <span className="sr-only">Show Information</span>
+                  <img src={InfoIcon} aria-hidden className="info-icon" />
+                </button>
+                <ModalCard
+                  title="Information"
+                  ref={(input: ModalCard) => {
+                    this.infoModaCardRef = input
+                  }}
+                >
+                  {helpTooltip}
+                </ModalCard>
               </>
             )}
           </div>
