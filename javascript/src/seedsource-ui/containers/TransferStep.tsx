@@ -47,7 +47,7 @@ const helpTooltip = (
       <strong>{t`Zone`}: </strong>
       {t`Suggests transfer limits based on the range of climate conditions within the zone of the planting site or 
       seedlot; these values are based on operational resource management over the past half-century and allows users 
-      to customize climate variables in step 6 or chose them automatically.`}
+      to customize climate variables in step 6 or choose them automatically.`}
     </p>
     <br />
     <p>
