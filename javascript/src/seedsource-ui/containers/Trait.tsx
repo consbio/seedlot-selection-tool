@@ -5,7 +5,6 @@ import { t } from 'ttag'
 import EditableLabel from '../components/EditableLabel'
 import config from '../config'
 import { removeTrait, setTraitTransfer } from '../actions/traits'
-import { createPortal } from 'react-dom'
 
 const connector = connect(
   (_: any, { trait }: { trait: any }) => {
@@ -54,25 +53,22 @@ const Trait = ({ index, trait, traitConfig, onRemove, onTransferChange }: TraitP
           transfer
         )}
         {units}
-        {createPortal(
-          <Tooltip anchorSelect={`#${name}-tooltip`} className="variable-tooltip" place="right" data-tooltip-float>
-            <h5 className="title is-5 margin-bottom-5">{label}</h5>
-            {description !== null ? <div className="is-size-7 has-text-grey-lighter">{description}</div> : null}
-            <div>
-              <span className="tooltip-label">{t`Value at point:`}</span>
-              <strong>
-                {value !== null ? value.toFixed(2) : '--'} {units}
-              </strong>
-            </div>
-            <div>
-              <span className="tooltip-label">{t`Transfer limit (+/-):`}</span>
-              <strong>
-                {transfer} {units}
-              </strong>
-            </div>
-          </Tooltip>,
-          document.body,
-        )}
+        <Tooltip anchorSelect={`#${name}-tooltip`} className="variable-tooltip" place="right" data-tooltip-float>
+          <h5 className="title is-5 margin-bottom-5">{label}</h5>
+          {description !== null ? <div className="is-size-7 has-text-grey-lighter">{description}</div> : null}
+          <div>
+            <span className="tooltip-label">{t`Value at point:`}</span>
+            <strong>
+              {value !== null ? value.toFixed(2) : '--'} {units}
+            </strong>
+          </div>
+          <div>
+            <span className="tooltip-label">{t`Transfer limit (+/-):`}</span>
+            <strong>
+              {transfer} {units}
+            </strong>
+          </div>
+        </Tooltip>
       </td>
     </tr>
   )
