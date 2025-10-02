@@ -34,27 +34,22 @@ const helpTooltip = (
       {t`The transfer limit method selected determines how far climatically a seedlot may be moved and still 
       have an acceptable level of adaptation. `}
     </p>
-    <br />
     <p>{t`The SST uses four approaches to determine and map transfer limits: `}</p>
-    <br />
     <p>
       <strong>{t`Custom`}: </strong>
       {t`Allows for user-defined transfer limits for each climate variable selected in Step 6 based on user knowledge 
       and experience including the best available science.`}
     </p>
-    <br />
     <p>
       <strong>{t`Zone`}: </strong>
       {t`Suggests transfer limits based on the range of climate conditions within the zone of the planting site or 
       seedlot; these values are based on operational resource management over the past half-century and allows users 
       to customize climate variables in step 6 or choose them automatically.`}
     </p>
-    <br />
     <p>
       <strong>{t`Trait`}: </strong>
       {t`Suggests transfer limits based on a particular trait of a species.`}
     </p>
-    <br />
     <p>
       <strong>{t`Function`}: </strong>
       {t`Allows for species to be selected to determine transfer limits based on a function that is derived from 
