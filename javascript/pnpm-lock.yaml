@@ -63,8 +63,8 @@ importers:
         specifier: ^7.2.9
         version: 7.2.9(react-dom@16.9.0(react@16.9.0))(react@16.9.0)
       react-tooltip:
-        specifier: ^4.5.1
-        version: 4.5.1(react-dom@16.9.0(react@16.9.0))(react@16.9.0)
+        specifier: ^5.29.1
+        version: 5.29.1(react-dom@16.9.0(react@16.9.0))(react@16.9.0)
       redux:
         specifier: 4.0.5
         version: 4.0.5
@@ -1751,6 +1751,9 @@ packages:
   cjson@0.3.0:
     resolution: {integrity: sha512-bBRQcCIHzI1IVH59fR0bwGrFmi3Btb/JNwM/n401i1DnYgWndpsUBiQRAddLflkZage20A2d25OAWZZk0vBRlA==}
     engines: {node: '>= 0.3.0'}
+
+  classnames@2.5.1:
+    resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
 
   clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
@@ -6682,6 +6685,8 @@ snapshots:
   cjson@0.3.0:
     dependencies:
       jsonlint: 1.6.0
+
+  classnames@2.5.1: {}
 
   clean-stack@2.2.0:
     optional: true
