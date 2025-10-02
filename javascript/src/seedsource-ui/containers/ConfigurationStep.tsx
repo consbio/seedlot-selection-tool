@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { ReactHTMLElement } from 'react'
 import { connect } from 'react-redux'
+import { t } from 'ttag'
 import { selectStep } from '../actions/step'
 import { collapsibleSteps } from '../config'
+import InfoIcon from '$images/icon-info.svg'
 import MoreIcon from '$images/icon-more.svg'
+import ModalCard from '../components/ModalCard'
 
 type ExtraStepOption = {
   label: string
@@ -17,6 +20,7 @@ type ConfigurationStepProps = {
   className?: string
   children: any
   onClick: () => any
+  helpTooltip: string | ReactHTMLElement<any>
 }
 
 type ConfigurationStepState = {
@@ -30,6 +34,7 @@ class ConfigurationStep extends React.Component<ConfigurationStepProps, Configur
   }
 
   optionsRef: React.RefObject<HTMLDivElement>
+  infoModaCardRef?: ModalCard
 
   constructor(props: ConfigurationStepProps) {
     super(props)
@@ -71,7 +76,7 @@ class ConfigurationStep extends React.Component<ConfigurationStepProps, Configur
   }
 
   render() {
-    const { number, title, children, active, extraOptions, className, onClick } = this.props
+    const { number, title, children, active, extraOptions, className, onClick, helpTooltip } = this.props
     const { optionsMenuActive } = this.state
 
     if (collapsibleSteps) {
@@ -98,7 +103,31 @@ class ConfigurationStep extends React.Component<ConfigurationStepProps, Configur
       <div className={`configuration-step no-collapse ${className}`}>
         <h4>
           <div className="badge">{number}</div>
-          <div>{title}</div>
+          <div>
+            <span>{title}</span>
+            {helpTooltip && (
+              <>
+                <button
+                  id={`tooltip-configuration-step-${number}`}
+                  className="info-button"
+                  onClick={() => {
+                    this.infoModaCardRef?.show()
+                  }}
+                >
+                  <span className="sr-only">Show Information</span>
+                  <img src={InfoIcon} aria-hidden className="info-icon" />
+                </button>
+                <ModalCard
+                  title="Information"
+                  ref={(input: ModalCard) => {
+                    this.infoModaCardRef = input
+                  }}
+                >
+                  {helpTooltip}
+                </ModalCard>
+              </>
+            )}
+          </div>
           <div className="spacer" />
           {extraOptions && extraOptions.length > 0 && (
             <div className={`options dropdown is-right ${optionsMenuActive ? 'is-active' : ''}`} ref={this.optionsRef}>

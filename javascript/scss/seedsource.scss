@@ -379,6 +379,20 @@ button.navbar-item {
   .step-content {
     margin: 10px 0px 0px 35px;
   }
+
+  .info-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .info-icon {
+    width: 18px;
+    height: auto;
+    vertical-align: middle;
+    margin-left: 8px;
+    margin-bottom: 4px;
+  }
 }
 
 .constraint-arrow {
@@ -435,6 +449,8 @@ tr.visible .visibility-toggle,
   font-size: 1.1em !important;
   max-width: 400px;
   white-space: normal;
+  // 5 is the lowest z-index above the navbar
+  z-index: 5;
 }
 
 .variable-tooltip strong,
@@ -896,4 +912,13 @@ tr.visible .visibility-toggle,
   width: 100%;
   justify-content: end;
   align-items: end;
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }

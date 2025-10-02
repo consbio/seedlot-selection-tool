@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
-import ReactTooltip from 'react-tooltip'
+import { Tooltip } from 'react-tooltip'
 import { t } from 'ttag'
 import EditableLabel from '../components/EditableLabel'
 import { setFunctionTransfer, toggleFunction } from '../actions/customFunctions'
@@ -21,7 +21,7 @@ const Function = ({ customFunction, activateModal, onTransferChange, onToggleFun
   const { name, func, value, transfer, id } = customFunction
 
   return (
-    <tr data-tip data-for={`${name}_Tooltip`}>
+    <tr id={`${name}_Tooltip`}>
       <td>
         <a type="button" className="delete" onClick={() => onToggleFunction(id)} />
       </td>
@@ -32,7 +32,7 @@ const Function = ({ customFunction, activateModal, onTransferChange, onToggleFun
       <td>
         <EditableLabel
           value={transfer || '--'}
-          onChange={(newValue) => {
+          onChange={newValue => {
             const trnsfr = parseFloat(newValue)
             if (Number.isNaN(trnsfr)) {
               return onTransferChange(id, null)
@@ -51,7 +51,7 @@ const Function = ({ customFunction, activateModal, onTransferChange, onToggleFun
             activateModal()
           }}
         />
-        <ReactTooltip id={`${name}_Tooltip`} className="variable-tooltip" place="right" effect="solid">
+        <Tooltip anchorSelect={`#${name}_Tooltip`} className="variable-tooltip" place="right" data-tooltip-float>
           <h5 className="title is-5 margin-bottom-5">{name}</h5>
           {func !== null ? <div className="is-size-7 has-text-grey-lighter">{func}</div> : null}
           <div>
@@ -62,7 +62,7 @@ const Function = ({ customFunction, activateModal, onTransferChange, onToggleFun
             <span className="tooltip-label">{t`Transfer limit (+/-):`}</span>
             <strong>{transfer}</strong>
           </div>
-        </ReactTooltip>
+        </Tooltip>
       </td>
     </tr>
   )
