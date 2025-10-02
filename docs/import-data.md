@@ -128,10 +128,8 @@ Constraints files should be named following the format:
 # psme_p1981_2010_800m_pa.nc
 ```
 
-See `src/config.ts:serializeSpeciesConstraint` to update formatting.
-
-Place your constraints data in `/data/constraints` and run:
+Species range data can be imported into the tool from NetCDF files. To import the data, run:
 
 ```text
-python manage.py publish_netcdf --overwrite ../data/constraints/*.nc
+$ python manage.py publish_netcdf --overwrite /project/data/constraints/*.nc
 ```

@@ -470,6 +470,14 @@ class Menu extends React.Component {
           <a className="navbar-item" href={SSTSilviculturistsGuide} target="_blank" rel="noreferrer">
             {t`Silviculturists Guide`}
           </a>
+          <a
+            className="navbar-item"
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('restart-intro-tour'))
+            }}
+          >
+            {t`Guided Tour`}
+          </a>
         </NavItemDropdown>
         <NavItemDropdown title={t`About`}>
           <a className="navbar-item" onClick={() => this.backgroundModal!.show()}>

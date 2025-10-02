@@ -5,7 +5,7 @@ import BundleTracker from 'webpack-bundle-tracker'
 
 const mode = process.env.NODE_ENV || 'development'
 const production = mode === 'production'
-const bundleTracker = new BundleTracker({ filename: '../webpack-stats.json' })
+const bundleTracker = new BundleTracker({ path: '..', filename: 'webpack-stats.json' })
 
 const languages = [
   {
@@ -36,10 +36,7 @@ export default languages.map(language => {
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: '[name].[chunkhash].bundle.js',
-      publicPath: production
-        ? // TODO change this back for production
-          'https://staging.seedlotselectiontool.org/static/'
-        : 'http://127.0.0.1:3000/assets/bundles/',
+      publicPath: production ? 'https://seedlotselectiontool.org/static/' : 'http://127.0.0.1:3000/assets/bundles/',
       crossOriginLoading: production ? false : 'anonymous',
     },
     ...(production || language.name !== 'default'
@@ -118,7 +115,7 @@ export default languages.map(language => {
         },
         {
           test: /\.jison$/,
-          loader: path.resolve('./loaders/jison-loader.js'),
+          loader: path.resolve('./loaders/jison-loader.mjs'),
         },
       ],
     },

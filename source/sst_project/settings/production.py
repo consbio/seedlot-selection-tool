@@ -22,6 +22,8 @@ DEBUG = False
 ALLOWED_HOSTS = [".seedlotselectiontool.org"]
 CSRF_COOKIE_DOMAIN = ".seedlotselectiontool.org"
 
+CSRF_TRUSTED_ORIGINS = ["https://seedlotselectiontool.org"]
+
 BROKER_URL = "amqp://{}:{}@localhost:5672".format(
     CONFIG.get("amqp_username", ""), CONFIG.get("amqp_password", "")
 )
@@ -71,7 +73,7 @@ EMAIL_USE_TLS = True
 NC_SERVICE_DATA_ROOT = "/mnt/data/ncdjango/services/"
 MEDIA_ROOT = "/ncdjango/"
 NC_TEMPORARY_FILE_LOCATION = "tmp/"
-DATASET_DOWNLOAD_DIR = "/mnt/data/ncdjango/downloads/"
+DATASET_DOWNLOAD_DIR = Path("/mnt/data/ncdjango/downloads/")
 SEEDZONES_LOCATION = "/mnt/data/seedzones/"
 
 # Preview mode
