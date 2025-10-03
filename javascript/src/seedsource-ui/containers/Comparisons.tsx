@@ -4,10 +4,18 @@ import stringify from 'csv-stringify'
 import { t, c } from 'ttag'
 import parse from 'csv-parse'
 import { UserSite } from '../reducers/runConfiguration'
-import { addUserSite, addUserSites, removeUserSite, setUserSiteLabel, setActiveUserSite } from '../actions/point'
+import {
+  addUserSite,
+  addUserSites,
+  removeUserSite,
+  setUserSiteLabel,
+  setUserSiteElevation,
+  setActiveUserSite,
+} from '../actions/point'
 import { setMapMode } from '../actions/map'
 import ModalCard from '../components/ModalCard'
 import { variables } from '../config'
+import fetchElevation from '../utils/elevation'
 
 type State = {
   runConfiguration: {
@@ -24,14 +32,45 @@ const connector = connect(
     objective,
     userSites,
     mode,
+    userSitesCount: userSites.length,
   }),
   dispatch => ({
     removeSite: (index: number) => dispatch(removeUserSite(index)),
-    onAddUserSite: (lat: number, lon: number, label: string) => {
-      dispatch(addUserSite({ lat, lon }, label))
-      dispatch(setMapMode('normal'))
+    onAddUserSite: (lat: number, lon: number, label: string, elevation?: number) => {
+      if (elevation !== undefined) {
+        dispatch(addUserSite({ lat, lon, elevation }, label))
+        dispatch(setMapMode('normal'))
+      } else {
+        fetchElevation(lat, lon).then(fetchedElevation => {
+          dispatch(addUserSite({ lat, lon, elevation: fetchedElevation }, label))
+          dispatch(setMapMode('normal'))
+        })
+      }
     },
-    onAddUserSites: (sites: { latlon: { lat: number; lon: number }; label: string }[]) => dispatch(addUserSites(sites)),
+    onAddUserSites: (
+      sites: { latlon: { lat: number; lon: number; elevation?: number }; label: string }[],
+      currentUserSitesCount: number,
+    ) => {
+      dispatch(addUserSites(sites))
+
+      const sitesNeedingElevation = sites.filter(site => site.latlon.elevation === undefined)
+
+      if (sitesNeedingElevation.length > 0) {
+        sitesNeedingElevation.forEach(async site => {
+          try {
+            const elevation = await fetchElevation(site.latlon.lat, site.latlon.lon)
+            if (elevation !== undefined) {
+              const siteIndex =
+                currentUserSitesCount +
+                sites.findIndex(s => s.latlon.lat === site.latlon.lat && s.latlon.lon === site.latlon.lon)
+              dispatch(setUserSiteElevation(siteIndex, elevation))
+            }
+          } catch {
+            // Elevation undefined
+          }
+        })
+      }
+    },
     onSetUserSiteLabel: (label: string, index: number) => dispatch(setUserSiteLabel(label, index)),
     onMouseOverSite: (index: number | null) => dispatch(setActiveUserSite(index)),
     onSetMapMode: (mode: string) => dispatch(setMapMode(mode)),
@@ -40,17 +79,18 @@ const connector = connect(
 
 type ComparisonsProps = ConnectedProps<typeof connector>
 
-const Comparisons = ({
+function Comparisons({
   objective,
   userSites,
   mode,
+  userSitesCount,
   removeSite,
   onAddUserSite,
   onAddUserSites,
   onSetUserSiteLabel,
   onMouseOverSite,
   onSetMapMode,
-}: ComparisonsProps) => {
+}: ComparisonsProps) {
   const [expandLevel, setExpandLevel] = React.useState(0)
   const expandClasses = ['', 'preview', 'full-height']
   const expandMessages = [t`Click to show`, t`Click for full height`, t`Click to hide`]
@@ -99,6 +139,9 @@ const Comparisons = ({
                     const yCol = columns.find(name =>
                       ['y', 'lat', 'latitude', 'latitud'].includes(name.toLowerCase().trim()),
                     )
+                    const elevationCol = columns.find(name =>
+                      ['elevation', 'elev', 'altitude', 'alt'].includes(name.toLowerCase().trim()),
+                    )
                     const labelCol = columns.find(name => ['name', 'label'].includes(name.toLowerCase().trim()))
 
                     if (!(xCol && yCol)) {
@@ -113,7 +156,11 @@ const Comparisons = ({
                           lat: Number.parseFloat(row[yCol]),
                           lon: Number.parseFloat(row[xCol]),
                         },
-                      } as { latlon: { lat: number; lon: number }; label: string }
+                      } as { latlon: { lat: number; lon: number; elevation?: number }; label: string }
+
+                      if (elevationCol && row[elevationCol]) {
+                        site.latlon.elevation = Number.parseFloat(row[elevationCol])
+                      }
 
                       if (labelCol) {
                         site.label = row[labelCol]
@@ -122,7 +169,7 @@ const Comparisons = ({
                       return site
                     })
 
-                    onAddUserSites(sites)
+                    onAddUserSites(sites, userSitesCount)
                     setProcessingCSV(false)
                   }
                 })
@@ -156,6 +203,7 @@ const Comparisons = ({
               <tr>
                 <th> </th>
                 <th>{t`Location`}</th>
+                <th>{t`Elevation`}</th>
                 <th style={{ minWidth: '200px' }}>{t`Name`}</th>
                 <th>{t`Match`}</th>
                 {siteVariables.map(variable => (
@@ -184,6 +232,11 @@ const Comparisons = ({
                     />
                   </td>
                   <td>{`${site.lat.toFixed(2)}, ${site.lon.toFixed(2)}`}</td>
+                  <td>
+                    {site.elevation
+                      ? `${Math.round(site.elevation / 0.3048)} ${c("Abbreviation of 'feet' (measurement)").t`ft`} (${Math.round(site.elevation)} ${c("Abbreviation of 'meters'").t`m`})`
+                      : c('Not Applicable').t`N/A`}
+                  </td>
                   <td>
                     {editRow && (
                       <form
@@ -255,7 +308,7 @@ const Comparisons = ({
               )
             })}
             <tr className="add-site">
-              <td colSpan={4 + siteVariables.length}>
+              <td colSpan={5 + siteVariables.length}>
                 <div className="columns">
                   <div className="column" />
                   <div className="column is-narrow">
@@ -297,7 +350,7 @@ const Comparisons = ({
                             {/* eslint-enable */}
                           </label>
                           <label className="column">
-                            <div>{c("abbreviation of 'Longitud''").t`Lon`}</div>
+                            <div>{c("abbreviation of 'Longitude''").t`Lon`}</div>
                             <input
                               className="input is-inline is-small"
                               style={{ width: '80px', textAlign: 'right' }}
@@ -366,13 +419,15 @@ const Comparisons = ({
                                 [
                                   t`Latitude`,
                                   t`Longitude`,
+                                  t`Elevation`,
                                   t`Label`,
                                   `${t`Climate Match`} %`,
                                   ...deltaKeys.map(k => `(${t`delta`}) ${k}`),
                                 ],
-                                ...userSites.map(({ lat, lon, label, score, deltas }) => [
+                                ...userSites.map(({ lat, lon, elevation, label, score, deltas }) => [
                                   lat,
                                   lon,
+                                  elevation || c('Not Applicable').t`N/A`,
                                   label,
                                   score,
                                   ...deltaKeys.map(k => {
@@ -425,37 +480,35 @@ const Comparisons = ({
       </div>
 
       {(processingCSV || csvError) && (
-        <>
-          <ModalCard
-            title={t`Uploading CSV`}
-            active
-            footer={
-              csvError && (
-                <div style={{ textAlign: 'right', width: '100%' }}>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setCSVError(null)
-                      setProcessingCSV(false)
-                    }}
-                    className="button is-primary is-pulled-right"
-                  >
-                    {t`Done`}
-                  </button>
-                </div>
-              )
-            }
-          >
-            {csvError ? (
-              <div>{csvError}</div>
-            ) : (
-              <>
-                <div>{t`Uploading CSV data...`}</div>
-                <progress />
-              </>
-            )}
-          </ModalCard>
-        </>
+        <ModalCard
+          title={t`Uploading CSV`}
+          active
+          footer={
+            csvError && (
+              <div style={{ textAlign: 'right', width: '100%' }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCSVError(null)
+                    setProcessingCSV(false)
+                  }}
+                  className="button is-primary is-pulled-right"
+                >
+                  {t`Done`}
+                </button>
+              </div>
+            )
+          }
+        >
+          {csvError ? (
+            <div>{csvError}</div>
+          ) : (
+            <>
+              <div>{t`Uploading CSV data...`}</div>
+              <progress />
+            </>
+          )}
+        </ModalCard>
       )}
     </div>
   )

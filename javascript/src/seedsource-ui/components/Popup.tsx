@@ -16,7 +16,7 @@ type PopupProps = {
   objective: any
   climate: any
   region: any
-  onSave: (x: number, y: number) => void
+  onSave: (x: number, y: number, elevation?: number) => void
   onClose: () => void
 }
 
@@ -250,93 +250,92 @@ class Popup extends React.Component<PopupProps, PopupState> {
       const { elevation, variables, zones, queryingData } = this.state
       this.popup.setLatLng([point.y, point.x])
       ReactDOM.render(
-        <>
-          <div className="map-info-popup">
-            <div className="columns is-mobile">
-              <div className="column">
-                <div>{t`Location`}</div>
-                <div className="has-text-weight-bold">
-                  {point.y.toFixed(2)}, {point.x.toFixed(2)}
-                </div>
+        <div className="map-info-popup">
+          <div className="columns is-mobile">
+            <div className="column">
+              <div>{t`Location`}</div>
+              <div className="has-text-weight-bold">
+                {point.y.toFixed(2)}, {point.x.toFixed(2)}
               </div>
-
-              {!queryingData && elevation ? (
-                <div className="column">
-                  <div>{t`Elevation`}</div>
-                  <div className="has-text-weight-bold">
-                    {elevation &&
-                      `${Math.round(elevation / 0.3048)} ${c("Abbreviation of 'feet' (measurement)")
-                        .t`ft`} (${Math.round(elevation)} ${c("Abbreviation of 'meters'").t`m`})`}
-                  </div>
-                </div>
-              ) : (
-                <div className="column" style={{ alignSelf: 'center' }}>
-                  Loading...
-                </div>
-              )}
             </div>
 
-            {!!variables.length && !queryingData && (
-              <>
-                <h6 className="title is-6">{t`Climate`}</h6>
-                <table>
-                  <tbody>
-                    {variables.map(item => {
-                      const variableConfig = allVariables.find(variable => variable.name === item.name)
-                      const { multiplier, units }: { multiplier: number; units: any } = variableConfig!
-                      let value: string | number = c('i.e., Not Applicable').t`N/A`
-                      let unitLabel = units.metric.label
+            {!queryingData && elevation ? (
+              <div className="column">
+                <div>{t`Elevation`}</div>
+                <div className="has-text-weight-bold">
+                  {elevation &&
+                    `${Math.round(elevation / 0.3048)} ${c("Abbreviation of 'feet' (measurement)").t`ft`} (${Math.round(
+                      elevation,
+                    )} ${c("Abbreviation of 'meters'").t`m`})`}
+                </div>
+              </div>
+            ) : (
+              <div className="column" style={{ alignSelf: 'center' }}>
+                Loading...
+              </div>
+            )}
+          </div>
 
-                      if (item.value !== null) {
-                        value = item.value / multiplier
+          {!!variables.length && !queryingData && (
+            <>
+              <h6 className="title is-6">{t`Climate`}</h6>
+              <table>
+                <tbody>
+                  {variables.map(item => {
+                    const variableConfig = allVariables.find(variable => variable.name === item.name)
+                    const { multiplier, units }: { multiplier: number; units: any } = variableConfig!
+                    let value: string | number = c('i.e., Not Applicable').t`N/A`
+                    let unitLabel = units.metric.label
 
-                        let { precision } = units.metric
-                        if (unit === 'imperial') {
-                          precision = units.imperial.precision
-                          unitLabel = units.imperial.label
-                          value = units.imperial.convert(value)
-                        }
+                    if (item.value !== null) {
+                      value = item.value / multiplier
 
-                        value = (value as number).toFixed(precision)
+                      let { precision } = units.metric
+                      if (unit === 'imperial') {
+                        precision = units.imperial.precision
+                        unitLabel = units.imperial.label
+                        value = units.imperial.convert(value)
                       }
 
-                      return (
-                        <tr key={item.name}>
-                          <td>{item.name}</td>
-                          <td className="has-text-weight-bold">
-                            {value} {unitLabel}
-                          </td>
-                        </tr>
-                      )
-                    })}
-                  </tbody>
-                </table>
-              </>
-            )}
+                      value = (value as number).toFixed(precision)
+                    }
 
-            {!!zones.length && !queryingData && (
-              <>
-                <h6 className="title is-6">{t`Available Zones`}</h6>
-                <ul className="popup-zones">
-                  {zones.map((item: any) => (
-                    <li key={item.id}>{getZoneLabel(item)}</li>
-                  ))}
-                </ul>
-              </>
-            )}
+                    return (
+                      <tr key={item.name}>
+                        <td>{item.name}</td>
+                        <td className="has-text-weight-bold">
+                          {value} {unitLabel}
+                        </td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </>
+          )}
 
-            <button
-              type="button"
-              className="button is-primary is-fullwidth"
-              onClick={() => {
-                onSave(point.x, point.y)
-                onClose()
-              }}
-            >
-              {mode === 'add_sites' ? t`Add Location` : t`Set Point`}
-            </button>
-          </div>
-        </>,
+          {!!zones.length && !queryingData && (
+            <>
+              <h6 className="title is-6">{t`Available Zones`}</h6>
+              <ul className="popup-zones">
+                {zones.map((item: any) => (
+                  <li key={item.id}>{getZoneLabel(item)}</li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          <button
+            type="button"
+            className="button is-primary is-fullwidth"
+            onClick={() => {
+              onSave(point.x, point.y, elevation || undefined)
+              onClose()
+            }}
+          >
+            {mode === 'add_sites' ? t`Add Location` : t`Set Point`}
+          </button>
+        </div>,
         this.content,
       )
       this.popup.setContent(this.content)
