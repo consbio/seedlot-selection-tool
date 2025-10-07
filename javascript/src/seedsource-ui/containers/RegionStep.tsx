@@ -25,15 +25,18 @@ type RegionStepProps = ConnectedProps<typeof connector> & {
   number: number
 }
 
+const automaticBold = <strong>{t`Automatic`}</strong>
+const customBold = <strong>{t`Bold`}</strong>
+
 const helpTooltip = (
-  <p>
-    {t`The map is broken into large geographic regions such as the Western US and the Eastern US.`}&nbsp;
-    {t`Select`} <strong>{t`Automatic`} </strong>
-    {t`if your seedlot(s) and planting site(s) are from the same region (most common).`}&nbsp;
-    {t`Select`} <strong>{t`Custom`} </strong>
-    {t`if they are from different regions, and then specify the region that does not include the location chosen 
-    in step 2.`}
-  </p>
+  <p
+    dangerouslySetInnerHTML={{
+      __html: t`The map is broken into large geographic regions such as the Western US and the Eastern US.
+    Select <strong>Automatic</strong> if your seedlot(s) and planting site(s) are from
+    the same region (most common). Select <strong>Custom</strong> if they are from different regions,
+    and then specify the region that does not include the location chosen in step 2.` as string,
+    }}
+  />
 )
 
 const RegionStep = ({ number, region, regionMethod, onChange }: RegionStepProps) => {
