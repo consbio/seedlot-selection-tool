@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
-import { t } from 'ttag'
+import { jt, t } from 'ttag'
 import ConfigurationStep from './ConfigurationStep'
 import RegionButton from './RegionButton'
 import { setRegion } from '../actions/region'
@@ -25,6 +25,18 @@ type RegionStepProps = ConnectedProps<typeof connector> & {
   number: number
 }
 
+const automaticBold = <strong>{t`Automatic`}</strong>
+const customBold = <strong>{t`Custom`}</strong>
+
+const helpTooltip = (
+  <p>
+    {jt`The map is broken into large geographic regions such as the Western US and the Eastern US.
+    Select ${automaticBold} if your seedlot(s) and planting site(s) are from
+    the same region (most common). Select ${customBold} if they are from different regions,
+    and then specify the region that does not include the location chosen in step 2.`}
+  </p>
+)
+
 const RegionStep = ({ number, region, regionMethod, onChange }: RegionStepProps) => {
   const buttons = (
     <div className="tabs is-toggle is-small">
@@ -38,14 +50,14 @@ const RegionStep = ({ number, region, regionMethod, onChange }: RegionStepProps)
   if (regionMethod === 'auto') {
     const regionLabel = region !== null ? regions.find(r => r.name === region)?.label : 'N/A'
     return (
-      <ConfigurationStep title={t`Select region`} number={number} name="region" active>
+      <ConfigurationStep title={t`Select region`} number={number} name="region" active helpTooltip={helpTooltip}>
         {buttons}
         <strong>{t`Region:`}</strong> {regionLabel}
       </ConfigurationStep>
     )
   }
   return (
-    <ConfigurationStep title={t`Select region`} number={number} name="region" active>
+    <ConfigurationStep title={t`Select region`} number={number} name="region" active helpTooltip={helpTooltip}>
       {buttons}
       <div style={{ marginTop: '3px' }}>
         <div className="align-middle is-inline-block">

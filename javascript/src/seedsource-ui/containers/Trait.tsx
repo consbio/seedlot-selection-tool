@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
-import ReactTooltip from 'react-tooltip'
+import { Tooltip } from 'react-tooltip'
 import { t } from 'ttag'
 import EditableLabel from '../components/EditableLabel'
 import config from '../config'
@@ -29,7 +29,7 @@ const Trait = ({ index, trait, traitConfig, onRemove, onTransferChange }: TraitP
   const transfer = trait.transfer === null ? traitConfig.transfer : trait.transfer
 
   return (
-    <tr data-tip data-for={`${name}_Tooltip`}>
+    <tr id={`${name}-tooltip`}>
       <td>
         <a
           type="button"
@@ -53,7 +53,7 @@ const Trait = ({ index, trait, traitConfig, onRemove, onTransferChange }: TraitP
           transfer
         )}
         {units}
-        <ReactTooltip id={`${name}_Tooltip`} className="variable-tooltip" place="right" effect="solid">
+        <Tooltip anchorSelect={`#${name}-tooltip`} className="variable-tooltip" place="right" data-tooltip-float>
           <h5 className="title is-5 margin-bottom-5">{label}</h5>
           {description !== null ? <div className="is-size-7 has-text-grey-lighter">{description}</div> : null}
           <div>
@@ -68,7 +68,7 @@ const Trait = ({ index, trait, traitConfig, onRemove, onTransferChange }: TraitP
               {transfer} {units}
             </strong>
           </div>
-        </ReactTooltip>
+        </Tooltip>
       </td>
     </tr>
   )
