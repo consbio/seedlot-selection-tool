@@ -30,26 +30,21 @@ function LocationStep({ objective, number, elevation }: LocationStepProps) {
       ? c("This is one possible value of 'siteLabel'").t`seedlot (its climatic center)`
       : c("This is one possible value of 'siteLabel'").t`planting site`
 
+  const helpTooltip = (
+    <p>{jt`Locate your ${siteLabel} by using the map or entering coordinates.`}</p>
+  )
+
   return (
     <ConfigurationStep
       title={objective === 'seedlots' ? t`Select planting site location` : t`Select seedlot location`}
       number={number}
       name="location"
       active
+      helpTooltip={helpTooltip}
     >
-      <div className="columns">
-        <div className="column is-narrow" style={{ width: '185px' }}>
-          <h4 className="title is-6" style={{ marginBottom: '0' }}>
-            {t`Location`}
-          </h4>
-          <div className="is-size-7 is-italic">
-            {jt`Locate your ${siteLabel} by using the map or entering coordinates.`}
-          </div>
-        </div>
-        <div className="column">
-          <PointChooser />
-          {elevationNode}
-        </div>
+      <div>
+        <PointChooser />
+        {elevationNode}
       </div>
     </ConfigurationStep>
   )

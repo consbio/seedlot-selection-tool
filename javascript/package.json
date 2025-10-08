@@ -84,7 +84,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "16.9.0",
     "react-redux": "^7.2.9",
-    "react-tooltip": "^4.5.1",
+    "react-tooltip": "^5.29.1",
     "redux": "4.0.5",
     "redux-thunk": "2.3.0",
     "shpjs": "^4.0.4",
