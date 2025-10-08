@@ -64,13 +64,17 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
   }
 
-  componentDidUpdate(prevProps: MenuProps) {
-    const { hasError } = this.props
-    if (!prevProps.hasError && hasError) {
-      this.setState({
-        showFeedbackModal: true,
-      })
-    }
+  componentDidMount() {
+    // Listen for error reporting requests from ErrorModal
+    window.addEventListener('reportError', this.handleErrorReportEvent)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('reportError', this.handleErrorReportEvent)
+  }
+
+  handleErrorReportEvent = () => {
+    this.setState({ showFeedbackModal: true })
   }
 
   static validateEmail(email: string) {
