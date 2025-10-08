@@ -86,21 +86,6 @@ msgid "Don't show again"
 msgstr "No volver a mostrar"
 
 #, fuzzy
-msgid "New Future Data"
-msgstr "Nuevos Datos Futuros"
-
-#, fuzzy
-msgid ""
-"The Seedlot Selection Tool will soon incorporate new climate futures based "
-"on ClimateNA 7.50. The new futures\n"
-"will offer three emissions scenarios: SSP245, SSP370, and SSP585."
-msgstr ""
-"La Herramienta de Selección de Lotes de Semillas incorporará próximamente "
-"nuevos futuros climáticos\n"
-"basados ​​en ClimateNA 7.50. Estos nuevos futuros ofrecerán tres escenarios de "
-"emisiones: SSP245, SSP370 y SSP585."
-
-#, fuzzy
 msgid ""
 "Share your saved run with others by sending them this link (your saved run "
 "will load when anyone visits \n"
@@ -146,3 +131,397 @@ msgstr "Guía de Silvicultores"
 msgctxt "\"Little\" is a proper noun"
 msgid "Little's Range Maps"
 msgstr "Mapas de distribución de Little"
+
+msgid ""
+"The climate model data in your save is outdated. To resolve this issue, "
+"please select a new climate scenario."
+msgstr ""
+
+msgid ""
+"You can select historical, current, or future climates for your seedlots or "
+"planting sites."
+msgstr ""
+
+msgid ""
+"This is an optional step that applies constraints to limit the geographic "
+"extent of the mapped results. There \n"
+"are two choices for constraining the results: 1) Geographic constraints "
+"including latitude, longitude, elevation, \n"
+"distance, photoperiod, or 2) Species ranges that include a list of results "
+"from species distribution models for \n"
+"contemporary climates. Users also have the option to import their own "
+"geographic boundary to use as a constraint \n"
+"under the geographic constraints, by selecting a shapefile. Using "
+"constraints will exclude that part of the \n"
+"climatic output that is beyond the geographic limits imposed or beyond the "
+"species range."
+msgstr ""
+
+msgid "Find seedlots:"
+msgstr ""
+
+msgid ""
+"Select this option if you are looking for where you want to source your "
+"seedlots\n"
+"from to plant at a particular location. The objective of finding seedlots "
+"for a planting site is to indicate where\n"
+"one would locate seedlots that would be adapted to a past, current, or "
+"future climate at a planting site. Running\n"
+"the tool will generate a heat map of potential seedlots that are suitable to "
+"plant at your selected location."
+msgstr ""
+
+msgid "Find planting sites:"
+msgstr ""
+
+msgid ""
+"Select this option if you want to find planting sites for seedlots that you\n"
+"already have. The objective of finding planting sites for a seedlot is to "
+"indicate where the current or future\n"
+"climate matches the conditions to which the seedlot is suited. This is the "
+"inverse of the first option."
+msgstr ""
+
+msgid "Load configuration?"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Loading this configuration will replace your current settings."
+msgstr ""
+
+msgid "Notification"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "The following issue(s) were encountered while loading your saved run."
+msgstr ""
+
+msgid ""
+"The transfer limit method selected determines how far climatically a seedlot "
+"may be moved and still \n"
+"have an acceptable level of adaptation."
+msgstr ""
+
+msgid "The SST uses four approaches to determine and map transfer limits: "
+msgstr ""
+
+msgid ""
+"Allows for user-defined transfer limits for each climate variable selected "
+"in Step 6 based on user knowledge \n"
+"and experience including the best available science."
+msgstr ""
+
+msgid ""
+"Suggests transfer limits based on the range of climate conditions within the "
+"zone of the planting site or \n"
+"seedlot; these values are based on operational resource management over the "
+"past half-century and allows users \n"
+"to customize climate variables in step 6 or choose them automatically."
+msgstr ""
+
+msgid "Suggests transfer limits based on a particular trait of a species."
+msgstr ""
+
+msgid ""
+"Allows for species to be selected to determine transfer limits based on a "
+"function that is derived from \n"
+"genetic studies that relates population differences in adaptive traits grown "
+"in a common environment to the \n"
+"climates of seed sources. The function approach is available for select "
+"species."
+msgstr ""
+
+msgid ""
+"When using the Custom or Zone approach, select one or more of the 16 "
+"biologically relevant climate variables. \n"
+"Do not select too many climate variables, particularly variables that are "
+"correlated with each other. The use of \n"
+"more than three climate variables will probably result in overly "
+"conservative climate matches; the more climate \n"
+"variables that are included, the smaller the mapped areas will be."
+msgstr ""
+
+msgid ""
+"You also have the option to choose automatically, in which case, the climate "
+"variables chosen will be mean \n"
+"temperature of the coldest month (MCMT) and summer heat: moisture index "
+"(SHM). These climate variables are \n"
+"chosen based on the assumption that temperate forest trees (or other plants) "
+"are primarily adapted to cold \n"
+"temperatures in the winter and aridity in the summer. The automatic "
+"selection of climate variables will \n"
+"calculate default transfer limits of +/- 2.0⁰C for Mean Coldest Month "
+"Temperature (MCMT) and +/- half of value \n"
+"at the location of the planting site or seedlot for Summer Heat-Moisture "
+"Index (SHM)."
+msgstr ""
+
+msgid "Planting for the future"
+msgstr ""
+
+msgid ""
+"Four images arranged in a square. Clockwise from top-left: a hand holding a "
+"bunch of small seeds; a \n"
+"clear-cut hillside; several flowering sagebrush; conifer trees in a mist."
+msgstr ""
+
+msgid ""
+"Over a century of genetic research has shown that environment, in "
+"particularly climate, strongly affects plant \n"
+"genetic adaptation and the geography distance seed can be moved from its "
+"source location. The Seedlot Selection \n"
+"Tool (SST) is a GIS mapping program designed to provide information on seed "
+"collection and transfer of native \n"
+"plants and help forest managers match seedlots with planting sites based on "
+"climatic information."
+msgstr ""
+
+msgid ""
+"The climates of the planting sites and seedlots can be chosen to represent "
+"current climates, or future \n"
+"climates based on selected climate change scenarios."
+msgstr ""
+
+msgid "Getting Started"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Click the ${ tool } tab to get started. To learn more about how to use "
+"this \n"
+"tool, refer to one of the available guides:"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"The ${ basicGuide } provides information about the features, functionality, "
+"and internal \n"
+"calculations of the tool."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"The ${ silviculturistsGuide } demonstrates how to use the tool for "
+"silviculturists working in \n"
+"the Pacific Northwest"
+msgstr ""
+
+msgid "Bureau of Land Management"
+msgstr ""
+
+msgid "Great Basin Native Plant Project"
+msgstr ""
+
+msgid ""
+"The climate data for future periods, including 2020s (2010-2039), 2050s "
+"(2040-69) and 2080s \n"
+"(2070-2100), were from General Circulation Models (GCMs) of the Coupled "
+"Model Intercomparison Project \n"
+"(CMIP6) included in the IPCC sixth assessment report (AR6). Eight GCMs were "
+"selected for three \n"
+"greenhouse gas emission scenarios (SSP245, SSP370, and SSP585). The 8 GCMss "
+"are ACCESS-ESM1-5, \n"
+"CNRM-ESM2-1, EC-Earth3, GFDL-ESM4, GISS-E2-1-G, MIROC6, MPI-ESM1-2-HR, and "
+"MRI-ESM2-0."
+msgstr ""
+
+msgid ""
+"The Seedlot Selection Tool is a collaboration between the US Forest Service, "
+"Oregon State University, \n"
+"the Bureau of Land Management, and the Conservation Biology Institute. "
+"Initial conceptualization and \n"
+"development was done by Glenn Howe at Oregon State University College of "
+"Forestry and Brad St.Clair at the \n"
+"US Forest Service Pacific Northwest Research Station, with considerable "
+"input from Ron Beloin while he was \n"
+"working at Oregon State University. The Conservation Biology Institute was "
+"brought onboard to bring the \n"
+"project to fruition through their expertise in web site design and "
+"programming for spatial applications. \n"
+"Personnel at the Conservation Biology Institute included Nikolas Stevenson-"
+"Molnar (tool developer), \n"
+"Brendan Ward (project manager), and Dominique Bachelet (project co-PI)."
+msgstr ""
+
+msgid ""
+"Initial funding for the Seedlot Selection Tool came from the US Forest "
+"Service Washington Office.\n"
+"Subsequent funding came from the USFS Pacific Northwest Research Station, "
+"Oregon State University,\n"
+"Conservation Biology Institute, the USDA Northwest Climate Hub, Natural "
+"Resources Canada, USFS \n"
+"International Programs, and USFS State & Private. Funding for additional "
+"functionality was provided \n"
+"by the Great Basin Native Plant Program."
+msgstr ""
+
+msgid "Co-Principal Investigator"
+msgstr ""
+
+msgid "Research Geneticist, Rocky Mountain Research Station"
+msgstr ""
+
+msgid "USDA Forest Service, Moscow, Idaho, USA"
+msgstr ""
+
+msgid "Research Biologist, Rocky Mountain Research Station"
+msgstr ""
+
+msgid "USDA Forest Service, Boise, Idaho, USA"
+msgstr ""
+
+msgid "Guided Tour"
+msgstr ""
+
+msgid "Complete Tour"
+msgstr ""
+
+msgid "Leave Tour"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Start Tour"
+msgstr ""
+
+msgid "Not Now"
+msgstr ""
+
+#, javascript-format
+msgid "Tour step ${ currentStepNum } of ${ totalSteps }"
+msgstr ""
+
+msgid "Go back"
+msgstr ""
+
+msgid "Welcome to the Seedlot Selection Tool"
+msgstr ""
+
+msgid ""
+"This tool will guide you through the process of selecting appropriate "
+"seedlots for your planting sites or finding suitable planting sites for your "
+"seedlots based on climatic information."
+msgstr ""
+
+msgid ""
+"The tour will show you the main features and help you get started. You can "
+"always access this tour again from the User Guides menu."
+msgstr ""
+
+msgid "Step 1: Select Objective"
+msgstr ""
+
+msgid "Objective"
+msgstr ""
+
+msgid ""
+"Choose whether you want to find seedlots for your planting site or find "
+"planting sites for your seedlot."
+msgstr ""
+
+msgid "Select your objective: find seedlots or find planting sites."
+msgstr ""
+
+msgid "Step 2: Select Location"
+msgstr ""
+
+msgid ""
+"Click on the map or enter coordinates to specify your seedlot or planting "
+"site location."
+msgstr ""
+
+msgid "Tap on the map to select your location for seedlots or planting sites."
+msgstr ""
+
+msgid "Step 3: Select Region"
+msgstr ""
+
+msgid "Region"
+msgstr ""
+
+msgid ""
+"Choose the geographic region that contains your area of interest for the "
+"analysis."
+msgstr ""
+
+msgid "Select the region for your analysis."
+msgstr ""
+
+msgid "Step 4: Select Climate Scenarios"
+msgstr ""
+
+msgid "Climate Scenarios"
+msgstr ""
+
+msgid ""
+"Choose the time period for climate data - current, historical, or future "
+"climate scenarios."
+msgstr ""
+
+msgid "Select time period for climate data."
+msgstr ""
+
+msgid "Step 5: Select Transfer Limit Method"
+msgstr ""
+
+msgid "Transfer Limits"
+msgstr ""
+
+msgid ""
+"Choose how to determine transfer limits: Custom (user-defined) or Zone "
+"(based on existing zones)."
+msgstr ""
+
+msgid "Select transfer limit method."
+msgstr ""
+
+msgid "Step 6: Select Climate Variables"
+msgstr ""
+
+msgid "Climate Variables"
+msgstr ""
+
+msgid ""
+"Choose which climate variables to include in your analysis and set their "
+"transfer limits."
+msgstr ""
+
+msgid "Select climate variables for analysis."
+msgstr ""
+
+msgid "Step 7: Apply Constraints"
+msgstr ""
+
+msgid ""
+"Optionally apply geographic or elevation constraints to refine your results."
+msgstr ""
+
+msgid "Apply optional constraints to results."
+msgstr ""
+
+msgid "Step 8: Map Your Results"
+msgstr ""
+
+msgid ""
+"Click \"Run Tool\" to generate a map showing suitable seedlots or planting "
+"sites based on your configuration."
+msgstr ""
+
+msgid "Run the tool to generate your results map."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"The map is broken into large geographic regions such as the Western US and "
+"the Eastern US.\n"
+"Select ${ automaticBold } if your seedlot(s) and planting site(s) are from\n"
+"the same region (most common). Select ${ customBold } if they are from "
+"different regions,\n"
+"and then specify the region that does not include the location chosen in "
+"step 2."
+msgstr ""

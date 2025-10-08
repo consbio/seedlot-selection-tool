@@ -13,261 +13,141 @@ msgstr ""
 "mime-version: 1.0\n"
 "X-Generator: Poedit 3.6\n"
 
-#: src/config.ts:26
-#: src/config.ts:42
+#: src/config.ts:135
 #: src/seedsource-ui/config.ts:463
 msgid "Douglas-fir"
 msgstr "Douglas-fir"
 
-#: src/config.ts:46
+#: src/config.ts:99
 #: src/seedsource-ui/config.ts:467
 msgid "Lodgepole pine"
 msgstr "Lodgepole pine"
 
-#: src/config.ts:50
-#: src/config.ts:248
+#: src/config.ts:95
+#: src/config.ts:311
 #: src/seedsource-ui/config.ts:471
 msgid "Jack pine"
 msgstr "Jack pine"
 
-#: src/config.ts:54
+#: src/config.ts:127
 #: src/seedsource-ui/config.ts:475
 msgid "Ponderosa pine"
 msgstr "Ponderosa pine"
 
-#: src/config.ts:58
+#: src/config.ts:119
 #: src/seedsource-ui/config.ts:479
 msgid "Black spruce"
 msgstr "Black spruce"
 
-#: src/config.ts:62
+#: src/config.ts:147
 #: src/seedsource-ui/config.ts:483
 #: src/seedsource-ui/config.ts:551
 msgid "Western red cedar"
 msgstr "Western red cedar"
 
-#: src/config.ts:66
+#: src/config.ts:123
 #: src/seedsource-ui/config.ts:487
 msgid "Western white pine"
 msgstr "Western white pine"
 
-#: src/config.ts:70
+#: src/config.ts:43
 #: src/seedsource-ui/config.ts:491
 msgid "Pacific silver fir"
 msgstr "Pacific silver fir"
 
-#: src/config.ts:74
+#: src/config.ts:47
 #: src/seedsource-ui/config.ts:495
 msgid "White fir"
 msgstr "White fir"
 
-#: src/config.ts:78
+#: src/config.ts:51
 #: src/seedsource-ui/config.ts:499
 #: src/seedsource-ui/config.ts:503
 msgid "Grand fir"
 msgstr "Grand fir"
 
-#: src/config.ts:82
+#: src/config.ts:55
 msgid "Noble Fir"
 msgstr "Noble fir"
 
-#: src/config.ts:86
+#: src/config.ts:59
 #: src/seedsource-ui/config.ts:507
 msgid "Shasta red fir"
 msgstr "Shasta red fir"
 
-#: src/config.ts:90
+#: src/config.ts:63
 #: src/seedsource-ui/config.ts:511
 msgid "Red alder"
 msgstr "Red alder"
 
-#: src/config.ts:94
+#: src/config.ts:75
 #: src/seedsource-ui/config.ts:515
 msgid "Incense cedar"
 msgstr "Incense cedar"
 
-#: src/config.ts:98
+#: src/config.ts:79
 #: src/seedsource-ui/config.ts:519
 msgid "Port orford cedar"
 msgstr "Port orford cedar"
 
-#: src/config.ts:102
+#: src/config.ts:83
 #: src/seedsource-ui/config.ts:523
 msgid "Alaska yellow cedar"
 msgstr "Alaska yellow cedar"
 
-#: src/config.ts:106
+#: src/config.ts:87
 #: src/seedsource-ui/config.ts:527
 msgid "Western larch"
 msgstr "Western larch"
 
-#: src/config.ts:110
+#: src/config.ts:91
 #: src/seedsource-ui/config.ts:531
 msgid "Whitebark pine"
 msgstr "Whitebark pine"
 
-#: src/config.ts:114
+#: src/config.ts:103
 #: src/seedsource-ui/config.ts:535
 msgid "Engelmann spruce"
 msgstr "Engelmann spruce"
 
-#: src/config.ts:122
+#: src/config.ts:111
 #: src/seedsource-ui/config.ts:539
 msgid "Jeffrey pine"
 msgstr "Jeffrey pine"
 
-#: src/config.ts:126
+#: src/config.ts:115
 #: src/seedsource-ui/config.ts:543
 msgid "Sugar pine"
 msgstr "Sugar pine"
 
-#: src/config.ts:134
+#: src/config.ts:143
 #: src/seedsource-ui/config.ts:547
 msgid "Pacific yew"
 msgstr "Pacific yew"
 
-#: src/config.ts:138
+#: src/config.ts:151
 msgid "Western hemlock"
 msgstr "Western hemlock"
 
-#: src/config.ts:142
+#: src/config.ts:155
 #: src/seedsource-ui/config.ts:555
 msgid "Mountain hemlock"
 msgstr "Mountain hemlock"
 
-#: src/config.ts:24
-msgid "Lodgepole Pine"
-msgstr "Lodgepole pine"
-
-#: src/config.ts:25
-msgid "Sitka Spruce"
-msgstr "Sitka spruce"
-
-#: src/config.ts:27
-msgid "Ponderosa Pine"
-msgstr "Ponderosa pine"
-
-#: src/config.ts:28
-msgid "Engelmann Spruce"
-msgstr "Engelmann spruce"
-
-#: src/config.ts:211
-msgid "Species Range"
-msgstr "Gama de especies"
-
-#: src/components/About.tsx:14
-msgid "Planting Healthy Forests"
-msgstr "Plantación de bosques saludables"
-
-#: src/components/About.tsx:15
-msgid "Hands holding a small tree seedling"
-msgstr "Manos que sostienen una plántula de árbol"
-
-#: src/components/About.tsx:17
-msgid ""
-"The Seedlot Selection Tool (SST) is a GIS mapping program designed to help forest managers match seedlots with\n"
-"planting sites based on climatic information. The climates of the planting sites can be chosen to represent\n"
-"current climates, or future climates based on selected climate change scenarios."
-msgstr ""
-"La Herramienta de selección de lotes de semillas (Seedlot Selection Tool, SST) es un programa de cartografía del Sistema de Información Geográfica (Geographical Information System, GIS), diseñado para ayudar a los administradores forestales a combinar lotes de semillas con \n"
-"sitios de plantación según la información climática. Los climas de los sitios de plantación pueden elegirse de modo que representen \n"
-"climas actuales o futuros, según los escenarios de cambio climático seleccionados."
-
-#: src/components/About.tsx:24
-msgid "A bullseye"
-msgstr "Una diana"
-
-#: src/components/About.tsx:25
-msgid "Select Objective"
-msgstr "Seleccionar el objetivo"
-
-#: src/components/About.tsx:26
-msgid "You can find seedlots for your planting site or planting sites for your seedlot"
-msgstr "Puede encontrar lotes de semillas para el sitio de plantación, o sitios de plantación para su lote de semillas"
-
-#: src/components/About.tsx:30
-msgid "Select Location"
-msgstr "Seleccionar la ubicación"
-
-#: src/components/About.tsx:31
-msgid "You can click on the map or enter coordinates to locate your seedlot or planting site"
-msgstr "Puede hacer clic en el mapa o introducir las coordenadas para localizar su lote de semillas o sitio de plantación"
-
-#: src/components/About.tsx:34
-msgid "A map of North America with the western United States highlighted in red"
-msgstr "Mapa de América del Norte con la región occidental de los Estados Unidos resaltada en rojo"
-
-#: src/components/About.tsx:35
-msgid "Select Region"
-msgstr "Seleccionar la región"
-
-#: src/components/About.tsx:36
-msgid "You can select the geographic region closest to your site or choose from a list of available regions"
-msgstr "Puede seleccionar la región geográfica más cercana a su sitio o elegir de una lista de regiones disponibles"
-
-#: src/components/About.tsx:39
-msgid "A calendar icon showing the year 2050"
-msgstr "Ícono de calendario que muestra el año 2050"
-
-#: src/components/About.tsx:40
-msgid "Select Climate Scenarios"
-msgstr "Seleccionar los escenarios climáticos"
-
-#: src/components/About.tsx:41
-msgid "You can select historical, current, or future climates for your seedlots of planting sites"
-msgstr "Puede seleccionar climas históricos, actuales o futuros para los lotes de semillas de sus sitios de plantación"
-
-#: src/components/About.tsx:44
-msgid "A curved, blue arrow"
-msgstr "Flecha curvada azul"
-
-#: src/components/About.tsx:45
-msgid "Select Transfer Limit Method"
-msgstr "Seleccionar el método de límite de transferencia"
-
-#: src/components/About.tsx:47
-msgid ""
-"You can enter your own custom limit, use an existing zone to calculate a transfer limit, or use a function \n"
-"relating genetic variation to climate to calculate a transfer limit"
-msgstr ""
-"Puede introducir su propio límite personalizado, usar una zona existente para calcular un límite de transferencia o utilizar una función que \n"
-"relacione la variación genética con el clima para calcular un límite de transferencia"
-
-#: src/components/About.tsx:52
-msgid "A cloud with raindrops falling from the bottom, in front of the sun"
-msgstr "Nube con gotas de lluvia cayendo de abajo, frente al sol"
-
-#: src/components/About.tsx:53
-msgid "Select Climate Variables"
-msgstr "Seleccionar variables climáticas"
-
-#: src/components/About.tsx:54
-msgid "You can use a variety of climate variables to match your seedlot and planting site"
-msgstr "Puede utilizar diversas variables climáticas que coincidan con el lote de semillas y el sitio de plantación"
-
-#: src/components/About.tsx:57
-msgid "An icon of the globe"
-msgstr "Ícono del globo terráqueo"
-
-#: src/components/About.tsx:58
-#: src/seedsource-ui/containers/RunStep.tsx:162
+#: src/seedsource-ui/containers/RunStep.tsx:178
 msgid "Map your Results"
 msgstr "Mapear sus resultados"
 
-#: src/components/About.tsx:59
-msgid "The map shows where to find appropriate seedlots or planting sites"
-msgstr "El mapa muestra en dónde encontrar lotes de semillas o sitios de plantación apropiados"
-
-#: src/components/Menu.tsx:84
-#: src/components/Menu.tsx:493
+#: src/components/Menu.tsx:80
+#: src/components/Menu.tsx:484
 msgid "Background"
 msgstr "Antecedentes"
 
-#: src/components/Menu.tsx:89
+#: src/components/Menu.tsx:85
 msgid "Trees on a hillside enveloped in fog"
 msgstr "Árboles en una ladera envuelta en niebla"
 
-#: src/components/Menu.tsx:92
+#: src/components/Menu.tsx:88
 msgid ""
 "Populations of forest trees and other native plants are genetically different from one another and are\n"
 "locally adapted owing to natural selection to different climatic pressures across the landscape (Leimu and\n"
@@ -295,7 +175,7 @@ msgstr ""
 "no hará más que empeorar: el grado de cambio climático hasta la fecha es pequeño en comparación con lo que se prevé\n"
 "para mediados y fines del siglo XXI."
 
-#: src/components/Menu.tsx:106
+#: src/components/Menu.tsx:102
 msgid ""
 "Natural resource managers may respond to concerns of maladaptation and declines in ecosystem \n"
 "productivity by matching the climatic adaptability of their plant material to the climatic conditions of \n"
@@ -331,7 +211,7 @@ msgstr ""
 "proyecciones climáticas se basan en un conjunto de las proyecciones promedio de quince modelos climáticos provenientes de\n"
 "la base de datos del Proyecto de intercomparación de modelos acoplados de fase 5 (Coupled Model Intercomparison Project phase 5, CMIP5) del 5.º Informe de evaluación del Grupo Intergubernamental de Expertos sobre el Cambio Climático (Intergovernmental Panel on Climate Change, IPCC)."
 
-#: src/components/Menu.tsx:124
+#: src/components/Menu.tsx:120
 #, javascript-format
 msgid ""
 "Using the climate estimates for each grid point on a map, the SST determines the climatic distances\n"
@@ -354,7 +234,7 @@ msgstr ""
 "mapean, mientras que los valores entre 0 y 100 se mapean mediante una escala de color que va de color naranja claro al \n"
 "oscuro."
 
-#: src/components/Menu.tsx:135
+#: src/components/Menu.tsx:131
 msgid ""
 "To match seedlots and planting sites, it is necessary to choose appropriate climate variables that reflect\n"
 "the adaptive capacity of seedlots. Evidence for adaptation comes from two types of genetic studies: (1)\n"
@@ -392,11 +272,11 @@ msgstr ""
 "reflejada mejor por las variables climáticas que reflejan ambas condiciones, como el déficit de humedad climática y el\n"
 "índice de calor-humedad, así como variables relacionadas como la precipitación anual y las temperaturas de verano."
 
-#: src/components/Menu.tsx:156
+#: src/components/Menu.tsx:152
 msgid "A clear-cut hillside in the foreground, a wooded hillside in the background"
 msgstr "Una ladera desmontada en primer plano; una ladera boscosa al fondo"
 
-#: src/components/Menu.tsx:159
+#: src/components/Menu.tsx:155
 msgid ""
 "Once important climate variables are selected, it is necessary to decide on transfer limits – that is, how\n"
 "far can one move a population climatically before performance becomes unacceptable. This information is\n"
@@ -416,7 +296,7 @@ msgstr ""
 "la disminución del crecimiento y la supervivencia es un gradiente, decidirse por un límite de transferencia que sea aceptable\n"
 "depende de la tolerancia al riesgo del administrador."
 
-#: src/components/Menu.tsx:169
+#: src/components/Menu.tsx:165
 msgid ""
 "Because long-term, well-designed studies are rare for many plant species, we must often rely on\n"
 "generalizations from other species as well as practical experience for determining climate variables and\n"
@@ -436,7 +316,7 @@ msgstr ""
 "organizaciones que sean capaces de ajustar rápidamente sus prácticas de manejo (p. ej., debido a rotaciones cortas) o\n"
 "que estén más dispuestas a aceptar riesgos, pueden elegir un límite de transferencia más amplio que aquellas con aversión al riesgo."
 
-#: src/components/Menu.tsx:179
+#: src/components/Menu.tsx:175
 msgid ""
 "Once climate variables important for adaptation are determined and climatic transfer limits have been\n"
 "defined, natural resource managers can use the SST to explore options for responding to climate change\n"
@@ -476,11 +356,11 @@ msgstr ""
 "lo que disminuirá la salud y la productividad de los bosques, a menos que los administradores forestales trabajen para hacer coincidir las\n"
 "fuentes de semillas adecuadas con los climas futuros proyectados."
 
-#: src/components/Menu.tsx:198
+#: src/components/Menu.tsx:194
 msgid "Literature Cited"
 msgstr "Referencias bibliográficas citadas"
 
-#: src/components/Menu.tsx:250
+#: src/components/Menu.tsx:252
 #, javascript-format
 msgid ""
 "ClimateNA is a software program written by ${ name } and others that extracts and downscales \n"
@@ -501,15 +381,15 @@ msgstr ""
 "Además, ClimateNA calcula ciertas variables climáticas de relevancia biológica a partir de los datos de temperatura \n"
 "y precipitación."
 
-#: src/components/Menu.tsx:261
+#: src/components/Menu.tsx:263
 msgid "Data sources"
 msgstr "Fuentes de datos"
 
-#: src/components/Menu.tsx:263
+#: src/components/Menu.tsx:265
 msgid "Baseline data"
 msgstr "Datos de referencia"
 
-#: src/components/Menu.tsx:266
+#: src/components/Menu.tsx:268
 msgid ""
 "The monthly baseline data for 1961-1990 normals were compiled from the following sources and unified \n"
 "at 4 x 4 km spatial resolution"
@@ -517,32 +397,32 @@ msgstr ""
 "Los datos de referencia mensuales para estimar los valores normales de 1961-1990 se recopilaron de las siguientes fuentes y se unificaron \n"
 "con una resolución espacial de 4 x 4 km"
 
-#: src/components/Menu.tsx:271
+#: src/components/Menu.tsx:273
 msgid "British Columbia: PRISM at 800 x 800 m from Pacific Climate Impact Consortium"
 msgstr "Columbia Británica: PRISM a 800 x 800 m del Consorcio de Impacto Climático del Pacífico (Pacific Climate Impact Consortium)"
 
-#: src/components/Menu.tsx:279
+#: src/components/Menu.tsx:281
 #, javascript-format
 msgid "Prairie provinces: PRISM at 4 x 4 km from the ${ prismLink }"
 msgstr "Provincias de la Gran Pradera: PRISM a 4 x 4 km del ${ prismLink }"
 
-#: src/components/Menu.tsx:283
+#: src/components/Menu.tsx:285
 msgid "United States: PRISM at 800 x 800 m from the PRISM Climate Group (Daly et al. 2008)"
 msgstr "Estados Unidos: PRISM a 800 x 800 m del Grupo Climático PRISM (Daly et al. 2008)"
 
-#: src/components/Menu.tsx:284
+#: src/components/Menu.tsx:286
 msgid "The rest: ANUSPLIN at 4 x 4 km"
 msgstr "El resto: ANUSPLIN a 4 x 4 km"
 
-#: src/components/Menu.tsx:285
+#: src/components/Menu.tsx:287
 msgid "The rest of North America: ANUSPLIN at 4 x 4 km"
 msgstr "El resto de América del Norte: ANUSPLIN a 4 x 4 km"
 
-#: src/components/Menu.tsx:288
+#: src/components/Menu.tsx:290
 msgid "Historical data"
 msgstr "Datos históricos"
 
-#: src/components/Menu.tsx:291
+#: src/components/Menu.tsx:293
 msgid ""
 "Historical monthly data were obtained from Climate Research Unit (CRU) (Harris et al 2014). The data\n"
 "version is CRU TS 3.23. The spatial resolution is 0.5 x 0.5° and covers the period of 1901-2014. \n"
@@ -552,178 +432,121 @@ msgstr ""
 "versión de los datos es CRU TS 3.23. La resolución espacial es de 0.5 x 0.5° y abarca el periodo de 1901-2014. \n"
 "Se calcularon las anomalías de cada año y periodo en comparación con los valores normales de 1961-1990."
 
-#: src/components/Menu.tsx:295
+#: src/components/Menu.tsx:297
 msgid "Future climate data"
 msgstr "Datos climáticos futuros"
 
-#: src/components/Menu.tsx:309
-#, javascript-format
-msgid ""
-"The climate data for future periods, including 2020s (2010-2039), 2050s (2040-69) and 2080s \n"
-"(2070-2100), were from General Circulation Models (GCMs) of the Coupled Model Intercomparison Project \n"
-"(CMIP5) included in the IPCC Fifth Assessment Report (IPCC 2014). Fifteen GCMs were selected for two \n"
-"greenhouse gas emission scenarios (RCP 4.5 and RCP 8.5). When multiple ensembles are available for each \n"
-"GCM, an average was taken over the available (up to five) ensembles. Ensembles among the 15 GCMs are \n"
-"also available. The 15 AOGCMs are CanESM2, ACCESS1.0, IPSL-CM5A-MR, MIROC5, MPI-ESM-LR, CCSM4, \n"
-"HadGEM2-ES, CNRM-CM5, CSIRO Mk 3.6, GFDL-CM3, INM-CM4, MRI-CGCM3, MIROC-ESM, CESM1-CAM5, GISS-E2R and \n"
-"were chosen to represent all major clusters of similar AOGCMs by ${ name }."
-msgstr ""
-"Los datos climáticos de periodos futuros, incluidos los de las décadas de 2020 (2010-2039), 2050 (2040-69) y 2080 \n"
-"(2070-2100), se tomaron de los modelos de circulación general (general circulation models, GCM) del Proyecto de intercomparación de modelos acoplados \n"
-"(CMIP5) que forma parte del Quinto Informe de Evaluación del IPCC (IPCC 2014). Se seleccionaron quince GCM para dos \n"
-"escenarios de emisión de gases con efecto de invernadero (RCP 4.5 y RCP 8.5). Cuando se dispone de varios conjuntos para cada \n"
-"GCM, se calcula el promedio de los conjuntos disponibles (hasta cinco). También hay conjuntos disponibles entre \n"
-"los 15 GCM. Los 15 modelos de circulación general atmósfera-océano (Atmosphere-Ocean General Circulation Model, AOGCM) son: CanESM2, ACCESS1.0, IPSL-CM5A-MR, MIROC5, MPI-ESM-LR, CCSM4, \n"
-"HadGEM2-ES, CNRM-CM5, CSIRO Mk 3.6, GFDL-CM3, INM-CM4, MRI-CGCM3, MIROC-ESM, CESM1-CAM5 y GISS-E2R, y \n"
-"fueron elegidos por ${ name } para representar todos los grupos mayores de AOGCM similares."
-
-#: src/components/Menu.tsx:320
+#: src/components/Menu.tsx:307
 msgid "Climate variables used in Seedlot Select Tool"
 msgstr "Variables climáticas utilizadas en la Herramienta de selección de lotes de semillas"
 
-#: src/components/Menu.tsx:322
+#: src/components/Menu.tsx:309
 msgid "Annual variables"
 msgstr "Variables anuales"
 
-#: src/components/Menu.tsx:325
+#: src/components/Menu.tsx:312
 msgid "Directly calculated annual variables"
 msgstr "Variables anuales calculadas directamente"
 
-#: src/components/Menu.tsx:329
+#: src/components/Menu.tsx:316
 msgid "mean annual temperature (°C)"
 msgstr "Temperatura media anual (°C)"
 
-#: src/components/Menu.tsx:330
+#: src/components/Menu.tsx:317
 msgid "mean warmest month temperature (°C)"
 msgstr "Temperatura media del mes más cálido (°C)"
 
-#: src/components/Menu.tsx:331
+#: src/components/Menu.tsx:318
 msgid "mean coldest month temperature (°C)"
 msgstr "Temperatura media del mes más frío (°C)"
 
-#: src/components/Menu.tsx:332
+#: src/components/Menu.tsx:319
 msgid "temperature difference between MWMT and MCMT, or continentality (°C)"
 msgstr "Diferencia de temperatura entre la temperatura media del mes más caluroso (TMMC) y la temperatura media del mes más frío (TMMF), o continentalidad (°C)"
 
-#: src/components/Menu.tsx:335
+#: src/components/Menu.tsx:322
 msgid "annual heat-moisture index"
 msgstr "Índice de calor-humedad anual"
 
-#: src/components/Menu.tsx:336
+#: src/components/Menu.tsx:323
 msgid "summer heat-moisture index"
 msgstr "Índice de calor-humedad en verano"
 
-#: src/components/Menu.tsx:341
+#: src/components/Menu.tsx:328
 msgid "Derived annual variables"
 msgstr "Variables anuales derivadas"
 
-#: src/components/Menu.tsx:345
+#: src/components/Menu.tsx:332
 msgid "degree-days below 0°C, chilling degree-days"
 msgstr "Grados/días por debajo de 0 °C, grados/días de heladas"
 
-#: src/components/Menu.tsx:346
+#: src/components/Menu.tsx:333
 msgid "degree-days above 5°C, growing degree-days"
 msgstr "Grados/días por encima de 5 °C, grados/días de crecimiento"
 
-#: src/components/Menu.tsx:347
+#: src/components/Menu.tsx:334
 msgid "frost-free period"
 msgstr "Periodo sin escarcha"
 
-#: src/components/Menu.tsx:353
+#: src/components/Menu.tsx:340
 msgid "extreme minimum temperature over 30 years"
 msgstr "Temperatura mínima extrema durante 30 años"
 
-#: src/components/Menu.tsx:354
+#: src/components/Menu.tsx:341
 msgid "extreme maximum temperature over 30 years"
 msgstr "Temperatura máxima extrema durante 30 años"
 
-#: src/components/Menu.tsx:360
+#: src/components/Menu.tsx:347
 msgid "References"
 msgstr "Referencias"
 
-#: src/components/Menu.tsx:387
-#: src/components/Menu.tsx:499
+#: src/components/Menu.tsx:374
+#: src/components/Menu.tsx:490
 msgid "People"
 msgstr "Personas"
 
-#: src/components/Menu.tsx:390
-msgid ""
-"The Seedlot Selection Tool is a collaboration between the US Forest Service, Oregon State University, \n"
-"and the Conservation Biology Institute. Initial conceptualization and development was done by Glenn Howe \n"
-"at Oregon State University College of Forestry and Brad St.Clair at the US Forest Service Pacific \n"
-"Northwest Research Station, with considerable input from Ron Beloin while he was working at Oregon State \n"
-"University. The Conservation Biology Institute was brought onboard to bring the project to fruition \n"
-"through their expertise in web site design and programming for spatial applications. Personnel at the \n"
-"Conservation Biology Institute included Nikolas Stevenson-Molnar (tool developer), Brendan Ward (project \n"
-"manager), and Dominique Bachelet (project co-PI)."
-msgstr ""
-"La Herramienta de selección de lotes de semillas es una colaboración entre el Forest Service de los Estados Unidos, la Oregon State University \n"
-"y el Conservation Biology Institute. La conceptualización y el desarrollo iniciales estuvieron a cargo de Glenn Howe, de la Facultad de Ciencias Forestales \n"
-"de la Oregon State University, y Brad St. Clair, de la Estación de Investigación de la Región \n"
-"Noroeste del Pacífico (Pacific Northwest Research Station) del Servicio Forestal de los Estados Unidos (United States Forest Service, USFS), con una destacada aportación de Ron Beloin, cuando trabajaba en la Oregon State \n"
-"University. El Conservation Biology Institute se incorporó al proyecto para hacerlo realidad \n"
-"gracias a su experiencia en el diseño y programación de sitios web para aplicaciones espaciales. Entre el personal del \n"
-"Conservation Biology Institute se encontraban: Nikolas Stevenson-Molnar (desarrollador de herramientas), Brendan Ward (gerente del \n"
-"proyecto) y Dominique Bachelet (coinvestigadora principal del proyecto)."
-
-#: src/components/Menu.tsx:400
-msgid ""
-"Initial funding for the Seedlot Selection Tool came from the US Forest Service Washington Office.\n"
-"Subsequent funding came from the USFS Pacific Northwest Research Station, Oregon State University,\n"
-"Conservation Biology Institute, the USDA Northwest Climate Hub, Natural Resources Canada, \n"
-"USFS International Programs, and USFS State & Private"
-msgstr ""
-"El financiamiento inicial para la Herramienta de selección de lotes de semillas provino de la Oficina del Forest Service de los Estados Unidos en Washington.\n"
-"El financiamiento posterior provino de la Estación de Investigación de la Región Noroeste del Pacífico del USFS, la Oregon State University,\n"
-"el Conservation Biology Institute, el Centro Climático del Noroeste (NW Climate Hub) del Departamento de Agricultura de Estados Unidos (United States Department of Agriculture, USDA), Natural Resources Canada, \n"
-"los programas internacionales del USFS, y la Delegación del USFS estatal y de iniciativa privada"
-
-#: src/components/Menu.tsx:409
+#: src/components/About.tsx:76
 msgid "United States Forest Service"
 msgstr "United States Forest Service"
 
-#: src/components/Menu.tsx:414
+#: src/components/About.tsx:86
 msgid "Oregon State University"
 msgstr "Oregon State University"
 
-#: src/components/Menu.tsx:419
+#: src/components/About.tsx:96
 msgid "Conservation Biology Institute"
 msgstr "Conservation Biology Institute"
 
-#: src/components/Menu.tsx:424
+#: src/components/About.tsx:103
 msgid "NW Climate Hub"
 msgstr "NW Climate Hub"
 
-#: src/components/Menu.tsx:429
+#: src/components/Menu.tsx:394
 msgid "Contact Information"
 msgstr "Información de contacto"
 
-#: src/components/Menu.tsx:431
-msgid "Co - Principal Investigator"
-msgstr "Coinvestigadora principal"
-
-#: src/components/Menu.tsx:433
+#: src/components/Menu.tsx:398
 msgid "Research Geneticist, Pacific Northwest Research Station"
 msgstr "Genetista Investigador, Estación de Investigación de la Región Noroeste del Pacífico"
 
-#: src/components/Menu.tsx:435
+#: src/components/Menu.tsx:400
 msgid "USDA Forest Service, Corvallis, Oregon, USA"
 msgstr "USDA Forest Service, Corvallis, Oregón, EE. UU."
 
-#: src/components/Menu.tsx:442
+#: src/components/Menu.tsx:425
 msgid "Software Engineer"
 msgstr "Ingeniero de software"
 
-#: src/components/Menu.tsx:444
+#: src/components/Menu.tsx:427
 msgid "Conservation Biology Institute, Corvallis, Oregon, USA"
 msgstr "Conservation Biology Institute, Corvallis, Oregón, EE. UU."
 
-#: src/components/Menu.tsx:453
-#: src/components/Menu.tsx:502
+#: src/components/Menu.tsx:436
+#: src/components/Menu.tsx:493
 msgid "News & Updates"
 msgstr "Noticias y actualizaciones"
 
-#: src/components/Menu.tsx:456
+#: src/components/Menu.tsx:439
 msgid ""
 "Sign up for the SST newsletter. We will send you emails to inform you of major updates. We will not\n"
 "share your email address with anyone else."
@@ -731,17 +554,17 @@ msgstr ""
 "Suscríbase al boletín de la SST. Le enviaremos correos electrónicos para informarle sobre las actualizaciones importantes. No\n"
 "compartiremos su dirección de correo electrónico con nadie."
 
-#: src/components/Menu.tsx:461
+#: src/components/Menu.tsx:444
 msgid "Sign up for our newsletter"
 msgstr "Suscríbase a nuestro boletín informativo"
 
-#: src/components/Menu.tsx:469
-#: src/components/Menu.tsx:478
-#: src/components/Menu.tsx:506
+#: src/components/Menu.tsx:452
+#: src/components/Menu.tsx:461
+#: src/components/Menu.tsx:497
 msgid "Report an Issue"
 msgstr "Reporte de problemas"
 
-#: src/components/Menu.tsx:472
+#: src/components/Menu.tsx:455
 msgid ""
 "Issues are used to track to-dos, bugs, feature requests, and more. As issues are created, they'll\n"
 "appear here in a searchable and filterable list. To get started, you should create an issue (you will \n"
@@ -751,60 +574,60 @@ msgstr ""
 "problemas aparecerán aquí, en una lista donde es posible hacer búsquedas y filtrar datos. Para comenzar, deberá crear un problema (tendrá \n"
 "que registrarse para obtener una cuenta de GitHub)."
 
-#: src/components/Menu.tsx:496
+#: src/components/Menu.tsx:487
 msgid "ClimateNA"
 msgstr "ClimateNA"
 
-#: src/config.ts:148
+#: src/config.ts:170
 msgid "Scaled Height"
 msgstr "Altura escalada"
 
-#: src/config.ts:157
+#: src/config.ts:179
 msgid "Height"
 msgstr "Altura"
 
-#: src/config.ts:313
+#: src/components/IntroTour/TourContent.tsx:70
 msgid "Constraints"
 msgstr "Restricciones"
 
-#: src/components/Menu.tsx:491
-#: src/seedsource-ui/containers/Sidebar.tsx:31
+#: src/components/Menu.tsx:482
+#: src/seedsource-ui/containers/Sidebar.tsx:32
 msgid "About"
 msgstr "Acerca de"
 
-#: src/config.ts:234
+#: src/config.ts:297
 msgid "White spruce"
 msgstr "Red spruce"
 
-#: src/config.ts:241
+#: src/config.ts:304
 msgid "Red spruce"
 msgstr "Red spruce"
 
-#: src/config.ts:255
+#: src/config.ts:318
 msgid "Red pine"
 msgstr "Red pine"
 
-#: src/config.ts:262
+#: src/config.ts:325
 msgid "Eastern white pine"
 msgstr "Eastern white pine"
 
-#: src/config.ts:269
+#: src/config.ts:332
 msgid "Shagbark hickory"
 msgstr "Shagbark hickory"
 
-#: src/config.ts:283
+#: src/config.ts:346
 msgid "White oak"
 msgstr "White oak"
 
-#: src/config.ts:290
+#: src/config.ts:353
 msgid "Swamp white oak"
 msgstr "Swamp white oak"
 
-#: src/config.ts:297
+#: src/config.ts:360
 msgid "Southern red oak"
 msgstr "Southern red oak"
 
-#: src/config.ts:304
+#: src/config.ts:367
 msgid "Northern red oak"
 msgstr "Northern red oak"
 
@@ -877,9 +700,9 @@ msgstr "Déficit de humedad climática de Hargreaves"
 msgid "Geographic"
 msgstr "Geográfico"
 
+#: src/seedsource-ui/components/Popup.tsx:265
 #: src/seedsource-ui/config.ts:354
 #: src/seedsource-ui/containers/ElevationConstraint.tsx:21
-#: src/seedsource-ui/containers/Map.tsx:718
 msgid "Elevation"
 msgstr "Elevación"
 
@@ -905,6 +728,7 @@ msgstr "Longitud"
 msgid "Distance"
 msgstr "Distancia"
 
+#: src/components/IntroTour/TourContent.tsx:77
 #: src/seedsource-ui/config.ts:415
 msgid "Results"
 msgstr "Resultados"
@@ -962,23 +786,23 @@ msgstr "Salir"
 msgid "Account"
 msgstr "Cuenta"
 
-#: src/seedsource-ui/containers/ClimateStep.tsx:31
+#: src/seedsource-ui/containers/ClimateStep.tsx:35
 msgid "Seedlot climate:"
 msgstr "Clima del lote de semillas:"
 
-#: src/seedsource-ui/containers/ClimateStep.tsx:35
+#: src/seedsource-ui/containers/ClimateStep.tsx:39
 msgid "Planting site climate:"
 msgstr "Clima del sitio de plantación:"
 
-#: src/seedsource-ui/containers/ClimateStep.tsx:107
+#: src/seedsource-ui/containers/ClimateStep.tsx:111
 msgid "Select climate scenarios"
 msgstr "Seleccionar escenarios climáticos"
 
-#: src/seedsource-ui/containers/ClimateStep.tsx:108
+#: src/seedsource-ui/containers/ClimateStep.tsx:112
 msgid "Which climate are the seedlots adapted to?"
 msgstr "¿A qué clima están adaptados los lotes de semillas?"
 
-#: src/seedsource-ui/containers/ClimateStep.tsx:109
+#: src/seedsource-ui/containers/ClimateStep.tsx:113
 msgid "When should trees be best adapted to the planting site?"
 msgstr "¿Cuándo se adaptarán mejor los árboles al sitio de plantación?"
 
@@ -1011,15 +835,15 @@ msgstr "Comparar lotes de semillas"
 msgid "Compare Planting Sites"
 msgstr "Comparar sitios de plantación"
 
+#: src/components/IntroTour/TourContent.tsx:35
+#: src/seedsource-ui/components/Popup.tsx:257
 #: src/seedsource-ui/containers/Comparisons.tsx:158
-#: src/seedsource-ui/containers/LocationStep.tsx:42
-#: src/seedsource-ui/containers/Map.tsx:712
 msgid "Location"
 msgstr "Ubicación"
 
 #: src/seedsource-ui/containers/Comparisons.tsx:159
 #: src/seedsource-ui/containers/Comparisons.tsx:309
-#: src/seedsource-ui/containers/ConstraintStep.tsx:25
+#: src/seedsource-ui/containers/ConstraintStep.tsx:36
 #: src/seedsource-ui/containers/CustomFunctionModal.tsx:175
 #: src/seedsource-ui/containers/CustomFunctions.tsx:43
 #: src/seedsource-ui/containers/Traits.tsx:41
@@ -1088,24 +912,24 @@ msgstr "Listo"
 msgid "Uploading CSV data..."
 msgstr "Cargando datos de CSV…"
 
-#: src/seedsource-ui/containers/ConstraintStep.tsx:26
+#: src/seedsource-ui/containers/ConstraintStep.tsx:37
 #: src/seedsource-ui/containers/CustomFunctions.tsx:44
 #: src/seedsource-ui/containers/Traits.tsx:42
 msgid "Value"
 msgstr "Valor"
 
-#: src/seedsource-ui/containers/ConstraintStep.tsx:42
+#: src/seedsource-ui/containers/ConstraintStep.tsx:53
 msgid "Apply constraints"
 msgstr "Aplicar limitaciones"
 
 #: src/seedsource-ui/containers/CustomFunction.tsx:62
 #: src/seedsource-ui/containers/Trait.tsx:66
-#: src/seedsource-ui/containers/Variable.tsx:242
+#: src/seedsource-ui/containers/Variable.tsx:243
 msgid "Transfer limit (+/-):"
 msgstr "Límite de transferencia (+/-):"
 
 #: src/seedsource-ui/containers/CustomFunctionModal.tsx:154
-#: src/seedsource-ui/containers/SavedRun.tsx:78
+#: src/seedsource-ui/containers/SavedRun.tsx:137
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -1115,7 +939,8 @@ msgid "Save"
 msgstr "Guardar"
 
 #: src/seedsource-ui/containers/CustomFunctionModal.tsx:192
-#: src/seedsource-ui/containers/TransferStep.tsx:88
+#: src/seedsource-ui/containers/TransferStep.tsx:54
+#: src/seedsource-ui/containers/TransferStep.tsx:125
 msgid "Function"
 msgstr "Función"
 
@@ -1142,8 +967,10 @@ msgid "If the problem persists, please ${ reportAnIssue } and include the follow
 msgstr "Si el problema persiste, ${ reportAnIssue } e incluya la siguiente información:"
 
 #: src/seedsource-ui/containers/Layers.tsx:104
-#: src/seedsource-ui/containers/RegionStep.tsx:33
-#: src/seedsource-ui/containers/TransferStep.tsx:85
+#: src/seedsource-ui/containers/RegionStep.tsx:29
+#: src/seedsource-ui/containers/RegionStep.tsx:45
+#: src/seedsource-ui/containers/TransferStep.tsx:39
+#: src/seedsource-ui/containers/TransferStep.tsx:122
 msgid "Custom"
 msgstr "Personalizado"
 
@@ -1155,52 +982,52 @@ msgstr "Cargar un shapefile"
 msgid "Elevation:"
 msgstr "Elevación:"
 
-#: src/seedsource-ui/containers/LocationStep.tsx:34
+#: src/seedsource-ui/containers/LocationStep.tsx:38
 msgid "Select planting site location"
 msgstr "Seleccione la ubicación del sitio de plantación"
 
-#: src/seedsource-ui/containers/LocationStep.tsx:34
+#: src/seedsource-ui/containers/LocationStep.tsx:38
 msgid "Select seedlot location"
 msgstr "Seleccione la ubicación del lote de semillas"
 
-#: src/seedsource-ui/containers/LocationStep.tsx:45
+#: src/seedsource-ui/containers/LocationStep.tsx:33
 #, javascript-format
 msgid "Locate your ${ siteLabel } by using the map or entering coordinates."
 msgstr "Localice su ${ siteLabel } en el mapa o introduciendo las coordenadas."
 
-#: src/seedsource-ui/containers/Map.tsx:728
+#: src/seedsource-ui/components/Popup.tsx:281
 msgid "Climate"
 msgstr "Clima"
 
-#: src/seedsource-ui/containers/Map.tsx:766
+#: src/seedsource-ui/components/Popup.tsx:319
 msgid "Available Zones"
 msgstr "Zonas disponibles"
 
-#: src/seedsource-ui/containers/Map.tsx:794
+#: src/seedsource-ui/components/Popup.tsx:336
 msgid "Add Location"
 msgstr "Añadir ubicación"
 
-#: src/seedsource-ui/containers/Map.tsx:794
+#: src/seedsource-ui/components/Popup.tsx:336
 msgid "Set Point"
 msgstr "Punto de ajuste"
 
-#: src/seedsource-ui/containers/Map.tsx:1014
+#: src/seedsource-ui/containers/Map.tsx:871
 #, javascript-format
 msgid "Showing climate for ${ climateLabel }"
 msgstr "Mostrando el clima para ${ climateLabel }"
 
-#: src/seedsource-ui/containers/ObjectiveStep.tsx:21
-#: src/seedsource-ui/containers/ObjectiveStep.tsx:28
+#: src/seedsource-ui/containers/ObjectiveStep.tsx:40
+#: src/seedsource-ui/containers/ObjectiveStep.tsx:47
 msgid "Select objective"
 msgstr "Seleccionar objetivo"
 
-#: src/seedsource-ui/containers/ObjectiveStep.tsx:22
-#: src/seedsource-ui/containers/ObjectiveStep.tsx:31
+#: src/seedsource-ui/containers/ObjectiveStep.tsx:41
+#: src/seedsource-ui/containers/ObjectiveStep.tsx:50
 msgid "Find seedlots"
 msgstr "Buscar lotes de semillas"
 
-#: src/seedsource-ui/containers/ObjectiveStep.tsx:22
-#: src/seedsource-ui/containers/ObjectiveStep.tsx:32
+#: src/seedsource-ui/containers/ObjectiveStep.tsx:41
+#: src/seedsource-ui/containers/ObjectiveStep.tsx:51
 msgid "Find planting sites"
 msgstr "Buscar sitios de plantación"
 
@@ -1213,17 +1040,18 @@ msgstr "${ numberOfHours } horas"
 msgid "hours"
 msgstr "horas"
 
-#: src/seedsource-ui/containers/RegionStep.tsx:32
+#: src/seedsource-ui/containers/RegionStep.tsx:28
+#: src/seedsource-ui/containers/RegionStep.tsx:44
 msgid "Automatic"
 msgstr "Automático"
 
-#: src/seedsource-ui/containers/RegionStep.tsx:41
-#: src/seedsource-ui/containers/RegionStep.tsx:48
+#: src/seedsource-ui/containers/RegionStep.tsx:53
+#: src/seedsource-ui/containers/RegionStep.tsx:60
 msgid "Select region"
 msgstr "Seleccionar región"
 
-#: src/seedsource-ui/containers/RegionStep.tsx:43
-#: src/seedsource-ui/containers/RegionStep.tsx:52
+#: src/seedsource-ui/containers/RegionStep.tsx:55
+#: src/seedsource-ui/containers/RegionStep.tsx:64
 msgid "Region:"
 msgstr "Región:"
 
@@ -1251,49 +1079,49 @@ msgstr "Métricas"
 msgid "Imperial"
 msgstr "Imperiales"
 
-#: src/seedsource-ui/containers/RunStep.tsx:80
-#: src/seedsource-ui/containers/RunStep.tsx:90
+#: src/seedsource-ui/containers/RunStep.tsx:82
+#: src/seedsource-ui/containers/RunStep.tsx:92
 #: src/seedsource-ui/containers/Variables.tsx:24
 msgid "Configuration error"
 msgstr "Error de configuración"
 
-#: src/seedsource-ui/containers/RunStep.tsx:81
+#: src/seedsource-ui/containers/RunStep.tsx:83
 msgid "Cannot calculate scores: one or more of your variables has no transfer limit, or a limit of 0."
 msgstr "No es posible calcular puntuaciones: una o más de las variables no tienen límite de transferencia o su límite es 0."
 
-#: src/seedsource-ui/containers/RunStep.tsx:91
+#: src/seedsource-ui/containers/RunStep.tsx:93
 msgid "Cannot calculate scores: one or more of your constraints is missing a value."
 msgstr "No es posible calcular puntuaciones: a una o más de sus limitaciones le falta un valor."
 
-#: src/seedsource-ui/containers/RunStep.tsx:102
+#: src/seedsource-ui/containers/RunStep.tsx:104
 msgid "Login required"
 msgstr "Es necesario iniciar sesión"
 
-#: src/seedsource-ui/containers/RunStep.tsx:102
+#: src/seedsource-ui/containers/RunStep.tsx:104
 msgid "Please login to save your run."
 msgstr "Inicie sesión para guardar la ejecución."
 
-#: src/seedsource-ui/containers/RunStep.tsx:205
+#: src/seedsource-ui/containers/RunStep.tsx:221
 msgid "Run Tool"
 msgstr "Ejecute la Herramienta"
 
-#: src/seedsource-ui/containers/RunStep.tsx:219
+#: src/seedsource-ui/containers/RunStep.tsx:235
 msgid "Save Last Run"
 msgstr "Guardar la última ejecución"
 
-#: src/seedsource-ui/containers/RunStep.tsx:224
+#: src/seedsource-ui/containers/RunStep.tsx:240
 msgid "Export As..."
 msgstr "Exportar como…"
 
-#: src/seedsource-ui/containers/RunStep.tsx:249
+#: src/seedsource-ui/containers/RunStep.tsx:265
 msgid "GeoTIFF"
 msgstr "GeoTIFF"
 
-#: src/seedsource-ui/containers/RunStep.tsx:259
+#: src/seedsource-ui/containers/RunStep.tsx:275
 msgid "Position Map"
 msgstr "Mapa de posición"
 
-#: src/seedsource-ui/containers/RunStep.tsx:277
+#: src/seedsource-ui/containers/RunStep.tsx:293
 msgid "Move and zoom the map to set how it will appear in the report."
 msgstr "Mueva y amplíe el mapa para definir cómo aparecerá en el informe."
 
@@ -1358,15 +1186,11 @@ msgstr "Actualizar la actual"
 msgid "Save Run Configuration"
 msgstr "Guardar la configuración de ejecución"
 
-#: src/seedsource-ui/containers/SavedRun.tsx:52
+#: src/seedsource-ui/containers/SavedRun.tsx:119
 msgid "Last modified:"
 msgstr "Modificación más reciente:"
 
-#: src/seedsource-ui/containers/SavedRun.tsx:61
-msgid "Load this saved configuration? This will replace your current settings."
-msgstr "¿Cargar esta configuración guardada? Esto reemplazará la configuración actual."
-
-#: src/seedsource-ui/containers/SavedRun.tsx:72
+#: src/seedsource-ui/containers/SavedRun.tsx:131
 msgid "Delete this saved configuration?"
 msgstr "¿Eliminar esta configuración guardada?"
 
@@ -1435,19 +1259,20 @@ msgstr "El archivo no es compatible"
 msgid "Processing..."
 msgstr "Procesando…"
 
-#: src/seedsource-ui/containers/Sidebar.tsx:38
+#: src/components/About.tsx:42
+#: src/seedsource-ui/containers/Sidebar.tsx:39
 msgid "Tool"
 msgstr "Herramienta"
 
-#: src/seedsource-ui/containers/Sidebar.tsx:41
+#: src/seedsource-ui/containers/Sidebar.tsx:42
 msgid "Layers"
 msgstr "Capas"
 
-#: src/seedsource-ui/containers/Sidebar.tsx:44
+#: src/seedsource-ui/containers/Sidebar.tsx:45
 msgid "Saved Runs"
 msgstr "Ejecuciones guardadas"
 
-#: src/seedsource-ui/containers/Sidebar.tsx:47
+#: src/seedsource-ui/containers/Sidebar.tsx:48
 msgid "Map"
 msgstr "Mapa"
 
@@ -1461,7 +1286,7 @@ msgid "Generic"
 msgstr "Genérico"
 
 #: src/seedsource-ui/containers/Trait.tsx:60
-#: src/seedsource-ui/containers/Variable.tsx:238
+#: src/seedsource-ui/containers/Variable.tsx:239
 msgid "Value at point:"
 msgstr "Valor en el punto:"
 
@@ -1469,65 +1294,68 @@ msgstr "Valor en el punto:"
 msgid "Add a trait..."
 msgstr "Añada una característica…"
 
-#: src/seedsource-ui/containers/TransferStep.tsx:36
+#: src/seedsource-ui/containers/TransferStep.tsx:67
 msgid "Transfer limits based on seed zone, climatic center based on the selected location"
 msgstr "Límites de transferencia según la zona de origen de las semillas; centro climático según la ubicación seleccionada"
 
-#: src/seedsource-ui/containers/TransferStep.tsx:39
+#: src/seedsource-ui/containers/TransferStep.tsx:70
 msgid "Transfer limits and climatic center based on seed zone"
 msgstr "Límites de transferencia y centro climático según la zona de origen de las semillas"
 
-#: src/seedsource-ui/containers/TransferStep.tsx:42
+#: src/seedsource-ui/containers/TransferStep.tsx:73
 msgid "Custom transfer limits, climatic center based on the selected location"
 msgstr "Límites de transferencia personalizados; centro climático según la ubicación seleccionada"
 
-#: src/seedsource-ui/containers/TransferStep.tsx:46
-#: src/seedsource-ui/containers/TransferStep.tsx:82
+#: src/seedsource-ui/containers/TransferStep.tsx:77
+#: src/seedsource-ui/containers/TransferStep.tsx:114
 msgid "Select transfer limit method"
 msgstr "Seleccione el método de límite de transferencia"
 
-#: src/seedsource-ui/containers/TransferStep.tsx:58
+#: src/seedsource-ui/containers/TransferStep.tsx:89
 msgid "Which should be used as the climatic center?"
 msgstr "¿Qué se debe usar como centro climático?"
 
-#: src/seedsource-ui/containers/TransferStep.tsx:64
+#: src/seedsource-ui/containers/TransferStep.tsx:95
 msgid "The value at the selected location"
 msgstr "El valor en la ubicación seleccionada"
 
-#: src/seedsource-ui/containers/TransferStep.tsx:70
+#: src/seedsource-ui/containers/TransferStep.tsx:101
 msgid "The climatic center of the zone"
 msgstr "El centro climático de la zona"
 
-#: src/seedsource-ui/containers/TransferStep.tsx:86
+#: src/seedsource-ui/containers/TransferStep.tsx:44
+#: src/seedsource-ui/containers/TransferStep.tsx:123
 msgid "Zone"
 msgstr "Zona"
 
-#: src/seedsource-ui/containers/Variable.tsx:181
+#: src/seedsource-ui/containers/Variable.tsx:182
 msgid "Zone climatic center:"
 msgstr "Centro climático de la zona:"
 
-#: src/seedsource-ui/containers/Variable.tsx:244
+#: src/seedsource-ui/containers/Variable.tsx:245
+#. #__PURE__
 msgid "modified"
 msgstr "modificado"
 
-#: src/seedsource-ui/containers/Variable.tsx:248
+#: src/seedsource-ui/containers/Variable.tsx:249
+#. #__PURE__
 msgid "Avg.transfer limit for zone set:"
 msgstr "Límite de transferencia promedio para la configuración de zona:"
 
-#: src/seedsource-ui/containers/VariableStep.tsx:53
+#: src/seedsource-ui/containers/VariableStep.tsx:73
 msgid "Click to add variables"
 msgstr "Haga clic para añadir variables"
 
-#: src/seedsource-ui/containers/VariableStep.tsx:62
-#: src/seedsource-ui/containers/VariableStep.tsx:69
+#: src/seedsource-ui/containers/VariableStep.tsx:82
+#: src/seedsource-ui/containers/VariableStep.tsx:90
 msgid "Select climate variables"
 msgstr "Seleccionar variables climáticas"
 
-#: src/seedsource-ui/containers/VariableStep.tsx:89
+#: src/seedsource-ui/containers/VariableStep.tsx:115
 msgid "or"
 msgstr "o"
 
-#: src/seedsource-ui/containers/VariableStep.tsx:97
+#: src/seedsource-ui/containers/VariableStep.tsx:123
 msgid "Choose automatically"
 msgstr "Elegir de modo automático"
 
@@ -1603,6 +1431,7 @@ msgstr "Error de inicio de sesión"
 msgid "Forgot your password?"
 msgstr "¿Olvidó su contraseña?"
 
+#: src/components/IntroTour/IntroTour.tsx:381
 #: src/seedsource-ui/components/Modal.tsx:49
 #: src/seedsource-ui/components/ModalCard.tsx:46
 msgid "close"
@@ -1677,29 +1506,19 @@ msgstr "Error de procesamiento"
 msgid "Sorry, processing failed."
 msgstr "Lo sentimos, hubo un error durante el procesamiento."
 
-#: src/seedsource-ui/components/AnnouncementModal.tsx:48
+#: src/seedsource-ui/components/AnnouncementModal.tsx:49
 msgid "Ok"
 msgstr "Ok"
 
-#: src/seedsource-ui/components/App.tsx:78
-msgid ""
-"The current RCP scenarios will no longer be available. As such, any saved runs or links to saved runs will no\n"
-"longer be available after the data is updated. If you have any saved runs you'd like to preserve, please\n"
-"consider exporting those as PDF and/or GeoTIFF."
-msgstr ""
-"Los escenarios RCP actuales ya no estarán disponibles. Por lo tanto, las ejecuciones guardadas y los enlaces\n"
-"a ellas dejarán de estar disponibles una vez actualizados los datos. Si tiene ejecuciones guardadas que desea\n"
-"conservar, considere exportarlas como PDF o GeoTIFF."
-
-#: src/config.ts:118
+#: src/config.ts:107
 msgid "Limber pine"
 msgstr "Limber pine"
 
-#: src/config.ts:130
+#: src/config.ts:131
 msgid "Ponderosa pine var. scopulorum"
 msgstr ""
 
-#: src/config.ts:276
+#: src/config.ts:339
 msgid "Black walnut"
 msgstr "Black walnut"
 
@@ -1736,6 +1555,7 @@ msgid "are not known variables"
 msgstr ""
 
 #: src/seedsource-ui/containers/CustomFunctionModal.tsx:159
+#: src/seedsource-ui/containers/SavedRun.tsx:57
 msgid "Cancel"
 msgstr ""
 
@@ -1755,30 +1575,22 @@ msgstr ""
 msgid "Add a custom function..."
 msgstr ""
 
-#: src/seedsource-ui/containers/TransferStep.tsx:87
+#: src/seedsource-ui/containers/TransferStep.tsx:50
+#: src/seedsource-ui/containers/TransferStep.tsx:124
 msgid "Trait"
 msgstr ""
 
-#: src/seedsource-ui/containers/Variable.tsx:238
+#: src/seedsource-ui/containers/Variable.tsx:239
+#. #__PURE__
 msgid "Custom value:"
 msgstr ""
 
-#: src/seedsource-ui/containers/VariableStep.tsx:80
+#: src/seedsource-ui/containers/VariableStep.tsx:106
 msgid "Custom climate values"
 msgstr ""
 
-#: src/seedsource-ui/components/AnnouncementModal.tsx:62
+#: src/seedsource-ui/components/AnnouncementModal.tsx:71
 msgid "Don't show again"
-msgstr ""
-
-#: src/seedsource-ui/components/App.tsx:67
-msgid "New Future Data"
-msgstr ""
-
-#: src/seedsource-ui/components/App.tsx:74
-msgid ""
-"The Seedlot Selection Tool will soon incorporate new climate futures based on ClimateNA 7.50. The new futures\n"
-"will offer three emissions scenarios: SSP245, SSP370, and SSP585."
 msgstr ""
 
 #: src/seedsource-ui/components/ShareURL.tsx:80
@@ -1807,19 +1619,425 @@ msgstr ""
 msgid "Get URL"
 msgstr ""
 
-#: src/components/Menu.tsx:483
+#: src/components/Menu.tsx:466
 msgid "User Guides"
 msgstr ""
 
-#: src/components/Menu.tsx:485
+#: src/components/About.tsx:51
+#: src/components/Menu.tsx:468
 msgid "Basic Guide"
 msgstr ""
 
-#: src/components/Menu.tsx:488
+#: src/components/About.tsx:62
+#: src/components/Menu.tsx:471
 msgid "Silviculturists Guide"
 msgstr ""
 
-#: src/config.ts:318
+#: src/seedsource-ui/config.ts:692
+msgid "The climate model data in your save is outdated. To resolve this issue, please select a new climate scenario."
+msgstr ""
+
+#: src/seedsource-ui/containers/ClimateStep.tsx:19
+msgid "You can select historical, current, or future climates for your seedlots or planting sites."
+msgstr ""
+
+#: src/seedsource-ui/containers/ConstraintStep.tsx:17
+msgid ""
+"This is an optional step that applies constraints to limit the geographic extent of the mapped results. There \n"
+"are two choices for constraining the results: 1) Geographic constraints including latitude, longitude, elevation, \n"
+"distance, photoperiod, or 2) Species ranges that include a list of results from species distribution models for \n"
+"contemporary climates. Users also have the option to import their own geographic boundary to use as a constraint \n"
+"under the geographic constraints, by selecting a shapefile. Using constraints will exclude that part of the \n"
+"climatic output that is beyond the geographic limits imposed or beyond the species range."
+msgstr ""
+
+#: src/seedsource-ui/containers/ObjectiveStep.tsx:21
+msgid "Find seedlots:"
+msgstr ""
+
+#: src/seedsource-ui/containers/ObjectiveStep.tsx:22
+msgid ""
+"Select this option if you are looking for where you want to source your seedlots\n"
+"from to plant at a particular location. The objective of finding seedlots for a planting site is to indicate where\n"
+"one would locate seedlots that would be adapted to a past, current, or future climate at a planting site. Running\n"
+"the tool will generate a heat map of potential seedlots that are suitable to plant at your selected location."
+msgstr ""
+
+#: src/seedsource-ui/containers/ObjectiveStep.tsx:29
+msgid "Find planting sites:"
+msgstr ""
+
+#: src/seedsource-ui/containers/ObjectiveStep.tsx:30
+msgid ""
+"Select this option if you want to find planting sites for seedlots that you\n"
+"already have. The objective of finding planting sites for a seedlot is to indicate where the current or future\n"
+"climate matches the conditions to which the seedlot is suited. This is the inverse of the first option."
+msgstr ""
+
+#: src/seedsource-ui/containers/SavedRun.tsx:51
+msgid "Load configuration?"
+msgstr ""
+
+#: src/seedsource-ui/containers/SavedRun.tsx:74
+msgid "Confirm"
+msgstr ""
+
+#: src/seedsource-ui/containers/SavedRun.tsx:79
+msgid "Loading this configuration will replace your current settings."
+msgstr ""
+
+#: src/seedsource-ui/containers/SavedRun.tsx:93
+msgid "Notification"
+msgstr ""
+
+#: src/seedsource-ui/containers/SavedRun.tsx:98
+msgid "OK"
+msgstr ""
+
+#: src/seedsource-ui/containers/SavedRun.tsx:102
+msgid "The following issue(s) were encountered while loading your saved run."
+msgstr ""
+
+#: src/seedsource-ui/containers/TransferStep.tsx:34
+msgid ""
+"The transfer limit method selected determines how far climatically a seedlot may be moved and still \n"
+"have an acceptable level of adaptation."
+msgstr ""
+
+#: src/seedsource-ui/containers/TransferStep.tsx:37
+msgid "The SST uses four approaches to determine and map transfer limits: "
+msgstr ""
+
+#: src/seedsource-ui/containers/TransferStep.tsx:40
+msgid ""
+"Allows for user-defined transfer limits for each climate variable selected in Step 6 based on user knowledge \n"
+"and experience including the best available science."
+msgstr ""
+
+#: src/seedsource-ui/containers/TransferStep.tsx:45
+msgid ""
+"Suggests transfer limits based on the range of climate conditions within the zone of the planting site or \n"
+"seedlot; these values are based on operational resource management over the past half-century and allows users \n"
+"to customize climate variables in step 6 or choose them automatically."
+msgstr ""
+
+#: src/seedsource-ui/containers/TransferStep.tsx:51
+msgid "Suggests transfer limits based on a particular trait of a species."
+msgstr ""
+
+#: src/seedsource-ui/containers/TransferStep.tsx:55
+msgid ""
+"Allows for species to be selected to determine transfer limits based on a function that is derived from \n"
+"genetic studies that relates population differences in adaptive traits grown in a common environment to the \n"
+"climates of seed sources. The function approach is available for select species."
+msgstr ""
+
+#: src/seedsource-ui/containers/VariableStep.tsx:37
+msgid ""
+"When using the Custom or Zone approach, select one or more of the 16 biologically relevant climate variables. \n"
+"Do not select too many climate variables, particularly variables that are correlated with each other. The use of \n"
+"more than three climate variables will probably result in overly conservative climate matches; the more climate \n"
+"variables that are included, the smaller the mapped areas will be."
+msgstr ""
+
+#: src/seedsource-ui/containers/VariableStep.tsx:44
+msgid ""
+"You also have the option to choose automatically, in which case, the climate variables chosen will be mean \n"
+"temperature of the coldest month (MCMT) and summer heat: moisture index (SHM). These climate variables are \n"
+"chosen based on the assumption that temperate forest trees (or other plants) are primarily adapted to cold \n"
+"temperatures in the winter and aridity in the summer. The automatic selection of climate variables will \n"
+"calculate default transfer limits of +/- 2.0⁰C for Mean Coldest Month Temperature (MCMT) and +/- half of value \n"
+"at the location of the planting site or seedlot for Summer Heat-Moisture Index (SHM)."
+msgstr ""
+
+#: src/components/About.tsx:22
+msgid "Planting for the future"
+msgstr ""
+
+#: src/components/About.tsx:25
+msgid ""
+"Four images arranged in a square. Clockwise from top-left: a hand holding a bunch of small seeds; a \n"
+"clear-cut hillside; several flowering sagebrush; conifer trees in a mist."
+msgstr ""
+
+#: src/components/About.tsx:29
+msgid ""
+"Over a century of genetic research has shown that environment, in particularly climate, strongly affects plant \n"
+"genetic adaptation and the geography distance seed can be moved from its source location. The Seedlot Selection \n"
+"Tool (SST) is a GIS mapping program designed to provide information on seed collection and transfer of native \n"
+"plants and help forest managers match seedlots with planting sites based on climatic information."
+msgstr ""
+
+#: src/components/About.tsx:35
+msgid ""
+"The climates of the planting sites and seedlots can be chosen to represent current climates, or future \n"
+"climates based on selected climate change scenarios."
+msgstr ""
+
+#: src/components/About.tsx:39
+msgid "Getting Started"
+msgstr ""
+
+#: src/components/About.tsx:43
+#, javascript-format
+msgid ""
+"Click the ${ tool } tab to get started. To learn more about how to use this \n"
+"tool, refer to one of the available guides:"
+msgstr ""
+
+#: src/components/About.tsx:54
+#, javascript-format
+msgid ""
+"The ${ basicGuide } provides information about the features, functionality, and internal \n"
+"calculations of the tool."
+msgstr ""
+
+#: src/components/About.tsx:65
+#, javascript-format
+msgid ""
+"The ${ silviculturistsGuide } demonstrates how to use the tool for silviculturists working in \n"
+"the Pacific Northwest"
+msgstr ""
+
+#: src/components/About.tsx:81
+msgid "Bureau of Land Management"
+msgstr ""
+
+#: src/components/About.tsx:91
+msgid "Great Basin Native Plant Project"
+msgstr ""
+
+#: src/components/Menu.tsx:300
+msgid ""
+"The climate data for future periods, including 2020s (2010-2039), 2050s (2040-69) and 2080s \n"
+"(2070-2100), were from General Circulation Models (GCMs) of the Coupled Model Intercomparison Project \n"
+"(CMIP6) included in the IPCC sixth assessment report (AR6). Eight GCMs were selected for three \n"
+"greenhouse gas emission scenarios (SSP245, SSP370, and SSP585). The 8 GCMss are ACCESS-ESM1-5, \n"
+"CNRM-ESM2-1, EC-Earth3, GFDL-ESM4, GISS-E2-1-G, MIROC6, MPI-ESM1-2-HR, and MRI-ESM2-0."
+msgstr ""
+
+#: src/components/Menu.tsx:377
+msgid ""
+"The Seedlot Selection Tool is a collaboration between the US Forest Service, Oregon State University, \n"
+"the Bureau of Land Management, and the Conservation Biology Institute. Initial conceptualization and \n"
+"development was done by Glenn Howe at Oregon State University College of Forestry and Brad St.Clair at the \n"
+"US Forest Service Pacific Northwest Research Station, with considerable input from Ron Beloin while he was \n"
+"working at Oregon State University. The Conservation Biology Institute was brought onboard to bring the \n"
+"project to fruition through their expertise in web site design and programming for spatial applications. \n"
+"Personnel at the Conservation Biology Institute included Nikolas Stevenson-Molnar (tool developer), \n"
+"Brendan Ward (project manager), and Dominique Bachelet (project co-PI)."
+msgstr ""
+
+#: src/components/Menu.tsx:387
+msgid ""
+"Initial funding for the Seedlot Selection Tool came from the US Forest Service Washington Office.\n"
+"Subsequent funding came from the USFS Pacific Northwest Research Station, Oregon State University,\n"
+"Conservation Biology Institute, the USDA Northwest Climate Hub, Natural Resources Canada, USFS \n"
+"International Programs, and USFS State & Private. Funding for additional functionality was provided \n"
+"by the Great Basin Native Plant Program."
+msgstr ""
+
+#: src/components/Menu.tsx:396
+#: src/components/Menu.tsx:405
+#: src/components/Menu.tsx:414
+msgid "Co-Principal Investigator"
+msgstr ""
+
+#: src/components/Menu.tsx:407
+msgid "Research Geneticist, Rocky Mountain Research Station"
+msgstr ""
+
+#: src/components/Menu.tsx:409
+msgid "USDA Forest Service, Moscow, Idaho, USA"
+msgstr ""
+
+#: src/components/Menu.tsx:416
+msgid "Research Biologist, Rocky Mountain Research Station"
+msgstr ""
+
+#: src/components/Menu.tsx:418
+msgid "USDA Forest Service, Boise, Idaho, USA"
+msgstr ""
+
+#: src/components/Menu.tsx:479
+msgid "Guided Tour"
+msgstr ""
+
+#: src/components/IntroTour/IntroTour.tsx:95
+msgid "Complete Tour"
+msgstr ""
+
+#: src/components/IntroTour/IntroTour.tsx:97
+msgid "Leave Tour"
+msgstr ""
+
+#: src/components/IntroTour/IntroTour.tsx:98
+msgid "Next"
+msgstr ""
+
+#: src/components/IntroTour/IntroTour.tsx:367
+#: src/components/IntroTour/IntroTour.tsx:394
+msgid "Start Tour"
+msgstr ""
+
+#: src/components/IntroTour/IntroTour.tsx:370
+#: src/components/IntroTour/IntroTour.tsx:391
+msgid "Not Now"
+msgstr ""
+
+#: src/components/IntroTour/IntroTour.tsx:413
+#, javascript-format
+msgid "Tour step ${ currentStepNum } of ${ totalSteps }"
+msgstr ""
+
+#: src/components/IntroTour/IntroTour.tsx:421
+msgid "Go back"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:20
+msgid "Welcome to the Seedlot Selection Tool"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:21
+msgid "This tool will guide you through the process of selecting appropriate seedlots for your planting sites or finding suitable planting sites for your seedlots based on climatic information."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:22
+msgid "The tour will show you the main features and help you get started. You can always access this tour again from the User Guides menu."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:27
+msgid "Step 1: Select Objective"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:28
+msgid "Objective"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:29
+msgid "Choose whether you want to find seedlots for your planting site or find planting sites for your seedlot."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:30
+msgid "Select your objective: find seedlots or find planting sites."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:34
+msgid "Step 2: Select Location"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:36
+msgid "Click on the map or enter coordinates to specify your seedlot or planting site location."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:37
+msgid "Tap on the map to select your location for seedlots or planting sites."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:41
+msgid "Step 3: Select Region"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:42
+msgid "Region"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:43
+msgid "Choose the geographic region that contains your area of interest for the analysis."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:44
+msgid "Select the region for your analysis."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:48
+msgid "Step 4: Select Climate Scenarios"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:49
+msgid "Climate Scenarios"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:50
+msgid "Choose the time period for climate data - current, historical, or future climate scenarios."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:51
+msgid "Select time period for climate data."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:55
+msgid "Step 5: Select Transfer Limit Method"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:56
+msgid "Transfer Limits"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:57
+msgid "Choose how to determine transfer limits: Custom (user-defined) or Zone (based on existing zones)."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:58
+msgid "Select transfer limit method."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:62
+msgid "Step 6: Select Climate Variables"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:63
+msgid "Climate Variables"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:64
+msgid "Choose which climate variables to include in your analysis and set their transfer limits."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:65
+msgid "Select climate variables for analysis."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:69
+msgid "Step 7: Apply Constraints"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:71
+msgid "Optionally apply geographic or elevation constraints to refine your results."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:72
+msgid "Apply optional constraints to results."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:76
+msgid "Step 8: Map Your Results"
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:78
+msgid "Click \"Run Tool\" to generate a map showing suitable seedlots or planting sites based on your configuration."
+msgstr ""
+
+#: src/components/IntroTour/TourContent.tsx:79
+msgid "Run the tool to generate your results map."
+msgstr ""
+
+#: src/seedsource-ui/containers/RegionStep.tsx:33
+#, javascript-format
+msgid ""
+"The map is broken into large geographic regions such as the Western US and the Eastern US.\n"
+"Select ${ automaticBold } if your seedlot(s) and planting site(s) are from\n"
+"the same region (most common). Select ${ customBold } if they are from different regions,\n"
+"and then specify the region that does not include the location chosen in step 2."
+msgstr ""
+
+#: src/config.ts:382
+#. TODO: Temporarily disabled pending updated data from USFS
+#. {
+#. label: t`Constraints`,
+#. show: () => true,
+#. layers: speciesConstraints.map(([species]) => `constraint-${species}`),
+#. },
 msgctxt "\"Little\" is a proper noun"
 msgid "Little's Range Maps"
 msgstr ""
@@ -1878,7 +2096,7 @@ msgctxt "abbreviation of 'Longitud''"
 msgid "Lon"
 msgstr "Long."
 
-#: src/seedsource-ui/containers/ConstraintStep.tsx:27
+#: src/seedsource-ui/containers/ConstraintStep.tsx:38
 msgctxt "i.e., Range of values (e.g., from 5 to 10)"
 msgid "Range (+/-)"
 msgstr "Rango (+/-)"
@@ -1893,14 +2111,14 @@ msgctxt "Abbreviation of 'mile'"
 msgid "mi"
 msgstr "mi"
 
+#: src/seedsource-ui/components/Popup.tsx:269
 #: src/seedsource-ui/containers/ElevationConstraint.tsx:18
-#: src/seedsource-ui/containers/Map.tsx:721
 msgctxt "Abbreviation of 'meters'"
 msgid "m"
 msgstr "m"
 
+#: src/seedsource-ui/components/Popup.tsx:268
 #: src/seedsource-ui/containers/ElevationConstraint.tsx:18
-#: src/seedsource-ui/containers/Map.tsx:720
 msgctxt "Abbreviation of 'feet' (measurement)"
 msgid "ft"
 msgstr "pies"
@@ -1930,15 +2148,10 @@ msgctxt "Abbreviation of 'East'"
 msgid "E"
 msgstr "E"
 
-#: src/seedsource-ui/containers/Map.tsx:588
+#: src/seedsource-ui/containers/Map.tsx:567
 msgctxt "as in same or similar objects"
 msgid "Match"
 msgstr "Coincidencia"
-
-#: src/seedsource-ui/containers/Map.tsx:734
-msgctxt "i.e., Not Applicable"
-msgid "N/A"
-msgstr "N/C"
 
 #: src/seedsource-ui/containers/PhotoperiodConstraint.tsx:9
 msgctxt "January"
@@ -2015,47 +2228,52 @@ msgctxt "month"
 msgid "May"
 msgstr "Mayo"
 
-#: src/seedsource-ui/containers/SavedRun.tsx:67
+#: src/seedsource-ui/containers/SavedRun.tsx:126
 msgctxt "e.g., Load file"
 msgid "Load"
 msgstr "Cargar"
+
+#: src/seedsource-ui/components/Popup.tsx:287
+msgctxt "i.e., Not Applicable"
+msgid "N/A"
+msgstr "N/C"
 
 #: src/seedsource-ui/components/ResetPasswordModal.tsx:136
 msgctxt "i.e., hyperlink"
 msgid "Send link"
 msgstr "Enviar enlace"
 
-#: src/components/Menu.tsx:276
+#: src/components/Menu.tsx:278
 msgctxt "This is the value of 'prismLink'"
 msgid "PRISM Climate Group"
 msgstr "Grupo climático PRISM"
 
-#: src/components/Menu.tsx:333
+#: src/components/Menu.tsx:320
 msgctxt "mm = millimeters"
 msgid "mean annual precipitation (mm)"
 msgstr "Precipitación media anual (mm)"
 
-#: src/components/Menu.tsx:334
+#: src/components/Menu.tsx:321
 msgctxt "mm = millimeters"
 msgid "mean annual summer (May to Sept.) precipitation (mm)"
 msgstr "Precipitación media en verano (mayo a septiembre) (mm)"
 
-#: src/components/Menu.tsx:350
+#: src/components/Menu.tsx:337
 msgctxt "mm = millimeters"
 msgid "precipitation as snow (mm) between August in previous year and July in current year"
 msgstr "Precipitación en forma de nieve (mm) entre agosto del año anterior y julio del año actual"
 
-#: src/components/Menu.tsx:355
+#: src/components/Menu.tsx:342
 msgctxt "mm = millimeters"
 msgid "Hargreaves reference evaporation (mm)"
 msgstr "Evaporación de referencia de Hargreaves (mm)"
 
-#: src/components/Menu.tsx:356
+#: src/components/Menu.tsx:343
 msgctxt "mm = millimeters"
 msgid "Hargreaves climatic moisture deficit (mm)"
 msgstr "Déficit de humedad climática de Hargreaves (mm)"
 
-#: src/components/Menu.tsx:440
+#: src/components/Menu.tsx:423
 msgctxt "i.e., Lead Software Developer"
 msgid "Lead Developer"
 msgstr "Desarrollador principal"
