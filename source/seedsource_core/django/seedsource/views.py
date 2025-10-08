@@ -180,6 +180,90 @@ class RegionsView(ListAPIView):
             return get_regions_for_point(point)
 
 
+class FeedbackView(GenericAPIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def post(self, request, *args, **kwargs):
+        from django.core.mail import send_mail
+
+        name = request.data.get('name', '').strip()
+        email = request.data.get('email', '').strip()
+        telephone = request.data.get('telephone', '').strip()
+        feedback = request.data.get('feedback', '').strip()
+        errors_encountered = request.data.get('errorsEncountered', '').strip()
+        request_followup = request.data.get('requestFollowup', False)
+        error_title = request.data.get('errorTitle', '').strip()
+        is_error_report = request.data.get('isErrorReport', False)
+
+        if not feedback:
+            return Response(
+                {"error": "Feedback is required"},
+                status=400
+            )
+
+        contact_info = name or email or 'Anonymous'
+        if is_error_report and error_title:
+            subject = f"ERROR REPORT - {error_title} - {contact_info}"
+        else:
+            subject = f"Feedback from Seedlot Selection Tool - {contact_info}"
+        if is_error_report:
+            email_message = f"""
+ERROR REPORT from the Seedlot Selection Tool:
+
+Error: {error_title or 'Application Error'}
+
+Name: {name or 'Not provided'}
+Email: {email or 'Not provided'}
+Telephone: {telephone or 'Not provided'}
+Request Follow-up: {'Yes' if request_followup else 'No'}
+
+User Feedback:
+{feedback}
+
+Technical Details:
+{errors_encountered or 'No additional details provided'}
+"""
+        else:
+            email_message = f"""
+Feedback received from the Seedlot Selection Tool:
+
+Name: {name or 'Not provided'}
+Email: {email or 'Not provided'}
+Telephone: {telephone or 'Not provided'}
+Request Follow-up: {'Yes' if request_followup else 'No'}
+
+Feedback:
+{feedback}
+"""
+            if errors_encountered:
+                email_message += f"""
+Errors Encountered:
+{errors_encountered}
+"""
+        email_message += f"""
+---
+Sent from: {request.get_host()}
+Time: {now()}
+        """.strip()
+
+        try:
+            send_mail(
+                subject=subject,
+                message=email_message,
+                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@seedlotselectiontool.org'),
+                recipient_list=[admin[1] for admin in getattr(settings, 'ADMINS', [])],
+                fail_silently=False,
+            )
+
+            return Response({"status": "success"})
+        except Exception as e:
+            return Response(
+                {"error": "Failed to send feedback"},
+                status=500
+            )
+
+
 class ShareURLViewset(
     mixins.CreateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet
 ):

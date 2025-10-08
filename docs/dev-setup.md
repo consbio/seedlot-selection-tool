@@ -7,7 +7,7 @@ These instructions cover setting up a development environment only.
 Choose a location for the project directory (e.g., `/home/sst/apps/`).
 Navigate to the directory, and clone the repository:
 
-``` text
+```text
 $ git checkout https://github.com/consbio/seedlot-selection-tool.git
 ```
 
@@ -18,7 +18,7 @@ $ git checkout https://github.com/consbio/seedlot-selection-tool.git
 Create a file in `seedlot-selection-tool` directory called
 `config.json`. Add the following to this file, and fill out the values:
 
-``` json
+```json
 {
   "amqp_username": "",
   "amqp_password": "",
@@ -29,37 +29,50 @@ Create a file in `seedlot-selection-tool` directory called
 
 You can also add the following optional keys to your `config.json`:
 
-``` json
+```json
 {
-    "raven_dsn": "",
-    "logfile_path": "",
-    "db_name": "",
-    "db_user": "",
-    "db_host": ""
+  "raven_dsn": "",
+  "logfile_path": "",
+  "db_name": "",
+  "db_user": "",
+  "db_host": ""
 }
 ```
 
 These keys are needed for social authentication:
 
-``` json
+```json
 {
-    "google_oauth2_key": "",
-    "google_oauth2_secret": "",
-    "facebook_key": "",
-    "facebook_secret": "",
-    "twitter_key": "",
-    "twitter_secret": ""
+  "google_oauth2_key": "",
+  "google_oauth2_secret": "",
+  "facebook_key": "",
+  "facebook_secret": "",
+  "twitter_key": "",
+  "twitter_secret": ""
 }
 ```
 
 For social auth to work, make sure access to user email is activated by
 the OAuth providers.
 
+Also, to have feedback forms function, add optional email keys (the host/user/pass is only needed to route through an external server):
+
+```json
+{
+  "admin_email": "",
+  "email_host": "",
+  "email_user": "",
+  "email_password": ""
+}
+```
+
+As long as `DEBUG = True` (default in Django), email functionality will output to console.
+
 Create a new Python module in
 `seedlot-selection-tool/source/sst_project/settings` called `custom.py`.
 Add the following to this new file:
 
-``` python
+```python
 from .local import *
 
 ALLOWED_HOSTS = []  # Add your host name or names here. E.g., 'local.seedlotselectiontool.org'
@@ -84,7 +97,7 @@ The folder structure of this directory is covered in the
 Navigate to the `javascript` directory in the root of this project,
 install the node dependencies, and run the build script:
 
-``` text
+```text
 $ pnpm install
 $ pnpm merge-regions
 $ pnpm start

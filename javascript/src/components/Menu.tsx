@@ -1,7 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { t, c, jt } from 'ttag'
 import ModalCard from '../seedsource-ui/components/ModalCard'
 import NavItemDropdown from '../seedsource-ui/components/NavItemDropdown'
+import { post } from '../seedsource-ui/io'
+import { clearError } from '../seedsource-ui/actions/error'
 import { getCookies } from '../seedsource-ui/utils'
 import Background1 from '../../images/background1.jpg'
 import Background2 from '../../images/background2.jpg'
@@ -9,7 +12,33 @@ import SSTInstructions from '../../documents/SST User Guide.pdf'
 import SSTInstructionsESMX from '../../documents/translations/es_MX/SST User Guide.pdf'
 import SSTSilviculturistsGuide from '../../documents/SST R6 Silviculturists Guide.pdf'
 
-class Menu extends React.Component {
+interface MenuProps {
+  hasError: boolean
+  errorTitle: string
+  errorMessage: string
+  errorDebugInfo?: string | null
+  onClearError: () => void
+}
+
+interface MenuState {
+  showFeedbackModal: boolean
+  name: string
+  email: string
+  telephone: string
+  feedback: string
+  errorsEncountered: string
+  requestFollowup: boolean
+  isSubmitting: boolean
+  submitSuccess: boolean
+  error: string
+  emailError: string
+}
+
+class Menu extends React.Component<MenuProps, MenuState> {
+  static defaultProps = {
+    errorDebugInfo: null,
+  }
+
   backgroundModal?: ModalCard
 
   climatenaModal?: ModalCard
@@ -18,9 +47,122 @@ class Menu extends React.Component {
 
   newsModal?: ModalCard
 
-  issueModal?: ModalCard
+  constructor(props: MenuProps) {
+    super(props)
+    this.state = {
+      showFeedbackModal: false,
+      name: '',
+      email: '',
+      telephone: '',
+      feedback: '',
+      errorsEncountered: '',
+      requestFollowup: false,
+      isSubmitting: false,
+      submitSuccess: false,
+      error: '',
+      emailError: '',
+    }
+  }
+
+  componentDidUpdate(prevProps: MenuProps) {
+    const { hasError } = this.props
+    if (!prevProps.hasError && hasError) {
+      this.setState({
+        showFeedbackModal: true,
+      })
+    }
+  }
+
+  static validateEmail(email: string) {
+    if (!email.trim()) {
+      return ''
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return t`Please enter a valid email address`
+    }
+
+    return ''
+  }
+
+  handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const email = e.target.value
+    const emailError = Menu.validateEmail(email)
+
+    this.setState({
+      email,
+      emailError,
+    })
+  }
+
+  handleCloseFeedback = () => {
+    const { onClearError, hasError } = this.props
+    this.setState({ showFeedbackModal: false })
+    if (hasError) {
+      onClearError()
+    }
+  }
+
+  handleFeedbackSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    this.setState({ isSubmitting: true, error: '' })
+
+    try {
+      const { hasError, errorTitle, errorMessage, errorDebugInfo } = this.props
+      const feedbackData = {
+        name: this.state.name.trim(),
+        email: this.state.email.trim(),
+        telephone: this.state.telephone.trim(),
+        feedback: this.state.feedback.trim(),
+        errorsEncountered: hasError ? errorDebugInfo || errorMessage || '' : this.state.errorsEncountered.trim(),
+        requestFollowup: this.state.requestFollowup,
+        errorTitle: hasError ? errorTitle : '',
+        isErrorReport: hasError,
+      }
+
+      await post('/sst/feedback/', feedbackData)
+      this.setState({ submitSuccess: true })
+      if (hasError) {
+        const { onClearError } = this.props
+        onClearError()
+      }
+      setTimeout(() => {
+        this.setState({
+          showFeedbackModal: false,
+          name: '',
+          email: '',
+          telephone: '',
+          feedback: '',
+          errorsEncountered: '',
+          requestFollowup: false,
+          submitSuccess: false,
+          error: '',
+          emailError: '',
+        })
+      }, 2000)
+    } catch (err) {
+      this.setState({ error: t`Failed to send feedback. Please try again.` })
+    } finally {
+      this.setState({ isSubmitting: false })
+    }
+  }
 
   render() {
+    const {
+      showFeedbackModal,
+      name,
+      email,
+      telephone,
+      feedback,
+      errorsEncountered,
+      requestFollowup,
+      isSubmitting,
+      submitSuccess,
+      error,
+      emailError,
+    } = this.state
+    const { hasError, errorMessage, errorDebugInfo } = this.props
     const cookies = getCookies()
     const manual = cookies.django_language === 'es-mx' ? SSTInstructionsESMX : SSTInstructions
 
@@ -445,23 +587,160 @@ class Menu extends React.Component {
               </a>
             </p>
           </ModalCard>
-          <ModalCard
-            ref={(input: ModalCard) => {
-              this.issueModal = input
-            }}
-            title={t`Report an Issue`}
-          >
-            <p>
-              {t`Issues are used to track to-dos, bugs, feature requests, and more. As issues are created, they'll
-                appear here in a searchable and filterable list. To get started, you should create an issue (you will 
-                need to sign up for a GitHub account).`}
-            </p>
-            <p>
-              <a href="https://github.com/consbio/seedlot-selection-tool/issues" target="_blank" rel="noreferrer">
-                {t`Report an Issue`}
-              </a>
-            </p>
-          </ModalCard>
+          {showFeedbackModal &&
+            (submitSuccess ? (
+              <ModalCard title={t`Thank You!`} onHide={this.handleCloseFeedback} active>
+                <p>{t`Your feedback has been sent successfully. We appreciate your input!`}</p>
+              </ModalCard>
+            ) : (
+              <ModalCard
+                title={hasError ? t`Send Error Report` : t`Send Feedback`}
+                onHide={this.handleCloseFeedback}
+                active
+              >
+                <form onSubmit={this.handleFeedbackSubmit}>
+                  <div className="field">
+                    <label className="label" htmlFor="name">
+                      {t`Name`}:
+                    </label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        type="text"
+                        id="name"
+                        value={name}
+                        onChange={e => this.setState({ name: e.target.value })}
+                        placeholder={t`Your name`}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label className="label" htmlFor="email">
+                      {t`Email`}:
+                    </label>
+                    <div className="control">
+                      <input
+                        className={`input ${emailError ? 'is-danger' : ''}`}
+                        type="email"
+                        id="email"
+                        value={email}
+                        onChange={this.handleEmailChange}
+                        placeholder={t`your.email@example.com`}
+                      />
+                    </div>
+                    {emailError && <p className="help is-danger">{emailError}</p>}
+                  </div>
+
+                  <div className="field">
+                    <label className="label" htmlFor="telephone">
+                      {t`Telephone`}:
+                    </label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        type="tel"
+                        id="telephone"
+                        value={telephone}
+                        onChange={e => this.setState({ telephone: e.target.value })}
+                        placeholder={t`Your phone number`}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label className="label" htmlFor="feedback">
+                      {hasError ? t`Describe what you were doing` : t`Feedback (required)`}:
+                    </label>
+                    <div className="control">
+                      <textarea
+                        className="textarea"
+                        id="feedback"
+                        value={feedback}
+                        onChange={e => this.setState({ feedback: e.target.value })}
+                        placeholder={
+                          hasError
+                            ? t`Please describe what you were trying to do when this error occurred.`
+                            : t`Please share your feedback, questions, or suggestions.`
+                        }
+                        rows={4}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {hasError ? (
+                    <div className="field">
+                      <label className="label" htmlFor="errorMessage">
+                        {t`Error Message`}:
+                      </label>
+                      <div className="control">
+                        <textarea
+                          className="textarea is-family-monospace"
+                          id="errorMessage"
+                          value={errorDebugInfo || errorMessage || 'No error details available'}
+                          readOnly
+                          rows={8}
+                          style={{ fontSize: '0.8rem' }}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="field">
+                      <label className="label" htmlFor="errorsEncountered">
+                        {t`Errors Encountered`}:
+                      </label>
+                      <div className="control">
+                        <textarea
+                          className="textarea"
+                          id="errorsEncountered"
+                          value={errorsEncountered}
+                          onChange={e => this.setState({ errorsEncountered: e.target.value })}
+                          placeholder={t`Please describe any errors or issues you encountered.`}
+                          rows={3}
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="field">
+                    <div className="control">
+                      <label className="checkbox">
+                        <input
+                          type="checkbox"
+                          checked={requestFollowup}
+                          onChange={e => this.setState({ requestFollowup: e.target.checked })}
+                        />
+                        &nbsp;
+                        {t`Request follow-up contact`}
+                      </label>
+                    </div>
+                  </div>
+
+                  {error && <div className="notification is-danger">{error}</div>}
+
+                  <div className="field is-grouped">
+                    <div className="control">
+                      <button type="button" onClick={this.handleCloseFeedback} className="button">
+                        {t`Cancel`}
+                      </button>
+                    </div>
+                    <div className="control">
+                      <button
+                        type="submit"
+                        disabled={isSubmitting || !feedback.trim() || !!emailError}
+                        className="button is-primary"
+                      >
+                        {(() => {
+                          if (isSubmitting) return t`Sending...`
+                          return hasError ? t`Send Error Report` : t`Send Feedback`
+                        })()}
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </ModalCard>
+            ))}
         </div>
         <NavItemDropdown title={t`User Guides`}>
           <a className="navbar-item" href={manual} target="_blank" rel="noreferrer">
@@ -485,12 +764,32 @@ class Menu extends React.Component {
             {t`News & Updates`}
           </a>
         </NavItemDropdown>
-        <a className="navbar-item" key="issues" onClick={() => this.issueModal!.show()}>
-          {t`Report an Issue`}
+        <a className="navbar-item" key="feedback" onClick={() => this.setState({ showFeedbackModal: true })}>
+          {t`Feedback`}
         </a>
       </>
     )
   }
 }
 
-export default Menu
+export default connect(
+  ({ error }: { error?: { title: string; message: string; debugInfo?: string } }) => {
+    if (!error) {
+      return { hasError: false, errorTitle: '', errorMessage: '', errorDebugInfo: null }
+    }
+
+    const { title, message, debugInfo = null } = error
+
+    return {
+      hasError: true,
+      errorTitle: title,
+      errorMessage: message,
+      errorDebugInfo: debugInfo,
+    }
+  },
+  dispatch => {
+    return {
+      onClearError: () => dispatch(clearError()),
+    }
+  },
+)(Menu)

@@ -152,6 +152,10 @@ LOCALE_PATHS = [os.path.join(BASE_DIR, "locales")]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+# Email settings for feedback form
+ADMINS = [("Admin", CONFIG.get("admin_email", "noreply@localhost"))]
+DEFAULT_FROM_EMAIL = CONFIG.get("default_from_email", "noreply@localhost")
+
 GOOGLE_ANALYTICS_ID = CONFIG.get("ga_id")
 ENABLE_GOOGLE_ANALYTICS = bool(GOOGLE_ANALYTICS_ID)
 
