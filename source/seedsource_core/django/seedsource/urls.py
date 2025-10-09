@@ -18,4 +18,5 @@ urlpatterns = [
         r"^create-ppt/$", views.GeneratePowerPointView.as_view(), name="create_ppt"
     ),
     re_path(r"^regions/$", views.RegionsView.as_view(), name="regions"),
+    re_path(r"^feedback/$", views.FeedbackView.as_view(), name="feedback"),
 ]
