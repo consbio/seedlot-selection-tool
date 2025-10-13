@@ -1,4 +1,0 @@
-onlyBuiltDependencies:
-  - core-js
-  - node-sass
-  - ttag-cli
