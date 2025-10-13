@@ -75,9 +75,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
     this.setState({ showFeedbackModal: true })
   }
 
-  static validateEmail(email: string) {
+  static validateEmail(email: string, required: boolean = false) {
     if (!email.trim()) {
-      return ''
+      return required ? t`Email is required when requesting follow-up` : ''
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -90,11 +90,23 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const email = e.target.value
-    const emailError = Menu.validateEmail(email)
+    this.setState(prevState => {
+      const emailError = Menu.validateEmail(email, prevState.requestFollowup)
+      return {
+        email,
+        emailError,
+      }
+    })
+  }
 
-    this.setState({
-      email,
-      emailError,
+  handleFollowupChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const requestFollowup = e.target.checked
+    this.setState(prevState => {
+      const emailError = Menu.validateEmail(prevState.email, requestFollowup)
+      return {
+        requestFollowup,
+        emailError,
+      }
     })
   }
 
@@ -616,7 +628,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
                   <div className="field">
                     <label className="label" htmlFor="email">
-                      {t`Email`}:
+                      {t`Email`}
+                      {requestFollowup && <span> (required)</span>}:
                     </label>
                     <div className="control">
                       <input
@@ -689,11 +702,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
                   <div className="field">
                     <div className="control">
                       <label className="checkbox">
-                        <input
-                          type="checkbox"
-                          checked={requestFollowup}
-                          onChange={e => this.setState({ requestFollowup: e.target.checked })}
-                        />
+                        <input type="checkbox" checked={requestFollowup} onChange={this.handleFollowupChange} />
                         &nbsp;
                         {t`Request follow-up contact`}
                       </label>

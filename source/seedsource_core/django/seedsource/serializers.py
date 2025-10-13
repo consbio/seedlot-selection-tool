@@ -182,3 +182,11 @@ class FeedbackSerializer(serializers.Serializer):
         if value:
             return value.strip()
         return value
+
+    def validate(self, data):
+        """Cross-field validation"""
+        if data.get('requestFollowup', False) and not data.get('email', '').strip():
+            raise serializers.ValidationError({
+                'email': 'Email is required when requesting follow-up contact.'
+            })
+        return data
