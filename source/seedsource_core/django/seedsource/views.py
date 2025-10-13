@@ -23,6 +23,7 @@ from .serializers import (
     SeedZoneSerializer,
     GenerateReportSerializer,
     ShareURLSerializer,
+    FeedbackSerializer,
 )
 from .serializers import TransferLimitSerializer, RegionSerializer
 from .utils import get_elevation_at_point, get_regions_for_point
@@ -183,24 +184,23 @@ class RegionsView(ListAPIView):
 class FeedbackView(GenericAPIView):
     authentication_classes = []
     permission_classes = []
+    serializer_class = FeedbackSerializer
 
     def post(self, request, *args, **kwargs):
         from django.core.mail import send_mail
 
-        name = request.data.get('name', '').strip()
-        email = request.data.get('email', '').strip()
-        telephone = request.data.get('telephone', '').strip()
-        feedback = request.data.get('feedback', '').strip()
-        errors_encountered = request.data.get('errorsEncountered', '').strip()
-        request_followup = request.data.get('requestFollowup', False)
-        error_title = request.data.get('errorTitle', '').strip()
-        is_error_report = request.data.get('isErrorReport', False)
+        serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=400)
 
-        if not feedback:
-            return Response(
-                {"error": "Feedback is required"},
-                status=400
-            )
+        data = serializer.validated_data
+        name = data.get('name', '')
+        email = data.get('email', '')
+        feedback = data['feedback']
+        errors_encountered = data.get('errorsEncountered', '')
+        request_followup = data.get('requestFollowup', False)
+        error_title = data.get('errorTitle', '')
+        is_error_report = data.get('isErrorReport', False)
 
         contact_info = name or email or 'Anonymous'
         if is_error_report and error_title:
@@ -215,7 +215,6 @@ Error: {error_title or 'Application Error'}
 
 Name: {name or 'Not provided'}
 Email: {email or 'Not provided'}
-Telephone: {telephone or 'Not provided'}
 Request Follow-up: {'Yes' if request_followup else 'No'}
 
 User Feedback:
@@ -230,7 +229,6 @@ Feedback received from the Seedlot Selection Tool:
 
 Name: {name or 'Not provided'}
 Email: {email or 'Not provided'}
-Telephone: {telephone or 'Not provided'}
 Request Follow-up: {'Yes' if request_followup else 'No'}
 
 Feedback:
@@ -251,13 +249,13 @@ Time: {now()}
             send_mail(
                 subject=subject,
                 message=email_message,
-                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@seedlotselectiontool.org'),
+                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'donotreply@seedlotselectiontool.org'),
                 recipient_list=[admin[1] for admin in getattr(settings, 'ADMINS', [])],
                 fail_silently=False,
             )
 
             return Response({"status": "success"})
-        except Exception as e:
+        except Exception:
             return Response(
                 {"error": "Failed to send feedback"},
                 status=500

@@ -153,8 +153,15 @@ LOCALE_PATHS = [os.path.join(BASE_DIR, "locales")]
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Email settings for feedback form
-ADMINS = [("Admin", CONFIG.get("admin_email", "noreply@localhost"))]
-DEFAULT_FROM_EMAIL = CONFIG.get("default_from_email", "noreply@localhost")
+_admin_emails = CONFIG.get("admin_email", "donotreply@seedlotselectiontool.org")
+if isinstance(_admin_emails, str):
+    ADMINS = [("Admin", _admin_emails)]
+elif isinstance(_admin_emails, list):
+    ADMINS = [("Admin", email) for email in _admin_emails if email.strip()]
+else:
+    ADMINS = [("Admin", "donotreply@seedlotselectiontool.org")]
+
+DEFAULT_FROM_EMAIL = CONFIG.get("default_from_email", "donotreply@seedlotselectiontool.org")
 
 GOOGLE_ANALYTICS_ID = CONFIG.get("ga_id")
 ENABLE_GOOGLE_ANALYTICS = bool(GOOGLE_ANALYTICS_ID)

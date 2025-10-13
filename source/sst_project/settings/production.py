@@ -64,21 +64,12 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "javascript/build"),)
 
 WEBPACK_LOADER["DEFAULT"]["BUNDLE_DIR_NAME"] = "/"
 
-# Email configuration
-if DEBUG:
-    # Development: log emails to console
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-else:
-    # Production: send emails via SMTP
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST = CONFIG.get("email_host")
-    EMAIL_HOST_USER = CONFIG.get("email_user")
-    EMAIL_HOST_PASSWORD = CONFIG.get("email_password")
-    EMAIL_USE_TLS = True
-
-# Email settings for feedback form
-ADMINS = [("Admin", CONFIG.get("admin_email", "noreply@localhost"))]
-DEFAULT_FROM_EMAIL = CONFIG.get("default_from_email", "noreply@localhost")
+# Email configuration for production
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = CONFIG.get("email_host")
+EMAIL_HOST_USER = CONFIG.get("email_user")
+EMAIL_HOST_PASSWORD = CONFIG.get("email_password")
+EMAIL_USE_TLS = True
 
 NC_SERVICE_DATA_ROOT = "/mnt/data/ncdjango/services/"
 MEDIA_ROOT = "/ncdjango/"

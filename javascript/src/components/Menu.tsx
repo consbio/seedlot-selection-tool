@@ -24,7 +24,6 @@ interface MenuState {
   showFeedbackModal: boolean
   name: string
   email: string
-  telephone: string
   feedback: string
   errorsEncountered: string
   requestFollowup: boolean
@@ -53,7 +52,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
       showFeedbackModal: false,
       name: '',
       email: '',
-      telephone: '',
       feedback: '',
       errorsEncountered: '',
       requestFollowup: false,
@@ -117,7 +115,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
       const feedbackData = {
         name: this.state.name.trim(),
         email: this.state.email.trim(),
-        telephone: this.state.telephone.trim(),
         feedback: this.state.feedback.trim(),
         errorsEncountered: hasError ? errorDebugInfo || errorMessage || '' : this.state.errorsEncountered.trim(),
         requestFollowup: this.state.requestFollowup,
@@ -136,7 +133,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
           showFeedbackModal: false,
           name: '',
           email: '',
-          telephone: '',
           feedback: '',
           errorsEncountered: '',
           requestFollowup: false,
@@ -157,7 +153,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
       showFeedbackModal,
       name,
       email,
-      telephone,
       feedback,
       errorsEncountered,
       requestFollowup,
@@ -634,22 +629,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
                       />
                     </div>
                     {emailError && <p className="help is-danger">{emailError}</p>}
-                  </div>
-
-                  <div className="field">
-                    <label className="label" htmlFor="telephone">
-                      {t`Telephone`}:
-                    </label>
-                    <div className="control">
-                      <input
-                        className="input"
-                        type="tel"
-                        id="telephone"
-                        value={telephone}
-                        onChange={e => this.setState({ telephone: e.target.value })}
-                        placeholder={t`Your phone number`}
-                      />
-                    </div>
                   </div>
 
                   <div className="field">
