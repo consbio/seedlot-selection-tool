@@ -188,6 +188,7 @@ class FeedbackView(GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         from django.core.mail import send_mail
+        from django.template.loader import render_to_string
 
         serializer = self.get_serializer(data=request.data)
         if not serializer.is_valid():
@@ -202,48 +203,24 @@ class FeedbackView(GenericAPIView):
         error_title = data.get('errorTitle', '')
         is_error_report = data.get('isErrorReport', False)
 
+        template_context = {
+            'name': name,
+            'email': email,
+            'feedback': feedback,
+            'errors_encountered': errors_encountered,
+            'request_followup': request_followup,
+            'error_title': error_title,
+            'host': request.get_host(),
+            'time': now(),
+        }
+
         contact_info = name or email or 'Anonymous'
-        if is_error_report and error_title:
-            subject = f"ERROR REPORT - {error_title} - {contact_info}"
+        if is_error_report:
+            subject = f"ERROR REPORT - {error_title or 'Application Error'} - {contact_info}"
+            email_message = render_to_string('emails/error_report.txt', template_context)
         else:
             subject = f"Feedback from Seedlot Selection Tool - {contact_info}"
-        if is_error_report:
-            email_message = f"""
-ERROR REPORT from the Seedlot Selection Tool:
-
-Error: {error_title or 'Application Error'}
-
-Name: {name or 'Not provided'}
-Email: {email or 'Not provided'}
-Request Follow-up: {'Yes' if request_followup else 'No'}
-
-User Feedback:
-{feedback}
-
-Technical Details:
-{errors_encountered or 'No additional details provided'}
-"""
-        else:
-            email_message = f"""
-Feedback received from the Seedlot Selection Tool:
-
-Name: {name or 'Not provided'}
-Email: {email or 'Not provided'}
-Request Follow-up: {'Yes' if request_followup else 'No'}
-
-Feedback:
-{feedback}
-"""
-            if errors_encountered:
-                email_message += f"""
-Errors Encountered:
-{errors_encountered}
-"""
-        email_message += f"""
----
-Sent from: {request.get_host()}
-Time: {now()}
-        """.strip()
+            email_message = render_to_string('emails/feedback.txt', template_context)
 
         try:
             send_mail(

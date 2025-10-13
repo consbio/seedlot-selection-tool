@@ -25,7 +25,6 @@ interface MenuState {
   name: string
   email: string
   feedback: string
-  errorsEncountered: string
   requestFollowup: boolean
   isSubmitting: boolean
   submitSuccess: boolean
@@ -53,7 +52,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
       name: '',
       email: '',
       feedback: '',
-      errorsEncountered: '',
       requestFollowup: false,
       isSubmitting: false,
       submitSuccess: false,
@@ -128,7 +126,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         name: this.state.name.trim(),
         email: this.state.email.trim(),
         feedback: this.state.feedback.trim(),
-        errorsEncountered: hasError ? errorDebugInfo || errorMessage || '' : this.state.errorsEncountered.trim(),
+        errorsEncountered: hasError ? errorDebugInfo || errorMessage || '' : '',
         requestFollowup: this.state.requestFollowup,
         errorTitle: hasError ? errorTitle : '',
         isErrorReport: hasError,
@@ -146,7 +144,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
           name: '',
           email: '',
           feedback: '',
-          errorsEncountered: '',
           requestFollowup: false,
           submitSuccess: false,
           error: '',
@@ -166,7 +163,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
       name,
       email,
       feedback,
-      errorsEncountered,
       requestFollowup,
       isSubmitting,
       submitSuccess,
@@ -665,7 +661,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
                     </div>
                   </div>
 
-                  {hasError ? (
+                  {hasError && (
                     <div className="field">
                       <label className="label" htmlFor="errorMessage">
                         {t`Error Message`}:
@@ -678,22 +674,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
                           readOnly
                           rows={8}
                           style={{ fontSize: '0.8rem' }}
-                        />
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="field">
-                      <label className="label" htmlFor="errorsEncountered">
-                        {t`Errors Encountered`}:
-                      </label>
-                      <div className="control">
-                        <textarea
-                          className="textarea"
-                          id="errorsEncountered"
-                          value={errorsEncountered}
-                          onChange={e => this.setState({ errorsEncountered: e.target.value })}
-                          placeholder={t`Please describe any errors or issues you encountered.`}
-                          rows={3}
                         />
                       </div>
                     </div>
