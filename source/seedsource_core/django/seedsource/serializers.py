@@ -156,3 +156,37 @@ class ShareURLSerializer(serializers.ModelSerializer):
             hash=hash_as_b62_truncated,
             defaults={"configuration": json.loads(configuration), "version": version},
         )[0]
+
+
+class FeedbackSerializer(serializers.Serializer):
+    """Serializer for feedback form submissions"""
+    name = serializers.CharField(max_length=255, required=False, allow_blank=True)
+    email = serializers.EmailField(required=False, allow_blank=True)
+    feedback = serializers.CharField(max_length=5000, required=True)
+    errorsEncountered = serializers.CharField(max_length=10000, required=False, allow_blank=True)
+    requestFollowup = serializers.BooleanField(required=False, default=False)
+    errorTitle = serializers.CharField(max_length=500, required=False, allow_blank=True)
+    isErrorReport = serializers.BooleanField(required=False, default=False)
+
+    def validate_feedback(self, value):
+        if not value or not value.strip():
+            raise serializers.ValidationError("Feedback is required and cannot be empty.")
+        return value.strip()
+
+    def validate_email(self, value):
+        if value:
+            return value.strip()
+        return value
+
+    def validate_name(self, value):
+        if value:
+            return value.strip()
+        return value
+
+    def validate(self, data):
+        """Cross-field validation"""
+        if data.get('requestFollowup', False) and not data.get('email', '').strip():
+            raise serializers.ValidationError({
+                'email': 'Email is required when requesting follow-up contact.'
+            })
+        return data

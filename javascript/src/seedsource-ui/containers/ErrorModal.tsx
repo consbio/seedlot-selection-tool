@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { t, c, jt } from 'ttag'
+import { t } from 'ttag'
 import ModalCard from '../components/ModalCard'
 import { clearError } from '../actions/error'
 
@@ -12,31 +12,72 @@ type ErrorModalProps = {
   onHide: () => any
 }
 
-const ErrorModal = ({ show, title, message, debugInfo, onHide }: ErrorModalProps) => {
+function ErrorModal({ show, title, message, debugInfo, onHide }: ErrorModalProps) {
   if (!show) {
     return null
+  }
+
+  const handleReportError = () => {
+    window.dispatchEvent(
+      new CustomEvent('reportError', {
+        detail: { title, message, debugInfo },
+      }),
+    )
   }
 
   let debug = null
 
   if (debugInfo !== null) {
-    const reportAnIssue = (
-      <a href="https://github.com/consbio/seedlot-selection-tool/issues" target="_blank" rel="noreferrer">
-        {c("This is the value of 'reportAnIssue'").t`report an issue`}
-      </a>
+    const reportSection = (
+      <div style={{ padding: '1rem 0 0' }}>
+        <div className="field is-grouped">
+          <div className="control">
+            <button type="button" className="button" onClick={onHide}>
+              {t`Close`}
+            </button>
+          </div>
+          <div className="control">
+            <button type="button" className="button is-primary" onClick={handleReportError}>
+              {t`Report This Error`}
+            </button>
+          </div>
+        </div>
+      </div>
     )
 
     debug = (
       <div>
-        <p>{jt`If the problem persists, please ${reportAnIssue} and include the following information:`}</p>
-        <pre className="error-debug-info">{debugInfo}</pre>
+        <div className="content">
+          <p>{message}</p>
+          <details>
+            <summary>{t`Technical Details`}</summary>
+            <pre className="error-debug-info" style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}>
+              {debugInfo}
+            </pre>
+          </details>
+        </div>
+        {reportSection}
+      </div>
+    )
+  } else {
+    debug = (
+      <div>
+        <div className="content">
+          <p>{message}</p>
+        </div>
+        <div className="field is-grouped is-grouped-right" style={{ marginTop: '1rem' }}>
+          <div className="control">
+            <button type="button" className="button" onClick={onHide}>
+              {t`Close`}
+            </button>
+          </div>
+        </div>
       </div>
     )
   }
 
   return (
     <ModalCard title={title} onHide={() => onHide()} active>
-      <p>{message}</p>
       {debug}
     </ModalCard>
   )

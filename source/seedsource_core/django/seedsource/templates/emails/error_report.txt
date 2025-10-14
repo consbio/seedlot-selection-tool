@@ -1,0 +1,18 @@
+ERROR REPORT from the Seedlot Selection Tool:
+
+Error: {{ error_title|default:"Application Error" }}
+
+Name: {{ name|default:"Not provided" }}
+Email: {{ email|default:"Not provided" }}
+Request Follow-up: {% if request_followup %}Yes{% else %}No{% endif %}
+
+User Feedback:
+{{ feedback }}
+
+Technical Details:
+{{ errors_encountered|default:"No additional details provided" }}
+
+---
+Sent from: {{ host }}
+Time: {{ time }}
+

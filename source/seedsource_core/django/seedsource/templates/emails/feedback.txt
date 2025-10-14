@@ -1,0 +1,17 @@
+Feedback received from the Seedlot Selection Tool:
+
+Name: {{ name|default:"Not provided" }}
+Email: {{ email|default:"Not provided" }}
+Request Follow-up: {% if request_followup %}Yes{% else %}No{% endif %}
+
+Feedback:
+{{ feedback }}
+
+{% if errors_encountered %}
+Errors Encountered:
+{{ errors_encountered }}
+{% endif %}
+
+---
+Sent from: {{ host }}
+Time: {{ time }}

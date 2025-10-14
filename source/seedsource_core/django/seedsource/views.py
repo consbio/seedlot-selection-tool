@@ -23,6 +23,7 @@ from .serializers import (
     SeedZoneSerializer,
     GenerateReportSerializer,
     ShareURLSerializer,
+    FeedbackSerializer,
 )
 from .serializers import TransferLimitSerializer, RegionSerializer
 from .utils import get_elevation_at_point, get_regions_for_point
@@ -178,6 +179,64 @@ class RegionsView(ListAPIView):
 
             point = Point(x, y)
             return get_regions_for_point(point)
+
+
+class FeedbackView(GenericAPIView):
+    authentication_classes = []
+    permission_classes = []
+    serializer_class = FeedbackSerializer
+
+    def post(self, request, *args, **kwargs):
+        from django.core.mail import send_mail
+        from django.template.loader import render_to_string
+
+        serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=400)
+
+        data = serializer.validated_data
+        name = data.get('name', '')
+        email = data.get('email', '')
+        feedback = data['feedback']
+        errors_encountered = data.get('errorsEncountered', '')
+        request_followup = data.get('requestFollowup', False)
+        error_title = data.get('errorTitle', '')
+        is_error_report = data.get('isErrorReport', False)
+
+        template_context = {
+            'name': name,
+            'email': email,
+            'feedback': feedback,
+            'errors_encountered': errors_encountered,
+            'request_followup': request_followup,
+            'error_title': error_title,
+            'host': request.get_host(),
+            'time': now(),
+        }
+
+        contact_info = name or email or 'Anonymous'
+        if is_error_report:
+            subject = f"ERROR REPORT - {error_title or 'Application Error'} - {contact_info}"
+            email_message = render_to_string('emails/error_report.txt', template_context)
+        else:
+            subject = f"Feedback from Seedlot Selection Tool - {contact_info}"
+            email_message = render_to_string('emails/feedback.txt', template_context)
+
+        try:
+            send_mail(
+                subject=subject,
+                message=email_message,
+                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'donotreply@seedlotselectiontool.org'),
+                recipient_list=[admin[1] for admin in getattr(settings, 'ADMINS', [])],
+                fail_silently=False,
+            )
+
+            return Response({"status": "success"})
+        except Exception:
+            return Response(
+                {"error": "Failed to send feedback"},
+                status=500
+            )
 
 
 class ShareURLViewset(
