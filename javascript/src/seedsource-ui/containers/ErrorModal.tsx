@@ -29,16 +29,16 @@ function ErrorModal({ show, title, message, debugInfo, onHide }: ErrorModalProps
 
   if (debugInfo !== null) {
     const reportSection = (
-      <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#f5f5f5', borderRadius: '4px' }}>
+      <div style={{ padding: '1rem 0 0' }}>
         <div className="field is-grouped">
-          <div className="control">
-            <button type="button" className="button is-primary" onClick={handleReportError}>
-              {t`Report This Error`}
-            </button>
-          </div>
           <div className="control">
             <button type="button" className="button" onClick={onHide}>
               {t`Close`}
+            </button>
+          </div>
+          <div className="control">
+            <button type="button" className="button is-primary" onClick={handleReportError}>
+              {t`Report This Error`}
             </button>
           </div>
         </div>
