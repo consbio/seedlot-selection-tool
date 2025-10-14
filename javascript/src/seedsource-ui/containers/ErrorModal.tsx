@@ -30,7 +30,7 @@ function ErrorModal({ show, title, message, debugInfo, onHide }: ErrorModalProps
   if (debugInfo !== null) {
     const reportSection = (
       <div style={{ padding: '1rem 0 0' }}>
-        <div className="field is-grouped">
+        <div className="field is-grouped is-grouped-right">
           <div className="control">
             <button type="button" className="button" onClick={onHide}>
               {t`Close`}

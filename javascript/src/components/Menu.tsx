@@ -693,11 +693,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
                   <div className="field is-grouped">
                     <div className="control">
-                      <button type="button" onClick={this.handleCloseFeedback} className="button">
-                        {t`Cancel`}
-                      </button>
-                    </div>
-                    <div className="control">
                       <button
                         type="submit"
                         disabled={isSubmitting || !feedback.trim() || !!emailError}
@@ -707,6 +702,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
                           if (isSubmitting) return t`Sending...`
                           return hasError ? t`Send Error Report` : t`Send Feedback`
                         })()}
+                      </button>
+                    </div>
+                    <div className="control">
+                      <button type="button" onClick={this.handleCloseFeedback} className="button">
+                        {t`Cancel`}
                       </button>
                     </div>
                   </div>
