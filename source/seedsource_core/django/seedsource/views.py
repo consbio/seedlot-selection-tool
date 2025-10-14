@@ -187,6 +187,8 @@ class FeedbackView(GenericAPIView):
     serializer_class = FeedbackSerializer
 
     def post(self, request, *args, **kwargs):
+        import json
+        import html
         from django.core.mail import send_mail
         from django.template.loader import render_to_string
 
@@ -203,11 +205,20 @@ class FeedbackView(GenericAPIView):
         error_title = data.get('errorTitle', '')
         is_error_report = data.get('isErrorReport', False)
 
+        if errors_encountered:
+            try:
+                parsed_json = json.loads(errors_encountered)
+                clean_errors_encountered = json.dumps(parsed_json, indent=2)
+            except (json.JSONDecodeError, TypeError):
+                clean_errors_encountered = html.unescape(errors_encountered)
+        else:
+            clean_errors_encountered = errors_encountered
+
         template_context = {
             'name': name,
             'email': email,
             'feedback': feedback,
-            'errors_encountered': errors_encountered,
+            'errors_encountered': clean_errors_encountered,
             'request_followup': request_followup,
             'error_title': error_title,
             'host': request.get_host(),

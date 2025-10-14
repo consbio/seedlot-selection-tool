@@ -10,7 +10,7 @@ User Feedback:
 {{ feedback }}
 
 Technical Details:
-{{ errors_encountered|default:"No additional details provided" }}
+{{ errors_encountered|default:"No additional details provided"|safe }}
 
 ---
 Sent from: {{ host }}
