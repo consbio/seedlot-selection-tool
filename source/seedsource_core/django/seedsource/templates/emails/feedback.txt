@@ -1,18 +1,17 @@
-{% load i18n %}
-{% trans "Feedback received from the Seedlot Selection Tool:" %}
+Feedback received from the Seedlot Selection Tool:
 
-{% blocktrans with name=name %}Name: {{ name|default:"Not provided" }}{% endblocktrans %}
-{% blocktrans with email=email %}Email: {{ email|default:"Not provided" }}{% endblocktrans %}
-{% blocktrans with request_followup=request_followup %}Request Follow-up: {% if request_followup %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}{% endblocktrans %}
+Name: {{ name|default:"Not provided" }}
+Email: {{ email|default:"Not provided" }}
+Request Follow-up: {% if request_followup %}Yes{% else %}No{% endif %}
 
-{% trans "Feedback:" %}
+Feedback:
 {{ feedback }}
 
 {% if errors_encountered %}
-{% trans "Errors Encountered:" %}
+Errors Encountered:
 {{ errors_encountered }}
 {% endif %}
 
 ---
-{% blocktrans with host=host time=time %}Sent from: {{ host }}
-Time: {{ time }}{% endblocktrans %}
+Sent from: {{ host }}
+Time: {{ time }}
