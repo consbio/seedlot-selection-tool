@@ -322,6 +322,14 @@
         state: directory
         owner: nginx
         group: nginx
+    - name: Create downloads directory
+      become: true
+      ansible.builtin.file:
+        path: /mnt/data/ncdjango/downloads
+        state: directory
+        owner: sst
+        group: nginx
+        mode: '0755'
     - name: Add Nginx config
       become: true
       ansible.builtin.copy:
