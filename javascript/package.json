@@ -60,7 +60,7 @@
     "ttag-cli": "^1.11.2",
     "ttag-webpack-plugin": "^0.1.2",
     "typescript": "~4.8.4",
-    "webpack": "^5.101.3",
+    "webpack": "^5.104.1",
     "webpack-bundle-tracker": "3.2.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
