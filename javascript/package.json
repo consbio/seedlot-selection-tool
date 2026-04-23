@@ -91,6 +91,6 @@
     "stream-browserify": "^3.0.0",
     "topojson-client": "^3.1.0",
     "ttag": "1.7.24",
-    "uuid": "^8.3.2"
+    "uuid": "^14.0.0"
   }
 }
