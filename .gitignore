@@ -17,3 +17,4 @@ merged.po
 *.mo
 static/
 ansible/inventory.yml
+source/celerybeat-schedule.db

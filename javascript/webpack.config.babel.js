@@ -54,6 +54,7 @@ export default languages.map(language => {
             allowedHosts: 'all',
             client: {
               webSocketURL: 'ws://0.0.0.0:3000/ws',
+              overlay: false,
             },
           },
         }),

@@ -154,11 +154,15 @@ export default () => {
         name: 'tsme',
         label: t`Mountain hemlock`,
       },
+      {
+        name: 'prse',
+        label: t`Black cherry`,
+      },
     ],
     functions: [
       {
         name: 'FD',
-        label: 'Flower Date',
+        label: t`Flower Date`,
         fn: '381 + (-1.72*LAT) + (-0.011*DD_18)',
         transfer: 10.4,
         units: 'days',
@@ -222,6 +226,14 @@ export default () => {
         transfer: 0.292,
         customTransfer: false,
         species: ['atva'],
+      },
+      {
+        name: 'ODLF',
+        label: t`Ordinal Date of Leaf Fall`,
+        fn: '2.5006*MWMT + 239.2945',
+        transfer: 1,
+        customTransfer: true,
+        species: ['prse'],
       },
     ],
     defaultVariables: [
