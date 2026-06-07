@@ -214,6 +214,14 @@ TRAIT_CONFIG = {
     "PC3": Variable("PC3", 1, format_no_units, format_no_units, "", ""),
     "HGT": Variable(_("Scaled Height"), 1, format_no_units, format_no_units, "", ""),
     "HT": Variable(_("Height"), 1, format_no_units, format_no_units, "", ""),
+    "ODLF": Variable(
+        _("Ordinal Date of Leaf Fall"),
+        1,
+        format_no_units,
+        format_no_units,
+        _("days"),
+        _("days"),
+    ),
 }
 
 

@@ -232,6 +232,7 @@ export default () => {
         label: t`Ordinal Date of Leaf Fall`,
         fn: '2.5006*MWMT + 239.2945',
         transfer: 1,
+        units: 'days',
         customTransfer: true,
         species: ['prse'],
       },
