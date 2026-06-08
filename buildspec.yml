@@ -3,6 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
+      - dnf install -y libatomic
       - curl -fsSL https://get.pnpm.io/install.sh | sh -
       - source ~/.bashrc
       - (cd javascript && pnpm install)
