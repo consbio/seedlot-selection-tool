@@ -4,3 +4,4 @@ allowBuilds:
   core-js: true
   msgpackr-extract: true
   node-sass: true
+  ttag-cli: true
