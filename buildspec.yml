@@ -6,9 +6,7 @@ phases:
       - dnf install -y libatomic
       - curl -fsSL https://get.pnpm.io/install.sh | sh -
       - source ~/.bashrc
-      - cd javascript
-      - pnpm approve-builds @parcel/watcher better-sqlite3 core-js core-js msgpackr-extract node-sass ttag-cli
-      - pnpm install
+      - (cd javascript && pnpm install)
   build:
     commands:
       - (cd javascript && pnpm extract-messages && pnpm build)
