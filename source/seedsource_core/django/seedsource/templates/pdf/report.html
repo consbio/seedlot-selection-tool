@@ -219,10 +219,10 @@
 
         {% block species %}<div><strong>{% trans "Species:" %}</strong> {{ species }}</div>{% endblock %}
 
-        <div>&nbsp;</div>
-
         {% if method == "seedzone" %}
             {% block seedzone %}
+                <div>&nbsp;</div>
+
                 <div>
                     <strong>{% trans "Seed zone:" %}</strong> {{ zone }}{% if band %}, {{ band.0 }}' - {{ band.1 }}'{% endif %}
                 </div>
@@ -371,6 +371,11 @@
                 http://cfcg.forestry.ubc.ca/projects/climate-data/climatebcwna/#ClimateWNA
             </a>
         </div>
+        <h3>{% trans "Seed/Seedling Growers & Vendors" %}</h3>
+        <ul>
+          <li>{% trans "CRP Tool" %}: <a href="https://crptool.org">crptool.org</a></li>
+          <li>{% trans "National Reforestation & Restoration Directory" %}: <a href="https://rngr.net/marketplace/directory/">https://rngr.net/marketplace/directory/</a></li>
+        </ul>
     {% endblock %}
 </body>
 </html>

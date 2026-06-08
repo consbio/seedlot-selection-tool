@@ -301,7 +301,7 @@ class Report(object):
             "center": self.configuration["center"],
             "species": (
                 self.configuration.get("species")
-                if method in ("seedzone", "function")
+                if method in ("seedzone", "function", "trait")
                 else None
             ),
             "zone": getattr(zone, "name", None),
