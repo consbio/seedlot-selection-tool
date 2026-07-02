@@ -218,7 +218,7 @@
   environment:
     PATH: '/usr/local/bin:/usr/local/HDF_Group/HDF5/{{ hdf5_version }}/bin:{{ lookup("env", "PATH") }}'
   vars:
-    gdal_version: '3.11.3'
+    gdal_version: '3.13.1'
     hdf5_version: '1.14.6'
   tasks:
     - name: Check GDAL version
@@ -231,7 +231,7 @@
       block:
         - name: Download sources
           ansible.builtin.get_url:
-            url: 'https://github.com/OSGeo/gdal/releases/download/v3.11.3/gdal-{{ gdal_version }}.tar.gz'
+            url: 'https://github.com/OSGeo/gdal/releases/download/v{{ gdal_version }}/gdal-{{ gdal_version }}.tar.gz'
             dest: '/tmp/gdal-{{ gdal_version }}.tar.gz'
           register: gdal_source
         - name: Unpack sources
